@@ -1,0 +1,31 @@
+unit Venda;
+
+interface
+
+uses
+  System.SysUtils;
+
+type
+  TVenda = class
+  private
+    FID: Integer;
+    FDataVenda: TDate;
+    FTotalProdutos: Integer;
+    FQuantidadeProduto: Integer;
+    FTotalPreco: Double;
+    FPreco: Double;
+    FVendedor: Integer;
+
+  public
+    property ID: Integer read FID;
+    property dataVenda: TDate read FDataVenda;
+    property totalProdutos: Integer read FTotalProdutos write FTotalProdutos;
+    property quantidadeProduto: Integer read FQuantidadeProduto;
+    property totalPreco: Double read FTotalPreco write FTotalPreco;
+    property preco: Double read FPreco;
+    property vendedor: Integer read FVendedor;
+  end;
+
+implementation
+
+end.

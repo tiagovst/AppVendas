@@ -1,0 +1,26 @@
+unit Venda;
+
+interface
+
+uses
+  System.SysUtils;
+
+type
+  TVenda = class
+  private
+    id: Integer;
+    dataVenda: TDate;
+    totalProdutos: Integer;
+    quantidadeProduto: Integer;
+    totalPreco: Double;
+    preco: Double;
+    vendedor: Integer;
+
+  public
+
+
+  end;
+
+implementation
+
+end.

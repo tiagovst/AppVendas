@@ -1,0 +1,19 @@
+unit Produto;
+
+interface
+
+uses
+  System.SysUtils;
+
+type
+  TUsuario = class
+  private
+
+  public
+
+
+  end;
+
+implementation
+
+end.

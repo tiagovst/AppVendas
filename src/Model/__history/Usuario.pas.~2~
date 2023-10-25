@@ -1,0 +1,19 @@
+unit Usuario;
+
+interface
+
+uses
+  System.SysUtils;
+
+type
+  TUsuario = class
+  private
+
+  public
+
+
+  end;
+
+implementation
+
+end.

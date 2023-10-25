@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/10/25 16:43:43.000.604,=E:\Tiago\Programming\Embarcadero\Unit1.pas</Transaction>
+    <Transaction>2023/10/25 16:49:08.000.343,E:\Tiago\Programming\Embarcadero\Unit1.pas=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Conexao.pas</Transaction>
+    <Transaction>2023/10/25 16:49:08.000.343,E:\Tiago\Programming\Embarcadero\Unit1.dfm=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Conexao.dfm</Transaction>
+    <Transaction>2023/10/25 16:49:20.000.181,E:\Tiago\Programming\Embarcadero\Project1.dproj=E:\Tiago\Programming\Embarcadero\AppVendas\AppVendas.dproj</Transaction>
+    <Transaction>2023/10/25 18:30:28.000.988,=E:\Tiago\Programming\Embarcadero\Unit1.pas</Transaction>
+    <Transaction>2023/10/25 18:34:22.000.299,E:\Tiago\Programming\Embarcadero\Unit1.pas=E:\Tiago\Programming\Embarcadero\AppVendas\src\View\MainForm.pas</Transaction>
+    <Transaction>2023/10/25 18:34:22.000.299,E:\Tiago\Programming\Embarcadero\Unit1.dfm=E:\Tiago\Programming\Embarcadero\AppVendas\src\View\MainForm.dfm</Transaction>
+    <Transaction>2023/10/25 18:39:36.000.513,=E:\Tiago\Programming\Embarcadero\Unit1.pas</Transaction>
+    <Transaction>2023/10/25 18:40:03.000.399,E:\Tiago\Programming\Embarcadero\Unit1.pas=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Usuario.pas</Transaction>
+    <Transaction>2023/10/25 18:40:10.000.195,=E:\Tiago\Programming\Embarcadero\Unit1.pas</Transaction>
+    <Transaction>2023/10/25 18:40:25.000.208,E:\Tiago\Programming\Embarcadero\Unit1.pas=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Produto.pas</Transaction>
+    <Transaction>2023/10/25 18:40:32.000.816,=E:\Tiago\Programming\Embarcadero\Unit1.pas</Transaction>
+    <Transaction>2023/10/25 18:40:37.000.194,E:\Tiago\Programming\Embarcadero\Unit1.pas=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Venda.pas</Transaction>
+  </Transactions>
+</BorlandProject>

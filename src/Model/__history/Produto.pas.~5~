@@ -1,0 +1,29 @@
+unit Produto;
+
+interface
+
+uses
+  System.SysUtils;
+
+type
+  TProduto = class
+  private
+    FID: Integer;
+    FNome: String;
+    FCodigoBarras: Int64;
+    FDescricao: String;
+    FReferencia: String;
+    FPreco: Double;
+    FCategoria : String;
+    FQuantidadeEstoque: Integer;
+    FFornecedor: String;
+    FDataValidade: TDate;
+
+  public
+
+
+  end;
+
+implementation
+
+end.

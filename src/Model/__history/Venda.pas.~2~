@@ -1,0 +1,19 @@
+unit Venda;
+
+interface
+
+uses
+  System.SysUtils;
+
+type
+  TVenda = class
+  private
+
+  public
+
+
+  end;
+
+implementation
+
+end.

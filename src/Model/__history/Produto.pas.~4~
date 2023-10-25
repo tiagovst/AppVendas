@@ -1,0 +1,19 @@
+unit Produto;
+
+interface
+
+uses
+  System.SysUtils;
+
+type
+  TProduto = class
+  private
+
+  public
+
+
+  end;
+
+implementation
+
+end.
