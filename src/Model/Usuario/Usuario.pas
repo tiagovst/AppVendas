@@ -30,4 +30,6 @@ type
 
 implementation
 
+{ TUsuario }
+
 end.

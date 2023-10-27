@@ -94,10 +94,10 @@
             <Form>MainView</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\Model\Usuario.pas"/>
-        <DCCReference Include="src\Model\Produto.pas"/>
-        <DCCReference Include="src\Model\Venda.pas"/>
-        <DCCReference Include="src\Model\Conexao.pas">
+        <DCCReference Include="src\Model\Venda\Venda.pas"/>
+        <DCCReference Include="src\Model\Usuario\Usuario.pas"/>
+        <DCCReference Include="src\Model\Produto\Produto.pas"/>
+        <DCCReference Include="src\Model\ConexaoDAO\Conexao.pas">
             <Form>Form1</Form>
             <FormType>dfm</FormType>
         </DCCReference>
