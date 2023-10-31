@@ -43,10 +43,6 @@ var
 
 implementation
 
-{%CLASSGROUP 'Vcl.Controls.TControl'}
-
-{$R *.dfm}
-
 { TdmGenericDAO }
 
 function TdmGenericDAO.Alterar(Usuario: TUsuario; out erro: String): Boolean;

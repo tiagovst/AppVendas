@@ -15,6 +15,7 @@ object MainView: TMainView
   Position = poDefault
   PrintScale = poNone
   Visible = True
+  OnCreate = FormCreate
   TextHeight = 15
   object lblResult: TLabel
     Left = 295
@@ -192,6 +193,5 @@ object MainView: TMainView
     Height = 25
     Caption = 'Button1'
     TabOrder = 2
-    OnClick = Button1Click
   end
 end

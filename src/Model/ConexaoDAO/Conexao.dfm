@@ -14,7 +14,6 @@ object dmConexao: TdmConexao
   object FDConnection: TFDConnection
     Params.Strings = (
       'ConnectionDef=DataBase')
-    Connected = True
     LoginPrompt = False
     Left = 104
     Top = 72

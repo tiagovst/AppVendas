@@ -16,12 +16,12 @@ uses
   Vcl.Grids,
   Vcl.DBGrids,
   Conexao,
-  UsuarioDAO,
+  UsuarioDAOInterface,
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
   Vcl.Mask,
   Vcl.DBCtrls,
-  Usuario;
+  Usuario, UsuarioDAO;
 
 type
   TMainView = class(TForm)
@@ -51,9 +51,10 @@ type
     procedure btnInserirClick(Sender: TObject);
     procedure btnDeletarClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    //procedure Button1Click(Sender: TObject);
   private
-    UsuarioDAO: TdmGenericDAO;
+    DAOInterface: IUsuarioDAO;
     erro: String;
     Usuario: TUsuario;
   public
@@ -62,18 +63,23 @@ type
 
 var
   MainView: TMainView;
+  //DAOInterface: TdmGenericDAO;
 
 implementation
 
 {$R *.dfm}
 
 
+procedure TMainView.FormCreate(Sender: TObject);
+begin
+  DAOInterface := TdmGenericDAO.Create;
+end;
+
 procedure TMainView.btnAlterarClick(Sender: TObject);
 begin
-  UsuarioDAO := TdmGenericDAO.Create(nil);
   Usuario := TUsuario.Create;
 
-  with Usuario, UsuarioDAO do
+  with Usuario, DAOInterface do
   begin
     ID := StrToInt(self.id.Text);
     Nome := self.nome.Text;
@@ -86,9 +92,7 @@ begin
   end;
 
 
-  UsuarioDAO.Alterar(Usuario, erro);
-
-  FreeAndNil(UsuarioDAO);
+  DAOInterface.Alterar(Usuario, erro);
   FreeAndNil(Usuario);
 end;
 
@@ -96,20 +100,17 @@ procedure TMainView.btnDeletarClick(Sender: TObject);
 var
   valor: integer;
 begin
-  UsuarioDAO := TdmGenericDAO.Create(nil);
 
   //valor := DataSource1.DataSet.FieldByName(DBGrid1.Columns[DBGrid1.SelectedRows.count].FieldName).Value;
-  UsuarioDAO.Excluir(StrToInt(id.Text), erro);
+  DAOInterface.Excluir(StrToInt(id.Text), erro);
 
-  FreeAndNil(UsuarioDAO);
 end;
 
 procedure TMainView.btnInserirClick(Sender: TObject);
 begin
-  UsuarioDAO := TdmGenericDAO.Create(nil);
   Usuario := TUsuario.Create;
 
-  with Usuario, UsuarioDAO do
+  with Usuario, DAOInterface do
   begin
     ID := gerarID;
     Nome := self.nome.Text;
@@ -122,11 +123,11 @@ begin
   end;
 
 
-  UsuarioDAO.Inserir(Usuario, erro);
+  DAOInterface.Inserir(Usuario, erro);
 
-  FreeAndNil(UsuarioDAO);
   FreeAndNil(Usuario);
 end;
+
 
 
 (*
