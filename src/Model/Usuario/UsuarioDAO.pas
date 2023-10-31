@@ -1,0 +1,225 @@
+unit UsuarioDAO;
+
+interface
+
+uses
+  System.SysUtils,
+  System.Classes,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  FireDAC.Stan.Error,
+  FireDAC.DatS,
+  FireDAC.DApt.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.DApt,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client,
+  Usuario,
+  Conexao,
+  UsuarioDAOInterface, FireDAC.Phys.Intf, Data.DB;
+
+type
+  TdmGenericDAO = class(TInterfacedObject, IUsuarioDAO)
+    SQLSave: TFDQuery;
+    SQLDelete: TFDQuery;
+    SQLUpdate: TFDQuery;
+    SQLSearch: TFDQuery;
+    SQLAll: TFDQuery;
+
+  private
+    function gerarID: Integer;
+    function Inserir(Usuario: TUsuario; out erro: String): Boolean;
+    function Alterar(Usuario: TUsuario; out erro: String): Boolean;
+    function Excluir(ID: Integer; out erro: String): Boolean;
+
+    procedure PesquisarNome(Nome: String);
+    procedure Pesquisar();
+    procedure CarregarPessoa(Usuario: TUsuario; ID: Integer);
+  end;
+
+var
+  dmGenericDAO: TdmGenericDAO;
+
+implementation
+
+{ TdmGenericDAO }
+
+function TdmGenericDAO.Alterar(Usuario: TUsuario; out erro: String): Boolean;
+begin
+  SQLUpdate := TFDQuery.Create(nil);
+
+  with SQLUpdate, Usuario do
+  begin
+    Connection := dmConexao.FDConnection;
+
+    SQL.Text := 'update USUARIO set NOME = :NOME, EMAIL = :EMAIL, SENHA = :SENHA, ' +
+    'TELEFONE = :TELEFONE, CPF = :CPF, CARGO = :CARGO, NOME_USUARIO = :NOME_USUARIO where (ID = :ID)';
+
+    Params.ParamByName('ID').AsInteger := ID;
+    Params.ParamByName('Nome').AsString := Nome;
+    Params.ParamByName('email').AsString := Email;
+    Params.ParamByName('senha').AsString := Senha;
+    Params.ParamByName('cpf').AsString := CPF;
+    Params.ParamByName('telefone').AsString := Telefone;
+    Params.ParamByName('nome_usuario').AsString := NomeUsuario;
+    Params.ParamByName('cargo').AsString := Cargo;
+
+    try
+      ExecSQL();
+      Result := True;
+
+    except on E: Exception do
+      begin
+        erro := 'Ocorreu um erro ao tentar persistir: ' + sLineBreak + E.Message;
+        Result := False;
+      end;
+    end;
+  end;
+end;
+
+procedure TdmGenericDAO.CarregarPessoa(Usuario: TUsuario; ID: Integer);
+var
+  sql: TFDQuery;
+begin
+  sql := TFDQuery.Create(nil);
+
+  with sql, Usuario do
+  begin
+    try
+      Connection := dmConexao.FDConnection;
+
+      SQL.Text := 'select * from usuario where (id = :id);';
+
+      Params.ParamByName('ID').AsInteger := id;
+      Open();
+
+      ID := FieldByName('id').AsInteger;
+      Nome := FieldByName('NOME').AsString;
+      Email := FieldByName('EMAIL').AsString;
+      Senha := FieldByName('SENHA').AsString;
+      Telefone := FieldByName('TELEFONE').AsString;
+      Cargo := FieldByName('CARGO').AsString;
+      CPF := FieldByName('CPF').AsString;
+      NomeUsuario := FieldByName('NOME_USUARIO').AsString;
+
+    finally
+      FreeAndNil(sql);
+    end;
+  end;
+end;
+
+function TdmGenericDAO.Excluir(ID: Integer; out erro: String): Boolean;
+begin
+  SQLDelete := TFDQuery.Create(nil);
+
+  with SQLDelete do
+  begin
+    Connection := dmConexao.FDConnection;
+
+    SQL.Text := 'delete from USUARIO where (ID = :ID)';
+    Params.ParamByName('ID').AsInteger := id;
+
+    try
+      ExecSQL();
+      Result := True;
+
+      except on E: Exception do
+      begin
+        erro := 'Ocorreu um erro ao tentar excluir o elemento: ' + sLineBreak + E.Message;
+        Result := False;
+      end;
+    end;
+  end;
+end;
+
+function TdmGenericDAO.gerarID: Integer;
+var
+  sql: TFDQuery;
+begin
+  sql := TFDQuery.Create(nil);
+
+  with sql do
+  begin
+    try
+      Connection := dmConexao.FDConnection;
+
+      SQL.Text := 'select coalesce(max(id), 0) + 1 as seq from usuario';
+      Open();
+
+      Result := FieldByName('seq').AsInteger;
+    finally
+      FreeAndNil(sql);
+    end;
+  end;
+end;
+
+function TdmGenericDAO.Inserir(Usuario: TUsuario; out erro: String): Boolean;
+begin
+  SQLSave := TFDQuery.Create(nil);
+
+  with SQLSave, Usuario do
+  begin
+    Connection := dmConexao.FDConnection;
+
+    SQL.Text := 'insert into USUARIO (ID, NOME, EMAIL, SENHA, TELEFONE, CPF, CARGO, NOME_USUARIO) ' +
+    'values (:ID, :NOME, :EMAIL, :SENHA, :TELEFONE, :CPF, :CARGO, :NOME_USUARIO)';
+
+    Params.ParamByName('ID').AsInteger := ID;
+    Params.ParamByName('NOME').AsString := Nome;
+    Params.ParamByName('EMAIL').AsString := Email;
+    Params.ParamByName('SENHA').AsString := Senha;
+    Params.ParamByName('CPF').AsString := CPF;
+    Params.ParamByName('TELEFONE').AsString := Telefone;
+    Params.ParamByName('NOME_USUARIO').AsString := NomeUsuario;
+    Params.ParamByName('CARGO').AsString := Cargo;
+
+    try
+      ExecSQL;
+      Result := True;
+
+      except on E: Exception do
+      begin
+        Erro := 'Ocorreu um erro ao tentar persistir: ' + sLineBreak + E.Message;
+        Result := False;
+      end;
+    end;
+  end;
+end;
+
+procedure TdmGenericDAO.Pesquisar;
+begin
+  SQLALL := TFDQuery.Create(nil);
+
+  with SQLALL do
+  begin
+    Connection := dmConexao.FDConnection;
+
+    if Active then
+      Close;
+
+    Open();
+  end;
+end;
+
+procedure TdmGenericDAO.PesquisarNome(Nome: String);
+begin
+  SQLSearch := TFDQuery.Create(nil);
+
+  with SQLSearch do
+  begin
+    Connection := dmConexao.FDConnection;
+
+    if Active then
+      Close;
+
+    SQL.Text := 'select * from USUARIO where NOME LIKE :Nome;';
+    Params.ParamByName('NOME').AsString := Nome + '%';
+
+    Open();
+    First;
+
+  end;
+end;
+
+end.
