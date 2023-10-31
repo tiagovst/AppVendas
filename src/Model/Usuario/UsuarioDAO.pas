@@ -10,36 +10,24 @@ uses
   FireDAC.Stan.Param,
   FireDAC.Stan.Error,
   FireDAC.DatS,
-  FireDAC.Phys.Intf,
   FireDAC.DApt.Intf,
   FireDAC.Stan.Async,
   FireDAC.DApt,
-  FireDAC.Phys.FBDef,
-  FireDAC.Phys,
-  FireDAC.Phys.IBBase,
-  FireDAC.Phys.FB, Data.DB,
   FireDAC.Comp.DataSet,
   FireDAC.Comp.Client,
   Usuario,
-  Conexao;
+  Conexao,
+  UsuarioDAOInterface, FireDAC.Phys.Intf, Data.DB;
 
 type
-  TdmGenericDAO = class(TDataModule)
+  TdmGenericDAO = class(TInterfacedObject, IUsuarioDAO)
     SQLSave: TFDQuery;
     SQLDelete: TFDQuery;
     SQLUpdate: TFDQuery;
     SQLSearch: TFDQuery;
     SQLAll: TFDQuery;
-    SQLAllID: TIntegerField;
-    SQLAllNOME: TStringField;
-    SQLAllEMAIL: TStringField;
-    SQLAllSENHA: TStringField;
-    SQLAllTELEFONE: TStringField;
-    SQLAllCPF: TStringField;
-    SQLAllCARGO: TStringField;
-    SQLAllNOME_USUARIO: TStringField;
 
-  public
+  private
     function gerarID: Integer;
     function Inserir(Usuario: TUsuario; out erro: String): Boolean;
     function Alterar(Usuario: TUsuario; out erro: String): Boolean;
@@ -63,8 +51,12 @@ implementation
 
 function TdmGenericDAO.Alterar(Usuario: TUsuario; out erro: String): Boolean;
 begin
+  SQLUpdate := TFDQuery.Create(nil);
+
   with SQLUpdate, Usuario do
   begin
+    Connection := dmConexao.FDConnection;
+
     SQL.Text := 'update USUARIO set NOME = :NOME, EMAIL = :EMAIL, SENHA = :SENHA, ' +
     'TELEFONE = :TELEFONE, CPF = :CPF, CARGO = :CARGO, NOME_USUARIO = :NOME_USUARIO where (ID = :ID)';
 
@@ -123,8 +115,12 @@ end;
 
 function TdmGenericDAO.Excluir(ID: Integer; out erro: String): Boolean;
 begin
+  SQLDelete := TFDQuery.Create(nil);
+
   with SQLDelete do
   begin
+    Connection := dmConexao.FDConnection;
+
     SQL.Text := 'delete from USUARIO where (ID = :ID)';
     Params.ParamByName('ID').AsInteger := id;
 
@@ -149,9 +145,9 @@ begin
 
   with sql do
   begin
-
     try
       Connection := dmConexao.FDConnection;
+
       SQL.Text := 'select coalesce(max(id), 0) + 1 as seq from usuario';
       Open();
 
@@ -164,24 +160,26 @@ end;
 
 function TdmGenericDAO.Inserir(Usuario: TUsuario; out erro: String): Boolean;
 begin
+  SQLSave := TFDQuery.Create(nil);
+
   with SQLSave, Usuario do
-    begin
+  begin
+    Connection := dmConexao.FDConnection;
 
-      //SQL.Text := 'insert into USUARIO (ID, NOME, EMAIL, SENHA, TELEFONE, CPF, CARGO, NOME_USUARIO) ' +
-      //'values (:ID, :NOME, :EMAIL, :SENHA, :TELEFONE, :CPF, :CARGO, :NOME_USUARIO)';
+    SQL.Text := 'insert into USUARIO (ID, NOME, EMAIL, SENHA, TELEFONE, CPF, CARGO, NOME_USUARIO) ' +
+    'values (:ID, :NOME, :EMAIL, :SENHA, :TELEFONE, :CPF, :CARGO, :NOME_USUARIO)';
 
-      Params.ParamByName('ID').AsInteger := ID;
-      Params.ParamByName('NOME').AsString := Nome;
-      Params.ParamByName('EMAIL').AsString := Email;
-      Params.ParamByName('SENHA').AsString := Senha;
-      Params.ParamByName('CPF').AsString := CPF;
-      Params.ParamByName('TELEFONE').AsString := Telefone;
-      Params.ParamByName('NOME_USUARIO').AsString := NomeUsuario;
-      Params.ParamByName('CARGO').AsString := Cargo;
-    end;
+    Params.ParamByName('ID').AsInteger := ID;
+    Params.ParamByName('NOME').AsString := Nome;
+    Params.ParamByName('EMAIL').AsString := Email;
+    Params.ParamByName('SENHA').AsString := Senha;
+    Params.ParamByName('CPF').AsString := CPF;
+    Params.ParamByName('TELEFONE').AsString := Telefone;
+    Params.ParamByName('NOME_USUARIO').AsString := NomeUsuario;
+    Params.ParamByName('CARGO').AsString := Cargo;
 
-  try
-      SQLSave.ExecSQL;
+    try
+      ExecSQL;
       Result := True;
 
       except on E: Exception do
@@ -189,32 +187,42 @@ begin
         Erro := 'Ocorreu um erro ao tentar persistir: ' + sLineBreak + E.Message;
         Result := False;
       end;
+    end;
   end;
 end;
 
 procedure TdmGenericDAO.Pesquisar;
 begin
+  SQLALL := TFDQuery.Create(nil);
+
   with SQLALL do
   begin
+    Connection := dmConexao.FDConnection;
+
     if Active then
       Close;
 
-   Open();
+    Open();
   end;
 end;
 
 procedure TdmGenericDAO.PesquisarNome(Nome: String);
 begin
+  SQLSearch := TFDQuery.Create(nil);
+
   with SQLSearch do
   begin
-    SQL.Text := 'select * from USUARIO';
+    Connection := dmConexao.FDConnection;
 
     if Active then
       Close;
 
-    Params.ParamByName('NOME').AsString := '%' + Nome + '%';
+    SQL.Text := 'select * from USUARIO where NOME LIKE :Nome;';
+    Params.ParamByName('NOME').AsString := Nome + '%';
+
     Open();
     First;
+
   end;
 end;
 

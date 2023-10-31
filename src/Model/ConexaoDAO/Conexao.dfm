@@ -13,16 +13,7 @@ object dmConexao: TdmConexao
   TextHeight = 15
   object FDConnection: TFDConnection
     Params.Strings = (
-      
-        'Database=E:\Tiago\Programming\Embarcadero\AppVendas\DataBase\RAZ' +
-        'ER.FDB'
-      'User_Name=SYSDBA'
-      'Password=masterkey'
-      'Protocol=TCPIP'
-      'Server=localhost'
-      'Port=3050'
-      'CharacterSet=win1252'
-      'DriverID=FB')
+      'ConnectionDef=DataBase')
     Connected = True
     LoginPrompt = False
     Left = 104

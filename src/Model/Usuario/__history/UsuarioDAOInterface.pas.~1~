@@ -1,0 +1,22 @@
+unit UsuarioDAOInterface;
+
+interface
+
+uses
+  Usuario;
+
+type
+  IUsuarioDAO = interface
+    ['{7AE03825-4B40-4FAC-B9BE-1D943FEB281A}']
+
+    function Inserir(Usuario: TUsuario; out erro: String): Boolean;
+    function Alterar(Usuario: TUsuario; out erro: String): Boolean;
+    function Excluir(ID: Integer; out erro: String): Boolean;
+
+    procedure PesquisarNome(Nome: String);
+    procedure Pesquisar();
+  end;
+
+implementation
+
+end.

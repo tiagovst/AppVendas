@@ -1,0 +1,97 @@
+object dmGenericDAO: TdmGenericDAO
+  Height = 241
+  Width = 450
+  object SQLSave: TFDQuery
+    Connection = dmConexao.FDConnection
+    SQL.Strings = (
+      
+        'insert into USUARIO (ID, NOME, EMAIL, SENHA, TELEFONE, CPF, CARG' +
+        'O, NOME_USUARIO) values (:ID, :NOME, :EMAIL, :SENHA, :TELEFONE, ' +
+        ':CPF, :CARGO, :NOME_USUARIO)')
+    Left = 56
+    Top = 32
+    ParamData = <
+      item
+        Name = 'ID'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = Null
+      end
+      item
+        Name = 'NOME'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 100
+      end
+      item
+        Name = 'EMAIL'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 50
+      end
+      item
+        Name = 'SENHA'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 100
+      end
+      item
+        Name = 'TELEFONE'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 12
+      end
+      item
+        Name = 'CPF'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 14
+      end
+      item
+        Name = 'CARGO'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 15
+      end
+      item
+        Name = 'NOME_USUARIO'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 30
+      end>
+  end
+  object SQLDelete: TFDQuery
+    Connection = dmConexao.FDConnection
+    Left = 216
+    Top = 32
+  end
+  object SQLUpdate: TFDQuery
+    Connection = dmConexao.FDConnection
+    Left = 360
+    Top = 32
+  end
+  object SQLSearch: TFDQuery
+    Connection = dmConexao.FDConnection
+    Left = 216
+    Top = 144
+  end
+  object SQLAll: TFDQuery
+    Active = True
+    Connection = dmConexao.FDConnection
+    SQL.Strings = (
+      'select * from USUARIO')
+    Left = 56
+    Top = 144
+    object SQLAllNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 100
+    end
+    object SQLAllID: TFDAutoIncField
+      FieldName = 'ID'
+      Origin = 'ID'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+  end
+end

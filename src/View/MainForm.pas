@@ -25,8 +25,6 @@ uses
 
 type
   TMainView = class(TForm)
-    DBGrid1: TDBGrid;
-    DataSource1: TDataSource;
     Panel1: TPanel;
     Label1: TLabel;
     Label2: TLabel;
@@ -47,8 +45,13 @@ type
     cargo: TEdit;
     cpf: TEdit;
     telefone: TEdit;
+    lblResult: TLabel;
+    txtNomeUsuario: TEdit;
+    Button1: TButton;
     procedure btnInserirClick(Sender: TObject);
     procedure btnDeletarClick(Sender: TObject);
+    procedure btnAlterarClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     UsuarioDAO: TdmGenericDAO;
     erro: String;
@@ -65,14 +68,38 @@ implementation
 {$R *.dfm}
 
 
+procedure TMainView.btnAlterarClick(Sender: TObject);
+begin
+  UsuarioDAO := TdmGenericDAO.Create(nil);
+  Usuario := TUsuario.Create;
+
+  with Usuario, UsuarioDAO do
+  begin
+    ID := StrToInt(self.id.Text);
+    Nome := self.nome.Text;
+    Email := self.email.Text;
+    Senha := self.senha.Text;
+    Telefone := self.telefone.Text;
+    CPF := self.cpf.Text;
+    Cargo := self.cargo.Text;
+    NomeUsuario := nome_usuario.Text;
+  end;
+
+
+  UsuarioDAO.Alterar(Usuario, erro);
+
+  FreeAndNil(UsuarioDAO);
+  FreeAndNil(Usuario);
+end;
+
 procedure TMainView.btnDeletarClick(Sender: TObject);
 var
   valor: integer;
 begin
   UsuarioDAO := TdmGenericDAO.Create(nil);
 
-  valor := DataSource1.DataSet.FieldByName(DBGrid1.Columns[DBGrid1.SelectedRows.count].FieldName).Value;
-  UsuarioDAO.Excluir(valor, erro);
+  //valor := DataSource1.DataSet.FieldByName(DBGrid1.Columns[DBGrid1.SelectedRows.count].FieldName).Value;
+  UsuarioDAO.Excluir(StrToInt(id.Text), erro);
 
   FreeAndNil(UsuarioDAO);
 end;
@@ -100,5 +127,17 @@ begin
   FreeAndNil(UsuarioDAO);
   FreeAndNil(Usuario);
 end;
+
+
+(*
+ ocedure TMainView.Button1Click(Sender: TObject);
+begin
+  UsuarioDAO := TdmGenericDAO.Create(nil);
+
+  lblResult.Caption := UsuarioDAO.PesquisarNome(txtNomeUsuario.Text);
+
+  FreeAndNil(UsuarioDAO);
+end;
+*)
 
 end.
