@@ -72,7 +72,7 @@ implementation
 
 procedure TMainView.FormCreate(Sender: TObject);
 begin
-  DAOInterface := TdmGenericDAO.Create;
+  DAOInterface := TUsuarioDAO.Create;
 end;
 
 procedure TMainView.btnAlterarClick(Sender: TObject);

@@ -7,10 +7,12 @@ uses
   Usuario in 'src\Model\Usuario\Usuario.pas',
   Produto in 'src\Model\Produto\Produto.pas',
   Conexao in 'src\Model\ConexaoDAO\Conexao.pas' {dmConexao},
-  UsuarioDAO in 'src\Model\Usuario\UsuarioDAO.pas' {dmGenericDAO: TDataModule},
   UsuarioDAOInterface in 'src\Interfaces\UsuarioDAOInterface.pas',
   VendaDAOInterface in 'src\Interfaces\VendaDAOInterface.pas',
-  VendaDAO in 'src\Model\Venda\VendaDAO.pas';
+  VendaDAO in 'src\Model\Venda\VendaDAO.pas',
+  ProdutoDAOInterface in 'src\Interfaces\ProdutoDAOInterface.pas',
+  ProdutoDAO in 'src\Model\Produto\ProdutoDAO.pas',
+  UsuarioDAO in 'src\Model\Usuario\UsuarioDAO.pas';
 
 {$R *.res}
 

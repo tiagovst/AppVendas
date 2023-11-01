@@ -16,6 +16,7 @@ type
 
     procedure PesquisarNome(Nome: String);
     procedure Pesquisar();
+    procedure CarregarPessoa(Usuario: TUsuario; ID: Integer);
   end;
 
 implementation
