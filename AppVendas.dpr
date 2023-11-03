@@ -2,24 +2,28 @@ program AppVendas;
 
 uses
   Vcl.Forms,
-  MainForm in 'src\View\MainForm.pas' {MainView},
   Venda in 'src\Model\Venda\Venda.pas',
   Usuario in 'src\Model\Usuario\Usuario.pas',
   Produto in 'src\Model\Produto\Produto.pas',
   Conexao in 'src\Model\ConexaoDAO\Conexao.pas' {dmConexao},
-  UsuarioDAOInterface in 'src\Interfaces\UsuarioDAOInterface.pas',
-  VendaDAOInterface in 'src\Interfaces\VendaDAOInterface.pas',
   VendaDAO in 'src\Model\Venda\VendaDAO.pas',
-  ProdutoDAOInterface in 'src\Interfaces\ProdutoDAOInterface.pas',
   ProdutoDAO in 'src\Model\Produto\ProdutoDAO.pas',
-  UsuarioDAO in 'src\Model\Usuario\UsuarioDAO.pas';
+  UsuarioDAO in 'src\Model\Usuario\UsuarioDAO.pas' {dmGenericDAO: TDataModule},
+  ControladorUsuario in 'src\Controller\ControladorUsuario.pas',
+  VendaDAOInterface in 'src\Interfaces\DAO\VendaDAOInterface.pas',
+  ControladorUsuarioInterface in 'src\Interfaces\Controlador\ControladorUsuarioInterface.pas',
+  UsuarioDAOInterface in 'src\Interfaces\DAO\UsuarioDAOInterface.pas',
+  ProdutoDAOInterface in 'src\Interfaces\DAO\ProdutoDAOInterface.pas',
+  ControladorProduto in 'src\Controller\ControladorProduto.pas',
+  ControladorVenda in 'src\Controller\ControladorVenda.pas',
+  ControladorProdutoInterface in 'src\Interfaces\Controlador\ControladorProdutoInterface.pas',
+  ControladorVendaInterface in 'src\Interfaces\Controlador\ControladorVendaInterface.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TMainView, MainView);
   Application.CreateForm(TdmConexao, dmConexao);
   Application.Run;
 end.

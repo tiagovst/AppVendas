@@ -13,10 +13,8 @@ object dmConexao: TdmConexao
   TextHeight = 15
   object FDConnection: TFDConnection
     Params.Strings = (
-      
-        'Database=D:\Tiago\Programming\Delphi\AppVendas\DataBase\RAZER.FD' +
-        'B'
       'ConnectionDef=DataBase')
+    Connected = True
     LoginPrompt = False
     Left = 104
     Top = 72

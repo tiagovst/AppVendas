@@ -92,10 +92,6 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="src\View\MainForm.pas">
-            <Form>MainView</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="src\Model\Venda\Venda.pas"/>
         <DCCReference Include="src\Model\Usuario\Usuario.pas"/>
         <DCCReference Include="src\Model\Produto\Produto.pas"/>
@@ -103,16 +99,22 @@
             <Form>dmConexao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\Interfaces\UsuarioDAOInterface.pas"/>
-        <DCCReference Include="src\Interfaces\VendaDAOInterface.pas"/>
         <DCCReference Include="src\Model\Venda\VendaDAO.pas"/>
-        <DCCReference Include="src\Interfaces\ProdutoDAOInterface.pas"/>
         <DCCReference Include="src\Model\Produto\ProdutoDAO.pas"/>
         <DCCReference Include="src\Model\Usuario\UsuarioDAO.pas">
             <Form>dmGenericDAO</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="src\Controller\ControladorUsuario.pas"/>
+        <DCCReference Include="src\Interfaces\DAO\VendaDAOInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorUsuarioInterface.pas"/>
+        <DCCReference Include="src\Interfaces\DAO\UsuarioDAOInterface.pas"/>
+        <DCCReference Include="src\Interfaces\DAO\ProdutoDAOInterface.pas"/>
+        <DCCReference Include="src\Controller\ControladorProduto.pas"/>
+        <DCCReference Include="src\Controller\ControladorVenda.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorProdutoInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorVendaInterface.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -971,6 +973,7 @@
             <Platforms>
                 <Platform value="Win32">True</Platform>
             </Platforms>
+            <ModelSupport>False</ModelSupport>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

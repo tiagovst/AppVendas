@@ -1,14 +1,18 @@
-unit ControladorUsuarioInterface;
+unit ControladorUsuario;
 
 interface
 
 uses
-  Usuario;
+  Usuario,
+  System.SysUtils,
+  UsuarioDAO,
+  UsuarioDAOInterface,
+  ControladorUsuarioInterface,
+  FireDAC.Comp.Client;
 
 type
-  IControladorUsuario = interface
-    ['{9494E2EE-8DB0-4653-AACB-60241AC01264}']
-
+  TControladorUsuario = class(TInterfacedObject, IControladorUsuario)
+  private
     function gerarID: Integer;
     function Inserir(Usuario: TUsuario; out erro: String): Boolean;
     function Alterar(Usuario: TUsuario; out erro: String): Boolean;
@@ -17,8 +21,9 @@ type
     procedure PesquisarNome(Nome: String);
     procedure Pesquisar();
     procedure CarregarPessoa(Usuario: TUsuario; ID: Integer);
-  end;
+  public
 
+  end;
 implementation
 
 end.

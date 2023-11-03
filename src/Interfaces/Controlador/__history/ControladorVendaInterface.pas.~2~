@@ -1,0 +1,15 @@
+unit ControladorVendaInterface;
+
+interface
+
+uses
+  Venda;
+
+type
+  IControladorVenda = interface
+
+  end;
+
+implementation
+
+end.

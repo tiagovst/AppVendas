@@ -1,4 +1,4 @@
-unit ControladorUsuario;
+unit ControladorVendaInterface;
 
 interface
 
