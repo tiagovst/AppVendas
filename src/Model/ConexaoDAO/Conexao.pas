@@ -3,32 +3,14 @@ unit Conexao;
 interface
 
 uses
-  Winapi.Windows,
-  Winapi.Messages,
-  System.SysUtils,
-  System.Variants,
-  System.Classes,
-  Vcl.Graphics,
-  Vcl.Controls,
-  Vcl.Forms,
-  Vcl.Dialogs,
-  FireDAC.Stan.Intf,
-  FireDAC.Stan.Option,
-  FireDAC.Stan.Error,
-  FireDAC.UI.Intf,
-  FireDAC.Phys.Intf,
-  FireDAC.Stan.Def,
-  FireDAC.Stan.Pool,
-  FireDAC.Stan.Async,
-  FireDAC.Phys,
-  FireDAC.VCLUI.Wait,
-  Data.DB,
-  FireDAC.Comp.Client,
-  FireDAC.Phys.FB,
-  FireDAC.Phys.FBDef, FireDAC.Phys.IBBase;
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.FMXUI.Wait,
+  FireDAC.Phys.FBDef, FireDAC.Phys.IBBase, FireDAC.Phys.FB, Data.DB,
+  FireDAC.Comp.Client;
 
 type
-  TdmConexao = class(TForm)
+  TDataModule1 = class(TDataModule)
     FDConnection: TFDConnection;
     DriverLink: TFDPhysFBDriverLink;
   private
@@ -38,9 +20,11 @@ type
   end;
 
 var
-  dmConexao: TdmConexao;
+  DataModule1: TDataModule1;
 
 implementation
+
+{%CLASSGROUP 'FMX.Controls.TControl'}
 
 {$R *.dfm}
 

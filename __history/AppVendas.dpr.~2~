@@ -1,19 +1,31 @@
 program AppVendas;
 
 uses
-  Vcl.Forms,
-  MainForm in 'src\View\MainForm.pas' {MainView},
+  System.StartUpCopy,
+  FMX.Forms,
+  MainForm in 'src\View\MainForm.pas' {Form1},
   Venda in 'src\Model\Venda\Venda.pas',
+  VendaDAO in 'src\Model\Venda\VendaDAO.pas',
+  UsuarioDAO in 'src\Model\Usuario\UsuarioDAO.pas',
   Usuario in 'src\Model\Usuario\Usuario.pas',
+  ProdutoDAO in 'src\Model\Produto\ProdutoDAO.pas',
   Produto in 'src\Model\Produto\Produto.pas',
-  Conexao in 'src\Model\ConexaoDAO\Conexao.pas' {Form1};
+  ProdutoDAOInterface in 'src\Interfaces\DAO\ProdutoDAOInterface.pas',
+  UsuarioDAOInterface in 'src\Interfaces\DAO\UsuarioDAOInterface.pas',
+  VendaDAOInterface in 'src\Interfaces\DAO\VendaDAOInterface.pas',
+  ControladorProdutoInterface in 'src\Interfaces\Controlador\ControladorProdutoInterface.pas',
+  ControladorUsuarioInterface in 'src\Interfaces\Controlador\ControladorUsuarioInterface.pas',
+  ControladorVendaInterface in 'src\Interfaces\Controlador\ControladorVendaInterface.pas',
+  ControladorProduto in 'src\Controller\ControladorProduto.pas',
+  ControladorUsuario in 'src\Controller\ControladorUsuario.pas',
+  ControladorVenda in 'src\Controller\ControladorVenda.pas',
+  Conexao in 'src\Model\ConexaoDAO\Conexao.pas' {DataModule1: TDataModule};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TMainView, MainView);
   Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TDataModule1, DataModule1);
   Application.Run;
 end.

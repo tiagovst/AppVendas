@@ -1,29 +1,31 @@
 program AppVendas;
 
 uses
-  Vcl.Forms,
+  System.StartUpCopy,
+  FMX.Forms,
+  MainForm in 'src\View\MainForm.pas' {MainFormView},
   Venda in 'src\Model\Venda\Venda.pas',
-  Usuario in 'src\Model\Usuario\Usuario.pas',
-  Produto in 'src\Model\Produto\Produto.pas',
-  Conexao in 'src\Model\ConexaoDAO\Conexao.pas' {dmConexao},
   VendaDAO in 'src\Model\Venda\VendaDAO.pas',
+  UsuarioDAO in 'src\Model\Usuario\UsuarioDAO.pas',
+  Usuario in 'src\Model\Usuario\Usuario.pas',
   ProdutoDAO in 'src\Model\Produto\ProdutoDAO.pas',
-  UsuarioDAO in 'src\Model\Usuario\UsuarioDAO.pas' {dmGenericDAO: TDataModule},
-  ControladorUsuario in 'src\Controller\ControladorUsuario.pas',
-  VendaDAOInterface in 'src\Interfaces\DAO\VendaDAOInterface.pas',
-  ControladorUsuarioInterface in 'src\Interfaces\Controlador\ControladorUsuarioInterface.pas',
-  UsuarioDAOInterface in 'src\Interfaces\DAO\UsuarioDAOInterface.pas',
+  Produto in 'src\Model\Produto\Produto.pas',
   ProdutoDAOInterface in 'src\Interfaces\DAO\ProdutoDAOInterface.pas',
-  ControladorProduto in 'src\Controller\ControladorProduto.pas',
-  ControladorVenda in 'src\Controller\ControladorVenda.pas',
+  UsuarioDAOInterface in 'src\Interfaces\DAO\UsuarioDAOInterface.pas',
+  VendaDAOInterface in 'src\Interfaces\DAO\VendaDAOInterface.pas',
   ControladorProdutoInterface in 'src\Interfaces\Controlador\ControladorProdutoInterface.pas',
-  ControladorVendaInterface in 'src\Interfaces\Controlador\ControladorVendaInterface.pas';
+  ControladorUsuarioInterface in 'src\Interfaces\Controlador\ControladorUsuarioInterface.pas',
+  ControladorVendaInterface in 'src\Interfaces\Controlador\ControladorVendaInterface.pas',
+  ControladorProduto in 'src\Controller\ControladorProduto.pas',
+  ControladorUsuario in 'src\Controller\ControladorUsuario.pas',
+  ControladorVenda in 'src\Controller\ControladorVenda.pas',
+  Conexao in 'src\Model\ConexaoDAO\Conexao.pas' {DataModule1: TDataModule};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TdmConexao, dmConexao);
+  Application.CreateForm(TMainFormView, MainFormView);
+  Application.CreateForm(TDataModule1, DataModule1);
   Application.Run;
 end.
