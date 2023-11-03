@@ -1,0 +1,18 @@
+unit ControladorUsuario;
+
+interface
+
+uses
+  Usuario,
+  System.SysUtils;
+
+type
+  TControladorUsuario = class(TInterfacedObject)//, IControladorUsuario
+  private
+
+  public
+
+  end;
+implementation
+
+end.
