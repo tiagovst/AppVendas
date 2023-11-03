@@ -108,7 +108,11 @@
         <DCCReference Include="src\Model\Venda\VendaDAO.pas"/>
         <DCCReference Include="src\Interfaces\ProdutoDAOInterface.pas"/>
         <DCCReference Include="src\Model\Produto\ProdutoDAO.pas"/>
-        <DCCReference Include="src\Model\Usuario\UsuarioDAO.pas"/>
+        <DCCReference Include="src\Model\Usuario\UsuarioDAO.pas">
+            <Form>dmGenericDAO</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

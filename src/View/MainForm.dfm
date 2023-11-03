@@ -3,9 +3,9 @@ object MainView: TMainView
   Top = 0
   Align = alClient
   AutoSize = True
-  Caption = 'Nome do Produto'
-  ClientHeight = 625
-  ClientWidth = 863
+  Caption = 'App Vendas'
+  ClientHeight = 520
+  ClientWidth = 909
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,183 +15,96 @@ object MainView: TMainView
   Position = poDefault
   PrintScale = poNone
   Visible = True
-  OnCreate = FormCreate
   TextHeight = 15
-  object lblResult: TLabel
-    Left = 295
-    Top = 456
-    Width = 103
-    Height = 15
-    Caption = 'NOME de USUARIO'
-  end
   object Panel1: TPanel
-    Left = 8
-    Top = 8
-    Width = 847
-    Height = 282
+    Left = 0
+    Top = 0
+    Width = 200
+    Height = 520
+    Align = alLeft
+    Color = 16381170
+    ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = -6
     object Label1: TLabel
-      Left = 16
-      Top = 16
-      Width = 11
+      Left = 0
+      Top = 104
+      Width = 132
       Height = 15
-      Caption = 'ID'
+      Caption = 'P'#225'gina do Administrador'
     end
-    object Label2: TLabel
-      Left = 16
-      Top = 61
-      Width = 35
-      Height = 15
-      Caption = 'NOME'
-    end
-    object Label3: TLabel
-      Left = 16
-      Top = 109
-      Width = 34
-      Height = 15
-      Caption = 'EMAIL'
-    end
-    object Label4: TLabel
-      Left = 16
-      Top = 157
-      Width = 38
-      Height = 15
-      Caption = 'SENHA'
-    end
-    object Label5: TLabel
-      Left = 368
-      Top = 16
-      Width = 54
-      Height = 15
-      Caption = 'TELEFONE'
-    end
-    object Label6: TLabel
-      Left = 368
-      Top = 64
-      Width = 21
-      Height = 15
-      Caption = 'CPF'
-    end
-    object Label7: TLabel
-      Left = 368
-      Top = 112
-      Width = 40
-      Height = 15
-      Caption = 'CARGO'
-    end
-    object Label8: TLabel
-      Left = 368
-      Top = 160
-      Width = 89
-      Height = 15
-      Caption = 'NOME_USUARIO'
-    end
-    object btnInserir: TButton
-      Left = 728
-      Top = 240
-      Width = 75
-      Height = 25
-      Caption = 'Inserir'
+    object Panel3: TPanel
+      Left = 0
+      Top = 136
+      Width = 200
+      Height = 153
       TabOrder = 0
-      OnClick = btnInserirClick
-    end
-    object btnDeletar: TButton
-      Left = 624
-      Top = 240
-      Width = 75
-      Height = 25
-      Caption = 'Deletar'
-      TabOrder = 1
-      OnClick = btnDeletarClick
-    end
-    object btnAlterar: TButton
-      Left = 507
-      Top = 240
-      Width = 75
-      Height = 25
-      Caption = 'Alterar'
-      TabOrder = 2
-      OnClick = btnAlterarClick
-    end
-    object id: TEdit
-      Left = 16
-      Top = 37
-      Width = 121
-      Height = 23
-      TabOrder = 3
-      Text = 'id'
-    end
-    object nome: TEdit
-      Left = 16
-      Top = 82
-      Width = 121
-      Height = 23
-      TabOrder = 4
-      Text = 'nome'
-    end
-    object email: TEdit
-      Left = 16
-      Top = 128
-      Width = 121
-      Height = 23
-      TabOrder = 5
-      Text = 'email'
-    end
-    object senha: TEdit
-      Left = 16
-      Top = 178
-      Width = 121
-      Height = 23
-      TabOrder = 6
-      Text = 'senha'
-    end
-    object nome_usuario: TEdit
-      Left = 368
-      Top = 181
-      Width = 121
-      Height = 23
-      TabOrder = 7
-      Text = 'nome_usuario'
-    end
-    object cargo: TEdit
-      Left = 368
-      Top = 131
-      Width = 121
-      Height = 23
-      TabOrder = 8
-      Text = 'cargo'
-    end
-    object cpf: TEdit
-      Left = 368
-      Top = 83
-      Width = 121
-      Height = 23
-      TabOrder = 9
-      Text = 'cpf'
-    end
-    object telefone: TEdit
-      Left = 368
-      Top = 35
-      Width = 121
-      Height = 23
-      TabOrder = 10
-      Text = 'telefone'
+      object Button2: TButton
+        Left = 0
+        Top = 0
+        Width = 200
+        Height = 25
+        Caption = 'Button2'
+        TabOrder = 0
+      end
+      object Button3: TButton
+        Left = 0
+        Top = 31
+        Width = 200
+        Height = 25
+        Caption = 'Button3'
+        TabOrder = 1
+      end
+      object Button4: TButton
+        Left = 0
+        Top = 62
+        Width = 200
+        Height = 25
+        Caption = 'Button4'
+        TabOrder = 2
+      end
+      object Button5: TButton
+        Left = 0
+        Top = 93
+        Width = 200
+        Height = 25
+        Caption = 'Button5'
+        TabOrder = 3
+      end
+      object Button6: TButton
+        Left = 0
+        Top = 124
+        Width = 200
+        Height = 25
+        Caption = 'Button6'
+        TabOrder = 4
+      end
     end
   end
-  object txtNomeUsuario: TEdit
-    Left = 208
-    Top = 477
-    Width = 441
-    Height = 23
+  object Panel2: TPanel
+    Left = 200
+    Top = 0
+    Width = 709
+    Height = 520
+    Align = alClient
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 1
-    Text = 'nome_usuario'
-  end
-  object Button1: TButton
-    Left = 592
-    Top = 528
-    Width = 75
-    Height = 25
-    Caption = 'Button1'
-    TabOrder = 2
+    ExplicitLeft = 280
+    ExplicitWidth = 889
+    ExplicitHeight = 785
+    DesignSize = (
+      709
+      520)
+    object Button1: TButton
+      Left = 647
+      Top = 464
+      Width = 40
+      Height = 40
+      Anchors = [akRight, akBottom]
+      Caption = 'Button1'
+      TabOrder = 0
+      ExplicitLeft = 624
+    end
   end
 end

@@ -20,7 +20,7 @@ type
     FDataValidade: TDate;
 
   public
-    property ID: Integer read FID;
+    property ID: Integer read FID write FID;
     property Nome: String read FNome write FNome;
     property CodigoBarras: String read FCodigoBarras write FCodigoBarras;
     property Descricao: String read FDescricao write FDescricao;
