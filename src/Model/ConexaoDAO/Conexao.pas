@@ -20,7 +20,7 @@ type
   end;
 
 var
-  DataModule1: TDataModule1;
+  dmConexao: TDataModule1;
 
 implementation
 

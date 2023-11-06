@@ -1,0 +1,94 @@
+object FrameProduto: TFrameProduto
+  Size.Width = 244.000000000000000000
+  Size.Height = 372.000000000000000000
+  Size.PlatformDefault = False
+  object Rectangle1: TRectangle
+    Fill.Color = claNull
+    Position.X = 12.000000000000000000
+    Position.Y = 11.000000000000000000
+    Size.Width = 219.000000000000000000
+    Size.Height = 349.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+    object Rectangle2: TRectangle
+      Fill.Color = xFFF2F4F9
+      Size.Width = 219.000000000000000000
+      Size.Height = 251.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = xFFCDCDCD
+      object ImagemProduto: TImage
+        MultiResBitmap = <
+          item
+          end>
+        Align = Center
+        Margins.Bottom = 40.000000000000000000
+        Size.Width = 121.000000000000000000
+        Size.Height = 121.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+    object Layout1: TLayout
+      Position.Y = 248.000000000000000000
+      Size.Width = 219.000000000000000000
+      Size.Height = 98.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object lblProduto: TLabel
+        Align = Top
+        StyledSettings = [Family, Style, FontColor]
+        Margins.Top = 12.000000000000000000
+        Position.Y = 12.000000000000000000
+        Size.Width = 219.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Size = 15.000000000000000000
+        TextSettings.HorzAlign = Center
+        Text = 'Nome do Produto'
+        TabOrder = 1
+      end
+      object lblValorUnitario: TLabel
+        Align = Top
+        Margins.Top = 11.000000000000000000
+        Position.Y = 40.000000000000000000
+        Size.Width = 219.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Center
+        Text = 'R$ 000,000'
+        TabOrder = 2
+      end
+      object btnRemover: TSpeedButton
+        Anchors = [akLeft]
+        Position.X = 8.000000000000000000
+        Position.Y = 76.000000000000000000
+        Size.Width = 57.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'stepperbuttonleft'
+        Text = 'btnRemover'
+      end
+      object txtQuantidade: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Anchors = [akLeft, akRight, akBottom]
+        TabOrder = 5
+        Text = '0'
+        TextSettings.HorzAlign = Center
+        Position.X = 73.000000000000000000
+        Position.Y = 76.000000000000000000
+        Size.Width = 71.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object btnAdicionar: TSpeedButton
+        Anchors = [akRight]
+        Position.X = 152.000000000000000000
+        Position.Y = 76.000000000000000000
+        Size.Width = 59.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'stepperbuttonright'
+        Text = 'btnAdicionar'
+      end
+    end
+  end
+end

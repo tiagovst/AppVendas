@@ -19,13 +19,13 @@ uses
   ControladorProduto in 'src\Controller\ControladorProduto.pas',
   ControladorUsuario in 'src\Controller\ControladorUsuario.pas',
   ControladorVenda in 'src\Controller\ControladorVenda.pas',
-  Conexao in 'src\Model\ConexaoDAO\Conexao.pas' {DataModule1: TDataModule};
+  Conexao in 'src\Model\ConexaoDAO\Conexao.pas' {DataModule1: TDataModule},
+  ComponenteProduto.View in 'src\View\componentes\ComponenteProduto.View.pas' {FrameProduto: TFrame};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TMainFormView, MainFormView);
-  Application.CreateForm(TDataModule1, DataModule1);
   Application.Run;
 end.
