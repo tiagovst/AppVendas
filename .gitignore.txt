@@ -5,3 +5,4 @@ AppVendas.identcache
 AppVendas.dproj.local
 AppVendas.dproj
 AppVendas.dpr
+Win32

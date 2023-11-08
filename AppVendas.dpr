@@ -17,13 +17,17 @@ uses
   ControladorProduto in 'src\Controller\ControladorProduto.pas',
   ControladorVenda in 'src\Controller\ControladorVenda.pas',
   ControladorProdutoInterface in 'src\Interfaces\Controlador\ControladorProdutoInterface.pas',
-  ControladorVendaInterface in 'src\Interfaces\Controlador\ControladorVendaInterface.pas';
+  ControladorVendaInterface in 'src\Interfaces\Controlador\ControladorVendaInterface.pas',
+  Principal.View in 'src\View\Principal.View.pas' {TelaPrincipal},
+  CadastroProduto.View in 'src\View\CadastroProduto.View.pas' {TelaCadastroProduto};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TTelaCadastroProduto, TelaCadastroProduto);
+  Application.CreateForm(TTelaPrincipal, TelaPrincipal);
   Application.CreateForm(TdmConexao, dmConexao);
   Application.Run;
 end.

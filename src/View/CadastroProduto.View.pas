@@ -1,0 +1,54 @@
+unit CadastroProduto.View;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  System.ImageList, Vcl.ImgList;
+
+type
+  TTelaCadastroProduto = class(TForm)
+    btnVoltar: TButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    GroupBox1: TGroupBox;
+    Label3: TLabel;
+    txtNomeProduto: TEdit;
+    Label4: TLabel;
+    txtDescricaoProduto: TMemo;
+    GroupBox2: TGroupBox;
+    Label5: TLabel;
+    txtReferencia: TEdit;
+    Label6: TLabel;
+    cbxCategoria: TComboBox;
+    GroupBox3: TGroupBox;
+    Label7: TLabel;
+    txtPreco: TEdit;
+    Label8: TLabel;
+    txtQuantidadeEstoque: TEdit;
+    GroupBox4: TGroupBox;
+    Label9: TLabel;
+    txtFornecedor: TEdit;
+    Label10: TLabel;
+    txtDataValidade: TEdit;
+    btnSalvar: TButton;
+    btnCancelar: TButton;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  TelaCadastroProduto: TTelaCadastroProduto;
+
+implementation
+
+{$R *.dfm}
+
+end.

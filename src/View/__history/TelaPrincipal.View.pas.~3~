@@ -1,0 +1,26 @@
+unit TelaPrincipal.View;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls;
+
+type
+  TTelaPrincipal = class(TForm)
+    pnlBarraLateral: TPanel;
+    pnlLogo: TPanel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  TelaPrincipal: TTelaPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+end.
