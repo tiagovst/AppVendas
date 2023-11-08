@@ -1,0 +1,78 @@
+unit ControladorUsuario;
+
+interface
+
+uses
+  Usuario,
+  System.SysUtils,
+  UsuarioDAO,
+  UsuarioDAOInterface,
+  ControladorUsuarioInterface;
+
+type
+  TControladorUsuario = class(TInterfacedObject, IControladorUsuario)
+  private
+    usuario: IUsuarioDAO;
+
+    function gerarID: Integer;
+    function Inserir(Usuario: TUsuario; out erro: String): Boolean;
+    function Alterar(Usuario: TUsuario; out erro: String): Boolean;
+    function Excluir(ID: Integer; out erro: String): Boolean;
+
+    procedure PesquisarNome(Nome: String);
+    procedure Pesquisar();
+    procedure CarregarPessoa(Usuario: TUsuario; ID: Integer);
+
+  public
+    constructor Create;
+
+  end;
+implementation
+
+{ TControladorUsuario }
+
+constructor TControladorUsuario.Create;
+begin
+  usuario := uUsuarioDAO.Create;
+end;
+
+function TControladorUsuario.Alterar(Usuario: TUsuario;
+  out erro: String): Boolean;
+begin
+  Result := usuario.Alterar(Usuario, erro);
+end;
+
+procedure TControladorUsuario.CarregarPessoa(Usuario: TUsuario; ID: Integer);
+begin
+  usuario.CarregarPessoa(Usuario, ID);
+end;
+
+function TControladorUsuario.Excluir(ID: Integer; out erro: String): Boolean;
+begin
+  Result := usuarioDAO.Excluir(ID, erro);
+end;
+
+function TControladorUsuario.gerarID: Integer;
+begin
+  Result := usuarioDAO.gerarID;
+end;
+
+function TControladorUsuario.Inserir(Usuario: TUsuario;
+  out erro: String): Boolean;
+begin
+  Result := usuarioDAO.Inserir(Usuario, erro);
+end;
+
+// Conferir lógica de acordo com nosso escopo
+procedure TControladorUsuario.Pesquisar;
+begin
+  usuarioDAO.Pesquisar;
+end;
+
+// Conferir lógica de acordo com nosso escopo
+procedure TControladorUsuario.PesquisarNome(Nome: String);
+begin
+  usuarioDAO.PesquisarNome(Nome);
+end;
+
+end.

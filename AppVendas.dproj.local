@@ -2,8 +2,8 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2023/10/25 16:43:43.000.604,=E:\Tiago\Programming\Embarcadero\Unit1.pas</Transaction>
-    <Transaction>2023/10/25 16:49:08.000.343,E:\Tiago\Programming\Embarcadero\Unit1.dfm=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Conexao.dfm</Transaction>
     <Transaction>2023/10/25 16:49:08.000.343,E:\Tiago\Programming\Embarcadero\Unit1.pas=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Conexao.pas</Transaction>
+    <Transaction>2023/10/25 16:49:08.000.343,E:\Tiago\Programming\Embarcadero\Unit1.dfm=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Conexao.dfm</Transaction>
     <Transaction>2023/10/25 16:49:20.000.181,E:\Tiago\Programming\Embarcadero\Project1.dproj=E:\Tiago\Programming\Embarcadero\AppVendas\AppVendas.dproj</Transaction>
     <Transaction>2023/10/25 17:00:04.000.312,=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Venda\Venda.pas</Transaction>
     <Transaction>2023/10/25 17:00:12.000.086,=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Usuario\Usuario.pas</Transaction>
@@ -19,7 +19,26 @@
     <Transaction>2023/10/25 18:40:32.000.816,=E:\Tiago\Programming\Embarcadero\Unit1.pas</Transaction>
     <Transaction>2023/10/25 18:40:37.000.194,E:\Tiago\Programming\Embarcadero\Unit1.pas=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Venda.pas</Transaction>
     <Transaction>2023/10/27 17:17:17.000.933,=E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.pas</Transaction>
-    <Transaction>2023/10/27 17:59:13.000.560,E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Usuario\UsuarioDAO.dfm=E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.dfm</Transaction>
     <Transaction>2023/10/27 17:59:13.000.560,E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Usuario\UsuarioDAO.pas=E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.pas</Transaction>
+    <Transaction>2023/10/27 17:59:13.000.560,E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Usuario\UsuarioDAO.dfm=E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.dfm</Transaction>
+    <Transaction>2023/11/01 18:27:36.000.372,=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\Interfaces\UsuarioDAOInterface.pas</Transaction>
+    <Transaction>2023/11/01 18:27:48.000.297,=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/01 18:28:50.000.587,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\Unit1.pas=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\Interfaces\VendaDAOInterface.pas</Transaction>
+    <Transaction>2023/11/01 18:46:58.000.547,=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/01 18:47:29.000.873,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\Unit1.pas=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\Model\Venda\VendaDAO.pas</Transaction>
+    <Transaction>2023/11/03 10:35:49.000.780,=D:\Tiago\Programming\Delphi\AppVendas\src\Controller\ControladorUsuario.pas</Transaction>
+    <Transaction>2023/11/03 10:35:58.000.217,=D:\Tiago\Programming\Delphi\AppVendas\src\Interfaces\DAO\VendaDAOInterface.pas</Transaction>
+    <Transaction>2023/11/03 10:36:08.000.506,=D:\Tiago\Programming\Delphi\AppVendas\src\Interfaces\Controlador\ControladorUsuarioInterface.pas</Transaction>
+    <Transaction>2023/11/03 10:36:18.000.713,=D:\Tiago\Programming\Delphi\AppVendas\src\Interfaces\DAO\UsuarioDAOInterface.pas</Transaction>
+    <Transaction>2023/11/03 10:36:26.000.756,=D:\Tiago\Programming\Delphi\AppVendas\src\Interfaces\DAO\ProdutoDAOInterface.pas</Transaction>
+    <Transaction>2023/11/03 10:37:10.000.437,D:\Tiago\Programming\Delphi\AppVendas\src\View\MainForm.pas=</Transaction>
+    <Transaction>2023/11/03 11:33:23.000.745,=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
+    <Transaction>2023/11/03 11:33:40.000.570,D:\Tiago\Programming\Delphi\AppVendas\src\Controller\ControladorProduto.pas=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
+    <Transaction>2023/11/03 11:33:45.000.339,=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
+    <Transaction>2023/11/03 11:33:54.000.194,D:\Tiago\Programming\Delphi\AppVendas\src\Controller\ControladorVenda.pas=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
+    <Transaction>2023/11/03 11:34:06.000.246,=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
+    <Transaction>2023/11/03 11:34:16.000.870,D:\Tiago\Programming\Delphi\AppVendas\src\Interfaces\Controlador\ControladorProdutoInterface.pas=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
+    <Transaction>2023/11/03 11:34:20.000.213,=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
+    <Transaction>2023/11/03 11:39:59.000.109,D:\Tiago\Programming\Delphi\AppVendas\src\Interfaces\Controlador\ControladorVendaInterface.pas=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

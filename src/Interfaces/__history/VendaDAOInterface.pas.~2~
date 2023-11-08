@@ -1,0 +1,18 @@
+unit VendaDAOInterface;
+
+interface
+
+uses
+  Venda;
+
+type
+  IVendaDAO = interface
+  ['{AC3C7EC3-8F9A-4812-B441-4350BA312C42}']
+
+
+  end;
+
+
+implementation
+
+end.

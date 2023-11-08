@@ -1,0 +1,78 @@
+unit ControladorUsuario;
+
+interface
+
+uses
+  Usuario,
+  System.SysUtils,
+  UsuarioDAO,
+  UsuarioDAOInterface,
+  ControladorUsuarioInterface,
+  FireDAC.Comp.Client;
+
+type
+  TControladorUsuario = class(TInterfacedObject, IControladorUsuario)
+  private
+    usuarioDAO: IUsuarioDAO;
+
+    constructor Create;
+
+    function gerarID: Integer;
+    function Inserir(Usuario: TUsuario; out erro: String): Boolean;
+    function Alterar(Usuario: TUsuario; out erro: String): Boolean;
+    function Excluir(ID: Integer; out erro: String): Boolean;
+
+    procedure PesquisarNome(Nome: String);
+    procedure Pesquisar();
+    procedure CarregarPessoa(Usuario: TUsuario; ID: Integer);
+
+  public
+
+  end;
+implementation
+
+{ TControladorUsuario }
+
+constructor TControladorUsuario.Create;
+begin
+  usuarioDAO := UsuarioDAO;
+end;
+
+function TControladorUsuario.Alterar(Usuario: TUsuario;
+  out erro: String): Boolean;
+begin
+  Result := usuarioDAO.Alterar(Usuario, erro);
+end;
+
+procedure TControladorUsuario.CarregarPessoa(Usuario: TUsuario; ID: Integer);
+begin
+
+end;
+
+function TControladorUsuario.Excluir(ID: Integer; out erro: String): Boolean;
+begin
+
+end;
+
+function TControladorUsuario.gerarID: Integer;
+begin
+
+end;
+
+function TControladorUsuario.Inserir(Usuario: TUsuario;
+  out erro: String): Boolean;
+begin
+
+end;
+
+procedure TControladorUsuario.Pesquisar;
+begin
+
+end;
+
+procedure TControladorUsuario.PesquisarNome(Nome: String);
+begin
+
+end;
+
+end.

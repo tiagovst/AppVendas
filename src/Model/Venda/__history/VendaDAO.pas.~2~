@@ -1,0 +1,86 @@
+unit VendaDAO;
+
+interface
+
+uses
+  Venda,
+  VendaDAOInterface,
+  FireDAC.Comp.Client,
+  System.SysUtils,
+  Conexao;
+
+type
+  TVendaDAO = class(TInterfacedObject, IVendaDAO)
+    //campo de atributos
+    SQLSave : TFDQuery;
+    SQLUpdate : TFDQuery;
+    SQLDelete : TFDQuery;
+    SQLAll : TFDQuery;
+    SQLSearch : TFDQuery;
+    SQLQuery : TFDQuery;
+
+    private
+    //funcoes de persistencia
+    function gerarID: Integer;
+    function Inserir(Usuario: TVenda; out erro: String): Boolean;
+    function Alterar(Usuario: TVenda; out erro: String): Boolean;
+    function Excluir(ID: Integer; out erro: String): Boolean;
+
+    procedure PesquisarPorData(Data : TDate);
+    procedure Pesquisar();
+    procedure PesquisarPorVendedor(Codigo : Integer);
+  end;
+
+
+var
+  uVendaDao : TVendaDAO;
+
+implementation
+
+{ TVendaDAO }
+
+function TVendaDAO.Alterar(Usuario: TVenda; out erro: String): Boolean;
+begin
+
+end;
+
+function TVendaDAO.Excluir(ID: Integer; out erro: String): Boolean;
+begin
+
+end;
+
+function TVendaDAO.gerarID: Integer;
+begin
+  with SQLQuery do
+  begin
+  SQLQuery := TFDQuery.Create(nil);
+
+    try
+
+    finally
+
+    end;
+  end;
+end;
+
+function TVendaDAO.Inserir(Usuario: TVenda; out erro: String): Boolean;
+begin
+
+end;
+
+procedure TVendaDAO.Pesquisar;
+begin
+
+end;
+
+procedure TVendaDAO.PesquisarPorData(Data: TDate);
+begin
+
+end;
+
+procedure TVendaDAO.PesquisarPorVendedor(Codigo: Integer);
+begin
+
+end;
+
+end.

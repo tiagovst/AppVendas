@@ -4,28 +4,14 @@ interface
 
 uses
   System.SysUtils,
-  System.Classes,
-  FireDAC.Stan.Intf,
-  FireDAC.Stan.Option,
-  FireDAC.Stan.Param,
-  FireDAC.Stan.Error,
-  FireDAC.DatS,
-  FireDAC.DApt.Intf,
-  FireDAC.Stan.Async,
-  FireDAC.DApt,
-  FireDAC.Comp.DataSet,
   FireDAC.Comp.Client,
   Usuario,
   Conexao,
-  UsuarioDAOInterface, FireDAC.Phys.Intf, Data.DB;
+  UsuarioDAOInterface;
 
 type
-  TdmGenericDAO = class(TInterfacedObject, IUsuarioDAO)
-    SQLSave: TFDQuery;
-    SQLDelete: TFDQuery;
-    SQLUpdate: TFDQuery;
-    SQLSearch: TFDQuery;
-    SQLAll: TFDQuery;
+  TUsuarioDAO = class(TInterfacedObject, IUsuarioDAO)
+    SQLQuery: TFDQuery;
 
   private
     function gerarID: Integer;
@@ -39,17 +25,17 @@ type
   end;
 
 var
-  dmGenericDAO: TdmGenericDAO;
+  uUsuarioDAO: TUsuarioDAO;
 
 implementation
 
-{ TdmGenericDAO }
+{ TUsuarioDAO }
 
-function TdmGenericDAO.Alterar(Usuario: TUsuario; out erro: String): Boolean;
+function TUsuarioDAO.Alterar(Usuario: TUsuario; out erro: String): Boolean;
 begin
-  SQLUpdate := TFDQuery.Create(nil);
+  SQLQuery := TFDQuery.Create(nil);
 
-  with SQLUpdate, Usuario do
+  with SQLQuery, Usuario do
   begin
     Connection := dmConexao.FDConnection;
 
@@ -78,13 +64,11 @@ begin
   end;
 end;
 
-procedure TdmGenericDAO.CarregarPessoa(Usuario: TUsuario; ID: Integer);
-var
-  sql: TFDQuery;
+procedure TUsuarioDAO.CarregarPessoa(Usuario: TUsuario; ID: Integer);
 begin
-  sql := TFDQuery.Create(nil);
+  SQLQuery := TFDQuery.Create(nil);
 
-  with sql, Usuario do
+  with SQLQuery, Usuario do
   begin
     try
       Connection := dmConexao.FDConnection;
@@ -104,16 +88,16 @@ begin
       NomeUsuario := FieldByName('NOME_USUARIO').AsString;
 
     finally
-      FreeAndNil(sql);
+      FreeAndNil(SQLQuery);
     end;
   end;
 end;
 
-function TdmGenericDAO.Excluir(ID: Integer; out erro: String): Boolean;
+function TUsuarioDAO.Excluir(ID: Integer; out erro: String): Boolean;
 begin
-  SQLDelete := TFDQuery.Create(nil);
+  SQLQuery := TFDQuery.Create(nil);
 
-  with SQLDelete do
+  with SQLQuery do
   begin
     Connection := dmConexao.FDConnection;
 
@@ -133,13 +117,11 @@ begin
   end;
 end;
 
-function TdmGenericDAO.gerarID: Integer;
-var
-  sql: TFDQuery;
+function TUsuarioDAO.gerarID: Integer;
 begin
-  sql := TFDQuery.Create(nil);
+  SQLQuery := TFDQuery.Create(nil);
 
-  with sql do
+  with SQLQuery do
   begin
     try
       Connection := dmConexao.FDConnection;
@@ -149,16 +131,16 @@ begin
 
       Result := FieldByName('seq').AsInteger;
     finally
-      FreeAndNil(sql);
+      FreeAndNil(SQLQuery);
     end;
   end;
 end;
 
-function TdmGenericDAO.Inserir(Usuario: TUsuario; out erro: String): Boolean;
+function TUsuarioDAO.Inserir(Usuario: TUsuario; out erro: String): Boolean;
 begin
-  SQLSave := TFDQuery.Create(nil);
+  SQLQuery := TFDQuery.Create(nil);
 
-  with SQLSave, Usuario do
+  with SQLQuery, Usuario do
   begin
     Connection := dmConexao.FDConnection;
 
@@ -187,11 +169,11 @@ begin
   end;
 end;
 
-procedure TdmGenericDAO.Pesquisar;
+procedure TUsuarioDAO.Pesquisar;
 begin
-  SQLALL := TFDQuery.Create(nil);
+  SQLQuery := TFDQuery.Create(nil);
 
-  with SQLALL do
+  with SQLQuery do
   begin
     Connection := dmConexao.FDConnection;
 
@@ -202,11 +184,11 @@ begin
   end;
 end;
 
-procedure TdmGenericDAO.PesquisarNome(Nome: String);
+procedure TUsuarioDAO.PesquisarNome(Nome: String);
 begin
-  SQLSearch := TFDQuery.Create(nil);
+  SQLQuery := TFDQuery.Create(nil);
 
-  with SQLSearch do
+  with SQLQuery do
   begin
     Connection := dmConexao.FDConnection;
 

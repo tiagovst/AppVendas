@@ -1,0 +1,72 @@
+unit ControladorProduto;
+
+interface
+
+uses
+  ControladorProdutoInterface,
+  ProdutoDAO,
+  ProdutoDAOInterface,
+  Produto,
+  System.SysUtils;
+
+type
+  TControladorProduto = class(TInterfacedObject, IControladorProduto)
+  private
+    function gerarID: Integer;
+    function Inserir(Usuario: TProduto; out erro: String): Boolean;
+    function Alterar(Usuario: TProduto; out erro: String): Boolean;
+    function Excluir(ID: Integer; out erro: String): Boolean;
+
+    procedure PesquisarCategoria(Categoria: String);
+    procedure PesquisarNome(Nome: String);
+    procedure Pesquisar();
+    procedure CarregarProduto(Usuario: TProduto; ID: Integer);
+  end;
+
+implementation
+
+{ TControladorProduto }
+
+function TControladorProduto.Alterar(Usuario: TProduto;
+  out erro: String): Boolean;
+begin
+
+end;
+
+procedure TControladorProduto.CarregarProduto(Usuario: TProduto; ID: Integer);
+begin
+
+end;
+
+function TControladorProduto.Excluir(ID: Integer; out erro: String): Boolean;
+begin
+
+end;
+
+function TControladorProduto.gerarID: Integer;
+begin
+
+end;
+
+function TControladorProduto.Inserir(Usuario: TProduto;
+  out erro: String): Boolean;
+begin
+
+end;
+
+procedure TControladorProduto.Pesquisar;
+begin
+
+end;
+
+procedure TControladorProduto.PesquisarCategoria(Categoria: String);
+begin
+
+end;
+
+procedure TControladorProduto.PesquisarNome(Nome: String);
+begin
+
+end;
+
+end.

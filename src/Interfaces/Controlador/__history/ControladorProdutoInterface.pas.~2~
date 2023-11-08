@@ -1,0 +1,23 @@
+unit ControladorProdutoInterface;
+
+interface
+
+uses
+  Produto;
+
+type
+  IControladorProduto = interface
+    function gerarID: Integer;
+    function Inserir(Usuario: TProduto; out erro: String): Boolean;
+    function Alterar(Usuario: TProduto; out erro: String): Boolean;
+    function Excluir(ID: Integer; out erro: String): Boolean;
+
+    procedure PesquisarCategoria(Categoria: String);
+    procedure PesquisarNome(Nome: String);
+    procedure Pesquisar();
+    procedure CarregarProduto(Usuario: TProduto; ID: Integer);
+  end;
+
+implementation
+
+end.
