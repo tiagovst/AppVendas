@@ -22,9 +22,8 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
     Height = 390
     Align = alClient
     TabOrder = 0
-    ExplicitTop = 3
-    ExplicitWidth = 710
-    ExplicitHeight = 429
+    ExplicitWidth = 704
+    ExplicitHeight = 389
     object PanelTop: TPanel
       Left = 1
       Top = 1
@@ -32,7 +31,7 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
       Height = 64
       Align = alTop
       TabOrder = 0
-      ExplicitWidth = 651
+      ExplicitWidth = 702
       DesignSize = (
         706
         64)
@@ -77,6 +76,7 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
         Font.Style = []
         ParentFont = False
         TabOrder = 0
+        ExplicitLeft = 644
       end
     end
     object GroupBox1: TGroupBox
@@ -93,10 +93,8 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
       Font.Style = []
       ParentFont = False
       TabOrder = 1
-      ExplicitLeft = 21
-      ExplicitTop = 71
-      ExplicitWidth = 185
-      ExplicitHeight = 105
+      ExplicitWidth = 702
+      ExplicitHeight = 323
       DesignSize = (
         706
         324)
@@ -178,6 +176,7 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
         ParentFont = False
         TabOrder = 3
         Text = ''
+        ExplicitLeft = 384
       end
       object editEmail: TLabeledEdit
         Left = 388
@@ -202,6 +201,7 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
         ParentFont = False
         TabOrder = 4
         Text = ''
+        ExplicitLeft = 384
       end
       object editNome: TLabeledEdit
         Left = 20
@@ -295,6 +295,7 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
         ParentFont = False
         TabOrder = 8
         Text = ''
+        ExplicitLeft = 384
       end
     end
   end
@@ -305,30 +306,30 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
     Height = 42
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 424
-    ExplicitWidth = 710
+    ExplicitTop = 389
+    ExplicitWidth = 704
     DesignSize = (
       708
       42)
     object btnListar: TButton
-      Left = 519
+      Left = 515
       Top = 9
       Width = 75
       Height = 25
       Anchors = [akTop, akRight, akBottom]
       Caption = 'Listar'
       TabOrder = 0
-      ExplicitLeft = 521
+      ExplicitLeft = 511
     end
     object btnSalvar: TButton
-      Left = 614
+      Left = 610
       Top = 9
       Width = 75
       Height = 25
       Anchors = [akTop, akRight, akBottom]
       Caption = 'Salvar'
       TabOrder = 1
-      ExplicitLeft = 616
+      ExplicitLeft = 606
     end
   end
 end

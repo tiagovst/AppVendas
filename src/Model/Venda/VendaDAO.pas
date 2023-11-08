@@ -6,6 +6,7 @@ uses
   Venda,
   VendaDAOInterface,
   FireDAC.Comp.Client,
+  FireDAC.Stan.Param,
   System.SysUtils,
   Conexao;
 

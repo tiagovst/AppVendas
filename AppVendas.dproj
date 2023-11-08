@@ -115,17 +115,16 @@
         <DCCReference Include="src\Controller\ControladorVenda.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorProdutoInterface.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorVendaInterface.pas"/>
-<<<<<<< HEAD
         <DCCReference Include="src\View\TelaCadastroUsuario.View.pas">
             <Form>TelaCadastroUsuario</Form>
-=======
-        <DCCReference Include="src\View\Principal.View.pas">
-            <Form>TelaPrincipal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\CadastroProduto.View.pas">
             <Form>TelaCadastroProduto</Form>
->>>>>>> 6cc1bf68d2096dc05457b2f50c910c4f2b4088ee
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\Principal.View.pas">
+            <Form>TelaPrincipal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">
