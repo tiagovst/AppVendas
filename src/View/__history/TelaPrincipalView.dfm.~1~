@@ -1,0 +1,107 @@
+object TelaPrincipal: TTelaPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'TelaPrincipal'
+  ClientHeight = 643
+  ClientWidth = 1112
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object pnlBarraLateral: TPanel
+    Left = 0
+    Top = 0
+    Width = 185
+    Height = 643
+    Align = alLeft
+    TabOrder = 0
+    ExplicitLeft = 16
+    ExplicitTop = 64
+    ExplicitHeight = 41
+    object Label2: TLabel
+      Left = 16
+      Top = 96
+      Width = 34
+      Height = 15
+      Caption = 'Label2'
+    end
+    object pnlLogo: TPanel
+      Left = 1
+      Top = 1
+      Width = 183
+      Height = 41
+      Align = alTop
+      TabOrder = 0
+      ExplicitLeft = 0
+      ExplicitTop = 16
+      ExplicitWidth = 185
+    end
+    object ButtonGroup1: TButtonGroup
+      Left = 16
+      Top = 160
+      Items = <>
+      TabOrder = 1
+    end
+  end
+  object pnlConteudo: TPanel
+    Left = 185
+    Top = 0
+    Width = 927
+    Height = 643
+    Align = alClient
+    TabOrder = 1
+    ExplicitLeft = 616
+    ExplicitTop = 360
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    DesignSize = (
+      927
+      643)
+    object Label1: TLabel
+      Left = 40
+      Top = 96
+      Width = 89
+      Height = 15
+      Caption = 'Label1'
+    end
+    object pnlPesquisa: TPanel
+      Left = 1
+      Top = 1
+      Width = 925
+      Height = 41
+      Align = alTop
+      TabOrder = 0
+      ExplicitLeft = 280
+      ExplicitTop = 32
+      ExplicitWidth = 185
+      DesignSize = (
+        925
+        41)
+      object SearchBox1: TSearchBox
+        Left = 312
+        Top = 10
+        Width = 313
+        Height = 23
+        Anchors = [akLeft, akTop, akRight]
+        TabOrder = 0
+        Text = 'SearchBox1'
+      end
+    end
+    object DBGrid1: TDBGrid
+      Left = 40
+      Top = 160
+      Width = 849
+      Height = 483
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      TabOrder = 1
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -12
+      TitleFont.Name = 'Segoe UI'
+      TitleFont.Style = []
+    end
+  end
+end

@@ -19,8 +19,13 @@
     <Transaction>2023/10/25 18:40:32.000.816,=E:\Tiago\Programming\Embarcadero\Unit1.pas</Transaction>
     <Transaction>2023/10/25 18:40:37.000.194,E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Venda.pas=E:\Tiago\Programming\Embarcadero\Unit1.pas</Transaction>
     <Transaction>2023/10/27 17:17:17.000.933,=E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.pas</Transaction>
+<<<<<<< HEAD
     <Transaction>2023/10/27 17:59:13.000.560,E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.dfm=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Usuario\UsuarioDAO.dfm</Transaction>
     <Transaction>2023/10/27 17:59:13.000.560,E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.pas=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Usuario\UsuarioDAO.pas</Transaction>
+=======
+    <Transaction>2023/10/27 17:59:13.000.560,E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.pas=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Usuario\UsuarioDAO.pas</Transaction>
+    <Transaction>2023/10/27 17:59:13.000.560,E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.dfm=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Usuario\UsuarioDAO.dfm</Transaction>
+>>>>>>> 6cc1bf68d2096dc05457b2f50c910c4f2b4088ee
     <Transaction>2023/11/01 18:27:36.000.372,=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\Interfaces\UsuarioDAOInterface.pas</Transaction>
     <Transaction>2023/11/01 18:27:48.000.297,=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\Unit1.pas</Transaction>
     <Transaction>2023/11/01 18:28:50.000.587,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\Interfaces\VendaDAOInterface.pas=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\Unit1.pas</Transaction>
@@ -40,8 +45,27 @@
     <Transaction>2023/11/03 11:34:16.000.870,D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas=D:\Tiago\Programming\Delphi\AppVendas\src\Interfaces\Controlador\ControladorProdutoInterface.pas</Transaction>
     <Transaction>2023/11/03 11:34:20.000.213,=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
     <Transaction>2023/11/03 11:39:59.000.109,D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas=D:\Tiago\Programming\Delphi\AppVendas\src\Interfaces\Controlador\ControladorVendaInterface.pas</Transaction>
+<<<<<<< HEAD
     <Transaction>2023/11/08 14:47:31.666,=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
     <Transaction>2023/11/08 14:50:06.058,D:\Tiago\Programming\Delphi\AppVendas\src\View\TelaCadastroUsuario.View.pas=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
     <Transaction>2023/11/08 14:50:06.058,D:\Tiago\Programming\Delphi\AppVendas\src\View\TelaCadastroUsuario.View.dfm=D:\Tiago\Programming\Delphi\AppVendas\Unit1.dfm</Transaction>
+=======
+    <Transaction>2023/11/08 14:45:01.700,=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/08 14:46:15.856,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\MainForm.View.pas=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/08 14:46:15.857,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\MainForm.View.dfm=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\Unit1.dfm</Transaction>
+    <Transaction>2023/11/08 14:48:44.679,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaPrincipal.dfm=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\MainForm.View.dfm</Transaction>
+    <Transaction>2023/11/08 14:48:44.679,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaPrincipal.pas=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\MainForm.View.pas</Transaction>
+    <Transaction>2023/11/08 14:49:59.447,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaPrincipal.View.pas=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaPrincipal.pas</Transaction>
+    <Transaction>2023/11/08 14:49:59.447,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaPrincipal.View.dfm=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaPrincipal.dfm</Transaction>
+    <Transaction>2023/11/08 14:55:23.246,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaPrincipalView.dfm=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaPrincipal.View.dfm</Transaction>
+    <Transaction>2023/11/08 14:55:23.246,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaPrincipalView.pas=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaPrincipal.View.pas</Transaction>
+    <Transaction>2023/11/08 15:13:41.142,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaPrincipal.View.pas=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaPrincipalView.pas</Transaction>
+    <Transaction>2023/11/08 15:13:41.142,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaPrincipal.View.dfm=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaPrincipalView.dfm</Transaction>
+    <Transaction>2023/11/08 15:14:28.658,=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/08 15:15:47.199,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\CadastroProduto.View.pas=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/08 15:15:47.199,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\CadastroProduto.View.dfm=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\Unit1.dfm</Transaction>
+    <Transaction>2023/11/08 15:15:58.854,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\Principal.View.pas=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaPrincipal.View.pas</Transaction>
+    <Transaction>2023/11/08 15:15:58.854,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\Principal.View.dfm=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaPrincipal.View.dfm</Transaction>
+>>>>>>> 6cc1bf68d2096dc05457b2f50c910c4f2b4088ee
   </Transactions>
 </BorlandProject>

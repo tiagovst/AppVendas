@@ -18,14 +18,24 @@ uses
   ControladorVenda in 'src\Controller\ControladorVenda.pas',
   ControladorProdutoInterface in 'src\Interfaces\Controlador\ControladorProdutoInterface.pas',
   ControladorVendaInterface in 'src\Interfaces\Controlador\ControladorVendaInterface.pas',
+<<<<<<< HEAD
   TelaCadastroUsuario.View in 'src\View\TelaCadastroUsuario.View.pas' {TelaCadastroUsuario};
+=======
+  Principal.View in 'src\View\Principal.View.pas' {TelaPrincipal},
+  CadastroProduto.View in 'src\View\CadastroProduto.View.pas' {TelaCadastroProduto};
+>>>>>>> 6cc1bf68d2096dc05457b2f50c910c4f2b4088ee
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+<<<<<<< HEAD
   Application.CreateForm(TTelaCadastroUsuario, TelaCadastroUsuario.View.TelaCadastroUsuario);
+=======
+  Application.CreateForm(TTelaCadastroProduto, TelaCadastroProduto);
+  Application.CreateForm(TTelaPrincipal, TelaPrincipal);
+>>>>>>> 6cc1bf68d2096dc05457b2f50c910c4f2b4088ee
   Application.CreateForm(TdmConexao, dmConexao);
   Application.Run;
 end.

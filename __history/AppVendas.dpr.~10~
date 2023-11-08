@@ -8,7 +8,11 @@ uses
   Conexao in 'src\Model\ConexaoDAO\Conexao.pas' {dmConexao},
   VendaDAO in 'src\Model\Venda\VendaDAO.pas',
   ProdutoDAO in 'src\Model\Produto\ProdutoDAO.pas',
+<<<<<<< HEAD
   UsuarioDAO in 'src\Model\Usuario\UsuarioDAO.pas' {dmGenericDAO: TDataModule},
+=======
+  UsuarioDAO in 'src\Model\Usuario\UsuarioDAO.pas',
+>>>>>>> 6cc1bf68d2096dc05457b2f50c910c4f2b4088ee
   ControladorUsuario in 'src\Controller\ControladorUsuario.pas',
   VendaDAOInterface in 'src\Interfaces\DAO\VendaDAOInterface.pas',
   ControladorUsuarioInterface in 'src\Interfaces\Controlador\ControladorUsuarioInterface.pas',
@@ -18,14 +22,23 @@ uses
   ControladorVenda in 'src\Controller\ControladorVenda.pas',
   ControladorProdutoInterface in 'src\Interfaces\Controlador\ControladorProdutoInterface.pas',
   ControladorVendaInterface in 'src\Interfaces\Controlador\ControladorVendaInterface.pas',
+<<<<<<< HEAD
   TelaCadastroUsuario.View in 'src\View\TelaCadastroUsuario.View.pas' {TelaCadastroUsuario};
+=======
+  TelaPrincipalView in 'src\View\TelaPrincipalView.pas' {TelaPrincipal};
+>>>>>>> 6cc1bf68d2096dc05457b2f50c910c4f2b4088ee
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+<<<<<<< HEAD
   Application.CreateForm(TdmConexao, dmConexao);
   Application.CreateForm(TTelaCadastroUsuario, TelaCadastroUsuario);
+=======
+  Application.CreateForm(TTelaPrincipal, TelaPrincipal);
+  Application.CreateForm(TdmConexao, dmConexao);
+>>>>>>> 6cc1bf68d2096dc05457b2f50c910c4f2b4088ee
   Application.Run;
 end.

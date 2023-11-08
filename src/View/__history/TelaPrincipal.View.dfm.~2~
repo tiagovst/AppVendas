@@ -1,0 +1,36 @@
+object TelaPrincipal: TTelaPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'TelaPrincipal'
+  ClientHeight = 643
+  ClientWidth = 1112
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object pnlBarraLateral: TPanel
+    Left = 0
+    Top = 0
+    Width = 185
+    Height = 643
+    Align = alLeft
+    TabOrder = 0
+    ExplicitLeft = 16
+    ExplicitTop = 64
+    ExplicitHeight = 41
+    object pnlLogo: TPanel
+      Left = 1
+      Top = 1
+      Width = 183
+      Height = 41
+      Align = alTop
+      TabOrder = 0
+      ExplicitLeft = 0
+      ExplicitTop = 16
+      ExplicitWidth = 185
+    end
+  end
+end
