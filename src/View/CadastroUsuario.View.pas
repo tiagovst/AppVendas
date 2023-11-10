@@ -1,4 +1,4 @@
-unit TelaCadastroUsuario.View;
+unit CadastroUsuario.View;
 
 interface
 
@@ -27,6 +27,7 @@ type
     btnListar: TButton;
     btnSalvar: TButton;
     GroupBox1: TGroupBox;
+    Label1: TLabel;
   private
     { Private declarations }
   public

@@ -10,6 +10,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
   TextHeight = 15
   object Panel1: TPanel
     Left = 0
@@ -18,10 +19,8 @@ object TelaCadastroProduto: TTelaCadastroProduto
     Height = 569
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 336
-    ExplicitTop = 480
-    ExplicitWidth = 185
-    ExplicitHeight = 41
+    ExplicitWidth = 852
+    ExplicitHeight = 560
     object Panel2: TPanel
       Left = 1
       Top = 528
@@ -29,30 +28,30 @@ object TelaCadastroProduto: TTelaCadastroProduto
       Height = 40
       Align = alBottom
       TabOrder = 0
-      ExplicitLeft = 2
-      ExplicitTop = 534
+      ExplicitTop = 519
+      ExplicitWidth = 850
       DesignSize = (
         856
         40)
       object btnCancelar: TButton
-        Left = 672
+        Left = 666
         Top = 7
         Width = 75
         Height = 25
         Anchors = [akRight, akBottom]
         Caption = 'Cancelar'
         TabOrder = 0
-        ExplicitTop = 87
+        ExplicitLeft = 660
       end
       object btnSalvar: TButton
-        Left = 766
+        Left = 760
         Top = 7
         Width = 75
         Height = 25
         Anchors = [akRight, akBottom]
         Caption = 'Salvar'
         TabOrder = 1
-        ExplicitTop = 87
+        ExplicitLeft = 754
       end
     end
     object Panel3: TPanel
@@ -62,8 +61,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
       Height = 96
       Align = alTop
       TabOrder = 1
-      ExplicitLeft = 2
-      ExplicitTop = 0
+      ExplicitWidth = 850
       object Label1: TLabel
         Left = 88
         Top = 40
@@ -114,19 +112,22 @@ object TelaCadastroProduto: TTelaCadastroProduto
       Height = 431
       Align = alClient
       TabOrder = 2
-      ExplicitLeft = 56
-      ExplicitTop = 48
+      ExplicitWidth = 850
+      ExplicitHeight = 422
       object GroupBox1: TGroupBox
+        AlignWithMargins = True
         Left = 41
         Top = 35
         Width = 239
         Height = 289
+        BiDiMode = bdLeftToRight
         Caption = 'Descri'#231#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -17
         Font.Name = 'Segoe UI'
         Font.Style = []
+        ParentBiDiMode = False
         ParentFont = False
         TabOrder = 0
         object Label3: TLabel
@@ -173,6 +174,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
           Top = 127
           Width = 215
           Height = 146
+          Hint = 'Descri'#231#227'o'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -190,12 +192,14 @@ object TelaCadastroProduto: TTelaCadastroProduto
         Top = 159
         Width = 239
         Height = 165
+        BiDiMode = bdLeftToRight
         Caption = 'Categoria'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -17
         Font.Name = 'Segoe UI'
         Font.Style = []
+        ParentBiDiMode = False
         ParentFont = False
         TabOrder = 1
         object Label5: TLabel
@@ -256,12 +260,14 @@ object TelaCadastroProduto: TTelaCadastroProduto
         Top = 35
         Width = 481
         Height = 105
+        BiDiMode = bdLeftToRight
         Caption = 'Pre'#231'o e Quantidade'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -17
         Font.Name = 'Segoe UI'
         Font.Style = []
+        ParentBiDiMode = False
         ParentFont = False
         TabOrder = 2
         object Label7: TLabel
@@ -322,12 +328,14 @@ object TelaCadastroProduto: TTelaCadastroProduto
         Top = 159
         Width = 225
         Height = 165
+        BiDiMode = bdLeftToRight
         Caption = 'Informa'#231#245'es'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -17
         Font.Name = 'Segoe UI'
         Font.Style = []
+        ParentBiDiMode = False
         ParentFont = False
         TabOrder = 3
         object Label9: TLabel
@@ -336,19 +344,6 @@ object TelaCadastroProduto: TTelaCadastroProduto
           Width = 67
           Height = 17
           Caption = 'Fornecedor'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-        end
-        object Label10: TLabel
-          Left = 14
-          Top = 104
-          Width = 100
-          Height = 17
-          Caption = 'Data de Validade'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -369,19 +364,30 @@ object TelaCadastroProduto: TTelaCadastroProduto
           ParentFont = False
           TabOrder = 0
         end
-        object txtDataValidade: TEdit
+        object LabeledEdit1: TLabeledEdit
           Left = 14
           Top = 127
-          Width = 193
+          Width = 194
           Height = 25
+          EditLabel.Width = 100
+          EditLabel.Height = 17
+          EditLabel.Caption = 'Data de Validade'
+          EditLabel.Font.Charset = DEFAULT_CHARSET
+          EditLabel.Font.Color = clWindowText
+          EditLabel.Font.Height = -13
+          EditLabel.Font.Name = 'Segoe UI'
+          EditLabel.Font.Style = []
+          EditLabel.ParentFont = False
+          EditMask = '!99/99/0000;1;_'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Segoe UI'
           Font.Style = []
+          MaxLength = 10
           ParentFont = False
           TabOrder = 1
-          TextHint = '__/__/__'
+          Text = '  /  /    '
         end
       end
     end

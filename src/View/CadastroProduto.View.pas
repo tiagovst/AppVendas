@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  System.ImageList, Vcl.ImgList;
+  System.ImageList, Vcl.ImgList, Vcl.Mask;
 
 type
   TTelaCadastroProduto = class(TForm)
@@ -30,14 +30,14 @@ type
     GroupBox4: TGroupBox;
     Label9: TLabel;
     txtFornecedor: TEdit;
-    Label10: TLabel;
-    txtDataValidade: TEdit;
     btnSalvar: TButton;
     btnCancelar: TButton;
     Panel1: TPanel;
     Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
+    LabeledEdit1: TLabeledEdit;
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,5 +50,10 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TTelaCadastroProduto.FormCreate(Sender: TObject);
+begin
+  txtDescricaoProduto.Text := '';
+end;
 
 end.

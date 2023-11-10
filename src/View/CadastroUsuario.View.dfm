@@ -4,8 +4,8 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Cadastro de Usu'#225'rio'
-  ClientHeight = 432
-  ClientWidth = 708
+  ClientHeight = 428
+  ClientWidth = 730
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,27 +13,26 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poMainFormCenter
-  Scaled = False
   TextHeight = 15
   object PanelBack: TPanel
     Left = 0
     Top = 0
-    Width = 708
-    Height = 390
+    Width = 730
+    Height = 386
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 704
-    ExplicitHeight = 389
+    ExplicitWidth = 724
+    ExplicitHeight = 377
     object PanelTop: TPanel
       Left = 1
       Top = 1
-      Width = 706
+      Width = 728
       Height = 64
       Align = alTop
       TabOrder = 0
-      ExplicitWidth = 702
+      ExplicitWidth = 722
       DesignSize = (
-        706
+        728
         64)
       object Label2: TLabel
         Left = 20
@@ -49,7 +48,7 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
         ParentFont = False
       end
       object Label3: TLabel
-        Left = 488
+        Left = 516
         Top = 23
         Width = 142
         Height = 17
@@ -61,9 +60,10 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        ExplicitLeft = 488
       end
       object btnTelaPrincipal: TButton
-        Left = 648
+        Left = 676
         Top = 12
         Width = 42
         Height = 41
@@ -76,14 +76,14 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
         Font.Style = []
         ParentFont = False
         TabOrder = 0
-        ExplicitLeft = 644
+        ExplicitLeft = 670
       end
     end
     object GroupBox1: TGroupBox
       Left = 1
       Top = 65
-      Width = 706
-      Height = 324
+      Width = 728
+      Height = 320
       Align = alClient
       Caption = 'Informa'#231#245'es'
       Font.Charset = DEFAULT_CHARSET
@@ -93,14 +93,14 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
       Font.Style = []
       ParentFont = False
       TabOrder = 1
-      ExplicitWidth = 702
-      ExplicitHeight = 323
+      ExplicitWidth = 722
+      ExplicitHeight = 311
       DesignSize = (
-        706
-        324)
+        728
+        320)
       object LabelCargo: TLabel
         Left = 20
-        Top = 224
+        Top = 240
         Width = 36
         Height = 17
         Caption = 'Cargo'
@@ -111,9 +111,20 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
         Font.Style = [fsBold]
         ParentFont = False
       end
+      object Label1: TLabel
+        Left = 100
+        Top = 380
+        Width = 46
+        Height = 21
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
+        Caption = 'Label1'
+      end
       object radioAdm: TRadioButton
         Left = 20
-        Top = 245
+        Top = 261
         Width = 113
         Height = 17
         Caption = 'Administrador'
@@ -127,7 +138,7 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
       end
       object radioEstoque: TRadioButton
         Left = 308
-        Top = 245
+        Top = 261
         Width = 140
         Height = 17
         Caption = 'Gestor de Estoque'
@@ -141,7 +152,7 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
       end
       object radioVendedor: TRadioButton
         Left = 180
-        Top = 245
+        Top = 261
         Width = 113
         Height = 17
         Caption = 'Vendedor'
@@ -154,9 +165,9 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
         TabOrder = 2
       end
       object editCPF: TLabeledEdit
-        Left = 388
+        Left = 410
         Top = 184
-        Width = 300
+        Width = 299
         Height = 25
         Anchors = [akTop, akRight]
         EditLabel.Width = 20
@@ -168,18 +179,20 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
         EditLabel.Font.Name = 'Segoe UI'
         EditLabel.Font.Style = [fsBold]
         EditLabel.ParentFont = False
+        EditMask = '000.000.000-00;1;_'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Segoe UI'
         Font.Style = []
+        MaxLength = 14
         ParentFont = False
         TabOrder = 3
-        Text = ''
-        ExplicitLeft = 384
+        Text = '   .   .   -  '
+        ExplicitLeft = 404
       end
       object editEmail: TLabeledEdit
-        Left = 388
+        Left = 410
         Top = 72
         Width = 300
         Height = 25
@@ -201,7 +214,7 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
         ParentFont = False
         TabOrder = 4
         Text = ''
-        ExplicitLeft = 384
+        ExplicitLeft = 404
       end
       object editNome: TLabeledEdit
         Left = 20
@@ -252,7 +265,7 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
       object editTelefone: TLabeledEdit
         Left = 20
         Top = 184
-        Width = 300
+        Width = 298
         Height = 25
         EditLabel.Width = 115
         EditLabel.Height = 15
@@ -263,17 +276,19 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
         EditLabel.Font.Name = 'Segoe UI'
         EditLabel.Font.Style = [fsBold]
         EditLabel.ParentFont = False
+        EditMask = '!\(99\)000-0000;1;_'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Segoe UI'
         Font.Style = []
+        MaxLength = 12
         ParentFont = False
         TabOrder = 7
-        Text = ''
+        Text = '(  )   -    '
       end
       object editUsuario: TLabeledEdit
-        Left = 388
+        Left = 410
         Top = 128
         Width = 300
         Height = 25
@@ -295,41 +310,41 @@ object TelaCadastroUsuario: TTelaCadastroUsuario
         ParentFont = False
         TabOrder = 8
         Text = ''
-        ExplicitLeft = 384
+        ExplicitLeft = 404
       end
     end
   end
   object PanelBottom: TPanel
     Left = 0
-    Top = 390
-    Width = 708
+    Top = 386
+    Width = 730
     Height = 42
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 389
-    ExplicitWidth = 704
+    ExplicitTop = 377
+    ExplicitWidth = 724
     DesignSize = (
-      708
+      730
       42)
     object btnListar: TButton
-      Left = 515
+      Left = 519
       Top = 9
       Width = 75
       Height = 25
       Anchors = [akTop, akRight, akBottom]
       Caption = 'Listar'
       TabOrder = 0
-      ExplicitLeft = 511
+      ExplicitLeft = 513
     end
     object btnSalvar: TButton
-      Left = 610
+      Left = 614
       Top = 9
       Width = 75
       Height = 25
       Anchors = [akTop, akRight, akBottom]
       Caption = 'Salvar'
       TabOrder = 1
-      ExplicitLeft = 606
+      ExplicitLeft = 608
     end
   end
 end

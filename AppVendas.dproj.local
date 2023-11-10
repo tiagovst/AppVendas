@@ -19,8 +19,8 @@
     <Transaction>2023/10/25 18:40:32.000.816,=E:\Tiago\Programming\Embarcadero\Unit1.pas</Transaction>
     <Transaction>2023/10/25 18:40:37.000.194,E:\Tiago\Programming\Embarcadero\Unit1.pas=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Venda.pas</Transaction>
     <Transaction>2023/10/27 17:17:17.000.933,=E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.pas</Transaction>
-    <Transaction>2023/10/27 17:59:13.000.560,E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Usuario\UsuarioDAO.pas=E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.pas</Transaction>
     <Transaction>2023/10/27 17:59:13.000.560,E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Usuario\UsuarioDAO.dfm=E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.dfm</Transaction>
+    <Transaction>2023/10/27 17:59:13.000.560,E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Usuario\UsuarioDAO.pas=E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.pas</Transaction>
     <Transaction>2023/11/01 18:27:36.000.372,=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\Interfaces\UsuarioDAOInterface.pas</Transaction>
     <Transaction>2023/11/01 18:27:48.000.297,=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\Unit1.pas</Transaction>
     <Transaction>2023/11/01 18:28:50.000.587,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\Unit1.pas=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\Interfaces\VendaDAOInterface.pas</Transaction>
@@ -43,7 +43,9 @@
     <Transaction>2023/11/08 14:47:31.000.666,=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
     <Transaction>2023/11/08 14:50:06.000.058,D:\Tiago\Programming\Delphi\AppVendas\Unit1.dfm=D:\Tiago\Programming\Delphi\AppVendas\src\View\TelaCadastroUsuario.View.dfm</Transaction>
     <Transaction>2023/11/08 14:50:06.000.058,D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas=D:\Tiago\Programming\Delphi\AppVendas\src\View\TelaCadastroUsuario.View.pas</Transaction>
-    <Transaction>2023/11/08 17:26:30.000.233,=D:\Tiago\Programming\Delphi\Arrays\AppVendas\src\View\CadastroProduto.View.pas</Transaction>
     <Transaction>2023/11/08 17:26:30.000.361,=D:\Tiago\Programming\Delphi\Arrays\AppVendas\src\View\Principal.View.pas</Transaction>
+    <Transaction>2023/11/08 17:26:30.000.233,=D:\Tiago\Programming\Delphi\Arrays\AppVendas\src\View\CadastroProduto.View.pas</Transaction>
+    <Transaction>2023/11/08 17:49:10.000.657,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaCadastroUsuario.View.dfm=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\CadastroUsuario.View.dfm</Transaction>
+    <Transaction>2023/11/08 17:49:10.000.657,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\TelaCadastroUsuario.View.pas=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\View\CadastroUsuario.View.pas</Transaction>
   </Transactions>
 </BorlandProject>

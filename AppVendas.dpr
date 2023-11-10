@@ -8,7 +8,7 @@ uses
   Conexao in 'src\Model\ConexaoDAO\Conexao.pas' {dmConexao},
   VendaDAO in 'src\Model\Venda\VendaDAO.pas',
   ProdutoDAO in 'src\Model\Produto\ProdutoDAO.pas',
-  UsuarioDAO in 'src\Model\Usuario\UsuarioDAO.pas',
+  UsuarioDAO in 'src\Model\Usuario\UsuarioDAO.pas' {dmGenericDAO: TDataModule},
   ControladorUsuario in 'src\Controller\ControladorUsuario.pas',
   VendaDAOInterface in 'src\Interfaces\DAO\VendaDAOInterface.pas',
   ControladorUsuarioInterface in 'src\Interfaces\Controlador\ControladorUsuarioInterface.pas',
@@ -18,7 +18,7 @@ uses
   ControladorVenda in 'src\Controller\ControladorVenda.pas',
   ControladorProdutoInterface in 'src\Interfaces\Controlador\ControladorProdutoInterface.pas',
   ControladorVendaInterface in 'src\Interfaces\Controlador\ControladorVendaInterface.pas',
-  TelaCadastroUsuario.View in 'src\View\TelaCadastroUsuario.View.pas' {TelaCadastroUsuario},
+  CadastroUsuario.View in 'src\View\CadastroUsuario.View.pas' {TelaCadastroUsuario},
   CadastroProduto.View in 'src\View\CadastroProduto.View.pas' {TelaCadastroProduto},
   Principal.View in 'src\View\Principal.View.pas' {TelaPrincipal};
 
@@ -27,6 +27,8 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TTelaCadastroProduto, TelaCadastroProduto);
+  Application.CreateForm(TTelaCadastroUsuario, TelaCadastroUsuario);
   Application.CreateForm(TTelaPrincipal, TelaPrincipal);
   Application.CreateForm(TdmConexao, dmConexao);
   Application.Run;
