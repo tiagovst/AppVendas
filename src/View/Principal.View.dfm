@@ -1,7 +1,7 @@
 object TelaPrincipal: TTelaPrincipal
   Left = 0
   Top = 0
-  Caption = 'TelaPrincipal'
+  Caption = 'App Vendas'
   ClientHeight = 643
   ClientWidth = 1112
   Color = clBtnFace
@@ -18,6 +18,7 @@ object TelaPrincipal: TTelaPrincipal
     Height = 643
     Align = alLeft
     TabOrder = 0
+    ExplicitHeight = 634
     object pnlLogo: TPanel
       Left = 1
       Top = 1
@@ -25,11 +26,8 @@ object TelaPrincipal: TTelaPrincipal
       Height = 41
       Align = alTop
       TabOrder = 0
-      ExplicitLeft = 0
-      ExplicitTop = 16
-      ExplicitWidth = 185
     end
-    object GroupBox1: TGroupBox
+    object GroupBox: TGroupBox
       Left = 7
       Top = 128
       Width = 172
@@ -37,7 +35,7 @@ object TelaPrincipal: TTelaPrincipal
       Caption = 'P'#225'gina do Administrador'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
+      Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
@@ -50,7 +48,7 @@ object TelaPrincipal: TTelaPrincipal
         Caption = 'In'#237'cio'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -15
+        Font.Height = -13
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
@@ -64,7 +62,7 @@ object TelaPrincipal: TTelaPrincipal
         Caption = 'Produtos'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -15
+        Font.Height = -13
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
@@ -78,7 +76,7 @@ object TelaPrincipal: TTelaPrincipal
         Caption = 'Clientes'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -15
+        Font.Height = -13
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
@@ -92,7 +90,7 @@ object TelaPrincipal: TTelaPrincipal
         Caption = 'Usu'#225'rios'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -15
+        Font.Height = -13
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
@@ -106,7 +104,7 @@ object TelaPrincipal: TTelaPrincipal
         Caption = 'Estoque'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
-        Font.Height = -15
+        Font.Height = -13
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
@@ -120,9 +118,7 @@ object TelaPrincipal: TTelaPrincipal
       Height = 41
       Align = alBottom
       TabOrder = 2
-      ExplicitLeft = 40
-      ExplicitTop = 600
-      ExplicitWidth = 185
+      ExplicitTop = 592
     end
   end
   object pnlConteudo: TPanel
@@ -132,10 +128,8 @@ object TelaPrincipal: TTelaPrincipal
     Height = 643
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 616
-    ExplicitTop = 360
-    ExplicitWidth = 185
-    ExplicitHeight = 41
+    ExplicitWidth = 921
+    ExplicitHeight = 634
     DesignSize = (
       927
       643)
@@ -159,13 +153,11 @@ object TelaPrincipal: TTelaPrincipal
       Height = 41
       Align = alTop
       TabOrder = 0
-      ExplicitLeft = 280
-      ExplicitTop = 32
-      ExplicitWidth = 185
+      ExplicitWidth = 919
       DesignSize = (
         925
         41)
-      object SearchBox1: TSearchBox
+      object SearchBox: TSearchBox
         Left = 312
         Top = 10
         Width = 313
@@ -173,12 +165,13 @@ object TelaPrincipal: TTelaPrincipal
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 0
         TextHint = 'Pesquisar produto'
+        ExplicitWidth = 307
       end
     end
-    object DBGrid1: TDBGrid
+    object GridProdutos: TDBGrid
       Left = 40
       Top = 160
-      Width = 849
+      Width = 843
       Height = 483
       Anchors = [akLeft, akTop, akRight, akBottom]
       TabOrder = 1
@@ -189,7 +182,7 @@ object TelaPrincipal: TTelaPrincipal
       TitleFont.Style = []
     end
     object btnFinalizarCompra: TButton
-      Left = 776
+      Left = 768
       Top = 129
       Width = 115
       Height = 25

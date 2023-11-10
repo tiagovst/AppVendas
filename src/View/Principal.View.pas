@@ -14,9 +14,9 @@ type
     pnlConteudo: TPanel;
     pnlPesquisa: TPanel;
     Label1: TLabel;
-    SearchBox1: TSearchBox;
-    DBGrid1: TDBGrid;
-    GroupBox1: TGroupBox;
+    SearchBox: TSearchBox;
+    GridProdutos: TDBGrid;
+    GroupBox: TGroupBox;
     btnInicio: TButton;
     btnProdutos: TButton;
     btnClientes: TButton;
