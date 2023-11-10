@@ -20,16 +20,16 @@ uses
   ControladorVendaInterface in 'src\Interfaces\Controlador\ControladorVendaInterface.pas',
   CadastroUsuario.View in 'src\View\CadastroUsuario.View.pas' {TelaCadastroUsuario},
   CadastroProduto.View in 'src\View\CadastroProduto.View.pas' {TelaCadastroProduto},
-  Principal.View in 'src\View\Principal.View.pas' {TelaPrincipal};
+  Principal.View in 'src\View\Principal.View.pas' {TelaPrincipal},
+  ListagemUsuario.View in 'src\View\ListagemUsuario.View.pas' {ListagemUsuario};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TTelaCadastroProduto, TelaCadastroProduto);
   Application.CreateForm(TTelaCadastroUsuario, TelaCadastroUsuario);
-  Application.CreateForm(TTelaPrincipal, TelaPrincipal);
   Application.CreateForm(TdmConexao, dmConexao);
   Application.Run;
 end.
+

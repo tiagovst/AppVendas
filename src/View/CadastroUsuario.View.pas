@@ -4,11 +4,11 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask, ListagemUsuario.View;
 
 type
   TTelaCadastroUsuario = class(TForm)
-    PanelBack: TPanel;
+    Panel1: TPanel;
     editNome: TLabeledEdit;
     editEmail: TLabeledEdit;
     editSenha: TLabeledEdit;
@@ -28,10 +28,8 @@ type
     btnSalvar: TButton;
     GroupBox1: TGroupBox;
     Label1: TLabel;
-  private
-    { Private declarations }
-  public
-    { Public declarations }
+    procedure btnSalvarClick(Sender: TObject);
+    procedure btnListarClick(Sender: TObject);
   end;
 
 var
@@ -40,5 +38,27 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TTelaCadastroUsuario.btnListarClick(Sender: TObject);
+var
+  TelaListagemUsuario: TListagemUsuario;
+begin
+  TelaListagemUsuario := TListagemUsuario.Create(nil);
+  try
+    TelaCadastroUsuario.Free;
+    TelaListagemUsuario.ShowModal;
+  finally
+    TelaCadastroUsuario.Close;
+  end;
+
+end;
+
+procedure TTelaCadastroUsuario.btnSalvarClick(Sender: TObject);
+var
+  test: String;
+begin
+  test := editCPF.Text;
+  ShowMessage(IntToStr(test.Length));
+end;
 
 end.
