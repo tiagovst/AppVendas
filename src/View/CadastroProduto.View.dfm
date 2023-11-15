@@ -34,24 +34,24 @@ object TelaCadastroProduto: TTelaCadastroProduto
         856
         40)
       object btnCancelar: TButton
-        Left = 666
+        Left = 660
         Top = 7
         Width = 75
         Height = 25
         Anchors = [akRight, akBottom]
         Caption = 'Cancelar'
         TabOrder = 0
-        ExplicitLeft = 660
+        ExplicitLeft = 654
       end
       object btnSalvar: TButton
-        Left = 760
+        Left = 754
         Top = 7
         Width = 75
         Height = 25
         Anchors = [akRight, akBottom]
         Caption = 'Salvar'
         TabOrder = 1
-        ExplicitLeft = 754
+        ExplicitLeft = 748
       end
     end
     object Panel3: TPanel

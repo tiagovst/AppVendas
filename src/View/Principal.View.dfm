@@ -10,6 +10,7 @@ object TelaPrincipal: TTelaPrincipal
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  WindowState = wsMaximized
   TextHeight = 15
   object pnlBarraLateral: TPanel
     Left = 0
@@ -19,6 +20,58 @@ object TelaPrincipal: TTelaPrincipal
     Align = alLeft
     TabOrder = 0
     ExplicitHeight = 634
+    object btnInicio: TSpeedButton
+      Left = 1
+      Top = 42
+      Width = 183
+      Height = 37
+      Align = alTop
+      Caption = 'In'#237'cio'
+      Flat = True
+      StyleName = 'Windows'
+    end
+    object btnProdutos: TSpeedButton
+      Left = 1
+      Top = 79
+      Width = 183
+      Height = 37
+      Align = alTop
+      Caption = 'Produtos'
+      Flat = True
+      StyleName = 'Windows'
+      OnClick = onClick
+    end
+    object btnClientes: TSpeedButton
+      Left = 1
+      Top = 116
+      Width = 183
+      Height = 37
+      Align = alTop
+      Caption = 'Clientes'
+      Flat = True
+      StyleName = 'Windows'
+      OnClick = onClick
+    end
+    object btnEstoque: TSpeedButton
+      Left = 1
+      Top = 153
+      Width = 183
+      Height = 37
+      Align = alTop
+      Caption = 'Estoque'
+      Flat = True
+      StyleName = 'Windows'
+    end
+    object btnUsuarios: TSpeedButton
+      Left = 1
+      Top = 190
+      Width = 183
+      Height = 37
+      Align = alTop
+      Caption = 'Usu'#225'rios'
+      Flat = True
+      StyleName = 'Windows'
+    end
     object pnlLogo: TPanel
       Left = 1
       Top = 1
@@ -27,97 +80,13 @@ object TelaPrincipal: TTelaPrincipal
       Align = alTop
       TabOrder = 0
     end
-    object GroupBox: TGroupBox
-      Left = 7
-      Top = 128
-      Width = 172
-      Height = 209
-      Caption = 'P'#225'gina do Administrador'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 1
-      object btnInicio: TButton
-        Left = 9
-        Top = 32
-        Width = 152
-        Height = 25
-        Caption = 'In'#237'cio'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 0
-      end
-      object btnProdutos: TButton
-        Left = 9
-        Top = 63
-        Width = 152
-        Height = 25
-        Caption = 'Produtos'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 1
-      end
-      object btnClientes: TButton
-        Left = 9
-        Top = 94
-        Width = 152
-        Height = 25
-        Caption = 'Clientes'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 2
-      end
-      object btnUsuarios: TButton
-        Left = 9
-        Top = 156
-        Width = 152
-        Height = 25
-        Caption = 'Usu'#225'rios'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 3
-      end
-      object btnEstoque: TButton
-        Left = 9
-        Top = 125
-        Width = 152
-        Height = 25
-        Caption = 'Estoque'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 4
-      end
-    end
     object pnlUsuarioLogado: TPanel
       Left = 1
       Top = 601
       Width = 183
       Height = 41
       Align = alBottom
-      TabOrder = 2
+      TabOrder = 1
       ExplicitTop = 592
     end
   end
@@ -127,6 +96,9 @@ object TelaPrincipal: TTelaPrincipal
     Width = 927
     Height = 643
     Align = alClient
+    BevelOuter = bvNone
+    Color = clWindow
+    ParentBackground = False
     TabOrder = 1
     ExplicitWidth = 921
     ExplicitHeight = 634
@@ -147,31 +119,31 @@ object TelaPrincipal: TTelaPrincipal
       ParentFont = False
     end
     object pnlPesquisa: TPanel
-      Left = 1
-      Top = 1
-      Width = 925
+      Left = 0
+      Top = 0
+      Width = 927
       Height = 41
       Align = alTop
       TabOrder = 0
-      ExplicitWidth = 919
+      ExplicitWidth = 921
       DesignSize = (
-        925
+        927
         41)
       object SearchBox: TSearchBox
         Left = 312
         Top = 10
-        Width = 313
+        Width = 315
         Height = 23
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 0
         TextHint = 'Pesquisar produto'
-        ExplicitWidth = 307
+        ExplicitWidth = 309
       end
     end
     object GridProdutos: TDBGrid
       Left = 40
       Top = 160
-      Width = 843
+      Width = 837
       Height = 483
       Anchors = [akLeft, akTop, akRight, akBottom]
       TabOrder = 1
@@ -182,13 +154,114 @@ object TelaPrincipal: TTelaPrincipal
       TitleFont.Style = []
     end
     object btnFinalizarCompra: TButton
-      Left = 768
+      Left = 762
       Top = 129
       Width = 115
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Finalizar Compra'
       TabOrder = 2
+      ExplicitLeft = 756
+    end
+    object pnlSubmenuProdutos: TPanel
+      Left = 0
+      Top = 79
+      Width = 183
+      Height = 114
+      BevelKind = bkFlat
+      BevelOuter = bvNone
+      Color = clWindow
+      ParentBackground = False
+      TabOrder = 3
+      Visible = False
+      object btnVerProdutos: TSpeedButton
+        Left = 0
+        Top = 0
+        Width = 179
+        Height = 37
+        Align = alTop
+        Caption = 'Ver meus produtos'
+        Flat = True
+        ExplicitLeft = 2
+        ExplicitTop = 9
+        ExplicitWidth = 181
+      end
+      object btnCadastrarProduto: TSpeedButton
+        Left = 0
+        Top = 37
+        Width = 179
+        Height = 37
+        Align = alTop
+        Caption = 'Cadastrar novo produto'
+        Flat = True
+        OnClick = btnCadastrarProdutoClick
+        ExplicitLeft = 1
+        ExplicitTop = 79
+        ExplicitWidth = 183
+      end
+      object btnEditarExcluirProduto: TSpeedButton
+        Left = 0
+        Top = 74
+        Width = 179
+        Height = 37
+        Align = alTop
+        Caption = 'Editar/excluir produto'
+        Flat = True
+        ExplicitLeft = 1
+        ExplicitTop = 79
+        ExplicitWidth = 183
+      end
+    end
+    object pnlSubmenuClientes: TPanel
+      Left = 0
+      Top = 116
+      Width = 183
+      Height = 114
+      BevelKind = bkFlat
+      BevelOuter = bvNone
+      Color = clWindow
+      ParentBackground = False
+      TabOrder = 4
+      Visible = False
+      object btnVerClientes: TSpeedButton
+        Left = 0
+        Top = 0
+        Width = 179
+        Height = 37
+        Align = alTop
+        Caption = 'Ver meus clientes'
+        Flat = True
+        StyleName = 'Windows'
+        ExplicitLeft = 2
+        ExplicitTop = 9
+        ExplicitWidth = 181
+      end
+      object btnCadastrarCliente: TSpeedButton
+        Left = 0
+        Top = 37
+        Width = 179
+        Height = 37
+        Align = alTop
+        Caption = 'Cadastrar novo cliente'
+        Flat = True
+        StyleName = 'Windows'
+        ExplicitLeft = 1
+        ExplicitTop = 116
+        ExplicitWidth = 183
+      end
+      object btnEditarExcluirCliente: TSpeedButton
+        Left = 0
+        Top = 74
+        Width = 179
+        Height = 37
+        Align = alTop
+        Caption = 'Editar/excluir cliente'
+        Flat = True
+        StyleName = 'Windows'
+        ExplicitLeft = 1
+        ExplicitTop = 116
+        ExplicitWidth = 183
+      end
     end
   end
 end
