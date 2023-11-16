@@ -31,6 +31,7 @@ type
     btnVerClientes: TSpeedButton;
     btnCadastrarCliente: TSpeedButton;
     btnEditarExcluirCliente: TSpeedButton;
+    pnlBotoes: TPanel;
     procedure onClick(Sender : TObject);
     procedure btnCadastrarProdutoClick(Sender: TObject);
   private
@@ -51,8 +52,13 @@ var
   FCadastroProduto : TTelaCadastroProduto;
 begin
   FCadastroProduto := TTelaCadastroProduto.Create(nil);
+  pnlPesquisa.Align := alNone;
+  pnlPesquisa.Hide;
   pnlSubmenuProdutos.Visible := False;
-  FCadastroProduto.ShowModal;
+  FCadastroProduto.Parent := TelaPrincipal.pnlConteudo;
+  FCadastroProduto.Align := alClient;
+  pnlLogo.Height := 120;
+  FCadastroProduto.Show;
 end;
 
 procedure TTelaPrincipal.onClick(Sender: TObject);

@@ -20,58 +20,6 @@ object TelaPrincipal: TTelaPrincipal
     Align = alLeft
     TabOrder = 0
     ExplicitHeight = 634
-    object btnInicio: TSpeedButton
-      Left = 1
-      Top = 42
-      Width = 183
-      Height = 37
-      Align = alTop
-      Caption = 'In'#237'cio'
-      Flat = True
-      StyleName = 'Windows'
-    end
-    object btnProdutos: TSpeedButton
-      Left = 1
-      Top = 79
-      Width = 183
-      Height = 37
-      Align = alTop
-      Caption = 'Produtos'
-      Flat = True
-      StyleName = 'Windows'
-      OnClick = onClick
-    end
-    object btnClientes: TSpeedButton
-      Left = 1
-      Top = 116
-      Width = 183
-      Height = 37
-      Align = alTop
-      Caption = 'Clientes'
-      Flat = True
-      StyleName = 'Windows'
-      OnClick = onClick
-    end
-    object btnEstoque: TSpeedButton
-      Left = 1
-      Top = 153
-      Width = 183
-      Height = 37
-      Align = alTop
-      Caption = 'Estoque'
-      Flat = True
-      StyleName = 'Windows'
-    end
-    object btnUsuarios: TSpeedButton
-      Left = 1
-      Top = 190
-      Width = 183
-      Height = 37
-      Align = alTop
-      Caption = 'Usu'#225'rios'
-      Flat = True
-      StyleName = 'Windows'
-    end
     object pnlLogo: TPanel
       Left = 1
       Top = 1
@@ -88,6 +36,81 @@ object TelaPrincipal: TTelaPrincipal
       Align = alBottom
       TabOrder = 1
       ExplicitTop = 592
+    end
+    object pnlBotoes: TPanel
+      Left = 0
+      Top = 96
+      Width = 185
+      Height = 193
+      BevelOuter = bvNone
+      TabOrder = 2
+      object btnClientes: TSpeedButton
+        Left = 0
+        Top = 74
+        Width = 185
+        Height = 37
+        Align = alTop
+        Caption = 'Clientes'
+        Flat = True
+        StyleName = 'Windows'
+        OnClick = onClick
+        ExplicitLeft = -3
+        ExplicitTop = 65
+        ExplicitWidth = 183
+      end
+      object btnEstoque: TSpeedButton
+        Left = 0
+        Top = 111
+        Width = 185
+        Height = 37
+        Align = alTop
+        Caption = 'Estoque'
+        Flat = True
+        StyleName = 'Windows'
+        ExplicitLeft = 1
+        ExplicitTop = 153
+        ExplicitWidth = 183
+      end
+      object btnInicio: TSpeedButton
+        Left = 0
+        Top = 0
+        Width = 185
+        Height = 37
+        Align = alTop
+        Caption = 'In'#237'cio'
+        Flat = True
+        StyleName = 'Windows'
+        ExplicitLeft = -3
+        ExplicitTop = -5
+        ExplicitWidth = 183
+      end
+      object btnProdutos: TSpeedButton
+        Left = 0
+        Top = 37
+        Width = 185
+        Height = 37
+        Align = alTop
+        Caption = 'Produtos'
+        Flat = True
+        StyleName = 'Windows'
+        OnClick = onClick
+        ExplicitLeft = 2
+        ExplicitTop = 32
+        ExplicitWidth = 183
+      end
+      object btnUsuarios: TSpeedButton
+        Left = 0
+        Top = 148
+        Width = 185
+        Height = 37
+        Align = alTop
+        Caption = 'Usu'#225'rios'
+        Flat = True
+        StyleName = 'Windows'
+        ExplicitLeft = 1
+        ExplicitTop = 190
+        ExplicitWidth = 183
+      end
     end
   end
   object pnlConteudo: TPanel
@@ -107,7 +130,7 @@ object TelaPrincipal: TTelaPrincipal
       643)
     object Label1: TLabel
       Left = 40
-      Top = 117
+      Top = 96
       Width = 107
       Height = 37
       Caption = 'Produtos'
@@ -125,7 +148,6 @@ object TelaPrincipal: TTelaPrincipal
       Height = 41
       Align = alTop
       TabOrder = 0
-      ExplicitWidth = 921
       DesignSize = (
         927
         41)
@@ -142,9 +164,9 @@ object TelaPrincipal: TTelaPrincipal
     end
     object GridProdutos: TDBGrid
       Left = 40
-      Top = 160
+      Top = 139
       Width = 837
-      Height = 483
+      Height = 504
       Anchors = [akLeft, akTop, akRight, akBottom]
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
@@ -155,17 +177,16 @@ object TelaPrincipal: TTelaPrincipal
     end
     object btnFinalizarCompra: TButton
       Left = 762
-      Top = 129
+      Top = 96
       Width = 115
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Finalizar Compra'
       TabOrder = 2
-      ExplicitLeft = 756
     end
     object pnlSubmenuProdutos: TPanel
       Left = 0
-      Top = 79
+      Top = 134
       Width = 183
       Height = 114
       BevelKind = bkFlat
@@ -214,7 +235,7 @@ object TelaPrincipal: TTelaPrincipal
     end
     object pnlSubmenuClientes: TPanel
       Left = 0
-      Top = 116
+      Top = 171
       Width = 183
       Height = 114
       BevelKind = bkFlat

@@ -1,9 +1,10 @@
 object TelaCadastroProduto: TTelaCadastroProduto
   Left = 0
   Top = 0
+  BorderStyle = bsNone
   Caption = 'Cadastro de Produto'
-  ClientHeight = 569
-  ClientWidth = 858
+  ClientHeight = 607
+  ClientWidth = 870
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,49 +16,49 @@ object TelaCadastroProduto: TTelaCadastroProduto
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 858
-    Height = 569
+    Width = 870
+    Height = 607
     Align = alClient
     TabOrder = 0
     ExplicitWidth = 852
     ExplicitHeight = 560
     object Panel2: TPanel
       Left = 1
-      Top = 528
-      Width = 856
+      Top = 566
+      Width = 868
       Height = 40
       Align = alBottom
       TabOrder = 0
       ExplicitTop = 519
       ExplicitWidth = 850
       DesignSize = (
-        856
+        868
         40)
       object btnCancelar: TButton
-        Left = 660
+        Left = 666
         Top = 7
         Width = 75
         Height = 25
         Anchors = [akRight, akBottom]
         Caption = 'Cancelar'
         TabOrder = 0
-        ExplicitLeft = 654
+        ExplicitLeft = 648
       end
       object btnSalvar: TButton
-        Left = 754
+        Left = 760
         Top = 7
         Width = 75
         Height = 25
         Anchors = [akRight, akBottom]
         Caption = 'Salvar'
         TabOrder = 1
-        ExplicitLeft = 748
+        ExplicitLeft = 742
       end
     end
     object Panel3: TPanel
       Left = 1
       Top = 1
-      Width = 856
+      Width = 868
       Height = 96
       Align = alTop
       TabOrder = 1
@@ -108,8 +109,8 @@ object TelaCadastroProduto: TTelaCadastroProduto
     object Panel4: TPanel
       Left = 1
       Top = 97
-      Width = 856
-      Height = 431
+      Width = 868
+      Height = 469
       Align = alClient
       TabOrder = 2
       ExplicitWidth = 850
