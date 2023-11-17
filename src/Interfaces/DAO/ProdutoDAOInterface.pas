@@ -3,7 +3,8 @@ unit ProdutoDAOInterface;
 interface
 
 uses
-  Produto;
+  Produto,
+  Data.DB;
 
 type
   IProdutoDAO = interface
@@ -16,7 +17,7 @@ type
 
     procedure PesquisarCategoria(Categoria: String);
     procedure PesquisarNome(Nome: String);
-    procedure Pesquisar();
+    procedure Pesquisar(DataSource: TDataSource);
     procedure CarregarProduto(Usuario: TProduto; ID: Integer);
   end;
 

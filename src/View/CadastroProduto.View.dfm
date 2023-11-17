@@ -20,8 +20,6 @@ object TelaCadastroProduto: TTelaCadastroProduto
     Height = 607
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 852
-    ExplicitHeight = 560
     object Panel2: TPanel
       Left = 1
       Top = 566
@@ -29,8 +27,6 @@ object TelaCadastroProduto: TTelaCadastroProduto
       Height = 40
       Align = alBottom
       TabOrder = 0
-      ExplicitTop = 519
-      ExplicitWidth = 850
       DesignSize = (
         868
         40)
@@ -42,7 +38,6 @@ object TelaCadastroProduto: TTelaCadastroProduto
         Anchors = [akRight, akBottom]
         Caption = 'Cancelar'
         TabOrder = 0
-        ExplicitLeft = 648
       end
       object btnSalvar: TButton
         Left = 760
@@ -52,7 +47,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
         Anchors = [akRight, akBottom]
         Caption = 'Salvar'
         TabOrder = 1
-        ExplicitLeft = 742
+        OnClick = btnSalvarClick
       end
     end
     object Panel3: TPanel
@@ -62,7 +57,6 @@ object TelaCadastroProduto: TTelaCadastroProduto
       Height = 96
       Align = alTop
       TabOrder = 1
-      ExplicitWidth = 850
       object Label1: TLabel
         Left = 88
         Top = 40
@@ -113,8 +107,6 @@ object TelaCadastroProduto: TTelaCadastroProduto
       Height = 469
       Align = alClient
       TabOrder = 2
-      ExplicitWidth = 850
-      ExplicitHeight = 422
       object GroupBox1: TGroupBox
         AlignWithMargins = True
         Left = 41
@@ -171,7 +163,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
           TabOrder = 0
         end
         object txtDescricaoProduto: TMemo
-          Left = 10
+          Left = 21
           Top = 127
           Width = 215
           Height = 146
@@ -320,6 +312,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
           Font.Height = -13
           Font.Name = 'Segoe UI'
           Font.Style = []
+          NumbersOnly = True
           ParentFont = False
           TabOrder = 1
         end
@@ -365,7 +358,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
           ParentFont = False
           TabOrder = 0
         end
-        object LabeledEdit1: TLabeledEdit
+        object txtValidade: TLabeledEdit
           Left = 14
           Top = 127
           Width = 194
@@ -385,7 +378,9 @@ object TelaCadastroProduto: TTelaCadastroProduto
           Font.Height = -13
           Font.Name = 'Segoe UI'
           Font.Style = []
+          ImeName = 'Portuguese (Brazilian ABNT)'
           MaxLength = 10
+          NumbersOnly = True
           ParentFont = False
           TabOrder = 1
           Text = '  /  /    '

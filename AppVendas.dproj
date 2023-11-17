@@ -146,9 +146,6 @@
         <DCCReference Include="src\Controller\ControladorVenda.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorProdutoInterface.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorVendaInterface.pas"/>
-        <DCCReference Include="src\View\CadastroUsuario.View.pas">
-            <Form>TelaCadastroUsuario</Form>
-        </DCCReference>
         <DCCReference Include="src\View\CadastroProduto.View.pas">
             <Form>TelaCadastroProduto</Form>
             <FormType>dfm</FormType>
@@ -158,11 +155,15 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\ListagemUsuario.View.pas">
-            <Form>ListagemUsuario</Form>
+            <Form>TelaListagemUsuario</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\Estoque.View.pas">
             <Form>TelaEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\ManejoUsuario.View.pas">
+            <Form>TelaManejoUsuario</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

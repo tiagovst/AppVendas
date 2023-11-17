@@ -8,20 +8,21 @@ uses
   FireDAC.Stan.Param,
   Usuario,
   Conexao,
+  Data.DB,
   UsuarioDAOInterface;
 
 type
   TUsuarioDAO = class(TInterfacedObject, IUsuarioDAO)
     SQLQuery: TFDQuery;
 
-  private
+  public
     function gerarID: Integer;
     function Inserir(Usuario: TUsuario; out erro: String): Boolean;
     function Alterar(Usuario: TUsuario; out erro: String): Boolean;
     function Excluir(ID: Integer; out erro: String): Boolean;
 
     procedure PesquisarNome(Nome: String);
-    procedure Pesquisar();
+    procedure Pesquisar(DataSource: TDataSource);
     procedure CarregarPessoa(Usuario: TUsuario; ID: Integer);
   end;
 
@@ -170,7 +171,7 @@ begin
   end;
 end;
 
-procedure TUsuarioDAO.Pesquisar;
+procedure TUsuarioDAO.Pesquisar(DataSource: TDataSource);
 begin
   SQLQuery := TFDQuery.Create(nil);
 
@@ -181,8 +182,12 @@ begin
     if Active then
       Close;
 
+    SQL.Text := 'SELECT * FROM USUARIO';
     Open();
   end;
+
+  DataSource.DataSet := SQLQuery;
+
 end;
 
 procedure TUsuarioDAO.PesquisarNome(Nome: String);

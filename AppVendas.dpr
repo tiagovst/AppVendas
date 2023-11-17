@@ -18,11 +18,11 @@ uses
   ControladorVenda in 'src\Controller\ControladorVenda.pas',
   ControladorProdutoInterface in 'src\Interfaces\Controlador\ControladorProdutoInterface.pas',
   ControladorVendaInterface in 'src\Interfaces\Controlador\ControladorVendaInterface.pas',
-  CadastroUsuario.View in 'src\View\CadastroUsuario.View.pas' {TelaCadastroUsuario},
   CadastroProduto.View in 'src\View\CadastroProduto.View.pas' {TelaCadastroProduto},
   Principal.View in 'src\View\Principal.View.pas' {TelaPrincipal},
-  ListagemUsuario.View in 'src\View\ListagemUsuario.View.pas' {ListagemUsuario},
-  Estoque.View in 'src\View\Estoque.View.pas' {TelaEstoque};
+  ListagemUsuario.View in 'src\View\ListagemUsuario.View.pas' {TelaListagemUsuario},
+  Estoque.View in 'src\View\Estoque.View.pas' {TelaEstoque},
+  ManejoUsuario.View in 'src\View\ManejoUsuario.View.pas' {TelaManejoUsuario};
 
 {$R *.res}
 
@@ -30,9 +30,7 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TTelaPrincipal, TelaPrincipal);
-  Application.CreateForm(TTelaCadastroUsuario, TelaCadastroUsuario);
   Application.CreateForm(TdmConexao, dmConexao);
-  Application.CreateForm(TTelaEstoque, TelaEstoque);
   Application.Run;
 end.
 

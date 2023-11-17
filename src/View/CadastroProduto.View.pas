@@ -3,9 +3,19 @@ unit CadastroProduto.View;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
-  System.ImageList, Vcl.ImgList, Vcl.Mask;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+  Vcl.ExtCtrls,
+  System.ImageList,
+  Vcl.ImgList,
+  Vcl.Mask,
+  ControladorProdutoInterface,
+  ControladorProduto,
+  Produto;
 
 type
   TTelaCadastroProduto = class(TForm)
@@ -36,8 +46,9 @@ type
     Panel2: TPanel;
     Panel3: TPanel;
     Panel4: TPanel;
-    LabeledEdit1: TLabeledEdit;
+    txtValidade: TLabeledEdit;
     procedure FormCreate(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,6 +61,36 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TTelaCadastroProduto.btnSalvarClick(Sender: TObject);
+var
+  Controlador: IControladorProduto;
+  ProdutoCache : TProduto;
+  erro: String;
+begin
+  ProdutoCache := TProduto.Create;
+  Controlador := TControladorProduto.Create;
+  ProdutoCache.ID := Controlador.gerarID;
+  ProdutoCache.Nome := txtNomeProduto.Text;
+  //ProdutoCache.CodigoBarras := Controlador
+  ProdutoCache.Descricao := txtDescricaoProduto.Text;
+  ProdutoCache.Referencia := txtReferencia.Text;
+  ProdutoCache.Preco := StrToFloat(txtPreco.Text);
+  ProdutoCache.Categoria := cbxCategoria.Text;
+  ProdutoCache.QuantidadeEstoque := StrToInt(txtQuantidadeEstoque.Text);
+  ProdutoCache.Fornecedor := txtFornecedor.Text;
+  ProdutoCache.DataValidade := StrToDate(txtValidade.Text);
+
+  if Controlador.Inserir(ProdutoCache, erro) then
+  begin
+    ShowMessage('Produto inserido com sucesso');
+  end
+  else
+  begin
+    ShowMessage(erro);
+  end;
+
+end;
 
 procedure TTelaCadastroProduto.FormCreate(Sender: TObject);
 begin

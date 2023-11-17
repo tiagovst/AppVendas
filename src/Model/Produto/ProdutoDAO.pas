@@ -6,15 +6,18 @@ uses
   System.SysUtils,
   FireDAC.Comp.Client,
   FireDAC.Stan.Param,
+  FireDAC.Stan.Factory,
+  FireDAC.DApt,
   Conexao,
   ProdutoDAOInterface,
+  Data.DB, Vcl.Dialogs,
   Produto;
 
 type
   TProdutoDAO = class(TInterfacedObject, IProdutoDAO)
     SQLQuery: TFDQuery;
 
-  private
+  public
     function gerarID: Integer;
     function Inserir(Produto: TProduto; out erro: String): Boolean;
     function Alterar(Produto: TProduto; out erro: String): Boolean;
@@ -22,7 +25,7 @@ type
 
     procedure PesquisarNome(Nome: String);
     procedure PesquisarCategoria(Categoria: String);
-    procedure Pesquisar;
+    procedure Pesquisar(DataSource: TDataSource);
     procedure CarregarProduto(Produto: TProduto; ID: Integer);
 
   end;
@@ -184,7 +187,7 @@ begin
   end;
 end;
 
-procedure TProdutoDAO.Pesquisar;
+procedure TProdutoDAO.Pesquisar(DataSource: TDataSource);
 begin
   SQLQuery := TFDQuery.Create(nil);
 
@@ -192,11 +195,12 @@ begin
   begin
     Connection := dmConexao.FDConnection;
 
-    SQL.Text := 'SELECT * FROM USUARIO;';
+    SQL.Text := 'SELECT * FROM PRODUTOS;';
     Open();
   end;
 
-  FreeAndNil(SQLQuery);
+  DataSource.DataSet := SQLQuery;
+
 end;
 
 procedure TProdutoDAO.PesquisarCategoria(Categoria: String);

@@ -2,8 +2,8 @@ object TelaPrincipal: TTelaPrincipal
   Left = 0
   Top = 0
   Caption = 'App Vendas'
-  ClientHeight = 643
-  ClientWidth = 1112
+  ClientHeight = 642
+  ClientWidth = 1108
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,15 +11,16 @@ object TelaPrincipal: TTelaPrincipal
   Font.Name = 'Segoe UI'
   Font.Style = []
   WindowState = wsMaximized
+  OnShow = FormShow
   TextHeight = 15
   object pnlBarraLateral: TPanel
     Left = 0
     Top = 0
     Width = 185
-    Height = 643
+    Height = 642
     Align = alLeft
     TabOrder = 0
-    ExplicitHeight = 634
+    ExplicitHeight = 641
     object pnlLogo: TPanel
       Left = 1
       Top = 1
@@ -30,12 +31,12 @@ object TelaPrincipal: TTelaPrincipal
     end
     object pnlUsuarioLogado: TPanel
       Left = 1
-      Top = 601
+      Top = 600
       Width = 183
       Height = 41
       Align = alBottom
       TabOrder = 1
-      ExplicitTop = 592
+      ExplicitTop = 599
     end
     object pnlBotoes: TPanel
       Left = 0
@@ -107,6 +108,7 @@ object TelaPrincipal: TTelaPrincipal
         Caption = 'Usu'#225'rios'
         Flat = True
         StyleName = 'Windows'
+        OnClick = onClick
         ExplicitLeft = 1
         ExplicitTop = 190
         ExplicitWidth = 183
@@ -116,19 +118,19 @@ object TelaPrincipal: TTelaPrincipal
   object pnlConteudo: TPanel
     Left = 185
     Top = 0
-    Width = 927
-    Height = 643
+    Width = 923
+    Height = 642
     Align = alClient
     BevelOuter = bvNone
     Color = clWindow
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 921
-    ExplicitHeight = 634
+    ExplicitWidth = 919
+    ExplicitHeight = 641
     DesignSize = (
-      927
-      643)
-    object Label1: TLabel
+      923
+      642)
+    object LabelProdutos: TLabel
       Left = 40
       Top = 96
       Width = 107
@@ -144,30 +146,32 @@ object TelaPrincipal: TTelaPrincipal
     object pnlPesquisa: TPanel
       Left = 0
       Top = 0
-      Width = 927
+      Width = 923
       Height = 41
       Align = alTop
       TabOrder = 0
+      ExplicitWidth = 919
       DesignSize = (
-        927
+        923
         41)
       object SearchBox: TSearchBox
         Left = 312
         Top = 10
-        Width = 315
+        Width = 311
         Height = 23
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 0
         TextHint = 'Pesquisar produto'
-        ExplicitWidth = 309
+        ExplicitWidth = 307
       end
     end
     object GridProdutos: TDBGrid
-      Left = 40
-      Top = 139
-      Width = 837
-      Height = 504
+      Left = 64
+      Top = 163
+      Width = 833
+      Height = 503
       Anchors = [akLeft, akTop, akRight, akBottom]
+      DataSource = DataSource
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -176,13 +180,14 @@ object TelaPrincipal: TTelaPrincipal
       TitleFont.Style = []
     end
     object btnFinalizarCompra: TButton
-      Left = 762
+      Left = 758
       Top = 96
       Width = 115
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Finalizar Compra'
       TabOrder = 2
+      ExplicitLeft = 754
     end
     object pnlSubmenuProdutos: TPanel
       Left = 0
@@ -284,5 +289,56 @@ object TelaPrincipal: TTelaPrincipal
         ExplicitWidth = 183
       end
     end
+    object pnlSubmenuUsuarios: TPanel
+      Left = 0
+      Top = 244
+      Width = 183
+      Height = 114
+      BevelKind = bkFlat
+      BevelOuter = bvNone
+      Color = clWindow
+      ParentBackground = False
+      TabOrder = 5
+      Visible = False
+      object btnVerUsuarios: TSpeedButton
+        Left = 0
+        Top = 74
+        Width = 179
+        Height = 37
+        Align = alTop
+        Caption = 'Excluir/Editar usu'#225'rio'
+        Flat = True
+        StyleName = 'Windows'
+        ExplicitTop = 8
+      end
+      object btnCadastrarUsuario: TSpeedButton
+        Left = 0
+        Top = 37
+        Width = 179
+        Height = 37
+        Align = alTop
+        Caption = 'Cadastrar novo usu'#225'rio'
+        Flat = True
+        StyleName = 'Windows'
+        OnClick = btnCadastrarUsuarioClick
+        ExplicitTop = 8
+      end
+      object btnEditarExcluirUsuario: TSpeedButton
+        Left = 0
+        Top = 0
+        Width = 179
+        Height = 37
+        Align = alTop
+        Caption = 'Ver usu'#225'rios'
+        Flat = True
+        StyleName = 'Windows'
+        OnClick = btnEditarExcluirUsuarioClick
+        ExplicitTop = 8
+      end
+    end
+  end
+  object DataSource: TDataSource
+    Left = 936
+    Top = 256
   end
 end
