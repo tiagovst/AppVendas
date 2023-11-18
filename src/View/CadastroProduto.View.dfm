@@ -163,7 +163,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
           TabOrder = 0
         end
         object txtDescricaoProduto: TMemo
-          Left = 21
+          Left = 10
           Top = 127
           Width = 215
           Height = 146

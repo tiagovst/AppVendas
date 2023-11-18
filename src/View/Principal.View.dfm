@@ -19,24 +19,31 @@ object TelaPrincipal: TTelaPrincipal
     Width = 185
     Height = 642
     Align = alLeft
+    BevelOuter = bvNone
     TabOrder = 0
     ExplicitHeight = 641
     object pnlLogo: TPanel
-      Left = 1
-      Top = 1
-      Width = 183
+      Left = 0
+      Top = 0
+      Width = 185
       Height = 41
       Align = alTop
+      BevelOuter = bvNone
       TabOrder = 0
+      ExplicitLeft = 1
+      ExplicitTop = 1
+      ExplicitWidth = 183
     end
     object pnlUsuarioLogado: TPanel
-      Left = 1
-      Top = 600
-      Width = 183
+      Left = 0
+      Top = 601
+      Width = 185
       Height = 41
       Align = alBottom
       TabOrder = 1
+      ExplicitLeft = 1
       ExplicitTop = 599
+      ExplicitWidth = 183
     end
     object pnlBotoes: TPanel
       Left = 0
@@ -143,6 +150,27 @@ object TelaPrincipal: TTelaPrincipal
       Font.Style = []
       ParentFont = False
     end
+    object gridProdutos: TDBGrid
+      Left = 40
+      Top = 139
+      Width = 833
+      Height = 506
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      DataSource = DataSource
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ImeName = 'US'
+      ParentFont = False
+      TabOrder = 5
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -27
+      TitleFont.Name = 'Segoe UI'
+      TitleFont.Style = []
+    end
     object pnlPesquisa: TPanel
       Left = 0
       Top = 0
@@ -165,20 +193,6 @@ object TelaPrincipal: TTelaPrincipal
         ExplicitWidth = 307
       end
     end
-    object GridProdutos: TDBGrid
-      Left = 64
-      Top = 163
-      Width = 833
-      Height = 503
-      Anchors = [akLeft, akTop, akRight, akBottom]
-      DataSource = DataSource
-      TabOrder = 1
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -12
-      TitleFont.Name = 'Segoe UI'
-      TitleFont.Style = []
-    end
     object btnFinalizarCompra: TButton
       Left = 758
       Top = 96
@@ -186,7 +200,7 @@ object TelaPrincipal: TTelaPrincipal
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Finalizar Compra'
-      TabOrder = 2
+      TabOrder = 1
       ExplicitLeft = 754
     end
     object pnlSubmenuProdutos: TPanel
@@ -198,7 +212,7 @@ object TelaPrincipal: TTelaPrincipal
       BevelOuter = bvNone
       Color = clWindow
       ParentBackground = False
-      TabOrder = 3
+      TabOrder = 2
       Visible = False
       object btnVerProdutos: TSpeedButton
         Left = 0
@@ -247,7 +261,7 @@ object TelaPrincipal: TTelaPrincipal
       BevelOuter = bvNone
       Color = clWindow
       ParentBackground = False
-      TabOrder = 4
+      TabOrder = 3
       Visible = False
       object btnVerClientes: TSpeedButton
         Left = 0
@@ -298,7 +312,7 @@ object TelaPrincipal: TTelaPrincipal
       BevelOuter = bvNone
       Color = clWindow
       ParentBackground = False
-      TabOrder = 5
+      TabOrder = 4
       Visible = False
       object btnVerUsuarios: TSpeedButton
         Left = 0

@@ -21,7 +21,6 @@ type
     pnlPesquisa: TPanel;
     LabelProdutos: TLabel;
     SearchBox: TSearchBox;
-    GridProdutos: TDBGrid;
     btnFinalizarCompra: TButton;
     pnlUsuarioLogado: TPanel;
     btnInicio: TSpeedButton;
@@ -43,6 +42,7 @@ type
     btnCadastrarUsuario: TSpeedButton;
     btnEditarExcluirUsuario: TSpeedButton;
     DataSource: TDataSource;
+    gridProdutos: TDBGrid;
     procedure onClick(Sender : TObject);
     procedure btnCadastrarProdutoClick(Sender: TObject);
     procedure btnEditarExcluirUsuarioClick(Sender: TObject);

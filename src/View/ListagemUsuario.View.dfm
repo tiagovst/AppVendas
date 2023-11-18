@@ -82,7 +82,7 @@ object TelaListagemUsuario: TTelaListagemUsuario
         Font.Style = []
         ParentFont = False
       end
-      object gridUsuario: TDBGrid
+      object gridProdutos: TDBGrid
         Left = 216
         Top = 77
         Width = 677

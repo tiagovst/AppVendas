@@ -14,7 +14,7 @@ type
     client: TPanel;
     scPesquisa: TSearchBox;
     Label1: TLabel;
-    gridUsuario: TDBGrid;
+    gridProdutos: TDBGrid;
     dsUsuario: TDataSource;
     gboxAcoes: TGroupBox;
     Button2: TButton;
