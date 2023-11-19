@@ -10,6 +10,8 @@ uses
   ListagemUsuario.View,
   ManejoUsuario.View,
   ControladorProdutoInterface,
+  ControladorCompra,
+  ControladorCompraInterface,
   Produto,
   CompraProduto.View,
   ControladorProduto;
@@ -32,18 +34,17 @@ type
     pnlSubmenuProdutos: TPanel;
     btnVerProdutos: TSpeedButton;
     btnCadastrarProduto: TSpeedButton;
-    btnEditarExcluirProduto: TSpeedButton;
     pnlSubmenuClientes: TPanel;
     btnVerClientes: TSpeedButton;
     btnCadastrarCliente: TSpeedButton;
     btnEditarExcluirCliente: TSpeedButton;
     pnlBotoes: TPanel;
     pnlSubmenuUsuarios: TPanel;
-    btnVerUsuarios: TSpeedButton;
     btnCadastrarUsuario: TSpeedButton;
     btnEditarExcluirUsuario: TSpeedButton;
     DataSource: TDataSource;
     gridProdutos: TDBGrid;
+    btnEditarExcluirProduto: TSpeedButton;
     procedure onClick(Sender : TObject);
     procedure btnCadastrarProdutoClick(Sender: TObject);
     procedure btnEditarExcluirUsuarioClick(Sender: TObject);
@@ -51,6 +52,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure gridProdutosDblClick(Sender: TObject);
   private
+    uControladorCompra: IControladorCompra;
     procedure ManejoTop;
   end;
 
@@ -78,7 +80,6 @@ procedure TTelaPrincipal.btnCadastrarUsuarioClick(Sender: TObject);
 var
   FManejoUsuario: TTelaManejoUsuario;
 begin
-
     FManejoUsuario := TTelaManejoUsuario.Create(nil);
 
     ManejoTop;
@@ -114,6 +115,7 @@ procedure TTelaPrincipal.FormShow(Sender: TObject);
 var
   ControladorProduto: IControladorProduto;
 begin
+  uControladorCompra := TControladorCompra.Create; // Config --> Refatoração
   ControladorProduto := TControladorProduto.Create;
   ControladorProduto.Pesquisar(DataSource);
 end;
@@ -146,6 +148,7 @@ begin
 
   FTelaAdicionarProduto := TTelaAdicionarProduto.Create(nil);
   FTelaAdicionarProduto.PreencherProduto(ProdutoSelecionado);
+  FTelaAdicionarProduto.ReceberControlador(uControladorCompra);
   FTelaAdicionarProduto.ShowModal;
 end;
 

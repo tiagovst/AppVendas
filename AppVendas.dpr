@@ -23,7 +23,9 @@ uses
   ListagemUsuario.View in 'src\View\ListagemUsuario.View.pas' {TelaListagemUsuario},
   Estoque.View in 'src\View\Estoque.View.pas' {TelaEstoque},
   ManejoUsuario.View in 'src\View\ManejoUsuario.View.pas' {TelaManejoUsuario},
-  CompraProduto.View in 'src\View\CompraProduto.View.pas' {TelaAdicionarProduto};
+  CompraProduto.View in 'src\View\CompraProduto.View.pas' {TelaAdicionarProduto},
+  ControladorCompra in 'src\Controller\ControladorCompra.pas',
+  ControladorCompraInterface in 'src\Interfaces\Controlador\ControladorCompraInterface.pas';
 
 {$R *.res}
 

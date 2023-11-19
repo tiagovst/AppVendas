@@ -11,6 +11,7 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poMainFormCenter
   TextHeight = 15
   object pnlRodape: TPanel
     Left = 0
@@ -19,8 +20,8 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
     Height = 41
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 506
-    ExplicitWidth = 899
+    ExplicitTop = 514
+    ExplicitWidth = 901
     object btnAdicionarCompra: TButton
       Left = 820
       Top = 8
@@ -28,6 +29,7 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
       Height = 25
       Caption = 'Adicionar'
       TabOrder = 0
+      OnClick = btnAdicionarCompraClick
     end
   end
   object pnlConteudo: TPanel
@@ -37,8 +39,8 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
     Height = 474
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = -32
-    ExplicitTop = 47
+    ExplicitWidth = 901
+    ExplicitHeight = 473
     object gboxInformacoes: TGroupBox
       AlignWithMargins = True
       Left = 25
@@ -248,7 +250,7 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
     Height = 41
     Align = alTop
     TabOrder = 2
-    ExplicitWidth = 899
+    ExplicitWidth = 901
     object Label1: TLabel
       Left = 25
       Top = 5

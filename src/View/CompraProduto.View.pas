@@ -4,7 +4,9 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask, Produto;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,
+  Produto,
+  ControladorCompraInterface;
 
 type
   TTelaAdicionarProduto = class(TForm)
@@ -27,10 +29,13 @@ type
     Label6: TLabel;
     lblSubtotal: TLabel;
     procedure txtQuantidadeCompraChange(Sender: TObject);
+    procedure btnAdicionarCompraClick(Sender: TObject);
   private
-    { Private declarations }
+    ControladorCompra: IControladorCompra;
+    uProduto: TProduto;
   public
     procedure PreencherProduto(Produto : TProduto);
+    procedure ReceberControlador(Controlador: IControladorCompra);
   end;
 
 var
@@ -42,9 +47,21 @@ implementation
 
 { TTelaAdicionarProduto }
 
+procedure TTelaAdicionarProduto.ReceberControlador(Controlador: IControladorCompra);
+begin
+  ControladorCompra := Controlador;
+end;
+
+procedure TTelaAdicionarProduto.btnAdicionarCompraClick(Sender: TObject);
+begin
+  ControladorCompra.AdicionarProduto(uProduto, StrToInt(txtQuantidadeCompra.Text), StrToFloat(lblSubtotal.Caption));
+  ControladorCompra.ExibirProdutos;
+end;
+
 procedure TTelaAdicionarProduto.PreencherProduto(Produto : TProduto);
 begin
-  with Produto do
+  uProduto := Produto;
+  with uProduto do
   begin
     txtNomeProduto.Text := Nome;
     txtCategoria.Text := Categoria;

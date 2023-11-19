@@ -170,6 +170,8 @@
             <Form>TelaAdicionarProduto</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\Controller\ControladorCompra.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorCompraInterface.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

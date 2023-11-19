@@ -21,7 +21,7 @@ object TelaPrincipal: TTelaPrincipal
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitHeight = 633
+    ExplicitHeight = 641
     object pnlLogo: TPanel
       Left = 0
       Top = 0
@@ -38,7 +38,7 @@ object TelaPrincipal: TTelaPrincipal
       Height = 41
       Align = alBottom
       TabOrder = 1
-      ExplicitTop = 592
+      ExplicitTop = 600
     end
     object pnlBotoes: TPanel
       Left = 0
@@ -127,8 +127,8 @@ object TelaPrincipal: TTelaPrincipal
     Color = clWindow
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 917
-    ExplicitHeight = 633
+    ExplicitWidth = 919
+    ExplicitHeight = 641
     DesignSize = (
       923
       642)
@@ -180,7 +180,7 @@ object TelaPrincipal: TTelaPrincipal
       Color = clWindow
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 917
+      ExplicitWidth = 919
       DesignSize = (
         923
         41)
@@ -192,7 +192,7 @@ object TelaPrincipal: TTelaPrincipal
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 0
         TextHint = 'Pesquisar produto'
-        ExplicitWidth = 305
+        ExplicitWidth = 307
       end
     end
     object btnFinalizarCompra: TButton
@@ -203,7 +203,7 @@ object TelaPrincipal: TTelaPrincipal
       Anchors = [akTop, akRight]
       Caption = 'Finalizar Compra'
       TabOrder = 1
-      ExplicitLeft = 752
+      ExplicitLeft = 754
     end
     object pnlSubmenuProdutos: TPanel
       Left = 0
@@ -309,24 +309,13 @@ object TelaPrincipal: TTelaPrincipal
       Left = 0
       Top = 244
       Width = 183
-      Height = 114
+      Height = 77
       BevelKind = bkFlat
       BevelOuter = bvNone
       Color = clWindow
       ParentBackground = False
       TabOrder = 4
       Visible = False
-      object btnVerUsuarios: TSpeedButton
-        Left = 0
-        Top = 74
-        Width = 179
-        Height = 37
-        Align = alTop
-        Caption = 'Excluir/Editar usu'#225'rio'
-        Flat = True
-        StyleName = 'Windows'
-        ExplicitTop = 8
-      end
       object btnCadastrarUsuario: TSpeedButton
         Left = 0
         Top = 37
