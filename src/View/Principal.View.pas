@@ -126,9 +126,7 @@ var
 begin
   // Obtém a linha clicada
   LinhaSelecionada := gridProdutos.DataSource.DataSet.RecNo;
-
   ProdutoSelecionado := TProduto.Create;
-
   // Usa a linha para obter dados específicos
   if gridProdutos.DataSource.DataSet.Locate('ID', LinhaSelecionada, []) then
   begin

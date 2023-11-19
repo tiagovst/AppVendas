@@ -19,9 +19,8 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
     Height = 41
     Align = alBottom
     TabOrder = 0
-    ExplicitLeft = 304
-    ExplicitTop = 408
-    ExplicitWidth = 185
+    ExplicitTop = 506
+    ExplicitWidth = 899
     object btnAdicionarCompra: TButton
       Left = 820
       Top = 8
@@ -38,10 +37,8 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
     Height = 474
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 304
-    ExplicitTop = 184
-    ExplicitWidth = 185
-    ExplicitHeight = 41
+    ExplicitLeft = -32
+    ExplicitTop = 47
     object gboxInformacoes: TGroupBox
       AlignWithMargins = True
       Left = 25
@@ -108,6 +105,7 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        ReadOnly = True
         TabOrder = 0
       end
       object txtQuantidadeEstoque: TEdit
@@ -121,6 +119,7 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        ReadOnly = True
         TabOrder = 1
       end
       object txtPreco: TLabeledEdit
@@ -143,6 +142,7 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        ReadOnly = True
         TabOrder = 2
         Text = ''
       end
@@ -157,6 +157,7 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        ReadOnly = True
         TabOrder = 3
       end
     end
@@ -236,6 +237,7 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
         ParentFont = False
         TabOrder = 0
         Text = ''
+        OnChange = txtQuantidadeCompraChange
       end
     end
   end
@@ -246,6 +248,7 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
     Height = 41
     Align = alTop
     TabOrder = 2
+    ExplicitWidth = 899
     object Label1: TLabel
       Left = 25
       Top = 5

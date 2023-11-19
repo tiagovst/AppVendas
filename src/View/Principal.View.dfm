@@ -177,6 +177,8 @@ object TelaPrincipal: TTelaPrincipal
       Width = 923
       Height = 41
       Align = alTop
+      Color = clWindow
+      ParentBackground = False
       TabOrder = 0
       ExplicitWidth = 917
       DesignSize = (

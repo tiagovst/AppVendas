@@ -26,6 +26,7 @@ type
     txtCategoria: TEdit;
     Label6: TLabel;
     lblSubtotal: TLabel;
+    procedure txtQuantidadeCompraChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,6 +50,26 @@ begin
     txtCategoria.Text := Categoria;
     txtPreco.Text := Preco.ToString;
     txtQuantidadeEstoque.Text := QuantidadeEstoque.ToString;
+  end;
+end;
+
+procedure TTelaAdicionarProduto.txtQuantidadeCompraChange(Sender: TObject);
+var
+  Quantidade : Integer;
+  PrecoProduto : Double;
+  Resultado : Double;
+begin
+  if TryStrToInt(txtQuantidadeCompra.Text, Quantidade) then
+  begin
+    Quantidade  := StrToInt(txtQuantidadeCompra.Text);
+    PrecoProduto := StrToFloat(txtPreco.Text);
+    Resultado := Quantidade * PrecoProduto;
+
+    lblSubtotal.Caption := FormatFloat('#0.00', Resultado);
+  end
+  else
+  begin
+    lblSubtotal.Caption := '00,00';
   end;
 end;
 
