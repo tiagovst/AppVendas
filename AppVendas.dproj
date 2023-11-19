@@ -166,6 +166,10 @@
             <Form>TelaManejoUsuario</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\View\CompraProduto.View.pas">
+            <Form>TelaAdicionarProduto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

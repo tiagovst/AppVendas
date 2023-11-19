@@ -87,7 +87,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
       end
       object btnVoltar: TButton
         Left = 41
-        Top = 24
+        Top = 25
         Width = 41
         Height = 41
         Caption = #8592
@@ -98,6 +98,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
         Font.Style = []
         ParentFont = False
         TabOrder = 0
+        OnClick = btnVoltarClick
       end
     end
     object Panel4: TPanel

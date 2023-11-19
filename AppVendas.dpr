@@ -22,7 +22,8 @@ uses
   Principal.View in 'src\View\Principal.View.pas' {TelaPrincipal},
   ListagemUsuario.View in 'src\View\ListagemUsuario.View.pas' {TelaListagemUsuario},
   Estoque.View in 'src\View\Estoque.View.pas' {TelaEstoque},
-  ManejoUsuario.View in 'src\View\ManejoUsuario.View.pas' {TelaManejoUsuario};
+  ManejoUsuario.View in 'src\View\ManejoUsuario.View.pas' {TelaManejoUsuario},
+  CompraProduto.View in 'src\View\CompraProduto.View.pas' {TelaAdicionarProduto};
 
 {$R *.res}
 
@@ -30,6 +31,7 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TTelaPrincipal, TelaPrincipal);
+  Application.CreateForm(TTelaAdicionarProduto, TelaAdicionarProduto);
   Application.CreateForm(TdmConexao, dmConexao);
   Application.Run;
 end.

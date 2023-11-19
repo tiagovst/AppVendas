@@ -11,6 +11,7 @@ uses
   ManejoUsuario.View,
   ControladorProdutoInterface,
   Produto,
+  CompraProduto.View,
   ControladorProduto;
 
 type
@@ -48,6 +49,7 @@ type
     procedure btnEditarExcluirUsuarioClick(Sender: TObject);
     procedure btnCadastrarUsuarioClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure gridProdutosDblClick(Sender: TObject);
   private
     procedure ManejoTop;
   end;
@@ -114,6 +116,39 @@ var
 begin
   ControladorProduto := TControladorProduto.Create;
   ControladorProduto.Pesquisar(DataSource);
+end;
+
+procedure TTelaPrincipal.gridProdutosDblClick(Sender: TObject);
+var
+  LinhaSelecionada : Integer;
+  ProdutoSelecionado : TProduto;
+  FTelaAdicionarProduto : TTelaAdicionarProduto;
+begin
+  // Obtém a linha clicada
+  LinhaSelecionada := gridProdutos.DataSource.DataSet.RecNo;
+
+  ProdutoSelecionado := TProduto.Create;
+
+  // Usa a linha para obter dados específicos
+  if gridProdutos.DataSource.DataSet.Locate('ID', LinhaSelecionada, []) then
+  begin
+    with ProdutoSelecionado, gridProdutos.DataSource.DataSet do
+      begin
+      Nome := FieldByName('Nome').AsString;
+      //CodigoBarras := FieldByName('Codi').AsString';
+      Descricao := FieldByName('Descricao').AsString;
+      Referencia := FieldByName('Referencia').AsString;
+      Preco := FieldByName('Preco').AsFloat;
+      Categoria := FieldByName('Categoria').AsString;
+      QuantidadeEstoque := FieldByName('Quantidade_estoque').AsInteger;
+      Fornecedor := FieldByName('Fornecedor').AsString;
+      DataValidade := FieldByName('Data_validade').AsDateTime;
+    end;
+  end;
+
+  FTelaAdicionarProduto := TTelaAdicionarProduto.Create(nil);
+  FTelaAdicionarProduto.PreencherProduto(ProdutoSelecionado);
+  FTelaAdicionarProduto.ShowModal;
 end;
 
 procedure TTelaPrincipal.ManejoTop;

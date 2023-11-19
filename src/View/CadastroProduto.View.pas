@@ -49,6 +49,7 @@ type
     txtValidade: TLabeledEdit;
     procedure FormCreate(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
+    procedure btnVoltarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -90,6 +91,11 @@ begin
     ShowMessage(erro);
   end;
 
+end;
+
+procedure TTelaCadastroProduto.btnVoltarClick(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TTelaCadastroProduto.FormCreate(Sender: TObject);

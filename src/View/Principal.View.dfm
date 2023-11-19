@@ -21,7 +21,7 @@ object TelaPrincipal: TTelaPrincipal
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitHeight = 641
+    ExplicitHeight = 633
     object pnlLogo: TPanel
       Left = 0
       Top = 0
@@ -30,9 +30,6 @@ object TelaPrincipal: TTelaPrincipal
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitLeft = 1
-      ExplicitTop = 1
-      ExplicitWidth = 183
     end
     object pnlUsuarioLogado: TPanel
       Left = 0
@@ -41,9 +38,7 @@ object TelaPrincipal: TTelaPrincipal
       Height = 41
       Align = alBottom
       TabOrder = 1
-      ExplicitLeft = 1
-      ExplicitTop = 599
-      ExplicitWidth = 183
+      ExplicitTop = 592
     end
     object pnlBotoes: TPanel
       Left = 0
@@ -132,8 +127,8 @@ object TelaPrincipal: TTelaPrincipal
     Color = clWindow
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 919
-    ExplicitHeight = 641
+    ExplicitWidth = 917
+    ExplicitHeight = 633
     DesignSize = (
       923
       642)
@@ -155,6 +150,7 @@ object TelaPrincipal: TTelaPrincipal
       Top = 139
       Width = 833
       Height = 506
+      Hint = 'Clique duas vezes para selecionar o produto'
       Anchors = [akLeft, akTop, akRight, akBottom]
       DataSource = DataSource
       Font.Charset = DEFAULT_CHARSET
@@ -164,12 +160,16 @@ object TelaPrincipal: TTelaPrincipal
       Font.Style = []
       ImeName = 'US'
       ParentFont = False
+      ParentShowHint = False
+      ReadOnly = True
+      ShowHint = True
       TabOrder = 5
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
-      TitleFont.Height = -27
+      TitleFont.Height = -17
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
+      OnDblClick = gridProdutosDblClick
     end
     object pnlPesquisa: TPanel
       Left = 0
@@ -178,7 +178,7 @@ object TelaPrincipal: TTelaPrincipal
       Height = 41
       Align = alTop
       TabOrder = 0
-      ExplicitWidth = 919
+      ExplicitWidth = 917
       DesignSize = (
         923
         41)
@@ -190,7 +190,7 @@ object TelaPrincipal: TTelaPrincipal
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 0
         TextHint = 'Pesquisar produto'
-        ExplicitWidth = 307
+        ExplicitWidth = 305
       end
     end
     object btnFinalizarCompra: TButton
@@ -201,7 +201,7 @@ object TelaPrincipal: TTelaPrincipal
       Anchors = [akTop, akRight]
       Caption = 'Finalizar Compra'
       TabOrder = 1
-      ExplicitLeft = 754
+      ExplicitLeft = 752
     end
     object pnlSubmenuProdutos: TPanel
       Left = 0
