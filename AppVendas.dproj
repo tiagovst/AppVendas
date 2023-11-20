@@ -173,6 +173,11 @@
         <DCCReference Include="src\Controller\ControladorCompra.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorCompraInterface.pas"/>
         <DCCReference Include="src\Model\Compra\Compra.pas"/>
+        <DCCReference Include="src\View\Checkout.View.pas">
+            <Form>TelaCheckout</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\Controller\ControladorCheckout.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

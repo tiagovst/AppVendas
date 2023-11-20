@@ -7,9 +7,6 @@ uses
   Produto,
   Compra,
   ControladorCompraInterface,
-{  Venda,
-  ControladorVenda,
-  ControladorVendaInterface,}
   Vcl.Dialogs;
 
 type
@@ -33,10 +30,8 @@ var
   ProdutoQuantidade: TProdutoQuantidade;
 begin
   ProdutoQuantidade := TProdutoQuantidade.Create;
-
   try
     SetLength(PilhaProdutos, Length(PilhaProdutos) + 1);
-
 
     ProdutoQuantidade.Produto := Produto;
     ProdutoQuantidade.Quantidade := Quantidade;
@@ -68,15 +63,10 @@ var
   i: Integer;
 begin
   SetLength(Result, Length(PilhaProdutos));
-
   for i := 0 to High(PilhaProdutos) do
     begin
-      ShowMessage(PilhaProdutos[i].Produto.Nome);
-      ShowMessage(IntToStr(PilhaProdutos[i].Quantidade));
-      ShowMessage(FloatToStr(PilhaProdutos[i].PrecoSubtotal));
+      Result[i] := PilhaProdutos[i];
     end;
-
-  result := nil;
 end;
 
 end.

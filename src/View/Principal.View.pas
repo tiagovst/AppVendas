@@ -13,7 +13,10 @@ uses
   ControladorCompra,
   ControladorCompraInterface,
   Produto,
+  Compra,
+  Checkout.View,
   CompraProduto.View,
+  ControladorCheckout,
   ControladorProduto;
 
 type
@@ -113,8 +116,13 @@ begin
 end;
 
 procedure TTelaPrincipal.btnFinalizarCompraClick(Sender: TObject);
+var
+  uControladorCheckout : TControladorCheckout;
 begin
-  uControladorCompra.ObterProdutos;
+  uControladorCheckout := TControladorCheckout.Create;
+  uControladorCheckout.Preencher(uControladorCompra.ObterProdutos);
+  uControladorCheckout.MostrarTelaCheckout;
+  FreeAndNil(uControladorCheckout);
 end;
 
 procedure TTelaPrincipal.FormShow(Sender: TObject);

@@ -26,7 +26,9 @@ uses
   CompraProduto.View in 'src\View\CompraProduto.View.pas' {TelaAdicionarProduto},
   ControladorCompra in 'src\Controller\ControladorCompra.pas',
   ControladorCompraInterface in 'src\Interfaces\Controlador\ControladorCompraInterface.pas',
-  Compra in 'src\Model\Compra\Compra.pas';
+  Compra in 'src\Model\Compra\Compra.pas',
+  Checkout.View in 'src\View\Checkout.View.pas' {TelaCheckout},
+  ControladorCheckout in 'src\Controller\ControladorCheckout.pas';
 
 {$R *.res}
 
@@ -34,7 +36,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TTelaPrincipal, TelaPrincipal);
-  Application.CreateForm(TTelaAdicionarProduto, TelaAdicionarProduto);
   Application.CreateForm(TdmConexao, dmConexao);
   Application.Run;
 end.
