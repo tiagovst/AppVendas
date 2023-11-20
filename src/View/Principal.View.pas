@@ -51,6 +51,7 @@ type
     procedure btnCadastrarUsuarioClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure gridProdutosDblClick(Sender: TObject);
+    procedure btnFinalizarCompraClick(Sender: TObject);
   private
     uControladorCompra: IControladorCompra;
     procedure ManejoTop;
@@ -111,6 +112,11 @@ begin
 
 end;
 
+procedure TTelaPrincipal.btnFinalizarCompraClick(Sender: TObject);
+begin
+  uControladorCompra.ObterProdutos;
+end;
+
 procedure TTelaPrincipal.FormShow(Sender: TObject);
 var
   ControladorProduto: IControladorProduto;
@@ -159,7 +165,6 @@ begin
     pnlPesquisa.Align := alNone;
     pnlPesquisa.Visible := False;
   end;
-
 end;
 
 procedure TTelaPrincipal.onClick(Sender: TObject);

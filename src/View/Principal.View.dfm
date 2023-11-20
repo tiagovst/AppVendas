@@ -203,6 +203,7 @@ object TelaPrincipal: TTelaPrincipal
       Anchors = [akTop, akRight]
       Caption = 'Finalizar Compra'
       TabOrder = 1
+      OnClick = btnFinalizarCompraClick
       ExplicitLeft = 754
     end
     object pnlSubmenuProdutos: TPanel

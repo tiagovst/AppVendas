@@ -25,7 +25,8 @@ uses
   ManejoUsuario.View in 'src\View\ManejoUsuario.View.pas' {TelaManejoUsuario},
   CompraProduto.View in 'src\View\CompraProduto.View.pas' {TelaAdicionarProduto},
   ControladorCompra in 'src\Controller\ControladorCompra.pas',
-  ControladorCompraInterface in 'src\Interfaces\Controlador\ControladorCompraInterface.pas';
+  ControladorCompraInterface in 'src\Interfaces\Controlador\ControladorCompraInterface.pas',
+  Compra in 'src\Model\Compra\Compra.pas';
 
 {$R *.res}
 

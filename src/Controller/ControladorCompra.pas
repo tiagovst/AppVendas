@@ -5,6 +5,7 @@ interface
 uses
   System.SysUtils,
   Produto,
+  Compra,
   ControladorCompraInterface,
 {  Venda,
   ControladorVenda,
@@ -12,32 +13,41 @@ uses
   Vcl.Dialogs;
 
 type
-TProdutoQuantidade = record
-  public
-    Produto: TProduto;
-    Quantidade: Integer;
-    PrecoSubtotal: Double;
-  end;
 
 TControladorCompra = class(TInterfacedObject, IControladorCompra)
   private
     PilhaProdutos: array of TProdutoQuantidade;
-
   public
-    procedure AdicionarProduto(Produto: TProduto; Quantidade: integer; PrecoSubtotal: Double);
     procedure ExibirProdutos;
+
+    function AdicionarProduto(Produto: TProduto; Quantidade: integer; PrecoSubtotal: Double): Boolean;
+    function ObterProdutos: TArray<TProdutoQuantidade>;
   end;
 
 implementation
 
 { TControladorCompra }
 
-procedure TControladorCompra.AdicionarProduto(Produto: TProduto; Quantidade: integer; PrecoSubtotal: Double);
+function TControladorCompra.AdicionarProduto(Produto: TProduto; Quantidade: integer; PrecoSubtotal: Double): Boolean;
+var
+  ProdutoQuantidade: TProdutoQuantidade;
 begin
-  SetLength(PilhaProdutos, Length(PilhaProdutos) + 1);
-  PilhaProdutos[High(PilhaProdutos)].Produto := Produto;
-  PilhaProdutos[High(PilhaProdutos)].Quantidade := Quantidade;
-  PilhaProdutos[High(PilhaProdutos)].PrecoSubtotal := PrecoSubtotal;
+  ProdutoQuantidade := TProdutoQuantidade.Create;
+
+  try
+    SetLength(PilhaProdutos, Length(PilhaProdutos) + 1);
+
+
+    ProdutoQuantidade.Produto := Produto;
+    ProdutoQuantidade.Quantidade := Quantidade;
+    ProdutoQuantidade.PrecoSubtotal := PrecoSubtotal;
+
+    PilhaProdutos[High(PilhaProdutos)] := ProdutoQuantidade;
+    Result := True;
+  except on E: Exception do
+    Result := False;
+  end;
+
 end;
 
 procedure TControladorCompra.ExibirProdutos;
@@ -52,4 +62,21 @@ begin
                 ', Preço Unitário: R$' + FloatToStr(PilhaProdutos[i].Produto.Preco));
   end;
 end;
+
+function TControladorCompra.ObterProdutos: TArray<TProdutoQuantidade>;
+var
+  i: Integer;
+begin
+  SetLength(Result, Length(PilhaProdutos));
+
+  for i := 0 to High(PilhaProdutos) do
+    begin
+      ShowMessage(PilhaProdutos[i].Produto.Nome);
+      ShowMessage(IntToStr(PilhaProdutos[i].Quantidade));
+      ShowMessage(FloatToStr(PilhaProdutos[i].PrecoSubtotal));
+    end;
+
+  result := nil;
+end;
+
 end.

@@ -60,6 +60,7 @@
 *.projdata
 *.tvsconfig
 *.dsk
+*.dproj.local
 
 # Delphi history and backups
 __history/

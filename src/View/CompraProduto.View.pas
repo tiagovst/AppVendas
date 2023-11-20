@@ -54,8 +54,12 @@ end;
 
 procedure TTelaAdicionarProduto.btnAdicionarCompraClick(Sender: TObject);
 begin
-  ControladorCompra.AdicionarProduto(uProduto, StrToInt(txtQuantidadeCompra.Text), StrToFloat(lblSubtotal.Caption));
-  ControladorCompra.ExibirProdutos;
+  try
+    if ControladorCompra.AdicionarProduto(uProduto, StrToInt(txtQuantidadeCompra.Text), StrToFloat(lblSubtotal.Caption)) then;
+      ShowMessage('Produto adicionado ao Checkout!');
+  except on E: Exception do
+    ShowMessage('Insira uma quantidade válida.');
+  end;
 end;
 
 procedure TTelaAdicionarProduto.PreencherProduto(Produto : TProduto);

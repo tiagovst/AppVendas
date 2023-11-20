@@ -172,6 +172,7 @@
         </DCCReference>
         <DCCReference Include="src\Controller\ControladorCompra.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorCompraInterface.pas"/>
+        <DCCReference Include="src\Model\Compra\Compra.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
