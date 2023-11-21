@@ -7,6 +7,7 @@ uses
   System.SysUtils,
   UsuarioDAO,
   UsuarioDAOInterface,
+  Data.DB,
   ControladorUsuarioInterface;
 
 type
@@ -20,7 +21,7 @@ type
     function Excluir(ID: Integer; out erro: String): Boolean;
 
     procedure PesquisarNome(Nome: String);
-    procedure Pesquisar();
+    procedure Pesquisar(DataSource: TDataSource);
     procedure CarregarPessoa(Usuario: TUsuario; ID: Integer);
 
   public
@@ -33,7 +34,7 @@ implementation
 
 constructor TControladorUsuario.Create;
 begin
-  IUsuario := uUsuarioDAO.Create;
+  IUsuario := TUsuarioDAO.Create;
 end;
 
 function TControladorUsuario.Alterar(Usuario: TUsuario;
@@ -64,9 +65,9 @@ begin
 end;
 
 // Conferir lógica de acordo com nosso escopo
-procedure TControladorUsuario.Pesquisar;
+procedure TControladorUsuario.Pesquisar(DataSource: TDataSource);
 begin
-  IUsuario.Pesquisar;
+  IUsuario.Pesquisar(DataSource);
 end;
 
 // Conferir lógica de acordo com nosso escopo

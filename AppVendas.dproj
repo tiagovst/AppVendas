@@ -146,6 +146,38 @@
         <DCCReference Include="src\Controller\ControladorVenda.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorProdutoInterface.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorVendaInterface.pas"/>
+        <DCCReference Include="src\View\CadastroProduto.View.pas">
+            <Form>TelaCadastroProduto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\Principal.View.pas">
+            <Form>TelaPrincipal</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\ListagemUsuario.View.pas">
+            <Form>TelaListagemUsuario</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\Estoque.View.pas">
+            <Form>TelaEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\ManejoUsuario.View.pas">
+            <Form>TelaManejoUsuario</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\CompraProduto.View.pas">
+            <Form>TelaAdicionarProduto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\Controller\ControladorCompra.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorCompraInterface.pas"/>
+        <DCCReference Include="src\Model\Compra\Compra.pas"/>
+        <DCCReference Include="src\View\Checkout.View.pas">
+            <Form>TelaCheckout</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\Controller\ControladorCheckout.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -1,0 +1,25 @@
+unit TelaCadastroUsuario.View;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls;
+
+type
+  TTelaCadastroUsuario = class(TForm)
+    PanelBack: TPanel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  TelaCadastroUsuario: TTelaCadastroUsuario;
+
+implementation
+
+{$R *.dfm}
+
+end.

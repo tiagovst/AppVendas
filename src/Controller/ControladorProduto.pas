@@ -7,12 +7,13 @@ uses
   ProdutoDAO,
   ProdutoDAOInterface,
   Produto,
-  System.SysUtils;
+  System.SysUtils,
+  Data.DB;
 
 type
   TControladorProduto = class(TInterfacedObject, IControladorProduto)
   private
-    IProduto: IProdutoDAO;
+    IProduto: TProdutoDAO;
 
     function gerarID: Integer;
     function Inserir(Produto: TProduto; out erro: String): Boolean;
@@ -21,20 +22,19 @@ type
 
     procedure PesquisarCategoria(Categoria: String);
     procedure PesquisarNome(Nome: String);
-    procedure Pesquisar();
+    procedure Pesquisar(DataSource: TDataSource);
     procedure CarregarProduto(Produto: TProduto; ID: Integer);
 
   public
     constructor Create;
   end;
-
 implementation
 
 { TControladorProduto }
 
 constructor TControladorProduto.Create;
 begin
-  IProduto := uProdutoDAO.Create;
+  IProduto := TProdutoDAO.Create;
 end;
 
 function TControladorProduto.Alterar(Produto: TProduto;
@@ -64,9 +64,10 @@ begin
   Result := IProduto.Inserir(Produto, erro);
 end;
 
-procedure TControladorProduto.Pesquisar;
+
+procedure TControladorProduto.Pesquisar(DataSource: TDataSource);
 begin
-  IProduto.Pesquisar;
+  IProduto.Pesquisar(DataSource);
 end;
 
 procedure TControladorProduto.PesquisarCategoria(Categoria: String);

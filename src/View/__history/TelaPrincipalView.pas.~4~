@@ -1,0 +1,39 @@
+unit TelaPrincipalView;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Data.DB, Vcl.ButtonGroup,
+  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.WinXCtrls;
+
+type
+  TTelaPrincipal = class(TForm)
+    pnlBarraLateral: TPanel;
+    pnlLogo: TPanel;
+    pnlConteudo: TPanel;
+    pnlPesquisa: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    SearchBox1: TSearchBox;
+    DBGrid1: TDBGrid;
+    GroupBox1: TGroupBox;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Button4: TButton;
+    Button5: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  TelaPrincipal: TTelaPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,31 @@
+unit TelaCadastroUsuario.View;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask;
+
+type
+  TTelaCadastroUsuario = class(TForm)
+    PanelBack: TPanel;
+    editNome: TLabeledEdit;
+    editEmail: TLabeledEdit;
+    LabeledEdit2: TLabeledEdit;
+    LabeledEdit3: TLabeledEdit;
+    LabeledEdit4: TLabeledEdit;
+    LabeledEdit5: TLabeledEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  TelaCadastroUsuario: TTelaCadastroUsuario;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -3,7 +3,8 @@ unit UsuarioDAOInterface;
 interface
 
 uses
-  Usuario;
+  Usuario,
+  Data.DB;
 
 type
   IUsuarioDAO = interface
@@ -15,7 +16,7 @@ type
     function Excluir(ID: Integer; out erro: String): Boolean;
 
     procedure PesquisarNome(Nome: String);
-    procedure Pesquisar();
+    procedure Pesquisar(DataSource: TDataSource);
     procedure CarregarPessoa(Usuario: TUsuario; ID: Integer);
   end;
 
