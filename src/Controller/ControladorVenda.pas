@@ -7,12 +7,18 @@ uses
   Venda,
   ControladorVendaInterface,
   VendaDAO,
-  VendaDAOInterface;
+  VendaDAOInterface,
+  vcl.Dialogs;
 
 type
   TControladorVenda = class(TInterfacedObject, IControladorVenda)
   private
     IVenda: IVendaDAO;
+
+    function DataAtual: TDate;
+
+
+    // Funções DAO
 
     function gerarID: Integer;
     function Inserir(Venda: TVenda; out erro: String): Boolean;
@@ -34,7 +40,15 @@ implementation
 
 constructor TControladorVenda.Create;
 begin
-  IVenda := uVendaDAO.Create;
+  IVenda := TVendaDAO.Create;
+end;
+
+function TControladorVenda.DataAtual: TDate;
+//var
+  //Data : String;
+begin
+  //Data := FormatDateTime('dd/mm/yyyy', Now);
+  Result := Date;
 end;
 
 procedure TControladorVenda.CarregarVenda(Venda: TVenda; ID: Integer);

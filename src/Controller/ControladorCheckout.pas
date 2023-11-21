@@ -50,11 +50,12 @@ begin
   StringGrid := FTelaCheckout.ProdutosGrid;
 
   // Adiciona colunas
-  StringGrid.ColCount := 4;
-  StringGrid.Cells[0, 0] := 'Produto';
-  StringGrid.Cells[1, 0] := 'Quantidade';
-  StringGrid.Cells[2, 0] := 'Preço Unitário';
-  StringGrid.Cells[3, 0] := 'Preço Subtotal';
+  StringGrid.ColCount := 5;
+  StringGrid.Cells[0, 0] := 'ID';
+  StringGrid.Cells[1, 0] := 'Produto';
+  StringGrid.Cells[2, 0] := 'Quantidade';
+  StringGrid.Cells[3, 0] := 'Preço Unitário';
+  StringGrid.Cells[4, 0] := 'Preço Subtotal';
 
   // Adiciona dados
   StringGrid.RowCount := Length(Produtos) + 1; // +1 para incluir a linha de cabeçalho
@@ -62,6 +63,8 @@ begin
   for RowIndex := 0 to High(Produtos) do
   begin
     ColIndex := 0;
+    StringGrid.Cells[ColIndex, RowIndex + 1] := IntToStr(Produtos[RowIndex].Produto.ID);
+    Inc(ColIndex);
     StringGrid.Cells[ColIndex, RowIndex + 1] := Produtos[RowIndex].Produto.Nome;
     Inc(ColIndex);
     StringGrid.Cells[ColIndex, RowIndex + 1] := IntToStr(Produtos[RowIndex].Quantidade);
@@ -73,10 +76,12 @@ begin
 
   with StringGrid do
   begin
-    ColWidths[0] := Width div 3;
-    ColWidths[1] := (Width - ColWidths[0]) div 3;
-    ColWidths[2] := (Width - ColWidths[0]) div 3;
-    ColWidths[3] := (Width - ColWidths[0]) div 3;
+
+    ColWidths[0] := 50;
+    ColWidths[1] := Width div 3;
+    ColWidths[2] := (Width - ColWidths[1]) div 3;
+    ColWidths[3] := (Width - ColWidths[1]) div 3 - 30;
+    ColWidths[4] := (Width - ColWidths[1]) div 3 - 30;
   end;
 
 end;

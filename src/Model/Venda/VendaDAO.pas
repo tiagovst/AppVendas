@@ -100,12 +100,13 @@ begin
   begin
     try
       Connection := dmConexao.FDConnection;
-      SQL.Text := 'insert into VENDA (ID, DATA_VENDA, TOTAL_PRODUTOS, TOTAL_PRECO, VENDEDOR) ' +
-      'values (:ID, :DATA_VENDA, :TOTAL_PRODUTOS, :TOTAL_PRECO, :VENDEDOR)';
+      SQL.Text := 'insert into venda (id, data_venda, total_produtos, total_preco, vendedor, lista_produtos) ' +
+      'values (:id, :data_venda, :total_produtos, :total_preco, :vendedor, :lista_produtos)';
 
       Params.ParamByName('ID').AsInteger := ID;
       Params.ParamByName('DATA_VENDA').AsDate := dataVenda;
       Params.ParamByName('VENDEDOR').AsInteger := vendedor;
+      Params.ParamByName('LISTA_PRODUTOS').AsString := IDProdutos;
       Params.ParamByName('TOTAL_PRODUTOS').AsInteger := totalProdutos;
       Params.ParamByName('TOTAL_PRECO').AsFloat := totalPreco;
       

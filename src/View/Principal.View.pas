@@ -148,8 +148,9 @@ begin
   begin
     with ProdutoSelecionado, gridProdutos.DataSource.DataSet do
       begin
+      ID := FieldByName('ID').AsInteger;
       Nome := FieldByName('Nome').AsString;
-      //CodigoBarras := FieldByName('Codi').AsString';
+      CodigoBarras := FieldByName('Codigo_barras').AsString;
       Descricao := FieldByName('Descricao').AsString;
       Referencia := FieldByName('Referencia').AsString;
       Preco := FieldByName('Preco').AsFloat;
