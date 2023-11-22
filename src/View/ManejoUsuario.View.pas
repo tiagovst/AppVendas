@@ -8,7 +8,6 @@ uses
 
 type
   TTelaManejoUsuario = class(TForm)
-    pnlTop: TPanel;
     pnlBottom: TPanel;
     pnlCenter: TPanel;
     btnCancelar: TButton;
@@ -24,7 +23,11 @@ type
     rbAdm: TRadioButton;
     rbVendedor: TRadioButton;
     rbGestor: TRadioButton;
-    LabelTitulo: TLabel;
+    pnlTop: TPanel;
+    Label1: TLabel;
+    Label3: TLabel;
+    btnVoltar: TButton;
+    procedure btnVoltarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,5 +40,10 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TTelaManejoUsuario.btnVoltarClick(Sender: TObject);
+begin
+  Close;
+end;
 
 end.

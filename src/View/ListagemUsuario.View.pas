@@ -19,7 +19,9 @@ type
     gboxAcoes: TGroupBox;
     Button2: TButton;
     Button3: TButton;
+    btnVoltar: TButton;
     procedure FormShow(Sender: TObject);
+    procedure btnVoltarClick(Sender: TObject);
   public
   end;
 
@@ -31,6 +33,11 @@ implementation
 {$R *.dfm}
 
 { TListagemUsuario }
+
+procedure TTelaListagemUsuario.btnVoltarClick(Sender: TObject);
+begin
+  Close;
+end;
 
 procedure TTelaListagemUsuario.FormShow(Sender: TObject);
 var

@@ -12,39 +12,20 @@ object TelaManejoUsuario: TTelaManejoUsuario
   Font.Name = 'Segoe UI'
   Font.Style = []
   TextHeight = 15
-  object pnlTop: TPanel
-    Left = 0
-    Top = 0
-    Width = 747
-    Height = 65
-    Align = alTop
-    TabOrder = 0
-    object LabelTitulo: TLabel
-      Left = 40
-      Top = 16
-      Width = 212
-      Height = 31
-      Caption = 'Manejo de Usu'#225'rios'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -23
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-  end
   object pnlCenter: TPanel
     Left = 0
-    Top = 65
+    Top = 96
     Width = 747
-    Height = 453
+    Height = 422
     Align = alClient
-    TabOrder = 1
+    TabOrder = 0
+    ExplicitTop = 65
+    ExplicitHeight = 453
     object GroupBox1: TGroupBox
       Left = 1
       Top = 1
       Width = 745
-      Height = 451
+      Height = 420
       Align = alClient
       Caption = 'Dados Cadastrais'
       DefaultHeaderFont = False
@@ -60,6 +41,7 @@ object TelaManejoUsuario: TTelaManejoUsuario
       HeaderFont.Style = []
       ParentFont = False
       TabOrder = 0
+      ExplicitHeight = 451
       object Label2: TLabel
         Left = 39
         Top = 264
@@ -263,22 +245,81 @@ object TelaManejoUsuario: TTelaManejoUsuario
     Width = 747
     Height = 40
     Align = alBottom
-    TabOrder = 2
+    TabOrder = 1
+    DesignSize = (
+      747
+      40)
     object btnCancelar: TButton
       Left = 552
-      Top = 9
+      Top = 8
       Width = 75
       Height = 25
+      Anchors = [akRight, akBottom]
       Caption = 'Cancelar'
       TabOrder = 0
     end
     object btnSalvar: TButton
       Left = 653
-      Top = 9
+      Top = 8
       Width = 75
       Height = 25
+      Anchors = [akRight, akBottom]
       Caption = 'Salvar'
       TabOrder = 1
+    end
+  end
+  object pnlTop: TPanel
+    Left = 0
+    Top = 0
+    Width = 747
+    Height = 96
+    Align = alTop
+    TabOrder = 2
+    ExplicitLeft = -121
+    ExplicitTop = 1
+    ExplicitWidth = 868
+    object Label1: TLabel
+      Left = 88
+      Top = 40
+      Width = 257
+      Height = 30
+      AutoSize = False
+      Caption = 'Manejo de Usu'#225'rios'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -22
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 88
+      Top = 24
+      Width = 146
+      Height = 17
+      AutoSize = False
+      Caption = 'Retornar '#224' Tela Principal '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object btnVoltar: TButton
+      Left = 41
+      Top = 26
+      Width = 41
+      Height = 41
+      Caption = #8592
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -33
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      OnClick = btnVoltarClick
     end
   end
 end

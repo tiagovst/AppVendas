@@ -52,6 +52,21 @@ object TelaListagemUsuario: TTelaListagemUsuario
         TabOrder = 0
         Text = 'Pesquisar Usu'#225'rio'
       end
+      object btnVoltar: TButton
+        Left = 8
+        Top = 5
+        Width = 41
+        Height = 41
+        Caption = #8592
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -33
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 1
+        OnClick = btnVoltarClick
+      end
     end
     object client: TPanel
       Left = 1

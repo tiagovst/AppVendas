@@ -24,8 +24,8 @@ object TelaCheckout: TTelaCheckout
     Height = 407
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 1093
-    ExplicitHeight = 406
+    ExplicitWidth = 1091
+    ExplicitHeight = 398
     DesignSize = (
       1097
       407)
@@ -45,35 +45,35 @@ object TelaCheckout: TTelaCheckout
     object ProdutosGrid: TStringGrid
       Left = 48
       Top = 112
-      Width = 997
+      Width = 991
       Height = 289
       Anchors = [akLeft, akTop, akRight, akBottom]
       Color = clBtnFace
       FixedCols = 0
       ScrollBars = ssVertical
       TabOrder = 0
-      ExplicitWidth = 993
-      ExplicitHeight = 288
+      ExplicitWidth = 985
+      ExplicitHeight = 280
     end
     object btnLimpar: TButton
-      Left = 970
+      Left = 964
       Top = 74
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Limpar'
       TabOrder = 1
-      ExplicitLeft = 966
+      ExplicitLeft = 958
     end
     object btnDeletar: TButton
-      Left = 889
+      Left = 883
       Top = 74
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Deletar'
       TabOrder = 2
-      ExplicitLeft = 885
+      ExplicitLeft = 877
     end
   end
   object pnlBottom: TPanel
@@ -83,13 +83,13 @@ object TelaCheckout: TTelaCheckout
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 502
-    ExplicitWidth = 1093
+    ExplicitTop = 494
+    ExplicitWidth = 1091
     DesignSize = (
       1097
       41)
     object btnFinalizar: TButton
-      Left = 1002
+      Left = 996
       Top = 9
       Width = 75
       Height = 25
@@ -97,10 +97,10 @@ object TelaCheckout: TTelaCheckout
       Caption = 'Finalizar'
       TabOrder = 0
       OnClick = btnFinalizarClick
-      ExplicitLeft = 998
+      ExplicitLeft = 990
     end
     object btnCancelar: TButton
-      Left = 916
+      Left = 910
       Top = 9
       Width = 75
       Height = 25
@@ -108,7 +108,7 @@ object TelaCheckout: TTelaCheckout
       Caption = 'Cancelar'
       TabOrder = 1
       OnClick = btnCancelarClick
-      ExplicitLeft = 912
+      ExplicitLeft = 904
     end
   end
   object pnpTop: TPanel
@@ -118,7 +118,7 @@ object TelaCheckout: TTelaCheckout
     Height = 96
     Align = alTop
     TabOrder = 2
-    ExplicitWidth = 1093
+    ExplicitWidth = 1091
     object Label2: TLabel
       Left = 48
       Top = 40

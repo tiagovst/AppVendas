@@ -29,7 +29,6 @@ type
     SearchBox: TSearchBox;
     btnFinalizarCompra: TButton;
     pnlUsuarioLogado: TPanel;
-    btnInicio: TSpeedButton;
     btnProdutos: TSpeedButton;
     btnClientes: TSpeedButton;
     btnEstoque: TSpeedButton;
@@ -101,7 +100,7 @@ var
   FListagemUsuario: TTelaListagemUsuario;
 begin
   FListagemUsuario := TTelaListagemUsuario.Create(nil);
-  ManejoTop;
+  //ManejoTop;
 
 
   pnlSubmenuUsuarios.Visible := False;
@@ -172,7 +171,7 @@ begin
   if pnlPesquisa.Visible then
   begin
     pnlPesquisa.Align := alNone;
-    pnlPesquisa.Visible := False;
+    //pnlPesquisa.Visible := False;
   end;
 end;
 
