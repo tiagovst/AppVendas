@@ -178,6 +178,8 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\Controller\ControladorCheckout.pas"/>
+        <DCCReference Include="src\Model\ItemVenda\ItemVenda.pas"/>
+        <DCCReference Include="src\Model\ItemVenda\ItemVendaDAO.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

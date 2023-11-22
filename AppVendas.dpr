@@ -28,7 +28,9 @@ uses
   ControladorCompraInterface in 'src\Interfaces\Controlador\ControladorCompraInterface.pas',
   Compra in 'src\Model\Compra\Compra.pas',
   Checkout.View in 'src\View\Checkout.View.pas' {TelaCheckout},
-  ControladorCheckout in 'src\Controller\ControladorCheckout.pas';
+  ControladorCheckout in 'src\Controller\ControladorCheckout.pas',
+  ItemVenda in 'src\Model\ItemVenda\ItemVenda.pas',
+  ItemVendaDAO in 'src\Model\ItemVenda\ItemVendaDAO.pas';
 
 {$R *.res}
 
