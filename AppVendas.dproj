@@ -180,6 +180,9 @@
         <DCCReference Include="src\Controller\ControladorCheckout.pas"/>
         <DCCReference Include="src\Model\ItemVenda\ItemVenda.pas"/>
         <DCCReference Include="src\Model\ItemVenda\ItemVendaDAO.pas"/>
+        <DCCReference Include="src\Controller\ControladorItemVenda.pas"/>
+        <DCCReference Include="src\Interfaces\DAO\ItemVendaDAOInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorItemVendaInterface.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

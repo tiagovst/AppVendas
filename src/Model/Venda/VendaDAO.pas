@@ -16,15 +16,15 @@ type
     SQLQuery : TFDQuery;
 
     private
-    //funcoes de persistencia
-    function gerarID: Integer;
-    function Inserir(Venda: TVenda; out erro: String): Boolean;
-    function Excluir(ID: Integer; out erro: String): Boolean;
+      //funcoes de persistencia
+      function gerarID: Integer;
+      function Inserir(Venda: TVenda; out erro: String): Boolean;
+      function Excluir(ID: Integer; out erro: String): Boolean;
     
-    procedure PesquisarData(Data : TDate);
-    procedure Pesquisar();
-    procedure PesquisarVendedor(ID : Integer);
-    procedure CarregarVenda(Venda: TVenda; ID: Integer);
+      procedure PesquisarData(Data : TDate);
+      procedure Pesquisar();
+      procedure PesquisarVendedor(ID : Integer);
+      procedure CarregarVenda(Venda: TVenda; ID: Integer);
   end;
 
 var
@@ -46,10 +46,12 @@ begin
       Open();
 
       ID := FieldByName('ID').AsInteger;
-      dataVenda := FieldByName('DATA_VENDA').AsInteger;
       totalProdutos := FieldByName('TOTAL_PRODUTOS').AsInteger;
       totalPreco := FieldByName('TOTAL_PRECO').AsInteger;
       vendedor := FieldByName('VENDEDOR').AsInteger;
+      dataVenda := FieldByName('DATA_VENDA').AsInteger;
+      Desconto := FieldByName('Desconto').AsInteger;
+
     finally
       FreeAndNil(SQLQuery);
     end;
@@ -100,15 +102,15 @@ begin
   begin
     try
       Connection := dmConexao.FDConnection;
-      SQL.Text := 'insert into venda (id, data_venda, total_produtos, total_preco, vendedor, lista_produtos) ' +
-      'values (:id, :data_venda, :total_produtos, :total_preco, :vendedor, :lista_produtos)';
+      SQL.Text := 'insert into venda (id, total_produtos, total_preco, vendedor, data_venda, desconto) ' +
+      'values (:id, :total_produtos, :total_preco, :vendedor, :data_venda, :desconto)';
 
       Params.ParamByName('ID').AsInteger := ID;
-      Params.ParamByName('DATA_VENDA').AsDate := dataVenda;
-      Params.ParamByName('VENDEDOR').AsInteger := vendedor;
-      Params.ParamByName('LISTA_PRODUTOS').AsString := IDProdutos;
       Params.ParamByName('TOTAL_PRODUTOS').AsInteger := totalProdutos;
       Params.ParamByName('TOTAL_PRECO').AsFloat := totalPreco;
+      Params.ParamByName('VENDEDOR').AsInteger := vendedor;
+      Params.ParamByName('DATA_VENDA').AsDate := dataVenda;
+      Params.ParamByName('desconto').AsInteger := Desconto;
       
       ExecSQL;
       Result := True;

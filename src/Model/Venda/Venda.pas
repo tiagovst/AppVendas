@@ -16,10 +16,6 @@ type
     FDesconto: Integer;
 
   public
-    constructor Create(const ID: Integer; TotalPreco: Double; Desconto: Integer;
-    DataVenda: TDate; TotalPrdutos: Integer; Vendedor: Integer);
-
-    constructor Create(const IdVenda: Integer; precoTotal: Double; Desconto: Integer);
 
     property ID: Integer read FID write FID;
     property Desconto: Integer read FDesconto write FDesconto;
@@ -30,27 +26,5 @@ type
   end;
 
 implementation
-
-{ TVenda }
-
-constructor TVenda.Create(const IdVenda: Integer; precoTotal: Double; Desconto: Integer);
-begin
-  FID := ID;
-  FTotalPreco := TotalPreco;
-  FDesconto := Desconto;
-end;
-
-{ TVenda }
-
-constructor TVenda.Create(const ID: Integer; TotalPreco: Double;
-  Desconto: Integer; DataVenda: TDate; TotalPrdutos, Vendedor: Integer);
-begin
-  FID := ID;
-  FDataVenda := DataVenda;
-  FTotalProdutos := TotalPrdutos;
-  FTotalPreco := TotalPreco;
-  FVendedor := Vendedor;
-  FDesconto := Desconto;
-end;
 
 end.

@@ -17,7 +17,10 @@ uses
   Vcl.StdCtrls,
   Venda,
   ControladorVenda,
-  ControladorVendaInterface;
+  ItemVenda,
+  ControladorVendaInterface,
+  ControladorItemVenda,
+  ControladorItemVendaInterface;
 
 type
   TTelaCheckout = class(TForm)
@@ -58,18 +61,21 @@ var
   RegistroVenda : TVenda;
   i : Integer;
   PrecoTotal : Double;
+  uItemVenda: TItemVenda;
   uControladorVenda : IControladorVenda;
-  ProdutosID : String;
+  uControladorItemVenda : IControladorItemVenda;
   erro: String;
 begin
   RegistroVenda := TVenda.Create;
   uControladorVenda := TControladorVenda.Create;
+  uControladorItemVenda := TControladorItemVenda.Create;
   PrecoTotal := 0.0;
 
   RegistroVenda.ID := uControladorVenda.gerarID;
   RegistroVenda.dataVenda := uControladorVenda.DataAtual;
   RegistroVenda.totalProdutos := ProdutosGrid.RowCount - 1;
   RegistroVenda.vendedor := 1; // Mudar quando tiver sessão.
+  RegistroVenda.Desconto := 20;
 
   // Calculando o preço total iterando pela lista de produtos.
   for i := 1 to (ProdutosGrid.Cols[3].Count - 1) do
@@ -78,12 +84,19 @@ begin
   end;
   RegistroVenda.totalPreco := StrToFloat(FormatFloat('#0.00', PrecoTotal));
 
-  // Pegando ID's dos produtos.
-  for i := 1 to ProdutosGrid.Cols[0].Count - 1 do
-  begin
-    ProdutosID := ProdutosID + ' ' + ProdutosGrid.Cols[0].Strings[i];
-  end;
-  RegistroVenda.IDProdutos := ProdutosID;
+  for i := 1 to (ProdutosGrid.Cols[0].Count - 1) do
+    begin
+      uItemVenda := TItemVenda.Create(
+      RegistroVenda.ID,
+      RegistroVenda.Desconto,
+      StrToInt(ProdutosGrid.Cols[0].Strings[i]),
+      StrToInt(ProdutosGrid.Cols[2].Strings[i]),
+      StrToFloat(ProdutosGrid.Cols[3].Strings[i]),
+      StrToFloat(ProdutosGrid.Cols[4].Strings[i])
+      );
+
+      uControladorItemVenda.Inserir(uItemVenda, erro);
+    end;
 
   if uControladorVenda.Inserir(RegistroVenda, erro) then
   begin
@@ -93,7 +106,6 @@ begin
   begin
     ShowMessage('Erro ao registrar a venda' + sLineBreak + erro); //Retirar erro dps
   end;
-
 end;
 
 end.

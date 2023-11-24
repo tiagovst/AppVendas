@@ -30,7 +30,10 @@ uses
   Checkout.View in 'src\View\Checkout.View.pas' {TelaCheckout},
   ControladorCheckout in 'src\Controller\ControladorCheckout.pas',
   ItemVenda in 'src\Model\ItemVenda\ItemVenda.pas',
-  ItemVendaDAO in 'src\Model\ItemVenda\ItemVendaDAO.pas';
+  ItemVendaDAO in 'src\Model\ItemVenda\ItemVendaDAO.pas',
+  ControladorItemVenda in 'src\Controller\ControladorItemVenda.pas',
+  ItemVendaDAOInterface in 'src\Interfaces\DAO\ItemVendaDAOInterface.pas',
+  ControladorItemVendaInterface in 'src\Interfaces\Controlador\ControladorItemVendaInterface.pas';
 
 {$R *.res}
 

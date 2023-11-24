@@ -44,10 +44,7 @@ begin
 end;
 
 function TControladorVenda.DataAtual: TDate;
-//var
-  //Data : String;
 begin
-  //Data := FormatDateTime('dd/mm/yyyy', Now);
   Result := Date;
 end;
 
