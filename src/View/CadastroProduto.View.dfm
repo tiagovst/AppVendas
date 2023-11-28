@@ -387,6 +387,45 @@ object TelaCadastroProduto: TTelaCadastroProduto
           Text = '  /  /    '
         end
       end
+      object GroupBox5: TGroupBox
+        Left = 41
+        Top = 344
+        Width = 768
+        Height = 105
+        Caption = 'Dados'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -17
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 4
+        object txtCodigoBarras: TLabeledEdit
+          Left = 10
+          Top = 56
+          Width = 502
+          Height = 25
+          EditLabel.Width = 103
+          EditLabel.Height = 17
+          EditLabel.Caption = 'C'#243'digo de Barras'
+          EditLabel.Font.Charset = DEFAULT_CHARSET
+          EditLabel.Font.Color = clWindowText
+          EditLabel.Font.Height = -13
+          EditLabel.Font.Name = 'Segoe UI'
+          EditLabel.Font.Style = []
+          EditLabel.ParentFont = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ImeName = 'Portuguese (Brazilian ABNT)'
+          NumbersOnly = True
+          ParentFont = False
+          TabOrder = 0
+          Text = ''
+        end
+      end
     end
   end
 end

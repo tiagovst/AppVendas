@@ -24,6 +24,8 @@ object TelaCheckout: TTelaCheckout
     Height = 406
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 1089
+    ExplicitHeight = 405
     DesignSize = (
       1093
       406)
@@ -43,31 +45,35 @@ object TelaCheckout: TTelaCheckout
     object ProdutosGrid: TStringGrid
       Left = 48
       Top = 112
-      Width = 979
+      Width = 975
       Height = 288
       Anchors = [akLeft, akTop, akRight, akBottom]
       Color = clBtnFace
       FixedCols = 0
       ScrollBars = ssVertical
       TabOrder = 0
+      ExplicitWidth = 971
+      ExplicitHeight = 287
     end
     object btnLimpar: TButton
-      Left = 952
+      Left = 948
       Top = 74
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Limpar'
       TabOrder = 1
+      ExplicitLeft = 944
     end
     object btnDeletar: TButton
-      Left = 871
+      Left = 867
       Top = 74
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Deletar'
       TabOrder = 2
+      ExplicitLeft = 863
     end
   end
   object pnlBottom: TPanel
@@ -77,11 +83,13 @@ object TelaCheckout: TTelaCheckout
     Height = 41
     Align = alBottom
     TabOrder = 1
+    ExplicitTop = 501
+    ExplicitWidth = 1089
     DesignSize = (
       1093
       41)
     object btnFinalizar: TButton
-      Left = 984
+      Left = 980
       Top = 9
       Width = 75
       Height = 25
@@ -89,9 +97,10 @@ object TelaCheckout: TTelaCheckout
       Caption = 'Finalizar'
       TabOrder = 0
       OnClick = btnFinalizarClick
+      ExplicitLeft = 976
     end
     object btnCancelar: TButton
-      Left = 898
+      Left = 894
       Top = 9
       Width = 75
       Height = 25
@@ -99,6 +108,7 @@ object TelaCheckout: TTelaCheckout
       Caption = 'Cancelar'
       TabOrder = 1
       OnClick = btnCancelarClick
+      ExplicitLeft = 890
     end
   end
   object pnpTop: TPanel
@@ -108,6 +118,7 @@ object TelaCheckout: TTelaCheckout
     Height = 96
     Align = alTop
     TabOrder = 2
+    ExplicitWidth = 1089
     object Label2: TLabel
       Left = 48
       Top = 40

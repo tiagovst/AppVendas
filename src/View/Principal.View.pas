@@ -15,9 +15,10 @@ uses
   Produto,
   Compra,
   Checkout.View,
-  CompraProduto.View,
-  ControladorCheckout,
-  ControladorProduto;
+  ControladorTelaCheckout,
+  ControladorProduto,
+  ControladorTelaCompraProduto,
+  ControladorTelaCompraProdutoInterface;
 
 type
   TTelaPrincipal = class(TForm)
@@ -47,6 +48,7 @@ type
     DataSource: TDataSource;
     gridProdutos: TDBGrid;
     btnEditarExcluirProduto: TSpeedButton;
+    btnInicio: TSpeedButton;
     procedure onClick(Sender : TObject);
     procedure btnCadastrarProdutoClick(Sender: TObject);
     procedure btnEditarExcluirUsuarioClick(Sender: TObject);
@@ -116,10 +118,9 @@ end;
 
 procedure TTelaPrincipal.btnFinalizarCompraClick(Sender: TObject);
 var
-  uControladorCheckout : TControladorCheckout;
+  uControladorCheckout : TControladorTelaCheckout;
 begin
-  uControladorCheckout := TControladorCheckout.Create;
-  uControladorCheckout.Preencher(uControladorCompra.ObterProdutos);
+  uControladorCheckout := TControladorTelaCheckout.Create(uControladorCompra.ObterProdutos);
   uControladorCheckout.MostrarTelaCheckout;
   FreeAndNil(uControladorCheckout);
 end;
@@ -137,7 +138,7 @@ procedure TTelaPrincipal.gridProdutosDblClick(Sender: TObject);
 var
   LinhaSelecionada : Integer;
   ProdutoSelecionado : TProduto;
-  FTelaAdicionarProduto : TTelaAdicionarProduto;
+  uControladorTelaCompraProduto: IControladorTelaCompraProduto;
 begin
   // Obtém a linha clicada
   LinhaSelecionada := gridProdutos.DataSource.DataSet.RecNo;
@@ -160,10 +161,8 @@ begin
     end;
   end;
 
-  FTelaAdicionarProduto := TTelaAdicionarProduto.Create(nil);
-  FTelaAdicionarProduto.PreencherProduto(ProdutoSelecionado);
-  FTelaAdicionarProduto.ReceberControlador(uControladorCompra);
-  FTelaAdicionarProduto.ShowModal;
+  uControladorTelaCompraProduto := TControladorTelaCompraProduto.Create(uControladorCompra, ProdutoSelecionado);
+  uControladorTelaCompraProduto.MostrarTelaCheckout;
 end;
 
 procedure TTelaPrincipal.ManejoTop;

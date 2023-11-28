@@ -47,6 +47,8 @@ type
     Panel3: TPanel;
     Panel4: TPanel;
     txtValidade: TLabeledEdit;
+    GroupBox5: TGroupBox;
+    txtCodigoBarras: TLabeledEdit;
     procedure FormCreate(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnVoltarClick(Sender: TObject);
@@ -73,7 +75,7 @@ begin
   Controlador := TControladorProduto.Create;
   ProdutoCache.ID := Controlador.gerarID;
   ProdutoCache.Nome := txtNomeProduto.Text;
-  //ProdutoCache.CodigoBarras := Controlador
+  ProdutoCache.CodigoBarras := txtCodigoBarras.Text;
   ProdutoCache.Descricao := txtDescricaoProduto.Text;
   ProdutoCache.Referencia := txtReferencia.Text;
   ProdutoCache.Preco := StrToFloat(txtPreco.Text);

@@ -3,8 +3,8 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Adicionar produto'
-  ClientHeight = 556
-  ClientWidth = 905
+  ClientHeight = 555
+  ClientWidth = 901
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,13 +15,11 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
   TextHeight = 15
   object pnlRodape: TPanel
     Left = 0
-    Top = 515
-    Width = 905
+    Top = 514
+    Width = 901
     Height = 41
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 514
-    ExplicitWidth = 901
     object btnAdicionarCompra: TButton
       Left = 820
       Top = 8
@@ -35,12 +33,10 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
   object pnlConteudo: TPanel
     Left = 0
     Top = 41
-    Width = 905
-    Height = 474
+    Width = 901
+    Height = 473
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 901
-    ExplicitHeight = 473
     object gboxInformacoes: TGroupBox
       AlignWithMargins = True
       Left = 25
@@ -246,11 +242,10 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
   object pnlTopo: TPanel
     Left = 0
     Top = 0
-    Width = 905
+    Width = 901
     Height = 41
     Align = alTop
     TabOrder = 2
-    ExplicitWidth = 901
     object Label1: TLabel
       Left = 25
       Top = 5

@@ -19,8 +19,8 @@
     <Transaction>2023/10/25 18:40:32.000.816,=E:\Tiago\Programming\Embarcadero\Unit1.pas</Transaction>
     <Transaction>2023/10/25 18:40:37.000.194,E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Venda.pas=E:\Tiago\Programming\Embarcadero\Unit1.pas</Transaction>
     <Transaction>2023/10/27 17:17:17.000.933,=E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.pas</Transaction>
-    <Transaction>2023/10/27 17:59:13.000.560,E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.pas=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Usuario\UsuarioDAO.pas</Transaction>
     <Transaction>2023/10/27 17:59:13.000.560,E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.dfm=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Usuario\UsuarioDAO.dfm</Transaction>
+    <Transaction>2023/10/27 17:59:13.000.560,E:\Tiago\Programming\Embarcadero\AppVendas\Unit1.pas=E:\Tiago\Programming\Embarcadero\AppVendas\src\Model\Usuario\UsuarioDAO.pas</Transaction>
     <Transaction>2023/11/01 18:27:36.000.372,=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\Interfaces\UsuarioDAOInterface.pas</Transaction>
     <Transaction>2023/11/01 18:27:48.000.297,=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\Unit1.pas</Transaction>
     <Transaction>2023/11/01 18:28:50.000.587,C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\src\Interfaces\VendaDAOInterface.pas=C:\Users\Gabriel\OneDrive\Documents\Repositórios\SalesApp\Unit1.pas</Transaction>
@@ -41,10 +41,10 @@
     <Transaction>2023/11/03 11:34:20.000.213,=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
     <Transaction>2023/11/03 11:39:59.000.109,D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas=D:\Tiago\Programming\Delphi\AppVendas\src\Interfaces\Controlador\ControladorVendaInterface.pas</Transaction>
     <Transaction>2023/11/08 14:47:31.000.666,=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
-    <Transaction>2023/11/08 14:50:06.000.058,D:\Tiago\Programming\Delphi\AppVendas\src\View\TelaCadastroUsuario.View.dfm=D:\Tiago\Programming\Delphi\AppVendas\Unit1.dfm</Transaction>
     <Transaction>2023/11/08 14:50:06.000.058,D:\Tiago\Programming\Delphi\AppVendas\src\View\TelaCadastroUsuario.View.pas=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
-    <Transaction>2023/11/08 17:26:30.000.361,=D:\Tiago\Programming\Delphi\Arrays\AppVendas\src\View\Principal.View.pas</Transaction>
+    <Transaction>2023/11/08 14:50:06.000.058,D:\Tiago\Programming\Delphi\AppVendas\src\View\TelaCadastroUsuario.View.dfm=D:\Tiago\Programming\Delphi\AppVendas\Unit1.dfm</Transaction>
     <Transaction>2023/11/08 17:26:30.000.233,=D:\Tiago\Programming\Delphi\Arrays\AppVendas\src\View\CadastroProduto.View.pas</Transaction>
+    <Transaction>2023/11/08 17:26:30.000.361,=D:\Tiago\Programming\Delphi\Arrays\AppVendas\src\View\Principal.View.pas</Transaction>
     <Transaction>2023/11/10 08:56:17.000.076,=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
     <Transaction>2023/11/10 08:56:35.000.773,D:\Tiago\Programming\Delphi\AppVendas\src\View\ListagemUsuario.View.dfm=D:\Tiago\Programming\Delphi\AppVendas\Unit1.dfm</Transaction>
     <Transaction>2023/11/10 08:56:35.000.773,D:\Tiago\Programming\Delphi\AppVendas\src\View\ListagemUsuario.View.pas=D:\Tiago\Programming\Delphi\AppVendas\Unit1.pas</Transaction>
@@ -52,11 +52,11 @@
     <Transaction>2023/11/15 20:11:49.000.986,=C:\Users\Gabriel\Documents\Repo\SalesApp\src\View\Estoque.View.pas</Transaction>
     <Transaction>2023/11/17 17:22:37.000.950,=C:\Users\tiago\Programming\SalesApp\Unit1.pas</Transaction>
     <Transaction>2023/11/17 17:24:34.000.137,C:\Users\tiago\Programming\SalesApp\src\View\CadastroUsuario.View.pas=</Transaction>
-    <Transaction>2023/11/17 17:25:20.000.184,C:\Users\tiago\Programming\SalesApp\src\View\CadastroUsuario.View.dfm=C:\Users\tiago\Programming\SalesApp\Unit1.dfm</Transaction>
     <Transaction>2023/11/17 17:25:20.000.184,C:\Users\tiago\Programming\SalesApp\src\View\CadastroUsuario.View.pas=C:\Users\tiago\Programming\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/17 17:25:20.000.184,C:\Users\tiago\Programming\SalesApp\src\View\CadastroUsuario.View.dfm=C:\Users\tiago\Programming\SalesApp\Unit1.dfm</Transaction>
     <Transaction>2023/11/17 18:26:34.000.001,=C:\Users\tiago\Programming\SalesApp\Unit1.pas</Transaction>
-    <Transaction>2023/11/17 18:56:59.000.241,C:\Users\tiago\Programming\SalesApp\src\View\ManejoUsuario.View.pas=C:\Users\tiago\Programming\SalesApp\Unit1.pas</Transaction>
     <Transaction>2023/11/17 18:56:59.000.241,C:\Users\tiago\Programming\SalesApp\src\View\ManejoUsuario.View.dfm=C:\Users\tiago\Programming\SalesApp\Unit1.dfm</Transaction>
+    <Transaction>2023/11/17 18:56:59.000.241,C:\Users\tiago\Programming\SalesApp\src\View\ManejoUsuario.View.pas=C:\Users\tiago\Programming\SalesApp\Unit1.pas</Transaction>
     <Transaction>2023/11/18 13:18:10.000.352,=C:\Users\Gabriel\Documents\Repo\SalesApp\Unit1.pas</Transaction>
     <Transaction>2023/11/18 13:20:29.000.962,C:\Users\Gabriel\Documents\Repo\SalesApp\src\View\CompraProduto.View.pas=C:\Users\Gabriel\Documents\Repo\SalesApp\Unit1.pas</Transaction>
     <Transaction>2023/11/18 13:20:29.000.962,C:\Users\Gabriel\Documents\Repo\SalesApp\src\View\CompraProduto.View.dfm=C:\Users\Gabriel\Documents\Repo\SalesApp\Unit1.dfm</Transaction>
@@ -71,12 +71,17 @@
     <Transaction>2023/11/22 15:07:21.000.668,C:\Users\tiago\SalesApp\src\Model\ItemVenda\Item.pas=C:\Users\tiago\SalesApp\src\Model\ItemVenda\ItemVenda.pas</Transaction>
     <Transaction>2023/11/22 15:24:21.000.341,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
     <Transaction>2023/11/22 15:24:37.000.012,C:\Users\tiago\SalesApp\Unit1.pas=C:\Users\tiago\SalesApp\src\Model\ItemVenda\ItemVendaDAO.pas</Transaction>
-    <Transaction>2023/11/24 14:35:51.795,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
-    <Transaction>2023/11/24 14:36:02.997,C:\Users\tiago\SalesApp\src\Controller\ControladorItemVenda.pas=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
-    <Transaction>2023/11/24 14:58:02.641,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
-    <Transaction>2023/11/24 14:58:16.575,C:\Users\tiago\SalesApp\src\Interfaces\DAO\ItemVendaDAOInterface.pas=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
-    <Transaction>2023/11/24 17:16:56.782,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
-    <Transaction>2023/11/24 17:17:11.204,C:\Users\tiago\SalesApp\src\Interfaces\Controlador\ControladorItemVendaInterface.pas=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/24 14:35:51.000.795,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/24 14:36:02.000.997,C:\Users\tiago\SalesApp\src\Controller\ControladorItemVenda.pas=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/24 14:58:02.000.641,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/24 14:58:16.000.575,C:\Users\tiago\SalesApp\src\Interfaces\DAO\ItemVendaDAOInterface.pas=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/24 17:16:56.000.782,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/24 17:17:11.000.204,C:\Users\tiago\SalesApp\src\Interfaces\Controlador\ControladorItemVendaInterface.pas=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/28 14:50:53.000.489,C:\Users\tiago\SalesApp\src\Controller\ControladorCheckout.pas=C:\Users\tiago\SalesApp\src\Controller\ControladorTelaCheckout.pas</Transaction>
+    <Transaction>2023/11/28 14:58:07.207,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/28 14:59:49.660,C:\Users\tiago\SalesApp\src\Controller\ControladorTelaCompraProduto.pas=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/28 15:22:14.285,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/11/28 15:22:35.477,C:\Users\tiago\SalesApp\src\Interfaces\Controlador\ControladorTelaCompraProdutoInterface.pas=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="src"/>
@@ -85,8 +90,9 @@
     <File Path="src\Controller\ControladorUsuario.pas"/>
     <File Path="src\Controller\ControladorVenda.pas"/>
     <File Path="src\Controller\ControladorCompra.pas"/>
-    <File Path="src\Controller\ControladorCheckout.pas"/>
+    <File Path="src\Controller\ControladorTelaCheckout.pas"/>
     <File Path="src\Controller\ControladorItemVenda.pas"/>
+    <File Path="src\Controller\ControladorTelaCompraProduto.pas"/>
     <File Path="src\Interfaces"/>
     <File Path="src\Interfaces\Controlador"/>
     <File Path="src\Interfaces\Controlador\ControladorProdutoInterface.pas"/>
@@ -94,6 +100,7 @@
     <File Path="src\Interfaces\Controlador\ControladorVendaInterface.pas"/>
     <File Path="src\Interfaces\Controlador\ControladorCompraInterface.pas"/>
     <File Path="src\Interfaces\Controlador\ControladorItemVendaInterface.pas"/>
+    <File Path="src\Interfaces\Controlador\ControladorTelaCompraProdutoInterface.pas"/>
     <File Path="src\Interfaces\DAO"/>
     <File Path="src\Interfaces\DAO\ProdutoDAOInterface.pas"/>
     <File Path="src\Interfaces\DAO\UsuarioDAOInterface.pas"/>

@@ -28,12 +28,14 @@ uses
   ControladorCompraInterface in 'src\Interfaces\Controlador\ControladorCompraInterface.pas',
   Compra in 'src\Model\Compra\Compra.pas',
   Checkout.View in 'src\View\Checkout.View.pas' {TelaCheckout},
-  ControladorCheckout in 'src\Controller\ControladorCheckout.pas',
+  ControladorTelaCheckout in 'src\Controller\ControladorTelaCheckout.pas',
   ItemVenda in 'src\Model\ItemVenda\ItemVenda.pas',
   ItemVendaDAO in 'src\Model\ItemVenda\ItemVendaDAO.pas',
   ControladorItemVenda in 'src\Controller\ControladorItemVenda.pas',
   ItemVendaDAOInterface in 'src\Interfaces\DAO\ItemVendaDAOInterface.pas',
-  ControladorItemVendaInterface in 'src\Interfaces\Controlador\ControladorItemVendaInterface.pas';
+  ControladorItemVendaInterface in 'src\Interfaces\Controlador\ControladorItemVendaInterface.pas',
+  ControladorTelaCompraProduto in 'src\Controller\ControladorTelaCompraProduto.pas',
+  ControladorTelaCompraProdutoInterface in 'src\Interfaces\Controlador\ControladorTelaCompraProdutoInterface.pas';
 
 {$R *.res}
 

@@ -177,12 +177,14 @@
             <Form>TelaCheckout</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\Controller\ControladorCheckout.pas"/>
+        <DCCReference Include="src\Controller\ControladorTelaCheckout.pas"/>
         <DCCReference Include="src\Model\ItemVenda\ItemVenda.pas"/>
         <DCCReference Include="src\Model\ItemVenda\ItemVendaDAO.pas"/>
         <DCCReference Include="src\Controller\ControladorItemVenda.pas"/>
         <DCCReference Include="src\Interfaces\DAO\ItemVendaDAOInterface.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorItemVendaInterface.pas"/>
+        <DCCReference Include="src\Controller\ControladorTelaCompraProduto.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorTelaCompraProdutoInterface.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

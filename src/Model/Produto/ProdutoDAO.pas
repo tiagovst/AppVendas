@@ -201,8 +201,6 @@ begin
 
   DataSource.DataSet := SQLQuery;
 
-
-
 end;
 
 procedure TProdutoDAO.PesquisarCategoria(Categoria: String);

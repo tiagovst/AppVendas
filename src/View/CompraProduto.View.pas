@@ -34,8 +34,7 @@ type
     ControladorCompra: IControladorCompra;
     uProduto: TProduto;
   public
-    procedure PreencherProduto(Produto : TProduto);
-    procedure ReceberControlador(Controlador: IControladorCompra);
+    constructor Carregar(Controlador: IControladorCompra; Produto: TProduto);
   end;
 
 var
@@ -47,11 +46,6 @@ implementation
 
 { TTelaAdicionarProduto }
 
-procedure TTelaAdicionarProduto.ReceberControlador(Controlador: IControladorCompra);
-begin
-  ControladorCompra := Controlador;
-end;
-
 procedure TTelaAdicionarProduto.btnAdicionarCompraClick(Sender: TObject);
 begin
   try
@@ -62,16 +56,10 @@ begin
   end;
 end;
 
-procedure TTelaAdicionarProduto.PreencherProduto(Produto : TProduto);
+constructor TTelaAdicionarProduto.Carregar(Controlador: IControladorCompra; Produto: TProduto);
 begin
+  ControladorCompra := Controlador;
   uProduto := Produto;
-  with uProduto do
-  begin
-    txtNomeProduto.Text := Nome;
-    txtCategoria.Text := Categoria;
-    txtPreco.Text := Preco.ToString;
-    txtQuantidadeEstoque.Text := QuantidadeEstoque.ToString;
-  end;
 end;
 
 procedure TTelaAdicionarProduto.txtQuantidadeCompraChange(Sender: TObject);

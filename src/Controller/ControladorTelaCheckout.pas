@@ -1,4 +1,4 @@
-unit ControladorCheckout;
+unit ControladorTelaCheckout;
 
 interface
 
@@ -10,44 +10,29 @@ uses
   Vcl.Dialogs;
 
 type
-TControladorCheckout = class
+TControladorTelaCheckout = class
   private
     FTelaCheckout : TTelaCheckout;
 
   public
-    constructor Create;
+    constructor Create(const Produtos: TArray<TProdutoQuantidade>) overload;
     procedure MostrarTelaCheckout;
     procedure FecharTelaCheckout;
-    procedure Preencher(Produtos : TArray<TProdutoQuantidade>);
 end;
 
 implementation
 
-{ TControladorCheckout }
 
-constructor TControladorCheckout.Create;
-begin
-  FTelaCheckout := TTelaCheckout.Create(nil);
-end;
+{ TControladorTelaCheckout }
 
-procedure TControladorCheckout.FecharTelaCheckout;
-begin
-  FTelaCheckout.Close;
-end;
-
-procedure TControladorCheckout.MostrarTelaCheckout;
-begin
-  FTelaCheckout.Show;
-end;
-
-procedure TControladorCheckout.Preencher(
-  Produtos: TArray<TProdutoQuantidade>);
+constructor TControladorTelaCheckout.Create(const Produtos: TArray<TProdutoQuantidade>);
 var
   RowIndex, ColIndex: Integer;
   StringGrid :TStringGrid;
 begin
+  FTelaCheckout := TTelaCheckout.Create(nil);
 
-  StringGrid := FTelaCheckout.ProdutosGrid;
+    StringGrid := FTelaCheckout.ProdutosGrid;
 
   // Adiciona colunas
   StringGrid.ColCount := 5;
@@ -83,7 +68,16 @@ begin
     ColWidths[3] := (Width - ColWidths[1]) div 3 - 30;
     ColWidths[4] := (Width - ColWidths[1]) div 3 - 30;
   end;
+end;
 
+procedure TControladorTelaCheckout.FecharTelaCheckout;
+begin
+  FTelaCheckout.Close;
+end;
+
+procedure TControladorTelaCheckout.MostrarTelaCheckout;
+begin
+  FTelaCheckout.Show;
 end;
 
 end.
