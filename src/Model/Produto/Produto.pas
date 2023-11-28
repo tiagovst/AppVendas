@@ -20,6 +20,7 @@ type
     FDataValidade: TDate;
 
   public
+    //constructor Create(const id : Integer; nome : String; codigoBarras : String; ) overload;
     property ID: Integer read FID write FID;
     property Nome: String read FNome write FNome;
     property CodigoBarras: String read FCodigoBarras write FCodigoBarras;

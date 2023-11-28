@@ -4,25 +4,28 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB,
-  Vcl.Grids, Vcl.DBGrids;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids,
+  Data.DB,
+  ControladorProduto,
+  ControladorProdutoInterface, Vcl.WinXCtrls, Vcl.Imaging.pngimage;
 
 type
   TTelaEstoque = class(TForm)
     Panel3: TPanel;
     Label1: TLabel;
     Label2: TLabel;
-    btnVoltar: TButton;
     Panel1: TPanel;
-    DBGrid1: TDBGrid;
+    DBGridProdutos: TDBGrid;
     Label3: TLabel;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
     lblTotalEstoque: TLabel;
-  private
-    { Private declarations }
-  public
-    { Public declarations }
+    ComboBoxNivel: TComboBox;
+    ComboBoxCategoria: TComboBox;
+    Label4: TLabel;
+    Label5: TLabel;
+    SearchBoxNomeProduto: TSearchBox;
+    Image: TImage;
   end;
 
 var

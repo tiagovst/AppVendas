@@ -18,7 +18,9 @@ uses
   ControladorTelaCheckout,
   ControladorProduto,
   ControladorTelaCompraProduto,
-  ControladorTelaCompraProdutoInterface;
+  ControladorTelaCompraProdutoInterface,
+  ControladorTelaEstoque,
+  ControladorTelaEstoqueInterface;
 
 type
   TTelaPrincipal = class(TForm)
@@ -32,7 +34,6 @@ type
     pnlUsuarioLogado: TPanel;
     btnProdutos: TSpeedButton;
     btnClientes: TSpeedButton;
-    btnEstoque: TSpeedButton;
     btnUsuarios: TSpeedButton;
     pnlSubmenuProdutos: TPanel;
     btnVerProdutos: TSpeedButton;
@@ -49,6 +50,7 @@ type
     gridProdutos: TDBGrid;
     btnEditarExcluirProduto: TSpeedButton;
     btnInicio: TSpeedButton;
+    btnEstoque: TSpeedButton;
     procedure onClick(Sender : TObject);
     procedure btnCadastrarProdutoClick(Sender: TObject);
     procedure btnEditarExcluirUsuarioClick(Sender: TObject);
@@ -56,6 +58,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure gridProdutosDblClick(Sender: TObject);
     procedure btnFinalizarCompraClick(Sender: TObject);
+    procedure btnEstoqueClick(Sender: TObject);
   private
     uControladorCompra: IControladorCompra;
     procedure ManejoTop;
@@ -114,6 +117,15 @@ begin
     Show;
   end;
 
+end;
+
+procedure TTelaPrincipal.btnEstoqueClick(Sender: TObject);
+var
+  uControladorTelaEstoque : IControladorTelaEstoque;
+begin
+  uControladorTelaEstoque := TControladorTelaEstoque.Create(DataSource);
+  uControladorTelaEstoque.MostrarTela(pnlConteudo);
+  ManejoTop;
 end;
 
 procedure TTelaPrincipal.btnFinalizarCompraClick(Sender: TObject);

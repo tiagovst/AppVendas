@@ -185,6 +185,8 @@
         <DCCReference Include="src\Interfaces\Controlador\ControladorItemVendaInterface.pas"/>
         <DCCReference Include="src\Controller\ControladorTelaCompraProduto.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorTelaCompraProdutoInterface.pas"/>
+        <DCCReference Include="src\Controller\ControladorTelaEstoque.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorTelaEstoqueInterface.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -14,11 +14,11 @@ type
     function Inserir(Produto: TProduto; out erro: String): Boolean;
     function Alterar(Produto: TProduto; out erro: String): Boolean;
     function Excluir(ID: Integer; out erro: String): Boolean;
+    function CarregarProduto(IDProduto: Integer): TProduto;
 
     procedure PesquisarCategoria(Categoria: String);
     procedure PesquisarNome(Nome: String);
     procedure Pesquisar(DataSource: TDataSource);
-    procedure CarregarProduto(Produto: TProduto; ID: Integer);
   end;
 
 implementation

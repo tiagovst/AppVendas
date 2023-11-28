@@ -20,7 +20,10 @@ uses
   ItemVenda,
   ControladorVendaInterface,
   ControladorItemVenda,
-  ControladorItemVendaInterface;
+  ControladorItemVendaInterface,
+  ControladorProdutoInterface,
+  ControladorProduto,
+  Produto;
 
 type
   TTelaCheckout = class(TForm)
@@ -65,10 +68,14 @@ var
   uControladorVenda : IControladorVenda;
   uControladorItemVenda : IControladorItemVenda;
   erro: String;
+  uControladorProduto : IControladorProduto;
+  produto : TProduto;
 begin
   RegistroVenda := TVenda.Create;
   uControladorVenda := TControladorVenda.Create;
   uControladorItemVenda := TControladorItemVenda.Create;
+  uControladorProduto := TControladorProduto.Create;
+  produto := TProduto.Create;
   PrecoTotal := 0.0;
 
   RegistroVenda.ID := uControladorVenda.gerarID;
@@ -84,8 +91,13 @@ begin
   end;
   RegistroVenda.totalPreco := StrToFloat(FormatFloat('#0.00', PrecoTotal));
 
+
   for i := 1 to (ProdutosGrid.Cols[0].Count - 1) do
     begin
+      produto := uControladorProduto.CarregarProduto(StrToInt(ProdutosGrid.Cols[0].Strings[i]));
+      produto.QuantidadeEstoque := produto.QuantidadeEstoque - StrToInt(ProdutosGrid.Cols[2].Strings[i]);
+      uControladorProduto.Alterar(produto, erro);
+
       uItemVenda := TItemVenda.Create(
       RegistroVenda.ID,
       RegistroVenda.Desconto,

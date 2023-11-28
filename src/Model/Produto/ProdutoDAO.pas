@@ -22,11 +22,11 @@ type
     function Inserir(Produto: TProduto; out erro: String): Boolean;
     function Alterar(Produto: TProduto; out erro: String): Boolean;
     function Excluir(ID: Integer; out erro: String): Boolean;
+    function CarregarProduto(IDProduto: Integer): TProduto;
 
     procedure PesquisarNome(Nome: String);
     procedure PesquisarCategoria(Categoria: String);
     procedure Pesquisar(DataSource: TDataSource);
-    procedure CarregarProduto(Produto: TProduto; ID: Integer);
 
   end;
 
@@ -76,18 +76,21 @@ begin
   FreeAndNil(SQLQuery);
 end;
 
-procedure TProdutoDAO.CarregarProduto(Produto: TProduto; ID: Integer);
+function TProdutoDAO.CarregarProduto(IDProduto: Integer): TProduto;
+var
+  NovoProduto : TProduto;
 begin
   SQLQuery := TFDQuery.Create(nil);
+  NovoProduto := TProduto.Create;
 
-  with SQLQuery, Produto do
+  with SQLQuery, NovoProduto do
   begin
     try
       Connection := dmConexao.FDConnection;
 
       SQL.Text := 'SELECT * FROM Produtos WHERE (ID = :ID)';
 
-      Params.ParamByName('ID').AsInteger := ID;
+      Params.ParamByName('ID').AsInteger := IDProduto;
       Open();
 
       ID := FieldByName('ID').AsInteger;
@@ -95,13 +98,14 @@ begin
       CodigoBarras := FieldByName('CODIGO_BARRAS').AsString;
       Descricao := FieldByName('DESCRICAO').AsString;
       Referencia := FieldByName('REFERENCIA').AsString;
-      Preco := FieldByName('Preco').AsFloat;
-      Categoria := FieldByName('Categoria').AsString;
-      QuantidadeEstoque := FieldByName('QuantidadeEstoque').AsInteger;
-      Fornecedor := FieldByName('Fornecedor').AsString;
-      DataValidade := FieldByName('DataValidade').AsDateTime;
+      Preco := FieldByName('PRECO').AsFloat;
+      Categoria := FieldByName('CATEGORIA').AsString;
+      QuantidadeEstoque := FieldByName('QUANTIDADE_ESTOQUE').AsInteger;
+      Fornecedor := FieldByName('FORNECEDOR').AsString;
+      DataValidade := FieldByName('DATA_VALIDADE').AsDateTime;
 
     finally
+      Result := NovoProduto;
       FreeAndNil(SQLQuery);
     end;
   end;

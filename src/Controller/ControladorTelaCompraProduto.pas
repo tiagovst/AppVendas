@@ -33,6 +33,7 @@ begin
   FTelaAdicionarProduto := TTelaAdicionarProduto.Create(nil);
   FTelaAdicionarProduto.Carregar(Controlador, Produto);
   uProduto := Produto;
+  PrencherProduto;
 end;
 
 procedure TControladorTelaCompraProduto.MostrarTelaCheckout;

@@ -35,7 +35,9 @@ uses
   ItemVendaDAOInterface in 'src\Interfaces\DAO\ItemVendaDAOInterface.pas',
   ControladorItemVendaInterface in 'src\Interfaces\Controlador\ControladorItemVendaInterface.pas',
   ControladorTelaCompraProduto in 'src\Controller\ControladorTelaCompraProduto.pas',
-  ControladorTelaCompraProdutoInterface in 'src\Interfaces\Controlador\ControladorTelaCompraProdutoInterface.pas';
+  ControladorTelaCompraProdutoInterface in 'src\Interfaces\Controlador\ControladorTelaCompraProdutoInterface.pas',
+  ControladorTelaEstoque in 'src\Controller\ControladorTelaEstoque.pas',
+  ControladorTelaEstoqueInterface in 'src\Interfaces\Controlador\ControladorTelaEstoqueInterface.pas';
 
 {$R *.res}
 
