@@ -37,7 +37,9 @@ uses
   ControladorTelaCompraProduto in 'src\Controller\ControladorTelaCompraProduto.pas',
   ControladorTelaCompraProdutoInterface in 'src\Interfaces\Controlador\ControladorTelaCompraProdutoInterface.pas',
   ControladorTelaEstoque in 'src\Controller\ControladorTelaEstoque.pas',
-  ControladorTelaEstoqueInterface in 'src\Interfaces\Controlador\ControladorTelaEstoqueInterface.pas';
+  ControladorTelaEstoqueInterface in 'src\Interfaces\Controlador\ControladorTelaEstoqueInterface.pas',
+  ControladorTelaCadastroProduto in 'src\Controller\ControladorTelaCadastroProduto.pas',
+  ControladorTelaCadastroProdutoInterface in 'src\Interfaces\Controlador\ControladorTelaCadastroProdutoInterface.pas';
 
 {$R *.res}
 

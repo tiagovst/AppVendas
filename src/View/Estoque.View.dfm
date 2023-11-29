@@ -157,14 +157,18 @@ object TelaEstoque: TTelaEstoque
       Top = 160
       Width = 1024
       Height = 351
+      Hint = 'Clique duas vezes num produto para edit'#225'-lo'
       Anchors = [akLeft, akTop, akRight, akBottom]
+      ParentShowHint = False
       ReadOnly = True
+      ShowHint = True
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
+      OnDblClick = DBGridProdutosDblClick
     end
     object GroupBox1: TGroupBox
       Left = 185
@@ -179,12 +183,18 @@ object TelaEstoque: TTelaEstoque
       Font.Style = []
       ParentFont = False
       TabOrder = 1
+      DesignSize = (
+        216
+        105)
       object lblTotalEstoque: TLabel
-        Left = 88
-        Top = 48
-        Width = 40
+        Left = 97
+        Top = 45
+        Width = 23
         Height = 23
-        Caption = '0000'
+        Alignment = taCenter
+        Anchors = [akLeft, akTop, akRight, akBottom]
+        AutoSize = False
+        Caption = '0'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -17
@@ -270,6 +280,15 @@ object TelaEstoque: TTelaEstoque
       Height = 23
       TabOrder = 3
       TextHint = 'Pesquisar por nome'
+    end
+    object Button1: TButton
+      Left = 808
+      Top = 81
+      Width = 257
+      Height = 25
+      Caption = 'Cadastrar novo produto'
+      TabOrder = 4
+      OnClick = Button1Click
     end
   end
 end

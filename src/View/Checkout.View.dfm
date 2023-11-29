@@ -45,35 +45,35 @@ object TelaCheckout: TTelaCheckout
     object ProdutosGrid: TStringGrid
       Left = 48
       Top = 112
-      Width = 969
+      Width = 963
       Height = 288
       Anchors = [akLeft, akTop, akRight, akBottom]
       Color = clBtnFace
       FixedCols = 0
       ScrollBars = ssVertical
       TabOrder = 0
-      ExplicitWidth = 963
+      ExplicitWidth = 957
       ExplicitHeight = 279
     end
     object btnLimpar: TButton
-      Left = 942
+      Left = 936
       Top = 74
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Limpar'
       TabOrder = 1
-      ExplicitLeft = 936
+      ExplicitLeft = 930
     end
     object btnDeletar: TButton
-      Left = 861
+      Left = 855
       Top = 74
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Deletar'
       TabOrder = 2
-      ExplicitLeft = 855
+      ExplicitLeft = 849
     end
   end
   object pnlBottom: TPanel
@@ -89,7 +89,7 @@ object TelaCheckout: TTelaCheckout
       1093
       41)
     object btnFinalizar: TButton
-      Left = 974
+      Left = 968
       Top = 9
       Width = 75
       Height = 25
@@ -97,10 +97,10 @@ object TelaCheckout: TTelaCheckout
       Caption = 'Finalizar'
       TabOrder = 0
       OnClick = btnFinalizarClick
-      ExplicitLeft = 968
+      ExplicitLeft = 962
     end
     object btnCancelar: TButton
-      Left = 888
+      Left = 882
       Top = 9
       Width = 75
       Height = 25
@@ -108,7 +108,7 @@ object TelaCheckout: TTelaCheckout
       Caption = 'Cancelar'
       TabOrder = 1
       OnClick = btnCancelarClick
-      ExplicitLeft = 882
+      ExplicitLeft = 876
     end
   end
   object pnpTop: TPanel

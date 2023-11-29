@@ -20,7 +20,10 @@ type
     FDataValidade: TDate;
 
   public
-    //constructor Create(const id : Integer; nome : String; codigoBarras : String; ) overload;
+//    constructor Create(const CID: Integer; CNome: String; CCodigoBarras: String;
+//     CDescricao: String; CReferencia: String; CPreco: Double; CFornecedor: String;
+//     CDataValidade: TDate; CCategoria: String; CQuantidadeEstoque: Integer) overload;
+
     property ID: Integer read FID write FID;
     property Nome: String read FNome write FNome;
     property CodigoBarras: String read FCodigoBarras write FCodigoBarras;
@@ -35,5 +38,7 @@ type
   end;
 
 implementation
+
+{ TProduto }
 
 end.

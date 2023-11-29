@@ -3,7 +3,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
   Top = 0
   BorderStyle = bsNone
   Caption = 'Cadastro de Produto'
-  ClientHeight = 607
+  ClientHeight = 631
   ClientWidth = 870
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,16 +17,18 @@ object TelaCadastroProduto: TTelaCadastroProduto
     Left = 0
     Top = 0
     Width = 870
-    Height = 607
+    Height = 631
     Align = alClient
     TabOrder = 0
+    ExplicitHeight = 607
     object Panel2: TPanel
       Left = 1
-      Top = 566
+      Top = 590
       Width = 868
       Height = 40
       Align = alBottom
       TabOrder = 0
+      ExplicitTop = 566
       DesignSize = (
         868
         40)
@@ -105,9 +107,10 @@ object TelaCadastroProduto: TTelaCadastroProduto
       Left = 1
       Top = 97
       Width = 868
-      Height = 469
+      Height = 493
       Align = alClient
       TabOrder = 2
+      ExplicitHeight = 469
       object GroupBox1: TGroupBox
         AlignWithMargins = True
         Left = 41

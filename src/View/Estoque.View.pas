@@ -7,7 +7,13 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids,
   Data.DB,
   ControladorProduto,
-  ControladorProdutoInterface, Vcl.WinXCtrls, Vcl.Imaging.pngimage;
+  ControladorProdutoInterface,
+  ControladorTelaCadastroProduto,
+  ControladorTelaCadastroProdutoInterface,
+  Produto,
+  CadastroProduto.View,
+  Vcl.WinXCtrls,
+  Vcl.Imaging.pngimage;
 
 type
   TTelaEstoque = class(TForm)
@@ -26,6 +32,14 @@ type
     Label5: TLabel;
     SearchBoxNomeProduto: TSearchBox;
     Image: TImage;
+    Button1: TButton;
+    procedure DBGridProdutosDblClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    private
+      ProdutoSelecionado : TProduto;
+      uControladorProduto : IControladorProduto;
+      uControladorTelaCadastroProduto : IControladorTelaCadastroProduto;
+      procedure PreencherProduto;
   end;
 
 var
@@ -34,5 +48,31 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TTelaEstoque.Button1Click(Sender: TObject);
+begin
+  uControladorTelaCadastroProduto := TControladorTelaCadastroProduto.Create;
+end;
+
+procedure TTelaEstoque.DBGridProdutosDblClick(Sender: TObject);
+begin
+  PreencherProduto;
+  uControladorTelaCadastroProduto := TControladorTelaCadastroProduto.Create(ProdutoSelecionado);
+end;
+
+procedure TTelaEstoque.PreencherProduto;
+var
+  LinhaSelecionada : Integer;
+begin
+  LinhaSelecionada := DBGridProdutos.DataSource.DataSet.RecNo;
+  uControladorProduto := TControladorProduto.Create;
+
+  if DBGridProdutos.DataSource.DataSet.Locate('ID', LinhaSelecionada, []) then
+  begin
+    ProdutoSelecionado := uControladorProduto.CarregarProduto(
+    DBGridProdutos.DataSource.DataSet.FieldByName('ID').AsInteger
+    );
+  end;
+end;
 
 end.
