@@ -23,7 +23,8 @@ uses
   ControladorItemVendaInterface,
   ControladorProdutoInterface,
   ControladorProduto,
-  Produto;
+  Produto,
+  ControladorTelaCheckoutInterface;
 
 type
   TTelaCheckout = class(TForm)
@@ -39,11 +40,7 @@ type
     btnLimpar: TButton;
     btnDeletar: TButton;
     procedure btnCancelarClick(Sender: TObject);
-    procedure btnFinalizarClick(Sender: TObject);
-  private
-  public
-
-  end;
+   end;
 
 var
   TelaCheckout: TTelaCheckout;
@@ -58,66 +55,4 @@ procedure TTelaCheckout.btnCancelarClick(Sender: TObject);
 begin
   Close;
 end;
-
-procedure TTelaCheckout.btnFinalizarClick(Sender: TObject);
-var
-  RegistroVenda : TVenda;
-  i : Integer;
-  PrecoTotal : Double;
-  uItemVenda: TItemVenda;
-  uControladorVenda : IControladorVenda;
-  uControladorItemVenda : IControladorItemVenda;
-  erro: String;
-  uControladorProduto : IControladorProduto;
-  produto : TProduto;
-begin
-  RegistroVenda := TVenda.Create;
-  uControladorVenda := TControladorVenda.Create;
-  uControladorItemVenda := TControladorItemVenda.Create;
-  uControladorProduto := TControladorProduto.Create;
-  produto := TProduto.Create;
-  PrecoTotal := 0.0;
-
-  RegistroVenda.ID := uControladorVenda.gerarID;
-  RegistroVenda.dataVenda := uControladorVenda.DataAtual;
-  RegistroVenda.totalProdutos := ProdutosGrid.RowCount - 1;
-  RegistroVenda.vendedor := 1; // Mudar quando tiver sessão.
-  RegistroVenda.Desconto := 20;
-
-  // Calculando o preço total iterando pela lista de produtos.
-  for i := 1 to (ProdutosGrid.Cols[3].Count - 1) do
-  begin
-    PrecoTotal := PrecoTotal + StrToFloat(ProdutosGrid.Cols[4].Strings[i]);
-  end;
-  RegistroVenda.totalPreco := StrToFloat(FormatFloat('#0.00', PrecoTotal));
-
-
-  for i := 1 to (ProdutosGrid.Cols[0].Count - 1) do
-    begin
-      produto := uControladorProduto.CarregarProduto(StrToInt(ProdutosGrid.Cols[0].Strings[i]));
-      produto.QuantidadeEstoque := produto.QuantidadeEstoque - StrToInt(ProdutosGrid.Cols[2].Strings[i]);
-      uControladorProduto.Alterar(produto, erro);
-
-      uItemVenda := TItemVenda.Create(
-      RegistroVenda.ID,
-      RegistroVenda.Desconto,
-      StrToInt(ProdutosGrid.Cols[0].Strings[i]),
-      StrToInt(ProdutosGrid.Cols[2].Strings[i]),
-      StrToFloat(ProdutosGrid.Cols[3].Strings[i]),
-      StrToFloat(ProdutosGrid.Cols[4].Strings[i])
-      );
-
-      uControladorItemVenda.Inserir(uItemVenda, erro);
-    end;
-
-  if uControladorVenda.Inserir(RegistroVenda, erro) then
-  begin
-    ShowMessage('Venda Cadastrda com Sucesso!');
-  end
-  else
-  begin
-    ShowMessage('Erro ao registrar a venda' + sLineBreak + erro); //Retirar erro dps
-  end;
-end;
-
 end.

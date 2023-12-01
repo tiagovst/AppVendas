@@ -49,14 +49,11 @@ type
     txtValidade: TLabeledEdit;
     GroupBox5: TGroupBox;
     txtCodigoBarras: TLabeledEdit;
+    txtID: TLabeledEdit;
     procedure FormCreate(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
-    procedure btnVoltarClick(Sender: TObject);
-  private
-    { Private declarations }
-  public
-    { Public declarations }
-  end;
+    procedure btnCancelarClick(Sender: TObject);
+    end;
 
 var
   TelaCadastroProduto: TTelaCadastroProduto;
@@ -65,15 +62,30 @@ implementation
 
 {$R *.dfm}
 
+procedure TTelaCadastroProduto.btnCancelarClick(Sender: TObject);
+begin
+  Close;
+end;
+
 procedure TTelaCadastroProduto.btnSalvarClick(Sender: TObject);
 var
   Controlador: IControladorProduto;
   ProdutoCache : TProduto;
   erro: String;
+  id : String;
 begin
   ProdutoCache := TProduto.Create;
   Controlador := TControladorProduto.Create;
-  ProdutoCache.ID := Controlador.gerarID;
+
+  id := txtID.Text;
+  if id.IsEmpty then
+  begin
+    ProdutoCache.ID := Controlador.gerarID;
+  end
+  else
+  begin
+    ProdutoCache.ID := StrToInt(txtID.Text);
+  end;
   ProdutoCache.Nome := txtNomeProduto.Text;
   ProdutoCache.CodigoBarras := txtCodigoBarras.Text;
   ProdutoCache.Descricao := txtDescricaoProduto.Text;
@@ -93,11 +105,6 @@ begin
     ShowMessage(erro);
   end;
 
-end;
-
-procedure TTelaCadastroProduto.btnVoltarClick(Sender: TObject);
-begin
-  Close;
 end;
 
 procedure TTelaCadastroProduto.FormCreate(Sender: TObject);
