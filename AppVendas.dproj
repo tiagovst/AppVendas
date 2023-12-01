@@ -189,6 +189,11 @@
         <DCCReference Include="src\Interfaces\Controlador\ControladorTelaEstoqueInterface.pas"/>
         <DCCReference Include="src\Controller\ControladorTelaCadastroProduto.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorTelaCadastroProdutoInterface.pas"/>
+        <DCCReference Include="src\Controller\ControladorTelaManejoUsuario.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorTelaManejoUsuarioInterface.pas"/>
+        <DCCReference Include="src\Controller\ControladorTelaListagemUsuario.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorTelaListagemUsuarioInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorTelaCheckoutInterface.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

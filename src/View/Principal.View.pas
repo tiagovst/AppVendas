@@ -20,7 +20,13 @@ uses
   ControladorTelaCompraProduto,
   ControladorTelaCompraProdutoInterface,
   ControladorTelaEstoque,
-  ControladorTelaEstoqueInterface;
+  ControladorTelaEstoqueInterface,
+  ControladorTelaCadastroProduto,
+  ControladorTelaCadastroProdutoInterface,
+  ControladorTelaManejoUsuario,
+  ControladorTelaManejoUsuarioInterface,
+  ControladorTelaListagemUsuarioInterface,
+  ControladorTelaListagemUsuario;
 
 type
   TTelaPrincipal = class(TForm)
@@ -45,7 +51,7 @@ type
     pnlBotoes: TPanel;
     pnlSubmenuUsuarios: TPanel;
     btnCadastrarUsuario: TSpeedButton;
-    btnEditarExcluirUsuario: TSpeedButton;
+    btnVerUsuario: TSpeedButton;
     DataSource: TDataSource;
     gridProdutos: TDBGrid;
     btnEditarExcluirProduto: TSpeedButton;
@@ -53,7 +59,7 @@ type
     btnEstoque: TSpeedButton;
     procedure onClick(Sender : TObject);
     procedure btnCadastrarProdutoClick(Sender: TObject);
-    procedure btnEditarExcluirUsuarioClick(Sender: TObject);
+    procedure btnVerUsuarioClick(Sender: TObject);
     procedure btnCadastrarUsuarioClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure gridProdutosDblClick(Sender: TObject);
@@ -73,50 +79,32 @@ implementation
 
 procedure TTelaPrincipal.btnCadastrarProdutoClick(Sender: TObject);
 var
+  uControladorTelaCadastroProduto : IControladorTelaCadastroProduto;
   FCadastroProduto : TTelaCadastroProduto;
 begin
-  FCadastroProduto := TTelaCadastroProduto.Create(nil);
   ManejoTop;
-
   pnlSubmenuProdutos.Visible := False;
-  FCadastroProduto.Parent := TelaPrincipal.pnlConteudo;
-  FCadastroProduto.Align := alClient;
-  FCadastroProduto.Show;
+  uControladorTelaCadastroProduto := TControladorTelaCadastroProduto.Create(TelaPrincipal.pnlConteudo);
 end;
 
 procedure TTelaPrincipal.btnCadastrarUsuarioClick(Sender: TObject);
 var
-  FManejoUsuario: TTelaManejoUsuario;
+  uControladorTelaManejoUsuario: IControladorTelaManejoUsuario;
 begin
-    FManejoUsuario := TTelaManejoUsuario.Create(nil);
-
     ManejoTop;
     pnlSubmenuUsuarios.Visible := False;
 
-    FManejoUsuario.Parent := TelaPrincipal.pnlConteudo;
-    FManejoUsuario.Align := alClient;
-
-
-    FManejoUsuario.Show;
+    uControladorTelaManejoUsuario := TControladorTelaManejoUsuario.Create(TelaPrincipal.pnlConteudo);
 end;
 
-procedure TTelaPrincipal.btnEditarExcluirUsuarioClick(Sender: TObject);
+procedure TTelaPrincipal.btnVerUsuarioClick(Sender: TObject);
 var
-  FListagemUsuario: TTelaListagemUsuario;
+  uControladorTelaListagemUsuario: IControladorTelaListagemUsuario;
 begin
-  FListagemUsuario := TTelaListagemUsuario.Create(nil);
-  //ManejoTop;
-
-
+  ManejoTop;
   pnlSubmenuUsuarios.Visible := False;
 
-  with FListagemUsuario do
-  begin
-    Parent := TelaPrincipal.pnlConteudo;
-    Align := alClient;
-    Show;
-  end;
-
+  uControladorTelaListagemUsuario := TControladorTelaListagemUsuario.Create(TelaPrincipal.pnlConteudo);
 end;
 
 procedure TTelaPrincipal.btnEstoqueClick(Sender: TObject);
@@ -133,8 +121,6 @@ var
   uControladorCheckout : TControladorTelaCheckout;
 begin
   uControladorCheckout := TControladorTelaCheckout.Create(uControladorCompra.ObterProdutos);
-  uControladorCheckout.MostrarTelaCheckout;
-  FreeAndNil(uControladorCheckout);
 end;
 
 procedure TTelaPrincipal.FormShow(Sender: TObject);

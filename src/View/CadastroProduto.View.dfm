@@ -20,7 +20,6 @@ object TelaCadastroProduto: TTelaCadastroProduto
     Height = 631
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 607
     object Panel2: TPanel
       Left = 1
       Top = 590
@@ -28,18 +27,18 @@ object TelaCadastroProduto: TTelaCadastroProduto
       Height = 40
       Align = alBottom
       TabOrder = 0
-      ExplicitTop = 566
       DesignSize = (
         868
         40)
       object btnCancelar: TButton
         Left = 666
-        Top = 7
+        Top = 6
         Width = 75
         Height = 25
         Anchors = [akRight, akBottom]
         Caption = 'Cancelar'
         TabOrder = 0
+        OnClick = btnCancelarClick
       end
       object btnSalvar: TButton
         Left = 760
@@ -100,7 +99,6 @@ object TelaCadastroProduto: TTelaCadastroProduto
         Font.Style = []
         ParentFont = False
         TabOrder = 0
-        OnClick = btnVoltarClick
       end
     end
     object Panel4: TPanel
@@ -110,7 +108,6 @@ object TelaCadastroProduto: TTelaCadastroProduto
       Height = 493
       Align = alClient
       TabOrder = 2
-      ExplicitHeight = 469
       object GroupBox1: TGroupBox
         AlignWithMargins = True
         Left = 41
@@ -427,6 +424,32 @@ object TelaCadastroProduto: TTelaCadastroProduto
           ParentFont = False
           TabOrder = 0
           Text = ''
+        end
+        object txtID: TLabeledEdit
+          Left = 557
+          Top = 56
+          Width = 71
+          Height = 25
+          EditLabel.Width = 12
+          EditLabel.Height = 17
+          EditLabel.Caption = 'ID'
+          EditLabel.Font.Charset = DEFAULT_CHARSET
+          EditLabel.Font.Color = clWindowText
+          EditLabel.Font.Height = -13
+          EditLabel.Font.Name = 'Segoe UI'
+          EditLabel.Font.Style = []
+          EditLabel.ParentFont = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ImeName = 'Portuguese (Brazilian ABNT)'
+          NumbersOnly = True
+          ParentFont = False
+          TabOrder = 1
+          Text = ''
+          Visible = False
         end
       end
     end

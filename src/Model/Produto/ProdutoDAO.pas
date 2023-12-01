@@ -162,10 +162,10 @@ begin
   begin
     Connection := dmConexao.FDConnection;
 
-    SQL.Text := 'insert into PRODUTOS (ID, NOME, CODIGO_BARRAS, DESCRICAO, REFERENCIA, '+
-    'PRECO, CATEGORIA, QUANTIDADE_ESTOQUE, FORNECEDOR, DATA_VALIDADE) values (' +
-    ':ID, :NOME, :CODIGO_BARRAS, :DESCRICAO, :REFERENCIA, :PRECO, :CATEGORIA, ' +
-    ':QUANTIDADE_ESTOQUE, :FORNECEDOR, :DATA_VALIDADE)';
+    SQL.Text := 'update or insert into produtos (id, nome, codigo_barras, descricao, ' +
+    'referencia, preco, categoria, quantidade_estoque, fornecedor, data_validade) ' +
+    'values (:id, :nome, :codigo_barras, :descricao, :referencia, :preco, :categoria, ' +
+    ':quantidade_estoque, :fornecedor, :data_validade) matching (id);';
 
     Params.ParamByName('ID').AsInteger := ID;
     Params.ParamByName('NOME').AsString := Nome;

@@ -21,7 +21,7 @@ object TelaPrincipal: TTelaPrincipal
     Align = alLeft
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitHeight = 633
+    ExplicitHeight = 641
     object pnlLogo: TPanel
       Left = 0
       Top = 0
@@ -38,7 +38,7 @@ object TelaPrincipal: TTelaPrincipal
       Height = 41
       Align = alBottom
       TabOrder = 1
-      ExplicitTop = 592
+      ExplicitTop = 600
     end
     object pnlBotoes: TPanel
       Left = 0
@@ -96,7 +96,6 @@ object TelaPrincipal: TTelaPrincipal
         Caption = 'In'#237'cio'
         Flat = True
         StyleName = 'Windows'
-        OnClick = onClick
         ExplicitTop = 8
       end
     end
@@ -111,8 +110,8 @@ object TelaPrincipal: TTelaPrincipal
     Color = clWindow
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 917
-    ExplicitHeight = 633
+    ExplicitWidth = 919
+    ExplicitHeight = 641
     DesignSize = (
       923
       642)
@@ -164,7 +163,7 @@ object TelaPrincipal: TTelaPrincipal
       Color = clWindow
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 917
+      ExplicitWidth = 919
       DesignSize = (
         923
         41)
@@ -176,7 +175,7 @@ object TelaPrincipal: TTelaPrincipal
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 0
         TextHint = 'Pesquisar produto'
-        ExplicitWidth = 305
+        ExplicitWidth = 307
       end
     end
     object btnFinalizarCompra: TButton
@@ -188,7 +187,7 @@ object TelaPrincipal: TTelaPrincipal
       Caption = 'Finalizar Compra'
       TabOrder = 1
       OnClick = btnFinalizarCompraClick
-      ExplicitLeft = 752
+      ExplicitLeft = 754
     end
     object pnlSubmenuProdutos: TPanel
       Left = 0
@@ -325,7 +324,7 @@ object TelaPrincipal: TTelaPrincipal
         OnClick = btnCadastrarUsuarioClick
         ExplicitTop = 8
       end
-      object btnEditarExcluirUsuario: TSpeedButton
+      object btnVerUsuario: TSpeedButton
         Left = 0
         Top = 0
         Width = 179
@@ -334,7 +333,7 @@ object TelaPrincipal: TTelaPrincipal
         Caption = 'Ver usu'#225'rios'
         Flat = True
         StyleName = 'Windows'
-        OnClick = btnEditarExcluirUsuarioClick
+        OnClick = btnVerUsuarioClick
         ExplicitTop = 8
       end
     end

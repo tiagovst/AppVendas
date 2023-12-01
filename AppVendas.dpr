@@ -39,7 +39,12 @@ uses
   ControladorTelaEstoque in 'src\Controller\ControladorTelaEstoque.pas',
   ControladorTelaEstoqueInterface in 'src\Interfaces\Controlador\ControladorTelaEstoqueInterface.pas',
   ControladorTelaCadastroProduto in 'src\Controller\ControladorTelaCadastroProduto.pas',
-  ControladorTelaCadastroProdutoInterface in 'src\Interfaces\Controlador\ControladorTelaCadastroProdutoInterface.pas';
+  ControladorTelaCadastroProdutoInterface in 'src\Interfaces\Controlador\ControladorTelaCadastroProdutoInterface.pas',
+  ControladorTelaManejoUsuario in 'src\Controller\ControladorTelaManejoUsuario.pas',
+  ControladorTelaManejoUsuarioInterface in 'src\Interfaces\Controlador\ControladorTelaManejoUsuarioInterface.pas',
+  ControladorTelaListagemUsuario in 'src\Controller\ControladorTelaListagemUsuario.pas',
+  ControladorTelaListagemUsuarioInterface in 'src\Interfaces\Controlador\ControladorTelaListagemUsuarioInterface.pas',
+  ControladorTelaCheckoutInterface in 'src\Interfaces\Controlador\ControladorTelaCheckoutInterface.pas';
 
 {$R *.res}
 

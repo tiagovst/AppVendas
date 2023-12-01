@@ -7,6 +7,7 @@ uses
   ControladorTelaCadastroProdutoInterface,
   CadastroProduto.View,
   Vcl.Forms,
+  Vcl.Controls,
   Produto;
 
 type
@@ -21,6 +22,7 @@ type
   public
     constructor Create(const produto : TProduto) overload;
     constructor Create overload;
+    constructor Create(const parent: TWinControl) overload;
   end;
 
 implementation
@@ -34,6 +36,7 @@ begin
   FTelaCadastroProduto.BorderStyle := bsDialog;
   FTelaCadastroProduto.Position := poDesktopCenter;
   FTelaCadastroProduto.Label1.Caption := 'Manejo de produto';
+  FTelaCadastroProduto.txtID.Visible := True;
   PreencherTela;
   MostrarTela;
 end;
@@ -44,6 +47,14 @@ begin
   FTelaCadastroProduto.BorderStyle := bsDialog;
   FTelaCadastroProduto.Position := poDesktopCenter;
   MostrarTela;
+end;
+
+constructor TControladorTelaCadastroProduto.Create(const parent: TWinControl);
+begin
+  FTelaCadastroProduto := TTelaCadastroProduto.Create(nil);
+  FTelaCadastroProduto.Parent := parent;
+  FTelaCadastroProduto.Align := AlClient;
+  FTelaCadastroProduto.Show;
 end;
 
 procedure TControladorTelaCadastroProduto.FecharTela;
@@ -61,6 +72,7 @@ begin
   with FTelaCadastroProduto, produtoSelecionado do
   begin
     txtNomeProduto.Text := Nome;
+    txtID.Text := IntToStr(ID);
     txtDescricaoProduto.Text := Descricao;
     txtQuantidadeEstoque.Text := IntToStr(QuantidadeEstoque);
     txtPreco.Text := FloatToStr(Preco);
