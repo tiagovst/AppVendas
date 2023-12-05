@@ -57,7 +57,7 @@ end;
 procedure TTelaEstoque.DBGridProdutosDblClick(Sender: TObject);
 begin
   PreencherProduto;
-  uControladorTelaCadastroProduto := TControladorTelaCadastroProduto.Create(ProdutoSelecionado);
+  uControladorTelaCadastroProduto := TControladorTelaCadastroProduto.CreateEditarProduto(ProdutoSelecionado);
 end;
 
 procedure TTelaEstoque.PreencherProduto;

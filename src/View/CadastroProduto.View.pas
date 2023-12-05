@@ -15,13 +15,10 @@ uses
   Vcl.Mask,
   ControladorProdutoInterface,
   ControladorProduto,
-  Produto;
+  Produto, Vcl.Imaging.pngimage;
 
 type
   TTelaCadastroProduto = class(TForm)
-    btnVoltar: TButton;
-    Label1: TLabel;
-    Label2: TLabel;
     GroupBox1: TGroupBox;
     Label3: TLabel;
     txtNomeProduto: TEdit;
@@ -44,12 +41,15 @@ type
     btnCancelar: TButton;
     Panel1: TPanel;
     Panel2: TPanel;
-    Panel3: TPanel;
     Panel4: TPanel;
     txtValidade: TLabeledEdit;
     GroupBox5: TGroupBox;
     txtCodigoBarras: TLabeledEdit;
     txtID: TLabeledEdit;
+    Panel3: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Image: TImage;
     procedure FormCreate(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);

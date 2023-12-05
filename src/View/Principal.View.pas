@@ -26,7 +26,7 @@ uses
   ControladorTelaManejoUsuario,
   ControladorTelaManejoUsuarioInterface,
   ControladorTelaListagemUsuarioInterface,
-  ControladorTelaListagemUsuario;
+  ControladorTelaListagemUsuario, Vcl.Imaging.pngimage;
 
 type
   TTelaPrincipal = class(TForm)
@@ -57,6 +57,8 @@ type
     btnEditarExcluirProduto: TSpeedButton;
     btnInicio: TSpeedButton;
     btnEstoque: TSpeedButton;
+    ImageLogo: TImage;
+    Label1: TLabel;
     procedure onClick(Sender : TObject);
     procedure btnCadastrarProdutoClick(Sender: TObject);
     procedure btnVerUsuarioClick(Sender: TObject);

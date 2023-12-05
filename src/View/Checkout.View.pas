@@ -24,7 +24,7 @@ uses
   ControladorProdutoInterface,
   ControladorProduto,
   Produto,
-  ControladorTelaCheckoutInterface;
+  ControladorTelaCheckoutInterface, Vcl.Imaging.pngimage;
 
 type
   TTelaCheckout = class(TForm)
@@ -34,11 +34,12 @@ type
     btnFinalizar: TButton;
     btnCancelar: TButton;
     Label1: TLabel;
-    pnpTop: TPanel;
-    Label2: TLabel;
-    Label3: TLabel;
     btnLimpar: TButton;
     btnDeletar: TButton;
+    pnlTop: TPanel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Image: TImage;
     procedure btnCancelarClick(Sender: TObject);
    end;
 

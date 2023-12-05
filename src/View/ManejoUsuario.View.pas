@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls,
+  Vcl.Imaging.pngimage;
 
 type
   TTelaManejoUsuario = class(TForm)
@@ -26,8 +27,8 @@ type
     pnlTop: TPanel;
     Label1: TLabel;
     Label3: TLabel;
-    btnVoltar: TButton;
-    procedure btnVoltarClick(Sender: TObject);
+    Image: TImage;
+    procedure btnCancelarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,7 +42,7 @@ implementation
 
 {$R *.dfm}
 
-procedure TTelaManejoUsuario.btnVoltarClick(Sender: TObject);
+procedure TTelaManejoUsuario.btnCancelarClick(Sender: TObject);
 begin
   Close;
 end;

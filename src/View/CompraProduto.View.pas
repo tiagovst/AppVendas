@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,
   Produto,
-  ControladorCompraInterface;
+  ControladorCompraInterface, Vcl.Imaging.pngimage;
 
 type
   TTelaAdicionarProduto = class(TForm)
@@ -15,8 +15,6 @@ type
     gboxInformacoes: TGroupBox;
     Label3: TLabel;
     txtNomeProduto: TEdit;
-    pnlTopo: TPanel;
-    Label1: TLabel;
     gboxQuantidade: TGroupBox;
     btnAdicionarCompra: TButton;
     txtQuantidadeCompra: TLabeledEdit;
@@ -28,6 +26,10 @@ type
     txtCategoria: TEdit;
     Label6: TLabel;
     lblSubtotal: TLabel;
+    pnlTopo: TPanel;
+    Label1: TLabel;
+    Label7: TLabel;
+    Image: TImage;
     procedure txtQuantidadeCompraChange(Sender: TObject);
     procedure btnAdicionarCompraClick(Sender: TObject);
   private
