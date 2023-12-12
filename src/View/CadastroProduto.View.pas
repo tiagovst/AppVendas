@@ -92,7 +92,16 @@ begin
   ProdutoCache.Referencia := txtReferencia.Text;
   ProdutoCache.Preco := StrToFloat(txtPreco.Text);
   ProdutoCache.Categoria := cbxCategoria.Text;
-  ProdutoCache.QuantidadeEstoque := StrToInt(txtQuantidadeEstoque.Text);
+
+  if StrToInt(txtQuantidadeEstoque.Text) > 0 then
+  begin
+    ProdutoCache.QuantidadeEstoque := StrToInt(txtQuantidadeEstoque.Text);
+  end
+  else
+  begin
+    ShowMessage('Informe uma quantidade válida do produto!');
+  end;
+
   ProdutoCache.Fornecedor := txtFornecedor.Text;
   ProdutoCache.DataValidade := StrToDate(txtValidade.Text);
 

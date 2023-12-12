@@ -7,11 +7,11 @@ uses
   ControladorTelaCadastroProdutoInterface,
   CadastroProduto.View,
   Vcl.Forms,
-  //Vcl.ActnList,
+  Vcl.ActnList,
   Vcl.Controls,
   Vcl.Dialogs,
-  //ControladorProdutoInterface,
-  //ControladorProduto,
+  ControladorProdutoInterface,
+  ControladorProduto,
   Produto;
 
 type
@@ -19,20 +19,19 @@ type
   private
     produtoSelecionado : TProduto;
     FTelaCadastroProduto : TTelaCadastroProduto;
-    //ActionBtnSalvar : TAction;
-    //uControladorProduto: IControladorProduto;
+    ActionBtnSalvar : TAction;
+    uControladorProduto: IControladorProduto;
 
-    //procedure AcaoSalvar(Sender: TObject);
+    procedure AcaoSalvar(Sender: TObject);
     procedure PreencherTelaEditarProduto;
     procedure MostrarTela;
     procedure FecharTela;
-    //procedure CadastrarNovoProduto;
-    //procedure PreencherProduto(ProdutoVazio: TProduto);
+    procedure CadastrarNovoProduto;
+    procedure PreencherProduto(ProdutoVazio: TProduto);
 
   public
     constructor CreateEditarProduto(const produto : TProduto) overload;
     constructor Create overload;
-    constructor Create(const parent: TWinControl) overload;
   end;
 
 implementation
@@ -49,10 +48,10 @@ begin
   FTelaCadastroProduto.txtID.Visible := True;
   PreencherTelaEditarProduto;
 
-//  ActionBtnSalvar := TAction.Create(nil);
-//  ActionBtnSalvar.OnExecute := AcaoSalvar;
-//  ActionBtnSalvar.Caption := 'Salvar';
-//  FTelaCadastroProduto.btnSalvar.Action := ActionBtnSalvar;
+  ActionBtnSalvar := TAction.Create(nil);
+  ActionBtnSalvar.OnExecute := AcaoSalvar;
+  ActionBtnSalvar.Caption := 'Salvar';
+  FTelaCadastroProduto.btnSalvar.Action := ActionBtnSalvar;
 
   MostrarTela;
 end;
@@ -63,26 +62,12 @@ begin
   FTelaCadastroProduto.BorderStyle := bsDialog;
   FTelaCadastroProduto.Position := poDesktopCenter;
 
-//  ActionBtnSalvar := TAction.Create(nil);
-//  ActionBtnSalvar.OnExecute := AcaoSalvar;
-//  ActionBtnSalvar.Caption := 'Salvar';
-//  FTelaCadastroProduto.btnSalvar.Action := ActionBtnSalvar;
+  ActionBtnSalvar := TAction.Create(nil);
+  ActionBtnSalvar.OnExecute := AcaoSalvar;
+  ActionBtnSalvar.Caption := 'Salvar';
+  FTelaCadastroProduto.btnSalvar.Action := ActionBtnSalvar;
 
   MostrarTela;
-end;
-
-constructor TControladorTelaCadastroProduto.Create(const parent: TWinControl);
-begin
-  FTelaCadastroProduto := TTelaCadastroProduto.Create(nil);
-  FTelaCadastroProduto.Parent := parent;
-  FTelaCadastroProduto.Align := AlClient;
-
-//  ActionBtnSalvar := TAction.Create(nil);
-//  ActionBtnSalvar.OnExecute := AcaoSalvar;
-//  ActionBtnSalvar.Caption := 'Salvar';
-//  FTelaCadastroProduto.btnSalvar.Action := ActionBtnSalvar;
-
-  FTelaCadastroProduto.Show;
 end;
 
 procedure TControladorTelaCadastroProduto.FecharTela;
@@ -110,73 +95,71 @@ begin
     txtValidade.Text := DateToStr(DataValidade);
     txtCodigoBarras.Text := CodigoBarras;
   end;
+end;
+
+procedure TControladorTelaCadastroProduto.AcaoSalvar(Sender: TObject);
+begin
+  CadastrarNovoProduto;
+end;
+
+procedure TControladorTelaCadastroProduto.CadastrarNovoProduto;
+var
+  NovoProduto : TProduto;
+  erro: String;
+begin
+  NovoProduto := TProduto.Create;
+  PreencherProduto(NovoProduto);
+  uControladorProduto := TControladorProduto.Create;
+
+  if uControladorProduto.Inserir(NovoProduto, erro) then
+  begin
+    ShowMessage('Produto inserido com sucesso');
+  end
+  else
+  begin
+    ShowMessage('Ocorreu um erro ao cadastrar o produto. Verifique todos os campos e tente novamente');
+  end;
 
 end;
 
-//procedure TControladorTelaCadastroProduto.AcaoSalvar(Sender: TObject);
-//begin
-//  CadastrarNovoProduto;
-//end;
+procedure TControladorTelaCadastroProduto.PreencherProduto(ProdutoVazio: TProduto);
+var
+  ProdutoId: String;
+begin
+  ProdutoId := FTelaCadastroProduto.txtID.Text;
+  uControladorProduto := TControladorProduto.Create;
 
-//procedure TControladorTelaCadastroProduto.CadastrarNovoProduto;
-//var
-//  NovoProduto : TProduto;
-//  erro: String;
-//begin
-//  NovoProduto := TProduto.Create;
-//  PreencherProduto(NovoProduto);
-//  uControladorProduto := TControladorProduto.Create;
-//
-//  try
-//    uControladorProduto.Inserir(NovoProduto, erro)
-//
-//  except on E: Exception do
-//  begin
-//    erro := 'Ocorreu um erro ao cadastrar o produto. Verifique todos os campos e tente novamente' +
-//      sLineBreak + E.Message;
-//  end;
-//  end;
-//
-//  if uControladorProduto.Inserir(NovoProduto, erro) then
-//  begin
-//    ShowMessage('Produto inserido com sucesso');
-//  end
-//  else
-//  begin
-//    ShowMessage(erro);
-//  end;
-//
-//end;
+  with ProdutoVazio, FTelaCadastroProduto do
+  begin
+    if not ProdutoId.IsEmpty then
+    begin
+      ID := StrToInt(ProdutoId);
+    end
+    else
+    begin
+      ID := uControladorProduto.gerarID;
+    end;
 
-//procedure TControladorTelaCadastroProduto.PreencherProduto(ProdutoVazio: TProduto);
-//var
-//  ProdutoId: String;
-//begin
-//  ProdutoId := FTelaCadastroProduto.txtID.Text;
-//  uControladorProduto := TControladorProduto.Create;
-//
-//  with ProdutoVazio, FTelaCadastroProduto do
-//  begin
-//    if ProdutoId.IsEmpty then
-//    begin
-//      ProdutoId.ID := StrToInt(ProdutoId);
-//    end
-//    else
-//    begin
-//      ProdutoId.ID := uControladorProduto.gerarID;
-//    end;
-//
-//    Nome := txtNomeProduto.Text;
-//    CodigoBarras := txtCodigoBarras.Text;
-//    Descricao := txtDescricaoProduto.Text;
-//    Referencia := txtReferencia.Text;
-//    Preco := StrToFloat(txtPreco.Text);
-//    Categoria := cbxCategoria.Text;
-//    QuantidadeEstoque := StrToInt(txtQuantidadeEstoque.Text);
-//    Fornecedor := txtFornecedor.Text;
-//    DataValidade := StrToDate(txtValidade.Text);
-//  end;
-//
-//end;
+    Nome := txtNomeProduto.Text;
+    CodigoBarras := txtCodigoBarras.Text;
+    Descricao := txtDescricaoProduto.Text;
+    Referencia := txtReferencia.Text;
+    Preco := StrToFloat(txtPreco.Text);
+    Categoria := cbxCategoria.Text;
+
+    if StrToInt(txtQuantidadeEstoque.Text) > 0 then
+    begin
+      QuantidadeEstoque := StrToInt(txtQuantidadeEstoque.Text);
+    end
+    else
+    begin
+      ShowMessage('Informe uma quantidade válida do produto!');
+    end;
+
+    Fornecedor := txtFornecedor.Text;
+    DataValidade := StrToDate(txtValidade.Text);
+  end;
+
+end;
 
 end.

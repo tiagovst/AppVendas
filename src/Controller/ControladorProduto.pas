@@ -23,7 +23,7 @@ type
 
     procedure PesquisarCategoria(Categoria: String);
     procedure PesquisarNome(Nome: String);
-    procedure Pesquisar(DataSource: TDataSource);
+    procedure AtualizarListaProdutos(DataSource: TDataSource);
 
 
   public
@@ -66,9 +66,9 @@ begin
 end;
 
 
-procedure TControladorProduto.Pesquisar(DataSource: TDataSource);
+procedure TControladorProduto.AtualizarListaProdutos(DataSource: TDataSource);
 begin
-  IProduto.Pesquisar(DataSource);
+  IProduto.AtualizarListaProdutos(DataSource);
 end;
 
 procedure TControladorProduto.PesquisarCategoria(Categoria: String);

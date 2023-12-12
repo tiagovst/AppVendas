@@ -5,8 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,
-  Produto,
-  ControladorCompraInterface, Vcl.Imaging.pngimage;
+  Vcl.Imaging.pngimage;
 
 type
   TTelaAdicionarProduto = class(TForm)
@@ -31,12 +30,6 @@ type
     Label7: TLabel;
     Image: TImage;
     procedure txtQuantidadeCompraChange(Sender: TObject);
-    procedure btnAdicionarCompraClick(Sender: TObject);
-  private
-    ControladorCompra: IControladorCompra;
-    uProduto: TProduto;
-  public
-    constructor Carregar(Controlador: IControladorCompra; Produto: TProduto);
   end;
 
 var
@@ -47,22 +40,6 @@ implementation
 {$R *.dfm}
 
 { TTelaAdicionarProduto }
-
-procedure TTelaAdicionarProduto.btnAdicionarCompraClick(Sender: TObject);
-begin
-  try
-    if ControladorCompra.AdicionarProduto(uProduto, StrToInt(txtQuantidadeCompra.Text), StrToFloat(lblSubtotal.Caption)) then;
-      ShowMessage('Produto adicionado ao Checkout!');
-  except on E: Exception do
-    ShowMessage('Insira uma quantidade válida.');
-  end;
-end;
-
-constructor TTelaAdicionarProduto.Carregar(Controlador: IControladorCompra; Produto: TProduto);
-begin
-  ControladorCompra := Controlador;
-  uProduto := Produto;
-end;
 
 procedure TTelaAdicionarProduto.txtQuantidadeCompraChange(Sender: TObject);
 var

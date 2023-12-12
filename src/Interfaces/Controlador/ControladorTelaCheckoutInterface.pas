@@ -9,6 +9,7 @@ type
     procedure MostrarTela;
     procedure FecharTela;
     procedure RealizarVenda;
+    procedure AcaoFinalizar(Sender: TObject);
   end;
 
 implementation

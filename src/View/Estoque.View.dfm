@@ -277,14 +277,32 @@ object TelaEstoque: TTelaEstoque
       TabOrder = 3
       TextHint = 'Pesquisar por nome'
     end
-    object Button1: TButton
+    object btnCadastrar: TButton
       Left = 816
-      Top = 81
+      Top = 69
       Width = 257
       Height = 25
       Caption = 'Cadastrar novo produto'
       TabOrder = 4
-      OnClick = Button1Click
+      OnClick = btnCadastrarClick
+    end
+    object btnExluir: TButton
+      Left = 816
+      Top = 104
+      Width = 121
+      Height = 25
+      Caption = 'Excluir'
+      TabOrder = 5
+      OnClick = btnCadastrarClick
+    end
+    object btnAtualizar: TButton
+      Left = 952
+      Top = 104
+      Width = 121
+      Height = 25
+      Caption = 'Atualizar'
+      TabOrder = 6
+      OnClick = btnAtualizarClick
     end
   end
 end

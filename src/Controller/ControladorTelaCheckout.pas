@@ -22,11 +22,19 @@ TControladorTelaCheckout = class(TInterfacedObject, IControladorTelaCheckout)
   private
     FTelaCheckout : TTelaCheckout;
     Action: TAction;
+    Desconto: String;
+    PrecoTotal : Double;
+    ArrayProdutos : TArray<TProdutoQuantidade>;
+
     procedure MostrarTela;
     procedure FecharTela;
     procedure PreencherStringGrid(Produtos: TArray<TProdutoQuantidade>);
     procedure RealizarVenda;
     procedure AcaoFinalizar(Sender: TObject);
+    procedure AcaoOnChangeDesconto(Sender: TObject);
+    procedure CalcularSubtotal;
+    procedure FormatarLabelSubtotal;
+
   public
     constructor Create(const Produtos: TArray<TProdutoQuantidade>) overload;
 end;
@@ -37,7 +45,42 @@ implementation
 
 procedure TControladorTelaCheckout.AcaoFinalizar(Sender: TObject);
 begin
-  RealizarVenda;
+  if High(ArrayProdutos) = -1 then
+  begin
+    ShowMessage('Seu carrinho de compras está vazio');
+  end
+  else
+  begin
+    RealizarVenda;
+  end;
+end;
+
+procedure TControladorTelaCheckout.AcaoOnChangeDesconto(Sender: TObject);
+begin
+  FormatarLabelSubtotal;
+end;
+
+procedure TControladorTelaCheckout.CalcularSubtotal;
+var
+  i : Integer;
+begin
+  PrecoTotal := 0.0;
+  Desconto := FTelaCheckout.txtDesconto.Text;
+
+  for i := 1 to (FTelaCheckout.ProdutosGrid.Cols[3].Count - 1) do
+  begin
+    PrecoTotal := PrecoTotal + StrToFloat(FTelaCheckout.ProdutosGrid.Cols[4].Strings[i]);
+  end;
+
+  if not Desconto.IsEmpty then
+  begin
+    PrecoTotal := PrecoTotal - (PrecoTotal * (StrToFloat(Desconto) / 100));
+  end
+  else
+  begin
+    Desconto := '0';
+  end;
+
 end;
 
 constructor TControladorTelaCheckout.Create(const Produtos: TArray<TProdutoQuantidade>);
@@ -45,10 +88,14 @@ begin
   FTelaCheckout := TTelaCheckout.Create(nil);
   PreencherStringGrid(Produtos);
 
+  ArrayProdutos := Produtos;
+
   Action := TAction.Create(nil);
   Action.OnExecute := AcaoFinalizar;
   Action.Caption := 'Finalizar';
 
+  FormatarLabelSubtotal;
+  FTelaCheckout.txtDesconto.OnChange := AcaoOnChangeDesconto;
   FTelaCheckout.btnFinalizar.Action := Action;
   MostrarTela;
 end;
@@ -56,6 +103,12 @@ end;
 procedure TControladorTelaCheckout.FecharTela;
 begin
   FTelaCheckout.Close;
+end;
+
+procedure TControladorTelaCheckout.FormatarLabelSubtotal;
+begin
+  CalcularSubtotal;
+  FTelaCheckout.lblSubtotal.Caption := FormatFloat('#0.00', PrecoTotal);
 end;
 
 procedure TControladorTelaCheckout.MostrarTela;
@@ -112,7 +165,6 @@ var
   erro: String;
 
   RegistroVenda : TVenda;
-  PrecoTotal : Double;
   uItemVenda: TItemVenda;
   uControladorVenda : IControladorVenda;
   uControladorItemVenda : IControladorItemVenda;
@@ -123,8 +175,6 @@ begin
   RegistroVenda := TVenda.Create;
   uControladorVenda := TControladorVenda.Create;
   uControladorItemVenda := TControladorItemVenda.Create;
-  PrecoTotal := 0.0;
-
   uControladorProduto := TControladorProduto.Create;
   produto := TProduto.Create;
 
@@ -132,13 +182,15 @@ begin
   RegistroVenda.dataVenda := uControladorVenda.DataAtual;
   RegistroVenda.totalProdutos := FTelaCheckout.ProdutosGrid.RowCount - 1;
   RegistroVenda.vendedor := 1; // Mudar quando tiver sessão.
-  RegistroVenda.Desconto := 20; // Mudar quando o desconto estiver na tela checkout
+  RegistroVenda.Desconto := StrToInt(Desconto); // Mudar quando o desconto estiver na tela checkout
 
   // Calculando o preço total iterando pela lista de produtos.
-  for i := 1 to (FTelaCheckout.ProdutosGrid.Cols[3].Count - 1) do
-  begin
-    PrecoTotal := PrecoTotal + StrToFloat(FTelaCheckout.ProdutosGrid.Cols[4].Strings[i]);
-  end;
+//  for i := 1 to (FTelaCheckout.ProdutosGrid.Cols[3].Count - 1) do
+//  begin
+//    PrecoTotal := PrecoTotal + StrToFloat(FTelaCheckout.ProdutosGrid.Cols[4].Strings[i]);
+//  end;
+
+  CalcularSubtotal;
   RegistroVenda.totalPreco := StrToFloat(FormatFloat('#0.00', PrecoTotal));
 
   for i := 1 to (FTelaCheckout.ProdutosGrid.Cols[0].Count - 1) do
@@ -168,7 +220,7 @@ begin
   end
   else
   begin
-    ShowMessage('Erro ao registrar a venda' + sLineBreak + erro); //Retirar erro dps
+    ShowMessage('Erro ao registrar a venda');
   end;
 
 end;

@@ -26,8 +26,8 @@ object TelaCheckout: TTelaCheckout
     Color = 16579321
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1087
-    ExplicitHeight = 397
+    ExplicitWidth = 1089
+    ExplicitHeight = 405
     DesignSize = (
       1093
       406)
@@ -47,31 +47,47 @@ object TelaCheckout: TTelaCheckout
     object ProdutosGrid: TStringGrid
       Left = 46
       Top = 112
-      Width = 1001
+      Width = 997
       Height = 288
       Anchors = [akLeft, akTop, akRight, akBottom]
       Color = clBtnFace
       FixedCols = 0
       ScrollBars = ssVertical
       TabOrder = 0
+      ExplicitWidth = 993
+      ExplicitHeight = 287
     end
     object btnLimpar: TButton
-      Left = 972
+      Left = 968
       Top = 74
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Limpar'
       TabOrder = 1
+      ExplicitLeft = 964
     end
     object btnDeletar: TButton
-      Left = 888
+      Left = 884
       Top = 74
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Deletar'
       TabOrder = 2
+      ExplicitLeft = 880
+    end
+    object txtDesconto: TLabeledEdit
+      Left = 720
+      Top = 75
+      Width = 153
+      Height = 23
+      Anchors = [akTop, akRight]
+      EditLabel.Width = 50
+      EditLabel.Height = 15
+      EditLabel.Caption = 'Desconto'
+      TabOrder = 3
+      Text = ''
     end
   end
   object pnlBottom: TPanel
@@ -81,31 +97,65 @@ object TelaCheckout: TTelaCheckout
     Height = 41
     Align = alBottom
     Color = 16579321
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -17
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
     ParentBackground = False
+    ParentFont = False
     TabOrder = 1
-    ExplicitTop = 493
-    ExplicitWidth = 1087
+    ExplicitTop = 501
+    ExplicitWidth = 1089
     DesignSize = (
       1093
       41)
+    object Label4: TLabel
+      Left = 46
+      Top = 11
+      Width = 105
+      Height = 23
+      Caption = 'Subtotal: R$ '
+    end
+    object lblSubtotal: TLabel
+      Left = 152
+      Top = 11
+      Width = 35
+      Height = 23
+      Caption = '00.0'
+    end
     object btnFinalizar: TButton
-      Left = 1010
+      Left = 1006
       Top = 9
       Width = 75
       Height = 25
       Anchors = [akRight, akBottom]
       Caption = 'Finalizar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 0
+      ExplicitLeft = 1002
     end
     object btnCancelar: TButton
-      Left = 927
+      Left = 923
       Top = 9
       Width = 75
       Height = 25
       Anchors = [akRight, akBottom]
       Caption = 'Cancelar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 1
       OnClick = btnCancelarClick
+      ExplicitLeft = 919
     end
   end
   object pnlTop: TPanel
@@ -117,9 +167,7 @@ object TelaCheckout: TTelaCheckout
     Color = 16579321
     ParentBackground = False
     TabOrder = 2
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitWidth = 870
+    ExplicitWidth = 1089
     object Label2: TLabel
       Left = 93
       Top = 40

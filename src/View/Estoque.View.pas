@@ -32,9 +32,12 @@ type
     Label5: TLabel;
     SearchBoxNomeProduto: TSearchBox;
     Image: TImage;
-    Button1: TButton;
+    btnCadastrar: TButton;
+    btnExluir: TButton;
+    btnAtualizar: TButton;
     procedure DBGridProdutosDblClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure btnCadastrarClick(Sender: TObject);
+    procedure btnAtualizarClick(Sender: TObject);
     private
       ProdutoSelecionado : TProduto;
       uControladorProduto : IControladorProduto;
@@ -49,7 +52,12 @@ implementation
 
 {$R *.dfm}
 
-procedure TTelaEstoque.Button1Click(Sender: TObject);
+procedure TTelaEstoque.btnAtualizarClick(Sender: TObject);
+begin
+  DBGridProdutos.DataSource.DataSet.Refresh;
+end;
+
+procedure TTelaEstoque.btnCadastrarClick(Sender: TObject);
 begin
   uControladorTelaCadastroProduto := TControladorTelaCadastroProduto.Create;
 end;

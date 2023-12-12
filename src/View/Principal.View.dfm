@@ -23,7 +23,7 @@ object TelaPrincipal: TTelaPrincipal
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 633
+    ExplicitHeight = 641
     object pnlLogo: TPanel
       Left = 1
       Top = 1
@@ -154,7 +154,7 @@ object TelaPrincipal: TTelaPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 591
+      ExplicitTop = 599
     end
     object pnlBotoes: TPanel
       Left = 0
@@ -212,6 +212,7 @@ object TelaPrincipal: TTelaPrincipal
         Caption = 'In'#237'cio'
         Flat = True
         StyleName = 'Windows'
+        OnClick = btnInicioClick
         ExplicitTop = 8
       end
     end
@@ -226,8 +227,8 @@ object TelaPrincipal: TTelaPrincipal
     Color = 16579321
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 917
-    ExplicitHeight = 633
+    ExplicitWidth = 919
+    ExplicitHeight = 641
     DesignSize = (
       923
       642)
@@ -279,7 +280,7 @@ object TelaPrincipal: TTelaPrincipal
       Color = 16579321
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 917
+      ExplicitWidth = 919
       DesignSize = (
         923
         41)
@@ -291,7 +292,7 @@ object TelaPrincipal: TTelaPrincipal
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 0
         TextHint = 'Pesquisar produto'
-        ExplicitWidth = 305
+        ExplicitWidth = 307
       end
     end
     object btnFinalizarCompra: TButton
@@ -303,33 +304,22 @@ object TelaPrincipal: TTelaPrincipal
       Caption = 'Finalizar Compra'
       TabOrder = 1
       OnClick = btnFinalizarCompraClick
+      ExplicitLeft = 754
     end
     object pnlSubmenuProdutos: TPanel
       Left = 0
       Top = 134
       Width = 183
-      Height = 150
+      Height = 76
       BevelKind = bkFlat
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
       TabOrder = 2
       Visible = False
-      object btnVerProdutos: TSpeedButton
-        Left = 0
-        Top = 0
-        Width = 179
-        Height = 37
-        Align = alTop
-        Caption = 'Ver meus produtos'
-        Flat = True
-        ExplicitLeft = 2
-        ExplicitTop = 9
-        ExplicitWidth = 181
-      end
       object btnCadastrarProduto: TSpeedButton
         Left = 0
-        Top = 37
+        Top = 0
         Width = 179
         Height = 37
         Align = alTop
@@ -340,21 +330,9 @@ object TelaPrincipal: TTelaPrincipal
         ExplicitTop = 79
         ExplicitWidth = 183
       end
-      object btnEditarExcluirProduto: TSpeedButton
-        Left = 0
-        Top = 111
-        Width = 179
-        Height = 37
-        Align = alTop
-        Caption = 'Editar/excluir produto'
-        Flat = True
-        ExplicitLeft = 1
-        ExplicitTop = 79
-        ExplicitWidth = 183
-      end
       object btnEstoque: TSpeedButton
         Left = 0
-        Top = 74
+        Top = 37
         Width = 179
         Height = 37
         Align = alTop

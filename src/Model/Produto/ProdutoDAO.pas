@@ -26,7 +26,7 @@ type
 
     procedure PesquisarNome(Nome: String);
     procedure PesquisarCategoria(Categoria: String);
-    procedure Pesquisar(DataSource: TDataSource);
+    procedure AtualizarListaProdutos(DataSource: TDataSource);
 
   end;
 
@@ -119,7 +119,7 @@ begin
   begin
     Connection := dmConexao.FDConnection;
 
-    SQL.Text := 'DELETE FROM PRODUTOS WHERE (ID : :ID);';
+    SQL.Text := 'DELETE FROM PRODUTOS WHERE (ID = :ID);';
     Params.ParamByName('ID').AsInteger := ID;
 
     try
@@ -191,7 +191,7 @@ begin
   end;
 end;
 
-procedure TProdutoDAO.Pesquisar(DataSource: TDataSource);
+procedure TProdutoDAO.AtualizarListaProdutos(DataSource: TDataSource);
 begin
   SQLQuery := TFDQuery.Create(nil);
 

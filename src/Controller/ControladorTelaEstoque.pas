@@ -5,6 +5,10 @@ interface
 uses
   Estoque.View,
   System.SysUtils,
+  ControladorProdutoInterface,
+  ControladorProduto,
+  Vcl.Dialogs,
+  Vcl.ActnList,
   ControladorTelaEstoqueInterface,
   Vcl.Controls,
   Data.DB;
@@ -13,6 +17,10 @@ type
   TControladorTelaEstoque = class(TInterfacedObject, IControladorTelaEstoque)
     private
       FTelaEstoque : TTelaEstoque;
+      uControladorProduto : IControladorProduto;
+      AcaoExcluir : TAction;
+
+      procedure AcaoBtnExcluir(Sender: TObject);
     public
       constructor Create(const datasource : TDataSource) overload;
       procedure MostrarTela(parent : TWinControl);
@@ -25,6 +33,26 @@ type
 implementation
 
 { TControladorTelaEstoque }
+
+procedure TControladorTelaEstoque.AcaoBtnExcluir(Sender: TObject);
+var
+  erro: String;
+  idProduto : integer;
+begin
+  uControladorProduto := TControladorProduto.Create;
+
+  idProduto := FTelaEstoque.DBGridProdutos.DataSource.DataSet.FieldByName('ID').AsInteger;
+  if uControladorProduto.Excluir(idProduto, erro) then
+  begin
+    ShowMessage('Produto excluído com sucesso!');
+    FTelaEstoque.DBGridProdutos.DataSource.DataSet.Refresh;
+  end
+  else
+  begin
+    ShowMessage('Ocorreu um erro ao tentar excluir o produto selecionado!' + sLineBreak + erro);
+  end;
+
+end;
 
 procedure TControladorTelaEstoque.CalcularQuantidadeProdutos;
 var
@@ -44,6 +72,12 @@ constructor TControladorTelaEstoque.Create(const datasource: TDataSource);
 begin
   FTelaEstoque := TTelaEstoque.Create(nil);
   FTelaEstoque.DBGridProdutos.DataSource := datasource;
+
+  AcaoExcluir := TAction.Create(nil);
+  AcaoExcluir.OnExecute := AcaoBtnExcluir;
+  AcaoExcluir.Caption := 'Excluir';
+  FTelaEstoque.btnExluir.Action := AcaoExcluir;
+
   CalcularQuantidadeProdutos;
   PreencherCbxCategorias;
 end;

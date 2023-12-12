@@ -24,7 +24,7 @@ uses
   ControladorProdutoInterface,
   ControladorProduto,
   Produto,
-  ControladorTelaCheckoutInterface, Vcl.Imaging.pngimage;
+  ControladorTelaCheckoutInterface, Vcl.Imaging.pngimage, Vcl.Mask;
 
 type
   TTelaCheckout = class(TForm)
@@ -40,6 +40,9 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Image: TImage;
+    Label4: TLabel;
+    lblSubtotal: TLabel;
+    txtDesconto: TLabeledEdit;
     procedure btnCancelarClick(Sender: TObject);
    end;
 

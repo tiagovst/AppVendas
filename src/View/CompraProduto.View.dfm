@@ -22,8 +22,8 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
     Color = 16579321
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 505
-    ExplicitWidth = 895
+    ExplicitTop = 513
+    ExplicitWidth = 897
     object btnAdicionarCompra: TButton
       Left = 820
       Top = 8
@@ -31,7 +31,6 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
       Height = 25
       Caption = 'Adicionar'
       TabOrder = 0
-      OnClick = btnAdicionarCompraClick
     end
   end
   object pnlConteudo: TPanel
@@ -43,8 +42,8 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
     Color = 16579321
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 895
-    ExplicitHeight = 409
+    ExplicitWidth = 897
+    ExplicitHeight = 417
     object gboxInformacoes: TGroupBox
       AlignWithMargins = True
       Left = 41
@@ -240,6 +239,7 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
         Font.Height = -13
         Font.Name = 'Segoe UI'
         Font.Style = []
+        NumbersOnly = True
         ParentFont = False
         TabOrder = 0
         Text = ''
@@ -256,7 +256,7 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
     Color = 16579321
     ParentBackground = False
     TabOrder = 2
-    ExplicitWidth = 895
+    ExplicitWidth = 897
     object Label1: TLabel
       Left = 93
       Top = 40
