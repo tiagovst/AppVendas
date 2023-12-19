@@ -44,13 +44,17 @@ uses
   ControladorTelaManejoUsuarioInterface in 'src\Interfaces\Controlador\ControladorTelaManejoUsuarioInterface.pas',
   ControladorTelaListagemUsuario in 'src\Controller\ControladorTelaListagemUsuario.pas',
   ControladorTelaListagemUsuarioInterface in 'src\Interfaces\Controlador\ControladorTelaListagemUsuarioInterface.pas',
-  ControladorTelaCheckoutInterface in 'src\Interfaces\Controlador\ControladorTelaCheckoutInterface.pas';
+  ControladorTelaCheckoutInterface in 'src\Interfaces\Controlador\ControladorTelaCheckoutInterface.pas',
+  Login.View in 'src\View\Login.View.pas' {TelaLogin},
+  ManejoCliente.View in 'src\View\ManejoCliente.View.pas' {TelaCadastroCliente};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TTelaCadastroCliente, TelaCadastroCliente);
+  Application.CreateForm(TTelaLogin, TelaLogin);
   Application.CreateForm(TTelaPrincipal, TelaPrincipal);
   Application.CreateForm(TdmConexao, dmConexao);
   Application.Run;

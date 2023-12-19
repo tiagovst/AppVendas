@@ -19,5 +19,13 @@
     <Transaction>2023/11/29 17:18:27.000.809,=C:\Users\Gabriel\Documents\Repo\SalesApp\Unit2.pas</Transaction>
     <Transaction>2023/11/29 17:18:49.000.514,C:\Users\Gabriel\Documents\Repo\SalesApp\src\Controller\ControladorTelaCadastroProduto.pas=C:\Users\Gabriel\Documents\Repo\SalesApp\Unit1.pas</Transaction>
     <Transaction>2023/11/29 17:19:19.000.677,C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\ControladorTelaCadastroProdutoInterface.pas=C:\Users\Gabriel\Documents\Repo\SalesApp\Unit2.pas</Transaction>
+    <Transaction>2023/12/19 14:20:19.000.238,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/12/19 14:20:57.000.174,C:\Users\tiago\SalesApp\src\View\Login.View.pas=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/12/19 14:20:57.000.174,C:\Users\tiago\SalesApp\src\View\Login.View.dfm=C:\Users\tiago\SalesApp\Unit1.dfm</Transaction>
+    <Transaction>2023/12/19 14:21:08.000.705,=C:\Users\tiago\SalesApp\Unit2.pas</Transaction>
+    <Transaction>2023/12/19 14:21:54.000.816,C:\Users\tiago\SalesApp\src\View\CadastroCliente.View.pas=C:\Users\tiago\SalesApp\Unit2.pas</Transaction>
+    <Transaction>2023/12/19 14:21:54.000.816,C:\Users\tiago\SalesApp\src\View\CadastroCliente.View.dfm=C:\Users\tiago\SalesApp\Unit2.dfm</Transaction>
+    <Transaction>2023/12/19 17:22:33.000.677,C:\Users\tiago\SalesApp\src\View\CadastroCliente.View.dfm=C:\Users\tiago\SalesApp\src\View\ManejoCliente.View.dfm</Transaction>
+    <Transaction>2023/12/19 17:22:33.000.677,C:\Users\tiago\SalesApp\src\View\CadastroCliente.View.pas=C:\Users\tiago\SalesApp\src\View\ManejoCliente.View.pas</Transaction>
   </Transactions>
 </BorlandProject>

@@ -3,7 +3,7 @@ object TelaPrincipal: TTelaPrincipal
   Top = 0
   Caption = 'App Vendas'
   ClientHeight = 642
-  ClientWidth = 1108
+  ClientWidth = 966
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -220,21 +220,21 @@ object TelaPrincipal: TTelaPrincipal
   object pnlConteudo: TPanel
     Left = 185
     Top = 0
-    Width = 923
+    Width = 781
     Height = 642
     Align = alClient
     BevelOuter = bvNone
     Color = 16579321
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 919
+    ExplicitWidth = 777
     ExplicitHeight = 641
     DesignSize = (
-      923
+      781
       642)
     object LabelProdutos: TLabel
       Left = 40
-      Top = 96
+      Top = 100
       Width = 80
       Height = 28
       Caption = 'Produtos'
@@ -248,7 +248,7 @@ object TelaPrincipal: TTelaPrincipal
     object gridProdutos: TDBGrid
       Left = 40
       Top = 139
-      Width = 833
+      Width = 837
       Height = 506
       Hint = 'Clique duas vezes para selecionar o produto'
       Anchors = [akLeft, akTop, akRight, akBottom]
@@ -274,29 +274,29 @@ object TelaPrincipal: TTelaPrincipal
     object pnlPesquisa: TPanel
       Left = 0
       Top = 0
-      Width = 923
+      Width = 781
       Height = 41
       Align = alTop
       Color = 16579321
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 919
+      ExplicitWidth = 777
       DesignSize = (
-        923
+        781
         41)
       object SearchBox: TSearchBox
         Left = 312
         Top = 10
-        Width = 311
+        Width = 169
         Height = 23
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 0
         TextHint = 'Pesquisar produto'
-        ExplicitWidth = 307
+        ExplicitWidth = 165
       end
     end
     object btnFinalizarCompra: TButton
-      Left = 758
+      Left = 762
       Top = 99
       Width = 115
       Height = 25
@@ -304,7 +304,7 @@ object TelaPrincipal: TTelaPrincipal
       Caption = 'Finalizar Compra'
       TabOrder = 1
       OnClick = btnFinalizarCompraClick
-      ExplicitLeft = 754
+      ExplicitLeft = 758
     end
     object pnlSubmenuProdutos: TPanel
       Left = 0
