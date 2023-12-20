@@ -46,8 +46,10 @@ uses
   ControladorTelaListagemUsuarioInterface in 'src\Interfaces\Controlador\ControladorTelaListagemUsuarioInterface.pas',
   ControladorTelaCheckoutInterface in 'src\Interfaces\Controlador\ControladorTelaCheckoutInterface.pas',
   ControladorTelaVendas in 'src\Controller\ControladorTelaVendas.pas',
+  ControladorTelaVendasInterface in 'src\Interfaces\Controlador\ControladorTelaVendasInterface.pas',
   Vendas.View in 'src\View\Vendas.View.pas' {TelaVendas},
-  ControladorTelaVendasInterface in 'src\Interfaces\Controlador\ControladorTelaVendasInterface.pas';
+  Login.View in 'src\View\Login.View.pas' {TelaLogin},
+  ManejoCliente.View in 'src\View\ManejoCliente.View.pas' {TelaCadastroCliente};
 
 {$R *.res}
 
@@ -56,7 +58,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TTelaPrincipal, TelaPrincipal);
   Application.CreateForm(TdmConexao, dmConexao);
-  Application.CreateForm(TTelaVendas, TelaVendas);
   Application.Run;
 end.
 
