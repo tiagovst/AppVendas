@@ -49,14 +49,16 @@ uses
   ControladorTelaVendasInterface in 'src\Interfaces\Controlador\ControladorTelaVendasInterface.pas',
   Vendas.View in 'src\View\Vendas.View.pas' {TelaVendas},
   Login.View in 'src\View\Login.View.pas' {TelaLogin},
-  ManejoCliente.View in 'src\View\ManejoCliente.View.pas' {TelaCadastroCliente};
+  ManejoCliente.View in 'src\View\ManejoCliente.View.pas' {TelaCadastroCliente},
+  ControladorTelaPrincipal in 'src\Controller\ControladorTelaPrincipal.pas',
+  ControladorTelaPrincipalInterface in 'src\Interfaces\Controlador\ControladorTelaPrincipalInterface.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TTelaPrincipal, TelaPrincipal);
+  Application.CreateForm(TTelaLogin, TelaLogin);
   Application.CreateForm(TdmConexao, dmConexao);
   Application.Run;
 end.

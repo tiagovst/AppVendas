@@ -21,7 +21,7 @@ type
     function Alterar(Usuario: TUsuario; out erro: String): Boolean;
     function Excluir(ID: Integer; out erro: String): Boolean;
 
-    procedure PesquisarNome(Nome: String);
+    procedure PesquisarNomeUsuario(Usuario: TUsuario; NomeDeUsuario: String);
     procedure Pesquisar(DataSource: TDataSource);
     procedure CarregarPessoa(Usuario: TUsuario; ID: Integer);
   end;
@@ -190,22 +190,31 @@ begin
 
 end;
 
-procedure TUsuarioDAO.PesquisarNome(Nome: String);
+procedure TUsuarioDAO.PesquisarNomeUsuario(Usuario: TUsuario; NomeDeUsuario: String);
 begin
   SQLQuery := TFDQuery.Create(nil);
 
-  with SQLQuery do
+  with SQLQuery, Usuario do
   begin
     Connection := dmConexao.FDConnection;
 
     if Active then
       Close;
 
-    SQL.Text := 'select * from USUARIO where NOME LIKE :Nome;';
-    Params.ParamByName('NOME').AsString := Nome + '%';
+    SQL.Text := 'select * from USUARIO where NOME_USUARIO = :NomeDeUsuario;';
+    Params.ParamByName('NomeDeUsuario').AsString := NomeDeUsuario;
 
     Open();
-    First;
+    ID := FieldByName('id').AsInteger;
+    Nome := FieldByName('NOME').AsString;
+    Email := FieldByName('EMAIL').AsString;
+    Senha := FieldByName('SENHA').AsString;
+    Telefone := FieldByName('TELEFONE').AsString;
+    Cargo := FieldByName('CARGO').AsString;
+    CPF := FieldByName('CPF').AsString;
+    NomeUsuario := FieldByName('NOME_USUARIO').AsString;
+
+    FreeAndNil(SQLQuery);
 
   end;
 end;

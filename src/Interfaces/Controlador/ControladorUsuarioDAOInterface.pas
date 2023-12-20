@@ -1,4 +1,4 @@
-unit ControladorUsuarioInterface;
+unit ControladorUsuarioDAOInterface;
 
 interface
 
@@ -7,7 +7,7 @@ uses
   Data.DB;
 
 type
-  IControladorUsuario = interface
+  IControladorUsuarioDAO = interface
     ['{9494E2EE-8DB0-4653-AACB-60241AC01264}']
 
     function gerarID: Integer;

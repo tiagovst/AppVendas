@@ -23,6 +23,8 @@ object TelaLogin: TTelaLogin
     ParentBiDiMode = False
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 561
+    ExplicitHeight = 641
   end
   object Panel1: TPanel
     Left = 85
@@ -149,8 +151,9 @@ object TelaLogin: TTelaLogin
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 0
+      TabOrder = 2
       StyleElements = [seFont, seClient]
+      OnClick = btnEntrarClick
     end
     object txtSenha: TLabeledEdit
       Left = 75
@@ -173,6 +176,7 @@ object TelaLogin: TTelaLogin
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
+      PasswordChar = '#'
       TabOrder = 1
       Text = ''
       TextHint = 'Senha'
@@ -198,7 +202,7 @@ object TelaLogin: TTelaLogin
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 0
       Text = ''
       TextHint = 'Usu'#225'rio'
     end

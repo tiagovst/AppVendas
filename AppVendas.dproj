@@ -206,6 +206,8 @@
         <DCCReference Include="src\View\ManejoCliente.View.pas">
             <Form>TelaCadastroCliente</Form>
         </DCCReference>
+        <DCCReference Include="src\Controller\ControladorTelaPrincipal.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorTelaPrincipalInterface.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

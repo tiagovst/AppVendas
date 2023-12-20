@@ -1,4 +1,4 @@
-unit ControladorUsuario;
+unit ControladorUsuarioDAO;
 
 interface
 
@@ -8,10 +8,10 @@ uses
   UsuarioDAO,
   UsuarioDAOInterface,
   Data.DB,
-  ControladorUsuarioInterface;
+  ControladorUsuarioDAOInterface;
 
 type
-  TControladorUsuario = class(TInterfacedObject, IControladorUsuario)
+  TControladorUsuarioDAO = class(TInterfacedObject, IControladorUsuarioDAO)
   private
     IUsuario: IUsuarioDAO;
 
@@ -32,44 +32,45 @@ implementation
 
 { TControladorUsuario }
 
-constructor TControladorUsuario.Create;
+constructor TControladorUsuarioDAO.Create;
 begin
   IUsuario := TUsuarioDAO.Create;
 end;
 
-function TControladorUsuario.Alterar(Usuario: TUsuario;
+function TControladorUsuarioDAO.Alterar(Usuario: TUsuario;
   out erro: String): Boolean;
 begin
   Result := IUsuario.Alterar(Usuario, erro);
 end;
 
-procedure TControladorUsuario.CarregarPessoa(Usuario: TUsuario; ID: Integer);
+procedure TControladorUsuarioDAO.CarregarPessoa(Usuario: TUsuario; ID: Integer);
 begin
   IUsuario.CarregarPessoa(Usuario, ID);
 end;
 
-function TControladorUsuario.Excluir(ID: Integer; out erro: String): Boolean;
+function TControladorUsuarioDAO.Excluir(ID: Integer; out erro: String): Boolean;
 begin
   Result := IUsuario.Excluir(ID, erro);
 end;
 
-function TControladorUsuario.gerarID: Integer;
+function TControladorUsuarioDAO.gerarID: Integer;
 begin
   Result := IUsuario.gerarID;
 end;
 
-function TControladorUsuario.Inserir(Usuario: TUsuario;
+function TControladorUsuarioDAO.Inserir(Usuario: TUsuario;
   out erro: String): Boolean;
 begin
   Result := IUsuario.Inserir(Usuario, erro);
 end;
 
-procedure TControladorUsuario.Pesquisar(DataSource: TDataSource);
+// Conferir lógica de acordo com nosso escopo
+procedure TControladorUsuarioDAO.Pesquisar(DataSource: TDataSource);
 begin
   IUsuario.Pesquisar(DataSource);
 end;
 
-procedure TControladorUsuario.PesquisarNomeUsuario(Usuario: TUsuario; NomeDeUsuario: String);
+procedure TControladorUsuarioDAO.PesquisarNomeUsuario(Usuario: TUsuario; NomeDeUsuario: String);
 begin
   IUsuario.PesquisarNomeUsuario(Usuario, NomeDeUsuario);
 end;
