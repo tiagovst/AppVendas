@@ -4,8 +4,8 @@ object TelaCheckout: TTelaCheckout
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Checkout'
-  ClientHeight = 543
-  ClientWidth = 1093
+  ClientHeight = 534
+  ClientWidth = 1087
   Color = clBtnFace
   DockSite = True
   Font.Charset = DEFAULT_CHARSET
@@ -20,8 +20,8 @@ object TelaCheckout: TTelaCheckout
   object pnlConteudo: TPanel
     Left = 0
     Top = 96
-    Width = 1093
-    Height = 406
+    Width = 1087
+    Height = 397
     Align = alClient
     Color = 16579321
     ParentBackground = False
@@ -29,8 +29,8 @@ object TelaCheckout: TTelaCheckout
     ExplicitWidth = 1089
     ExplicitHeight = 405
     DesignSize = (
-      1093
-      406)
+      1087
+      397)
     object Label1: TLabel
       Left = 46
       Top = 76
@@ -47,8 +47,8 @@ object TelaCheckout: TTelaCheckout
     object ProdutosGrid: TStringGrid
       Left = 46
       Top = 112
-      Width = 997
-      Height = 288
+      Width = 985
+      Height = 279
       Anchors = [akLeft, akTop, akRight, akBottom]
       Color = clBtnFace
       FixedCols = 0
@@ -58,7 +58,7 @@ object TelaCheckout: TTelaCheckout
       ExplicitHeight = 287
     end
     object btnLimpar: TButton
-      Left = 968
+      Left = 956
       Top = 74
       Width = 75
       Height = 25
@@ -68,7 +68,7 @@ object TelaCheckout: TTelaCheckout
       ExplicitLeft = 964
     end
     object btnDeletar: TButton
-      Left = 884
+      Left = 872
       Top = 74
       Width = 75
       Height = 25
@@ -78,7 +78,7 @@ object TelaCheckout: TTelaCheckout
       ExplicitLeft = 880
     end
     object txtDesconto: TLabeledEdit
-      Left = 720
+      Left = 708
       Top = 75
       Width = 153
       Height = 23
@@ -88,12 +88,13 @@ object TelaCheckout: TTelaCheckout
       EditLabel.Caption = 'Desconto'
       TabOrder = 3
       Text = ''
+      ExplicitLeft = 720
     end
   end
   object pnlBottom: TPanel
     Left = 0
-    Top = 502
-    Width = 1093
+    Top = 493
+    Width = 1087
     Height = 41
     Align = alBottom
     Color = 16579321
@@ -108,7 +109,7 @@ object TelaCheckout: TTelaCheckout
     ExplicitTop = 501
     ExplicitWidth = 1089
     DesignSize = (
-      1093
+      1087
       41)
     object Label4: TLabel
       Left = 46
@@ -125,7 +126,7 @@ object TelaCheckout: TTelaCheckout
       Caption = '00.0'
     end
     object btnFinalizar: TButton
-      Left = 1006
+      Left = 994
       Top = 9
       Width = 75
       Height = 25
@@ -141,7 +142,7 @@ object TelaCheckout: TTelaCheckout
       ExplicitLeft = 1002
     end
     object btnCancelar: TButton
-      Left = 923
+      Left = 911
       Top = 9
       Width = 75
       Height = 25
@@ -161,7 +162,7 @@ object TelaCheckout: TTelaCheckout
   object pnlTop: TPanel
     Left = 0
     Top = 0
-    Width = 1093
+    Width = 1087
     Height = 96
     Align = alTop
     Color = 16579321

@@ -1,9 +1,10 @@
 object TelaVendas: TTelaVendas
   Left = 0
   Top = 0
+  BorderStyle = bsNone
   Caption = 'Gerenciamento de vendas'
-  ClientHeight = 658
-  ClientWidth = 967
+  ClientHeight = 696
+  ClientWidth = 979
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,20 +15,22 @@ object TelaVendas: TTelaVendas
   object pnlConteudo: TPanel
     Left = 0
     Top = 96
-    Width = 967
-    Height = 562
+    Width = 979
+    Height = 600
     Align = alClient
     BevelOuter = bvNone
     Color = 16579321
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 961
+    ExplicitHeight = 553
     DesignSize = (
-      967
-      562)
+      979
+      600)
     object pnlBarraTarefas: TPanel
       Left = 0
       Top = 0
-      Width = 967
+      Width = 979
       Height = 201
       Align = alTop
       BevelOuter = bvNone
@@ -1870,16 +1873,17 @@ object TelaVendas: TTelaVendas
         TabOrder = 3
       end
     end
-    object DBGrid1: TDBGrid
+    object DBGridVendas: TDBGrid
       Left = 41
       Top = 199
       Width = 888
-      Height = 338
+      Height = 376
       Margins.Left = 4
       Margins.Top = 4
       Margins.Right = 4
       Margins.Bottom = 4
       Anchors = [akLeft, akTop, akRight, akBottom]
+      DataSource = DataSourceVendas
       TabOrder = 1
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -1891,7 +1895,7 @@ object TelaVendas: TTelaVendas
   object Panel3: TPanel
     Left = 0
     Top = 0
-    Width = 967
+    Width = 979
     Height = 96
     Align = alTop
     Color = 16579321

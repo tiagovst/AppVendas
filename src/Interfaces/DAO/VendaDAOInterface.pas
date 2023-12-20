@@ -3,7 +3,8 @@ unit VendaDAOInterface;
 interface
 
 uses
-  Venda;
+  Venda,
+  Data.DB;
 
 type
   IVendaDAO = interface
@@ -16,6 +17,8 @@ type
   procedure Pesquisar();
   procedure PesquisarVendedor(ID : Integer);
   procedure CarregarVenda(Venda: TVenda; ID: Integer);
+  procedure AtualizarListaVendas(DataSource : TDataSource);
+
   end;
 
 implementation

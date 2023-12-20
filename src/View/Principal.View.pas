@@ -27,6 +27,8 @@ uses
   ControladorTelaManejoUsuarioInterface,
   ControladorTelaListagemUsuarioInterface,
   ControladorTelaListagemUsuario,
+  ControladorTelaVendas,
+  ControladorTelaVendasInterface,
   Vcl.Imaging.pngimage;
 
 type
@@ -58,6 +60,7 @@ type
     btnEstoque: TSpeedButton;
     ImageLogo: TImage;
     Label1: TLabel;
+    btnVendas: TSpeedButton;
     procedure onClick(Sender : TObject);
     procedure btnCadastrarProdutoClick(Sender: TObject);
     procedure btnVerUsuarioClick(Sender: TObject);
@@ -67,6 +70,7 @@ type
     procedure btnFinalizarCompraClick(Sender: TObject);
     procedure btnEstoqueClick(Sender: TObject);
     procedure btnInicioClick(Sender: TObject);
+    procedure btnVendasClick(Sender: TObject);
   private
     ControladorProduto: IControladorProduto;
     uControladorCompra: IControladorCompra;
@@ -74,6 +78,7 @@ type
     uControladorTelaManejoUsuario: IControladorTelaManejoUsuario;
     uControladorTelaListagemUsuario: IControladorTelaListagemUsuario;
     uControladorTelaEstoque : IControladorTelaEstoque;
+    uControladorTelaVendas : IControladorTelaVendas;
     Top: Boolean;
 
     procedure ManejoTop;
@@ -110,6 +115,15 @@ begin
   pnlSubmenuUsuarios.Visible := False;
 
   uControladorTelaManejoUsuario := TControladorTelaManejoUsuario.Create(TelaPrincipal.pnlConteudo);
+end;
+
+procedure TTelaPrincipal.btnVendasClick(Sender: TObject);
+begin
+  VerificacaoParent;
+  Top := True;
+  ManejoTop;
+
+  uControladorTelaVendas := TControladorTelaVendas.Create(TelaPrincipal.pnlConteudo);
 end;
 
 procedure TTelaPrincipal.btnVerUsuarioClick(Sender: TObject);
@@ -232,7 +246,7 @@ begin
       BringToFront;
       Visible := not Visible;
     end;
-  end;
+  end
 end;
 
 procedure TTelaPrincipal.VerificacaoParent;
@@ -251,6 +265,9 @@ begin
 
     if Assigned(uControladorTelaManejoUsuario) then
         uControladorTelaManejoUsuario.FecharTela;
+
+    if Assigned(uControladorTelaVendas) then
+      uControladorTelaVendas.FecharTela;
 
     Top := False;
     ManejoTop;

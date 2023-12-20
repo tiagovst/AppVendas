@@ -6,9 +6,9 @@ uses
   System.SysUtils, Vcl.Grids, Checkout.View, Vcl.Dialogs, Vcl.Controls,
   Compra,
   Venda,
-  ControladorVenda,
+  ControladorVendaDAO,
   ItemVenda,
-  ControladorVendaInterface,
+  ControladorVendaDAOInterface,
   ControladorItemVenda,
   ControladorItemVendaInterface,
   ControladorProdutoInterface,
@@ -182,13 +182,7 @@ begin
   RegistroVenda.dataVenda := uControladorVenda.DataAtual;
   RegistroVenda.totalProdutos := FTelaCheckout.ProdutosGrid.RowCount - 1;
   RegistroVenda.vendedor := 1; // Mudar quando tiver sessão.
-  RegistroVenda.Desconto := StrToInt(Desconto); // Mudar quando o desconto estiver na tela checkout
-
-  // Calculando o preço total iterando pela lista de produtos.
-//  for i := 1 to (FTelaCheckout.ProdutosGrid.Cols[3].Count - 1) do
-//  begin
-//    PrecoTotal := PrecoTotal + StrToFloat(FTelaCheckout.ProdutosGrid.Cols[4].Strings[i]);
-//  end;
+  RegistroVenda.Desconto := StrToInt(Desconto);
 
   CalcularSubtotal;
   RegistroVenda.totalPreco := StrToFloat(FormatFloat('#0.00', PrecoTotal));

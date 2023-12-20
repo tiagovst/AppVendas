@@ -1,13 +1,14 @@
-unit ControladorVenda;
+unit ControladorVendaDAO;
 
 interface
 
 uses
   System.SysUtils,
   Venda,
-  ControladorVendaInterface,
+  ControladorVendaDAOInterface,
   VendaDAO,
   VendaDAOInterface,
+  Data.DB,
   vcl.Dialogs;
 
 type
@@ -17,9 +18,7 @@ type
 
     function DataAtual: TDate;
 
-
     // Funções DAO
-
     function gerarID: Integer;
     function Inserir(Venda: TVenda; out erro: String): Boolean;
     function Excluir(ID: Integer; out erro: String): Boolean;
@@ -28,6 +27,7 @@ type
     procedure Pesquisar();
     procedure PesquisarVendedor(ID : Integer);
     procedure CarregarVenda(Venda: TVenda; ID: Integer);
+    procedure AtualizarListaVendas(DataSource : TDataSource);
 
   public
     constructor Create;
@@ -46,6 +46,11 @@ end;
 function TControladorVenda.DataAtual: TDate;
 begin
   Result := Date;
+end;
+
+procedure TControladorVenda.AtualizarListaVendas(DataSource: TDataSource);
+begin
+  IVenda.AtualizarListaVendas(DataSource);
 end;
 
 procedure TControladorVenda.CarregarVenda(Venda: TVenda; ID: Integer);

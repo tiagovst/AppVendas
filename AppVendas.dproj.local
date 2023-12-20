@@ -19,5 +19,12 @@
     <Transaction>2023/11/29 17:18:27.000.809,=C:\Users\Gabriel\Documents\Repo\SalesApp\Unit2.pas</Transaction>
     <Transaction>2023/11/29 17:18:49.000.514,C:\Users\Gabriel\Documents\Repo\SalesApp\src\Controller\ControladorTelaCadastroProduto.pas=C:\Users\Gabriel\Documents\Repo\SalesApp\Unit1.pas</Transaction>
     <Transaction>2023/11/29 17:19:19.000.677,C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\ControladorTelaCadastroProdutoInterface.pas=C:\Users\Gabriel\Documents\Repo\SalesApp\Unit2.pas</Transaction>
+    <Transaction>2023/12/20 17:28:46.000.523,=C:\Users\Gabriel\Documents\Repo\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/12/20 17:30:19.000.474,C:\Users\Gabriel\Documents\Repo\SalesApp\Unit1.pas=C:\Users\Gabriel\Documents\Repo\SalesApp\src\Controller\ControladorTelaVendas.pas</Transaction>
+    <Transaction>2023/12/20 17:30:34.000.746,=C:\Users\Gabriel\Documents\Repo\SalesApp\src\View\Vendas.View.pas</Transaction>
+    <Transaction>2023/12/20 17:31:12.000.513,=C:\Users\Gabriel\Documents\Repo\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/12/20 17:31:35.000.370,C:\Users\Gabriel\Documents\Repo\SalesApp\Unit1.pas=C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\ControladorTelaVendasInterface.pas</Transaction>
+    <Transaction>2023/12/20 17:32:55.000.919,C:\Users\Gabriel\Documents\Repo\SalesApp\src\Controller\ControladorVenda.pas=C:\Users\Gabriel\Documents\Repo\SalesApp\src\Controller\ControladorVendaDAO.pas</Transaction>
+    <Transaction>2023/12/20 17:33:26.000.160,C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\ControladorVendaInterface.pas=C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\ControladorVendaDAOInterface.pas</Transaction>
   </Transactions>
 </BorlandProject>

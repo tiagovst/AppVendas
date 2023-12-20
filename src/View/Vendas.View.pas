@@ -24,7 +24,7 @@ type
     lblTotalEmVendas: TLabel;
     Label6: TLabel;
     lblQuantidadeItensVendidos: TLabel;
-    DBGrid1: TDBGrid;
+    DBGridVendas: TDBGrid;
     Button1: TButton;
     Button2: TButton;
     DataSourceVendas: TDataSource;

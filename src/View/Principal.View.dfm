@@ -23,7 +23,7 @@ object TelaPrincipal: TTelaPrincipal
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 641
+    ExplicitHeight = 633
     object pnlLogo: TPanel
       Left = 1
       Top = 1
@@ -154,7 +154,7 @@ object TelaPrincipal: TTelaPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 599
+      ExplicitTop = 591
     end
     object pnlBotoes: TPanel
       Left = 0
@@ -215,6 +215,19 @@ object TelaPrincipal: TTelaPrincipal
         OnClick = btnInicioClick
         ExplicitTop = 8
       end
+      object btnVendas: TSpeedButton
+        Left = 0
+        Top = 148
+        Width = 185
+        Height = 37
+        Align = alTop
+        Caption = 'Vendas'
+        Flat = True
+        StyleName = 'Windows'
+        OnClick = btnVendasClick
+        ExplicitLeft = -4
+        ExplicitTop = 157
+      end
     end
   end
   object pnlConteudo: TPanel
@@ -227,8 +240,8 @@ object TelaPrincipal: TTelaPrincipal
     Color = 16579321
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 919
-    ExplicitHeight = 641
+    ExplicitWidth = 917
+    ExplicitHeight = 633
     DesignSize = (
       923
       642)
@@ -248,7 +261,7 @@ object TelaPrincipal: TTelaPrincipal
     object gridProdutos: TDBGrid
       Left = 40
       Top = 139
-      Width = 833
+      Width = 849
       Height = 506
       Hint = 'Clique duas vezes para selecionar o produto'
       Anchors = [akLeft, akTop, akRight, akBottom]
@@ -280,7 +293,7 @@ object TelaPrincipal: TTelaPrincipal
       Color = 16579321
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 919
+      ExplicitWidth = 917
       DesignSize = (
         923
         41)
@@ -292,19 +305,19 @@ object TelaPrincipal: TTelaPrincipal
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 0
         TextHint = 'Pesquisar produto'
-        ExplicitWidth = 307
+        ExplicitWidth = 305
       end
     end
     object btnFinalizarCompra: TButton
-      Left = 758
-      Top = 99
+      Left = 774
+      Top = 103
       Width = 115
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Finalizar Compra'
       TabOrder = 1
       OnClick = btnFinalizarCompraClick
-      ExplicitLeft = 754
+      ExplicitLeft = 768
     end
     object pnlSubmenuProdutos: TPanel
       Left = 0

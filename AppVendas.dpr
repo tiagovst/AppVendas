@@ -15,9 +15,9 @@ uses
   UsuarioDAOInterface in 'src\Interfaces\DAO\UsuarioDAOInterface.pas',
   ProdutoDAOInterface in 'src\Interfaces\DAO\ProdutoDAOInterface.pas',
   ControladorProduto in 'src\Controller\ControladorProduto.pas',
-  ControladorVenda in 'src\Controller\ControladorVenda.pas',
+  ControladorVendaDAO in 'src\Controller\ControladorVendaDAO.pas',
   ControladorProdutoInterface in 'src\Interfaces\Controlador\ControladorProdutoInterface.pas',
-  ControladorVendaInterface in 'src\Interfaces\Controlador\ControladorVendaInterface.pas',
+  ControladorVendaDAOInterface in 'src\Interfaces\Controlador\ControladorVendaDAOInterface.pas',
   CadastroProduto.View in 'src\View\CadastroProduto.View.pas' {TelaCadastroProduto},
   Principal.View in 'src\View\Principal.View.pas' {TelaPrincipal},
   ListagemUsuario.View in 'src\View\ListagemUsuario.View.pas' {TelaListagemUsuario},
@@ -44,7 +44,10 @@ uses
   ControladorTelaManejoUsuarioInterface in 'src\Interfaces\Controlador\ControladorTelaManejoUsuarioInterface.pas',
   ControladorTelaListagemUsuario in 'src\Controller\ControladorTelaListagemUsuario.pas',
   ControladorTelaListagemUsuarioInterface in 'src\Interfaces\Controlador\ControladorTelaListagemUsuarioInterface.pas',
-  ControladorTelaCheckoutInterface in 'src\Interfaces\Controlador\ControladorTelaCheckoutInterface.pas';
+  ControladorTelaCheckoutInterface in 'src\Interfaces\Controlador\ControladorTelaCheckoutInterface.pas',
+  ControladorTelaVendas in 'src\Controller\ControladorTelaVendas.pas',
+  Vendas.View in 'src\View\Vendas.View.pas' {TelaVendas},
+  ControladorTelaVendasInterface in 'src\Interfaces\Controlador\ControladorTelaVendasInterface.pas';
 
 {$R *.res}
 
@@ -53,6 +56,7 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TTelaPrincipal, TelaPrincipal);
   Application.CreateForm(TdmConexao, dmConexao);
+  Application.CreateForm(TTelaVendas, TelaVendas);
   Application.Run;
 end.
 

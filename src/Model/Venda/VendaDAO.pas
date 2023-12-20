@@ -8,6 +8,7 @@ uses
   FireDAC.Comp.Client,
   FireDAC.Stan.Param,
   System.SysUtils,
+  Data.DB,
   Conexao;
 
 type
@@ -25,6 +26,7 @@ type
       procedure Pesquisar();
       procedure PesquisarVendedor(ID : Integer);
       procedure CarregarVenda(Venda: TVenda; ID: Integer);
+      procedure AtualizarListaVendas(DataSource : TDataSource);
   end;
 
 var
@@ -33,6 +35,21 @@ var
 implementation
 
 { TVendaDAO }
+
+procedure TVendaDAO.AtualizarListaVendas(DataSource: TDataSource);
+begin
+  SQLQuery := TFDQuery.Create(nil);
+
+  with SQLQuery do
+  begin
+    Connection := dmConexao.FDConnection;
+
+    SQL.Text := 'SELECT * FROM VENDA;';
+    Open();
+  end;
+
+  DataSource.DataSet := SQLQuery;
+end;
 
 procedure TVendaDAO.CarregarVenda(Venda: TVenda; ID: Integer);
 begin
