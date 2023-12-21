@@ -135,13 +135,10 @@
             <Form>dmGenericDAO</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="src\Controller\ControladorUsuario.pas"/>
         <DCCReference Include="src\Interfaces\DAO\VendaDAOInterface.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorUsuarioInterface.pas"/>
         <DCCReference Include="src\Interfaces\DAO\UsuarioDAOInterface.pas"/>
         <DCCReference Include="src\Interfaces\DAO\ProdutoDAOInterface.pas"/>
-        <DCCReference Include="src\Controller\ControladorProduto.pas"/>
-        <DCCReference Include="src\Controller\ControladorVendaDAO.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorProdutoInterface.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorVendaDAOInterface.pas"/>
         <DCCReference Include="src\View\CadastroProduto.View.pas">
@@ -162,31 +159,15 @@
         <DCCReference Include="src\View\CompraProduto.View.pas">
             <Form>TelaAdicionarProduto</Form>
         </DCCReference>
-        <DCCReference Include="src\Controller\ControladorCompra.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorCompraInterface.pas"/>
         <DCCReference Include="src\Model\Compra\Compra.pas"/>
         <DCCReference Include="src\View\Checkout.View.pas">
             <Form>TelaCheckout</Form>
         </DCCReference>
-        <DCCReference Include="src\Controller\ControladorTelaCheckout.pas"/>
         <DCCReference Include="src\Model\ItemVenda\ItemVenda.pas"/>
         <DCCReference Include="src\Model\ItemVenda\ItemVendaDAO.pas"/>
-        <DCCReference Include="src\Controller\ControladorItemVenda.pas"/>
         <DCCReference Include="src\Interfaces\DAO\ItemVendaDAOInterface.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorItemVendaInterface.pas"/>
-        <DCCReference Include="src\Controller\ControladorTelaCompraProduto.pas"/>
-        <DCCReference Include="src\Interfaces\Controlador\ControladorTelaCompraProdutoInterface.pas"/>
-        <DCCReference Include="src\Controller\ControladorTelaEstoque.pas"/>
-        <DCCReference Include="src\Interfaces\Controlador\ControladorTelaEstoqueInterface.pas"/>
-        <DCCReference Include="src\Controller\ControladorTelaCadastroProduto.pas"/>
-        <DCCReference Include="src\Interfaces\Controlador\ControladorTelaCadastroProdutoInterface.pas"/>
-        <DCCReference Include="src\Controller\ControladorTelaManejoUsuario.pas"/>
-        <DCCReference Include="src\Interfaces\Controlador\ControladorTelaManejoUsuarioInterface.pas"/>
-        <DCCReference Include="src\Controller\ControladorTelaListagemUsuario.pas"/>
-        <DCCReference Include="src\Interfaces\Controlador\ControladorTelaListagemUsuarioInterface.pas"/>
-        <DCCReference Include="src\Interfaces\Controlador\ControladorTelaCheckoutInterface.pas"/>
-        <DCCReference Include="src\Controller\ControladorTelaVendas.pas"/>
-        <DCCReference Include="src\Interfaces\Controlador\ControladorTelaVendasInterface.pas"/>
         <DCCReference Include="src\View\Vendas.View.pas">
             <Form>TelaVendas</Form>
         </DCCReference>
@@ -198,6 +179,40 @@
         </DCCReference>
         <DCCReference Include="src\Model\ConexaoDAO\ConexaoIniciar.pas"/>
         <DCCReference Include="src\Model\Usuario\SessaoUsuario.pas"/>
+        <DCCReference Include="src\Model\Cliente\Cliente.pas"/>
+        <DCCReference Include="src\Model\Cliente\ClienteDAO.pas"/>
+        <DCCReference Include="src\Interfaces\DAO\ClienteDAOInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorClienteDAOInterface.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaCadastroProduto.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaCheckout.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaCompraProduto.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaEstoque.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaListagemUsuario.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaManejoUsuario.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaVendas.pas"/>
+        <DCCReference Include="src\Controller\DAO\ControladorClienteDAO.pas"/>
+        <DCCReference Include="src\Controller\DAO\ControladorCompra.pas"/>
+        <DCCReference Include="src\Controller\DAO\ControladorItemVenda.pas"/>
+        <DCCReference Include="src\Controller\DAO\ControladorProduto.pas"/>
+        <DCCReference Include="src\Controller\DAO\ControladorUsuario.pas"/>
+        <DCCReference Include="src\Controller\DAO\ControladorVendaDAO.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaManejoCliente.pas"/>
+        <DCCReference Include="src\View\ListagemClientes.View.pas">
+            <Form>TelaListagemClientes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaListagemClientes.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaCadastroProdutoInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaCheckoutInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaCompraProdutoInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaEstoqueInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaListagemClientesInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaListagemUsuarioInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaLoginInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaManejoClienteInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaManejoUsuarioInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaPrincipalInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaVendasInterface.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

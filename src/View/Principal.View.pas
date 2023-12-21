@@ -64,6 +64,8 @@ type
     ImageLogo: TImage;
     Label1: TLabel;
     btnVendas: TSpeedButton;
+    lblNomeDeUsuario: TLabel;
+    lblCargoUsuario: TLabel;
     procedure onClick(Sender : TObject);
     procedure btnCadastrarProdutoClick(Sender: TObject);
     procedure btnVerUsuarioClick(Sender: TObject);
@@ -171,6 +173,9 @@ begin
   uControladorCompra := TControladorCompra.Create; // Config --> Refatoração
   ControladorProduto := TControladorProduto.Create;
   ControladorProduto.AtualizarListaProdutos(DataSource);
+
+  lblNomeDeUsuario.Caption := SessaoUsuario.TSessaoUsuario.nomeUsuario;
+  lblCargoUsuario.Caption := SessaoUsuario.TSessaoUsuario.cargo;
 end;
 
 procedure TTelaPrincipal.gridProdutosDblClick(Sender: TObject);
