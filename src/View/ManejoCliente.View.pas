@@ -8,24 +8,23 @@ uses
   Vcl.StdCtrls, Vcl.Mask;
 
 type
-  TTelaCadastroCliente = class(TForm)
+  TTelaManejoCliente = class(TForm)
     pnlBottom: TPanel;
     btnCancelar: TButton;
     btnSalvar: TButton;
     pnlCenter: TPanel;
     GroupBox1: TGroupBox;
     Label2: TLabel;
-    lblNome: TLabeledEdit;
+    txtNome: TLabeledEdit;
     txtEndereco: TLabeledEdit;
-    txtCNPJ: TLabeledEdit;
-    lblTelefone: TLabeledEdit;
+    txtTelefone: TLabeledEdit;
     rbCPF: TRadioButton;
     rbCNPJ: TRadioButton;
     pnlTop: TPanel;
     Label1: TLabel;
     Label3: TLabel;
     Image: TImage;
-    txtCPF: TLabeledEdit;
+    txtIdentificador: TLabeledEdit;
   private
     { Private declarations }
   public
@@ -33,7 +32,7 @@ type
   end;
 
 var
-  TelaCadastroCliente: TTelaCadastroCliente;
+  TelaManejoCliente: TTelaManejoCliente;
 
 implementation
 

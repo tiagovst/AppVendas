@@ -1,4 +1,4 @@
-object TelaCadastroCliente: TTelaCadastroCliente
+object TelaManejoCliente: TTelaManejoCliente
   Left = 0
   Top = 0
   BorderStyle = bsNone
@@ -21,8 +21,6 @@ object TelaCadastroCliente: TTelaCadastroCliente
     Color = 16579321
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 600
-    ExplicitWidth = 962
     DesignSize = (
       747
       41)
@@ -34,7 +32,6 @@ object TelaCadastroCliente: TTelaCadastroCliente
       Anchors = [akRight, akBottom]
       Caption = 'Cancelar'
       TabOrder = 0
-      ExplicitLeft = 796
     end
     object btnSalvar: TButton
       Left = 664
@@ -44,7 +41,6 @@ object TelaCadastroCliente: TTelaCadastroCliente
       Anchors = [akRight, akBottom]
       Caption = 'Salvar'
       TabOrder = 1
-      ExplicitLeft = 879
     end
   end
   object pnlCenter: TPanel
@@ -56,8 +52,6 @@ object TelaCadastroCliente: TTelaCadastroCliente
     Color = 16579321
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 966
-    ExplicitHeight = 505
     object GroupBox1: TGroupBox
       Left = 41
       Top = 25
@@ -82,7 +76,7 @@ object TelaCadastroCliente: TTelaCadastroCliente
       TabOrder = 0
       object Label2: TLabel
         Left = 391
-        Top = 123
+        Top = 118
         Width = 73
         Height = 17
         Caption = 'Identificador'
@@ -93,7 +87,7 @@ object TelaCadastroCliente: TTelaCadastroCliente
         Font.Style = []
         ParentFont = False
       end
-      object lblNome: TLabeledEdit
+      object txtNome: TLabeledEdit
         Left = 39
         Top = 60
         Width = 220
@@ -139,33 +133,7 @@ object TelaCadastroCliente: TTelaCadastroCliente
         TabOrder = 1
         Text = ''
       end
-      object txtCNPJ: TLabeledEdit
-        Left = 391
-        Top = 224
-        Width = 219
-        Height = 25
-        EditLabel.Width = 29
-        EditLabel.Height = 17
-        EditLabel.Caption = 'CNPJ'
-        EditLabel.Font.Charset = DEFAULT_CHARSET
-        EditLabel.Font.Color = clMenuHighlight
-        EditLabel.Font.Height = -13
-        EditLabel.Font.Name = 'Segoe UI'
-        EditLabel.Font.Style = []
-        EditLabel.ParentFont = False
-        EditMask = '00.000.000/0000-00;1;_'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Segoe UI'
-        Font.Style = []
-        MaxLength = 18
-        NumbersOnly = True
-        ParentFont = False
-        TabOrder = 2
-        Text = '  .   .   /    -  '
-      end
-      object lblTelefone: TLabeledEdit
+      object txtTelefone: TLabeledEdit
         Left = 39
         Top = 144
         Width = 220
@@ -188,12 +156,12 @@ object TelaCadastroCliente: TTelaCadastroCliente
         MaxLength = 14
         NumbersOnly = True
         ParentFont = False
-        TabOrder = 3
+        TabOrder = 2
         Text = '(  )     -    '
       end
       object rbCPF: TRadioButton
         Left = 391
-        Top = 152
+        Top = 147
         Width = 113
         Height = 17
         Caption = 'CPF'
@@ -204,12 +172,12 @@ object TelaCadastroCliente: TTelaCadastroCliente
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        TabOrder = 4
+        TabOrder = 3
         TabStop = True
       end
       object rbCNPJ: TRadioButton
         Left = 528
-        Top = 152
+        Top = 147
         Width = 113
         Height = 17
         Caption = 'CNPJ'
@@ -219,23 +187,16 @@ object TelaCadastroCliente: TTelaCadastroCliente
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        TabOrder = 5
+        TabOrder = 4
       end
-      object txtCPF: TLabeledEdit
-        Left = 39
-        Top = 224
+      object txtIdentificador: TLabeledEdit
+        Left = 391
+        Top = 176
         Width = 219
         Height = 25
-        EditLabel.Width = 12
-        EditLabel.Height = 17
-        EditLabel.Caption = 'ID'
-        EditLabel.Font.Charset = DEFAULT_CHARSET
-        EditLabel.Font.Color = clMenuHighlight
-        EditLabel.Font.Height = -13
-        EditLabel.Font.Name = 'Segoe UI'
-        EditLabel.Font.Style = []
-        EditLabel.ParentFont = False
-        Enabled = False
+        EditLabel.Width = 5
+        EditLabel.Height = 23
+        EditLabel.Caption = ' '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
@@ -243,7 +204,7 @@ object TelaCadastroCliente: TTelaCadastroCliente
         Font.Style = []
         NumbersOnly = True
         ParentFont = False
-        TabOrder = 6
+        TabOrder = 5
         Text = ''
       end
     end
@@ -257,7 +218,6 @@ object TelaCadastroCliente: TTelaCadastroCliente
     Color = 16579321
     ParentBackground = False
     TabOrder = 2
-    ExplicitWidth = 962
     object Label1: TLabel
       Left = 93
       Top = 40

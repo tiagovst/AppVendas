@@ -174,9 +174,6 @@
         <DCCReference Include="src\View\Login.View.pas">
             <Form>TelaLogin</Form>
         </DCCReference>
-        <DCCReference Include="src\View\ManejoCliente.View.pas">
-            <Form>TelaCadastroCliente</Form>
-        </DCCReference>
         <DCCReference Include="src\Model\ConexaoDAO\ConexaoIniciar.pas"/>
         <DCCReference Include="src\Model\Usuario\SessaoUsuario.pas"/>
         <DCCReference Include="src\Model\Cliente\Cliente.pas"/>
@@ -197,10 +194,6 @@
         <DCCReference Include="src\Controller\DAO\ControladorUsuario.pas"/>
         <DCCReference Include="src\Controller\DAO\ControladorVendaDAO.pas"/>
         <DCCReference Include="src\Controller\Telas\ControladorTelaManejoCliente.pas"/>
-        <DCCReference Include="src\View\ListagemClientes.View.pas">
-            <Form>TelaListagemClientes</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="src\Controller\Telas\ControladorTelaListagemClientes.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaCadastroProdutoInterface.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaCheckoutInterface.pas"/>
@@ -213,6 +206,14 @@
         <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaManejoUsuarioInterface.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaPrincipalInterface.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaVendasInterface.pas"/>
+        <DCCReference Include="src\View\ListagemClientes.View.pas">
+            <Form>TelaListagemClientes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\View\ManejoCliente.View.pas">
+            <Form>TelaManejoCliente</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

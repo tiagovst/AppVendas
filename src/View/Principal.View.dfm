@@ -23,7 +23,7 @@ object TelaPrincipal: TTelaPrincipal
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 633
+    ExplicitHeight = 641
     object pnlLogo: TPanel
       Left = 1
       Top = 1
@@ -129,7 +129,7 @@ object TelaPrincipal: TTelaPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 591
+      ExplicitTop = 599
       object lblNomeDeUsuario: TLabel
         Left = 10
         Top = 3
@@ -241,8 +241,8 @@ object TelaPrincipal: TTelaPrincipal
     Color = 16579321
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 775
-    ExplicitHeight = 633
+    ExplicitWidth = 777
+    ExplicitHeight = 641
     DesignSize = (
       781
       642)
@@ -294,7 +294,7 @@ object TelaPrincipal: TTelaPrincipal
       Color = 16579321
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 775
+      ExplicitWidth = 777
       DesignSize = (
         781
         41)
@@ -306,7 +306,7 @@ object TelaPrincipal: TTelaPrincipal
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 0
         TextHint = 'Pesquisar produto'
-        ExplicitWidth = 163
+        ExplicitWidth = 165
       end
     end
     object btnFinalizarCompra: TButton
@@ -318,7 +318,7 @@ object TelaPrincipal: TTelaPrincipal
       Caption = 'Finalizar Compra'
       TabOrder = 1
       OnClick = btnFinalizarCompraClick
-      ExplicitLeft = 616
+      ExplicitLeft = 618
     end
     object pnlSubmenuProdutos: TPanel
       Left = 0
@@ -361,7 +361,7 @@ object TelaPrincipal: TTelaPrincipal
       Left = 0
       Top = 171
       Width = 183
-      Height = 114
+      Height = 75
       BevelKind = bkFlat
       BevelOuter = bvNone
       Color = clWhite
@@ -391,19 +391,7 @@ object TelaPrincipal: TTelaPrincipal
         Caption = 'Cadastrar novo cliente'
         Flat = True
         StyleName = 'Windows'
-        ExplicitLeft = 1
-        ExplicitTop = 116
-        ExplicitWidth = 183
-      end
-      object btnEditarExcluirCliente: TSpeedButton
-        Left = 0
-        Top = 74
-        Width = 179
-        Height = 37
-        Align = alTop
-        Caption = 'Editar/excluir cliente'
-        Flat = True
-        StyleName = 'Windows'
+        OnClick = btnCadastrarClienteClick
         ExplicitLeft = 1
         ExplicitTop = 116
         ExplicitWidth = 183

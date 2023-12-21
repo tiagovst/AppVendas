@@ -31,7 +31,6 @@ uses
   ControladorItemVendaInterface in 'src\Interfaces\Controlador\ControladorItemVendaInterface.pas',
   Vendas.View in 'src\View\Vendas.View.pas' {TelaVendas},
   Login.View in 'src\View\Login.View.pas' {TelaLogin},
-  ManejoCliente.View in 'src\View\ManejoCliente.View.pas' {TelaCadastroCliente},
   ConexaoIniciar in 'src\Model\ConexaoDAO\ConexaoIniciar.pas',
   SessaoUsuario in 'src\Model\Usuario\SessaoUsuario.pas',
   Cliente in 'src\Model\Cliente\Cliente.pas',
@@ -52,7 +51,6 @@ uses
   ControladorUsuario in 'src\Controller\DAO\ControladorUsuario.pas',
   ControladorVendaDAO in 'src\Controller\DAO\ControladorVendaDAO.pas',
   ControladorTelaManejoCliente in 'src\Controller\Telas\ControladorTelaManejoCliente.pas',
-  ListagemClientes.View in 'src\View\ListagemClientes.View.pas' {TelaListagemClientes},
   ControladorTelaListagemClientes in 'src\Controller\Telas\ControladorTelaListagemClientes.pas',
   ControladorTelaCadastroProdutoInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaCadastroProdutoInterface.pas',
   ControladorTelaCheckoutInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaCheckoutInterface.pas',
@@ -64,7 +62,9 @@ uses
   ControladorTelaManejoClienteInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaManejoClienteInterface.pas',
   ControladorTelaManejoUsuarioInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaManejoUsuarioInterface.pas',
   ControladorTelaPrincipalInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaPrincipalInterface.pas',
-  ControladorTelaVendasInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaVendasInterface.pas';
+  ControladorTelaVendasInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaVendasInterface.pas',
+  ListagemClientes.View in 'src\View\ListagemClientes.View.pas' {TelaListagemClientes},
+  ManejoCliente.View in 'src\View\ManejoCliente.View.pas' {TelaManejoCliente};
 
 {$R *.res}
 
@@ -82,6 +82,8 @@ begin
     begin
       Application.CreateForm(TTelaPrincipal, TelaPrincipal);
   Application.CreateForm(TTelaListagemClientes, TelaListagemClientes);
+  Application.CreateForm(TTelaListagemClientes, TelaListagemClientes);
+  Application.CreateForm(TTelaManejoCliente, TelaManejoCliente);
   Application.Run;
     end;
   finally

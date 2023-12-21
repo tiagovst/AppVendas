@@ -31,6 +31,8 @@ uses
   ControladorTelaVendasInterface,
   ControladorTelaListagemClientes,
   ControladorTelaListagemClientesInterface,
+  ControladorTelaManejoCliente,
+  ControladorTelaManejoClienteInterface,
   Usuario,
   ControladorUsuarioInterface,
   Vcl.Imaging.pngimage,
@@ -54,7 +56,6 @@ type
     pnlSubmenuClientes: TPanel;
     btnVerClientes: TSpeedButton;
     btnCadastrarCliente: TSpeedButton;
-    btnEditarExcluirCliente: TSpeedButton;
     pnlBotoes: TPanel;
     pnlSubmenuUsuarios: TPanel;
     btnCadastrarUsuario: TSpeedButton;
@@ -79,6 +80,7 @@ type
     procedure btnInicioClick(Sender: TObject);
     procedure btnVendasClick(Sender: TObject);
     procedure btnVerClientesClick(Sender: TObject);
+    procedure btnCadastrarClienteClick(Sender: TObject);
   private
     ControladorProduto: IControladorProduto;
     uControladorCompra: IControladorCompra;
@@ -88,6 +90,7 @@ type
     uControladorTelaEstoque : IControladorTelaEstoque;
     uControladorTelaVendas : IControladorTelaVendas;
     uControladorTelaListagemClientes : IControladorTelaListagemClientes;
+    uControladorTelaManejoCliente : IControladorTelaManejoCliente;
     Top: Boolean;
 
     procedure ManejoTop;
@@ -101,6 +104,17 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TTelaPrincipal.btnCadastrarClienteClick(Sender: TObject);
+begin
+  VerificacaoParent;
+  Top := True;
+  ManejoTop;
+
+  pnlSubmenuClientes.Visible := False;
+
+  uControladorTelaManejoCliente := TControladorTelaManejoCliente.Create(pnlConteudo);
+end;
 
 procedure TTelaPrincipal.btnCadastrarProdutoClick(Sender: TObject);
 begin
@@ -141,6 +155,8 @@ begin
   VerificacaoParent;
   Top := True;
   ManejoTop;
+
+  pnlSubmenuClientes.Visible := False;
 
   uControladorTelaListagemClientes := TControladorTelaListagemClientes.Create(pnlConteudo);
 end;
@@ -293,6 +309,9 @@ begin
 
     if Assigned(uControladorTelaListagemClientes) then
       uControladorTelaListagemClientes.FecharTela;
+
+    if Assigned(uControladorTelaManejoCliente) then
+      uControladorTelaManejoCliente.FecharTela;
 
     Top := False;
     ManejoTop;

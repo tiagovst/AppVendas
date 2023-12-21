@@ -80,12 +80,12 @@ begin
   idCliente := FTelaListagemClientes.DataSourceClientes.DataSet.FieldByName('IDENTIFICADOR').AsString;
   if uControladorClienteDAO.Excluir(idCliente, erro) then
   begin
-    ShowMessage('Produto excluído com sucesso!');
+    ShowMessage('Cliente excluído com sucesso!');
     FTelaListagemClientes.gridClientes.DataSource.DataSet.Refresh;
   end
   else
   begin
-    ShowMessage('Ocorreu um erro ao tentar excluir o produto selecionado!' + sLineBreak + erro);
+    ShowMessage('Ocorreu um erro ao tentar excluir o cliente selecionado!' + sLineBreak + erro);
   end;
 
 end;

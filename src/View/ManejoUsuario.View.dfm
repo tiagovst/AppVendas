@@ -116,6 +116,7 @@ object TelaManejoUsuario: TTelaManejoUsuario
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
+        PasswordChar = '*'
         TabOrder = 2
         Text = ''
       end
