@@ -1,13 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2023/12/20 17:17:45.842,C:\Users\tiago\SalesApp\src\Controller\ControladorUsuarioDAO.pas=C:\Users\tiago\SalesApp\src\Controller\ControladorUsuario.pas</Transaction>
-    <Transaction>2023/12/20 17:17:45.858,C:\Users\tiago\SalesApp\src\Controller\ControladorUsuario.pas=C:\Users\tiago\SalesApp\src\Controller\ControladorUsuarioDAO.pas</Transaction>
-    <Transaction>2023/12/20 17:18:19.363,C:\Users\tiago\SalesApp\src\Controller\ControladorUsuarioDAO.pas=C:\Users\tiago\SalesApp\src\Controller\ControladorUsuario.pas</Transaction>
-    <Transaction>2023/12/20 17:18:19.395,C:\Users\tiago\SalesApp\src\Controller\ControladorUsuario.pas=C:\Users\tiago\SalesApp\src\Controller\ControladorUsuarioDAO.pas</Transaction>
-    <Transaction>2023/12/20 17:26:50.641,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
-    <Transaction>2023/12/20 17:27:07.240,C:\Users\tiago\SalesApp\src\Controller\ControladorTelaPrincipal.pas=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
-    <Transaction>2023/12/20 17:27:13.110,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
-    <Transaction>2023/12/20 17:27:27.566,C:\Users\tiago\SalesApp\src\Interfaces\Controlador\ControladorTelaPrincipalInterface.pas=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+	<Transactions>
+    <Transaction>2023/12/20 17:17:45.000.842,C:\Users\tiago\SalesApp\src\Controller\ControladorUsuario.pas=C:\Users\tiago\SalesApp\src\Controller\ControladorUsuarioDAO.pas</Transaction>
+    <Transaction>2023/12/20 17:17:45.000.858,C:\Users\tiago\SalesApp\src\Controller\ControladorUsuarioDAO.pas=C:\Users\tiago\SalesApp\src\Controller\ControladorUsuario.pas</Transaction>
+    <Transaction>2023/12/20 17:18:19.000.395,C:\Users\tiago\SalesApp\src\Controller\ControladorUsuarioDAO.pas=C:\Users\tiago\SalesApp\src\Controller\ControladorUsuario.pas</Transaction>
+    <Transaction>2023/12/20 17:18:19.000.363,C:\Users\tiago\SalesApp\src\Controller\ControladorUsuario.pas=C:\Users\tiago\SalesApp\src\Controller\ControladorUsuarioDAO.pas</Transaction>
+    <Transaction>2023/12/20 17:26:50.000.641,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/12/20 17:27:07.000.240,C:\Users\tiago\SalesApp\Unit1.pas=C:\Users\tiago\SalesApp\src\Controller\ControladorTelaPrincipal.pas</Transaction>
+    <Transaction>2023/12/20 17:27:13.000.110,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/12/20 17:27:27.000.566,C:\Users\tiago\SalesApp\Unit1.pas=C:\Users\tiago\SalesApp\src\Interfaces\Controlador\ControladorTelaPrincipalInterface.pas</Transaction>
+    <Transaction>2023/12/21 14:16:58.724,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 14:17:11.489,C:\Users\tiago\SalesApp\src\Model\ConexaoDAO\ConexaoIniciar.pas=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 14:49:16.160,C:\Users\tiago\SalesApp\src\Controller\ControladorTelaPrincipal.pas=</Transaction>
+    <Transaction>2023/12/21 14:49:43.973,C:\Users\tiago\SalesApp\src\Interfaces\Controlador\ControladorTelaPrincipalInterface.pas=</Transaction>
+    <Transaction>2023/12/21 14:53:46.821,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 14:55:12.629,=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
+    <Transaction>2023/12/21 14:55:35.879,C:\Users\tiago\SalesApp\src\Model\Usuario\SessaoUsuario.pas=C:\Users\tiago\SalesApp\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

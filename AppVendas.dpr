@@ -2,6 +2,7 @@ program AppVendas;
 
 uses
   Vcl.Forms,
+  System.SysUtils,
   Venda in 'src\Model\Venda\Venda.pas',
   Usuario in 'src\Model\Usuario\Usuario.pas',
   Produto in 'src\Model\Produto\Produto.pas',
@@ -50,16 +51,29 @@ uses
   Vendas.View in 'src\View\Vendas.View.pas' {TelaVendas},
   Login.View in 'src\View\Login.View.pas' {TelaLogin},
   ManejoCliente.View in 'src\View\ManejoCliente.View.pas' {TelaCadastroCliente},
-  ControladorTelaPrincipal in 'src\Controller\ControladorTelaPrincipal.pas',
-  ControladorTelaPrincipalInterface in 'src\Interfaces\Controlador\ControladorTelaPrincipalInterface.pas';
+  ConexaoIniciar in 'src\Model\ConexaoDAO\ConexaoIniciar.pas',
+  SessaoUsuario in 'src\Model\Usuario\SessaoUsuario.pas';
 
 {$R *.res}
+
+var
+  fLogin: TTelaLogin;
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TTelaLogin, TelaLogin);
-  Application.CreateForm(TdmConexao, dmConexao);
+
+  fLogin := TTelaLogin.Create(nil);
+  fLogin.ShowModal;
+  try
+    if fLogin.LoginSucesso then
+    begin
+      Application.CreateForm(TTelaPrincipal, TelaPrincipal);
   Application.Run;
+    end;
+  finally
+    fLogin.Free;
+  end;
+
 end.
 

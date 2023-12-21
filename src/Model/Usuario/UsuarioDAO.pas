@@ -7,7 +7,7 @@ uses
   FireDAC.Comp.Client,
   FireDAC.Stan.Param,
   Usuario,
-  Conexao,
+  ConexaoIniciar,
   Data.DB,
   UsuarioDAOInterface;
 
@@ -39,7 +39,7 @@ begin
 
   with SQLQuery, Usuario do
   begin
-    Connection := dmConexao.FDConnection;
+    Connection := TConexaoIniciar.varConexao.FDConnection;
 
     SQL.Text := 'update USUARIO set NOME = :NOME, EMAIL = :EMAIL, SENHA = :SENHA, ' +
     'TELEFONE = :TELEFONE, CPF = :CPF, CARGO = :CARGO, NOME_USUARIO = :NOME_USUARIO where (ID = :ID)';
@@ -73,7 +73,7 @@ begin
   with SQLQuery, Usuario do
   begin
     try
-      Connection := dmConexao.FDConnection;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
 
       SQL.Text := 'select * from usuario where (id = :id);';
 
@@ -101,7 +101,7 @@ begin
 
   with SQLQuery do
   begin
-    Connection := dmConexao.FDConnection;
+    Connection := TConexaoIniciar.varConexao.FDConnection;
 
     SQL.Text := 'delete from USUARIO where (ID = :ID)';
     Params.ParamByName('ID').AsInteger := id;
@@ -126,7 +126,7 @@ begin
   with SQLQuery do
   begin
     try
-      Connection := dmConexao.FDConnection;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
 
       SQL.Text := 'select coalesce(max(id), 0) + 1 as seq from usuario';
       Open();
@@ -144,7 +144,7 @@ begin
 
   with SQLQuery, Usuario do
   begin
-    Connection := dmConexao.FDConnection;
+    Connection := TConexaoIniciar.varConexao.FDConnection;
 
     SQL.Text := 'insert into USUARIO (ID, NOME, EMAIL, SENHA, TELEFONE, CPF, CARGO, NOME_USUARIO) ' +
     'values (:ID, :NOME, :EMAIL, :SENHA, :TELEFONE, :CPF, :CARGO, :NOME_USUARIO)';
@@ -177,7 +177,7 @@ begin
 
   with SQLQuery do
   begin
-    Connection := dmConexao.FDConnection;
+    Connection := TConexaoIniciar.varConexao.FDConnection;
 
     if Active then
       Close;
@@ -196,7 +196,7 @@ begin
 
   with SQLQuery, Usuario do
   begin
-    Connection := dmConexao.FDConnection;
+    Connection := TConexaoIniciar.varConexao.FDConnection;
 
     if Active then
       Close;

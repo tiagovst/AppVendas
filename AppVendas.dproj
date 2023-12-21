@@ -128,13 +128,11 @@
         <DCCReference Include="src\Model\Produto\Produto.pas"/>
         <DCCReference Include="src\Model\ConexaoDAO\Conexao.pas">
             <Form>dmConexao</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\Model\Venda\VendaDAO.pas"/>
         <DCCReference Include="src\Model\Produto\ProdutoDAO.pas"/>
         <DCCReference Include="src\Model\Usuario\UsuarioDAO.pas">
             <Form>dmGenericDAO</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="src\Controller\ControladorUsuario.pas"/>
@@ -148,34 +146,27 @@
         <DCCReference Include="src\Interfaces\Controlador\ControladorVendaDAOInterface.pas"/>
         <DCCReference Include="src\View\CadastroProduto.View.pas">
             <Form>TelaCadastroProduto</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\Principal.View.pas">
             <Form>TelaPrincipal</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\ListagemUsuario.View.pas">
             <Form>TelaListagemUsuario</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\Estoque.View.pas">
             <Form>TelaEstoque</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\ManejoUsuario.View.pas">
             <Form>TelaManejoUsuario</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\CompraProduto.View.pas">
             <Form>TelaAdicionarProduto</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\Controller\ControladorCompra.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorCompraInterface.pas"/>
         <DCCReference Include="src\Model\Compra\Compra.pas"/>
         <DCCReference Include="src\View\Checkout.View.pas">
             <Form>TelaCheckout</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\Controller\ControladorTelaCheckout.pas"/>
         <DCCReference Include="src\Model\ItemVenda\ItemVenda.pas"/>
@@ -198,7 +189,6 @@
         <DCCReference Include="src\Interfaces\Controlador\ControladorTelaVendasInterface.pas"/>
         <DCCReference Include="src\View\Vendas.View.pas">
             <Form>TelaVendas</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\Login.View.pas">
             <Form>TelaLogin</Form>
@@ -206,8 +196,8 @@
         <DCCReference Include="src\View\ManejoCliente.View.pas">
             <Form>TelaCadastroCliente</Form>
         </DCCReference>
-        <DCCReference Include="src\Controller\ControladorTelaPrincipal.pas"/>
-        <DCCReference Include="src\Interfaces\Controlador\ControladorTelaPrincipalInterface.pas"/>
+        <DCCReference Include="src\Model\ConexaoDAO\ConexaoIniciar.pas"/>
+        <DCCReference Include="src\Model\Usuario\SessaoUsuario.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

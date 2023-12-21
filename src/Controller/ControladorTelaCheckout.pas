@@ -15,7 +15,8 @@ uses
   ControladorProduto,
   Produto,
   ControladorTelaCheckoutInterface,
-  Vcl.ActnList;
+  Vcl.ActnList,
+  SessaoUsuario;
 
 type
 TControladorTelaCheckout = class(TInterfacedObject, IControladorTelaCheckout)
@@ -181,7 +182,7 @@ begin
   RegistroVenda.ID := uControladorVenda.gerarID;
   RegistroVenda.dataVenda := uControladorVenda.DataAtual;
   RegistroVenda.totalProdutos := FTelaCheckout.ProdutosGrid.RowCount - 1;
-  RegistroVenda.vendedor := 1; // Mudar quando tiver sessão.
+  RegistroVenda.vendedor := SessaoUsuario.TSessaoUsuario.id;
   RegistroVenda.Desconto := StrToInt(Desconto);
 
   CalcularSubtotal;

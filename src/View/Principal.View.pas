@@ -29,7 +29,10 @@ uses
   ControladorTelaListagemUsuario,
   ControladorTelaVendas,
   ControladorTelaVendasInterface,
-  Vcl.Imaging.pngimage;
+  Usuario,
+  ControladorUsuarioInterface,
+  Vcl.Imaging.pngimage,
+  SessaoUsuario;
 
 type
   TTelaPrincipal = class(TForm)
@@ -83,6 +86,7 @@ type
 
     procedure ManejoTop;
     procedure VerificacaoParent;
+  public
   end;
 
 var
@@ -279,4 +283,5 @@ begin
   end;
 
 end;
+
 end.

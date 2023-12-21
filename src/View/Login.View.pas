@@ -6,30 +6,30 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
   Vcl.Imaging.pngimage, Vcl.Mask,
+  ConexaoIniciar,
+  SessaoUsuario,
   Usuario,
   ControladorUsuario,
-  ControladorUsuarioInterface,
-  ControladorTelaPrincipal,
-  ControladorTelaPrincipalInterface;
+  ControladorUsuarioInterface;
 
 type
   TTelaLogin = class(TForm)
     Panel3: TPanel;
     Panel1: TPanel;
     ImageLogo: TImage;
-    txtUsuario: TLabeledEdit;
-    txtSenha: TLabeledEdit;
     Label1: TLabel;
     btnEntrar: TButton;
+    txtUsuario: TEdit;
+    txtSenha: TEdit;
     procedure btnEntrarClick(Sender: TObject);
   private
-    uControladorTelaPrincipal: IControladorTelaPrincipal;
+    bLoginSucesso: Boolean;
     NomeDeUsuario, Senha: String;
     uUsuario: TUsuario;
 
     uControladorUsuarioDAO: IControladorUsuario;
   public
-    { Public declarations }
+    property LoginSucesso: Boolean read bLoginSucesso;
   end;
 
 var
@@ -41,6 +41,7 @@ implementation
 
 procedure TTelaLogin.btnEntrarClick(Sender: TObject);
 begin
+  TConexaoIniciar.CriarConexao;
   uUsuario := TUsuario.Create;
   uControladorUsuarioDAO := TControladorUsuario.Create;
 
@@ -48,13 +49,15 @@ begin
   Senha := txtSenha.Text;
 
   try
-
     uControladorUsuarioDAO.PesquisarNomeUsuario(uUsuario, NomeDeUsuario);
 
     if uUsuario.Senha.Equals(Senha) then
     begin
-      uControladorTelaPrincipal := TControladorTelaPrincipal.Create;
-      //Close;
+      SessaoUsuario.TSessaoUsuario.id := uUsuario.ID;
+      SessaoUsuario.TSessaoUsuario.cargo := uUsuario.Cargo;
+      SessaoUsuario.TSessaoUsuario.nomeUsuario := uUsuario.NomeUsuario;
+      bLoginSucesso := True;
+      Close;
     end
     else
     begin
@@ -64,8 +67,9 @@ begin
     begin
       ShowMessage(E.Message);
     end;
-
   end;
+
+
 end;
 
 end.

@@ -155,47 +155,11 @@ object TelaLogin: TTelaLogin
       StyleElements = [seFont, seClient]
       OnClick = btnEntrarClick
     end
-    object txtSenha: TLabeledEdit
-      Left = 75
-      Top = 244
-      Width = 260
-      Height = 29
-      EditLabel.Width = 4
-      EditLabel.Height = 21
-      EditLabel.Color = clMenuHighlight
-      EditLabel.Font.Charset = DEFAULT_CHARSET
-      EditLabel.Font.Color = clMenuHighlight
-      EditLabel.Font.Height = -16
-      EditLabel.Font.Name = 'Segoe UI'
-      EditLabel.Font.Style = []
-      EditLabel.ParentColor = False
-      EditLabel.ParentFont = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      PasswordChar = '#'
-      TabOrder = 1
-      Text = ''
-      TextHint = 'Senha'
-    end
-    object txtUsuario: TLabeledEdit
+    object txtUsuario: TEdit
       Left = 75
       Top = 190
       Width = 260
       Height = 29
-      EditLabel.Width = 4
-      EditLabel.Height = 21
-      EditLabel.Color = clMenuHighlight
-      EditLabel.Font.Charset = DEFAULT_CHARSET
-      EditLabel.Font.Color = clMenuHighlight
-      EditLabel.Font.Height = -16
-      EditLabel.Font.Name = 'Segoe UI'
-      EditLabel.Font.Style = []
-      EditLabel.ParentColor = False
-      EditLabel.ParentFont = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -203,8 +167,22 @@ object TelaLogin: TTelaLogin
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      Text = ''
       TextHint = 'Usu'#225'rio'
+    end
+    object txtSenha: TEdit
+      Left = 75
+      Top = 244
+      Width = 260
+      Height = 29
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      PasswordChar = '*'
+      TabOrder = 1
+      TextHint = 'Senha'
     end
   end
 end

@@ -3,6 +3,9 @@ unit ControladorTelaPrincipal;
 interface
 
 uses
+  Vcl.Forms,
+  Vcl.ActnList,
+  System.SysUtils,
   Principal.View,
   Vcl.Controls,
   Vcl.Dialogs,
@@ -19,7 +22,12 @@ uses
   ControladorTelaEstoque,
   ControladorTelaEstoqueInterface,
   ControladorTelaVendasInterface,
-  ControladorTelaVendas;
+  ControladorTelaVendas,
+  ControladorTelaCheckout,
+  ControladorTelaCompraProduto,
+  ControladorTelaCompraProdutoInterface,
+  Produto,
+  ConexaoIniciar;
 
 type
   TControladorTelaPrincipal = class(TInterfacedObject, IControladorTelaPrincipal)
@@ -34,9 +42,31 @@ type
     uControladorTelaVendas : IControladorTelaVendas;
     Top: Boolean;
 
+    AcaoBtnProdutos, AcaoBtnClientes, AcaoBtnUsuarios, AcaoBtnCadastrarProduto,
+    AcaoBtnCadastrarUsuario, AcaoBtnVerUsuario, AcaoBtnFinalizarCompra, AcaoBtnEstoque,
+    AcaoBtnInicio, AcaoBtnVendas, AcaoBtnCadastrarCliente, AcaoBtnEditarExcluirCliente,
+    AcaoBtnVerClientes: TAction;
+
+    procedure btnEstoqueClick(Sender: TObject);
+    procedure btnInicioClick(Sender: TObject);
+    procedure btnVendasClick(Sender: TObject);
+    procedure btnProdutosClick(Sender: TObject);
+    procedure btnClientesClick(Sender: TObject);
+    procedure btnUsuariosClick(Sender: TObject);
+    procedure btnCadastrarProdutoClick(Sender: TObject);
+    procedure btnVerUsuarioClick(Sender: TObject);
+    procedure btnCadastrarUsuarioClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure gridProdutosDblClick(Sender: TObject);
+    procedure btnFinalizarCompraClick(Sender: TObject);
+    procedure btnCadastrarClienteClick(Sender: TObject);
+    procedure btnEditarExcluirClienteClick(Sender: TObject);
+    procedure btnVerClientesClick(Sender: TObject);
+
+    procedure ConfigurarEventoBotoes;
     procedure ManejoTop;
     procedure VerificacaoParent;
-
 
   public
     constructor Create;
@@ -46,103 +76,232 @@ implementation
 
 { TControladorTelaPrincipal }
 
-constructor TControladorTelaPrincipal.Create;
+procedure TControladorTelaPrincipal.btnCadastrarClienteClick(Sender: TObject);
 begin
-  FTelaPrincipal := TTelaPrincipal.Create(nil);
-
-  FTelaPrincipal.Show;
+  // Criar tela
 end;
 
-procedure btnCadastrarProdutoClick(Sender: TObject);
+procedure TControladorTelaPrincipal.btnCadastrarProdutoClick(Sender: TObject);
 begin
   VerificacaoParent;
   Top := True;
   ManejoTop;
 
-  pnlSubmenuProdutos.Visible := False;
+  FTelaPrincipal.pnlSubmenuProdutos.Visible := False;
 
   FCadastroProduto := TTelaCadastroProduto.Create(nil);
-  FCadastroProduto.Parent := TelaPrincipal.pnlConteudo;
+  FCadastroProduto.Parent := FTelaPrincipal.pnlConteudo;
   FCadastroProduto.Align := AlClient;
   FCadastroProduto.Show;
 end;
 
-procedure btnCadastrarUsuarioClick(Sender: TObject);
+procedure TControladorTelaPrincipal.btnCadastrarUsuarioClick(Sender: TObject);
 begin
   VerificacaoParent;
   Top := True;
   ManejoTop;
 
-  pnlSubmenuUsuarios.Visible := False;
+  FTelaPrincipal.pnlSubmenuUsuarios.Visible := False;
 
-  uControladorTelaManejoUsuario := TControladorTelaManejoUsuario.Create(TelaPrincipal.pnlConteudo);
+  uControladorTelaManejoUsuario := TControladorTelaManejoUsuario.Create(FTelaPrincipal.pnlConteudo);
 end;
 
-procedure btnVendasClick(Sender: TObject);
+procedure TControladorTelaPrincipal.btnClientesClick(Sender: TObject);
+begin
+  with FTelaPrincipal, FTelaPrincipal.pnlSubmenuClientes do
+    begin
+      pnlSubmenuUsuarios.Visible := False;
+      pnlSubmenuProdutos.Visible := False;
+
+      BringToFront;
+      pnlSubmenuClientes.Visible := not Visible;
+    end;
+end;
+
+procedure TControladorTelaPrincipal.btnEditarExcluirClienteClick(
+  Sender: TObject);
+begin
+  // Criar tela
+end;
+
+procedure TControladorTelaPrincipal.btnEstoqueClick(Sender: TObject);
 begin
   VerificacaoParent;
   Top := True;
   ManejoTop;
 
-  uControladorTelaVendas := TControladorTelaVendas.Create(TelaPrincipal.pnlConteudo);
+  FTelaPrincipal.pnlSubmenuProdutos.Visible := False;
+
+  uControladorTelaEstoque := TControladorTelaEstoque.Create(FTelaPrincipal.DataSource);
+  uControladorTelaEstoque.MostrarTela(FTelaPrincipal.pnlConteudo);
 end;
 
-procedure btnVerUsuarioClick(Sender: TObject);
+procedure TControladorTelaPrincipal.btnFinalizarCompraClick(Sender: TObject);
+begin
+  TControladorTelaCheckout.Create(uControladorCompra.ObterProdutos);
+end;
+
+procedure TControladorTelaPrincipal.btnInicioClick(Sender: TObject);
+begin
+  ControladorProduto.AtualizarListaProdutos(FTelaPrincipal.DataSource);
+  VerificacaoParent;
+end;
+
+procedure TControladorTelaPrincipal.btnProdutosClick(Sender: TObject);
+begin
+  with FTelaPrincipal, FTelaPrincipal.pnlSubmenuProdutos do
+    begin
+      pnlSubmenuUsuarios.Visible := False;
+      pnlSubmenuClientes.Visible := False;
+      BringToFront;
+      Visible := not pnlSubmenuProdutos.Visible;
+    end;
+end;
+
+procedure TControladorTelaPrincipal.btnUsuariosClick(Sender: TObject);
+begin
+  with FTelaPrincipal, FTelaPrincipal.pnlSubmenuUsuarios do
+    begin
+
+      pnlSubmenuProdutos.Visible := False;
+      pnlSubmenuClientes.Visible := False;
+
+      BringToFront;
+      Visible := not Visible;
+    end;
+end;
+
+procedure TControladorTelaPrincipal.btnVendasClick(Sender: TObject);
 begin
   VerificacaoParent;
   Top := True;
   ManejoTop;
 
-  pnlSubmenuUsuarios.Visible := False;
-
-  uControladorTelaListagemUsuario := TControladorTelaListagemUsuario.Create(TelaPrincipal.pnlConteudo);
+  uControladorTelaVendas := TControladorTelaVendas.Create(FTelaPrincipal.pnlConteudo);
 end;
 
-procedure btnEstoqueClick(Sender: TObject);
+procedure TControladorTelaPrincipal.btnVerClientesClick(Sender: TObject);
+begin
+  // Criar tela
+end;
+
+procedure TControladorTelaPrincipal.btnVerUsuarioClick(Sender: TObject);
 begin
   VerificacaoParent;
   Top := True;
   ManejoTop;
 
-  pnlSubmenuProdutos.Visible := False;
+  FTelaPrincipal.pnlSubmenuUsuarios.Visible := False;
 
-  uControladorTelaEstoque := TControladorTelaEstoque.Create(DataSource);
-  uControladorTelaEstoque.MostrarTela(pnlConteudo);
+  uControladorTelaListagemUsuario := TControladorTelaListagemUsuario.Create(FTelaPrincipal.pnlConteudo);
 end;
 
-procedure btnFinalizarCompraClick(Sender: TObject);
-var
-  uControladorCheckout : TControladorTelaCheckout;
+constructor TControladorTelaPrincipal.Create;
 begin
-  uControladorCheckout := TControladorTelaCheckout.Create(uControladorCompra.ObterProdutos);
+  TConexaoIniciar.CriarConexao;
+  FTelaPrincipal := TTelaPrincipal.Create(Application);
+
+  ConfigurarEventoBotoes;
+
+  FTelaPrincipal.Show;
 end;
 
-procedure btnInicioClick(Sender: TObject);
+procedure TControladorTelaPrincipal.ConfigurarEventoBotoes;
 begin
-  ControladorProduto.AtualizarListaProdutos(DataSource);
-  VerificacaoParent;
+  with FTelaPrincipal do
+  begin
+    OnShow := FormShow;
+    gridProdutos.OnDblClick := gridProdutosDblClick;
+    OnClose := FormClose;
+
+    AcaoBtnInicio := TAction.Create(nil);
+    AcaoBtnInicio.Caption := 'Início';
+    AcaoBtnInicio.OnExecute := btnInicioClick;
+    btnInicio.Action := AcaoBtnInicio;
+
+    AcaoBtnProdutos := TAction.Create(nil);
+    AcaoBtnProdutos.Caption := 'Produtos';
+    AcaoBtnProdutos.OnExecute := btnProdutosClick;
+    btnProdutos.Action := AcaoBtnProdutos;
+
+    AcaoBtnClientes := TAction.Create(nil);
+    AcaoBtnClientes.Caption := 'Clientes';
+    AcaoBtnClientes.OnExecute := btnClientesClick;
+    btnClientes.Action := AcaoBtnClientes;
+
+    AcaoBtnUsuarios := TAction.Create(nil);
+    AcaoBtnUsuarios.Caption := 'Usuarios';
+    AcaoBtnUsuarios.OnExecute := btnUsuariosClick;
+    btnUsuarios.Action := AcaoBtnUsuarios;
+
+    AcaoBtnVendas := TAction.Create(nil);
+    AcaoBtnVendas.Caption := 'Vendas';
+    AcaoBtnVendas.OnExecute := btnVendasClick;
+    btnVendas.Action := AcaoBtnVendas;
+
+    AcaoBtnCadastrarProduto := TAction.Create(nil);
+    AcaoBtnCadastrarProduto.Caption := 'Cadastrar novo produto';
+    AcaoBtnCadastrarProduto.OnExecute := btnCadastrarProdutoClick;
+    btnCadastrarProduto.Action := AcaoBtnCadastrarProduto;
+
+    AcaoBtnCadastrarUsuario := TAction.Create(nil);
+    AcaoBtnCadastrarUsuario.Caption := 'Cadastrar novo usuário';
+    AcaoBtnCadastrarUsuario.OnExecute := btnCadastrarUsuarioClick;
+    btnCadastrarUsuario.Action := AcaoBtnCadastrarUsuario;
+
+    AcaoBtnVerUsuario := TAction.Create(nil);
+    AcaoBtnVerUsuario.Caption := 'Ver usuários';
+    AcaoBtnVerUsuario.OnExecute := btnVerUsuarioClick;
+    btnVerUsuario.Action := AcaoBtnVerUsuario;
+
+    AcaoBtnFinalizarCompra := TAction.Create(nil);
+    AcaoBtnFinalizarCompra.Caption := 'Finalizar compra';
+    AcaoBtnFinalizarCompra.OnExecute := btnFinalizarCompraClick;
+    btnFinalizarCompra.Action := AcaoBtnFinalizarCompra;
+
+    AcaoBtnEstoque := TAction.Create(nil);
+    AcaoBtnEstoque.Caption := 'Estoque';
+    AcaoBtnEstoque.OnExecute := btnEstoqueClick;
+    btnEstoque.Action := AcaoBtnEstoque;
+
+    AcaoBtnCadastrarCliente := TAction.Create(nil);
+    AcaoBtnCadastrarCliente.Caption := 'Cadastrar novo cliente';
+    AcaoBtnCadastrarCliente.OnExecute := btnCadastrarClienteClick;
+    btnCadastrarCliente.Action := AcaoBtnCadastrarCliente;
+
+    AcaoBtnEditarExcluirCliente := TAction.Create(nil);
+    AcaoBtnEditarExcluirCliente.Caption := 'Editar/Excluir cliente';
+    AcaoBtnEditarExcluirCliente.OnExecute := btnEditarExcluirClienteClick;
+    btnEditarExcluirCliente.Action := AcaoBtnEditarExcluirCliente;
+
+    AcaoBtnVerClientes := TAction.Create(nil);
+    AcaoBtnVerClientes.Caption := 'Ver clientes';
+    AcaoBtnVerClientes.OnExecute := btnVerClientesClick;
+    btnVerClientes.Action := AcaoBtnVerClientes;
+  end;
 end;
 
-procedure FormShow(Sender: TObject);
+procedure TControladorTelaPrincipal.FormShow(Sender: TObject);
 begin
   uControladorCompra := TControladorCompra.Create; // Config --> Refatoração
   ControladorProduto := TControladorProduto.Create;
-  ControladorProduto.AtualizarListaProdutos(DataSource);
+  ControladorProduto.AtualizarListaProdutos(FTelaPrincipal.DataSource);
 end;
 
-procedure gridProdutosDblClick(Sender: TObject);
+procedure TControladorTelaPrincipal.gridProdutosDblClick(Sender: TObject);
 var
   LinhaSelecionada : Integer;
   ProdutoSelecionado : TProduto;
   uControladorTelaCompraProduto: IControladorTelaCompraProduto;
 begin
   // Obtém a linha clicada
-  LinhaSelecionada := gridProdutos.DataSource.DataSet.RecNo;
+  LinhaSelecionada := FTelaPrincipal.gridProdutos.DataSource.DataSet.RecNo;
   ProdutoSelecionado := TProduto.Create;
+
   // Usa a linha para obter dados específicos
-  if gridProdutos.DataSource.DataSet.Locate('ID', LinhaSelecionada, []) then
+  if FTelaPrincipal.gridProdutos.DataSource.DataSet.Locate('ID', LinhaSelecionada, []) then
   begin
-    with ProdutoSelecionado, gridProdutos.DataSource.DataSet do
+    with ProdutoSelecionado, FTelaPrincipal.gridProdutos.DataSource.DataSet do
       begin
       ID := FieldByName('ID').AsInteger;
       Nome := FieldByName('Nome').AsString;
@@ -160,57 +319,19 @@ begin
   uControladorTelaCompraProduto := TControladorTelaCompraProduto.Create(uControladorCompra, ProdutoSelecionado);
 end;
 
-procedure ManejoTop;
+procedure TControladorTelaPrincipal.ManejoTop;
 begin
   if Top then
   begin
-    pnlPesquisa.Align := AlNone;
+    FTelaPrincipal.pnlPesquisa.Align := AlNone;
   end
   else
   begin
-    pnlPesquisa.Align := AlTop;
+    FTelaPrincipal.pnlPesquisa.Align := AlTop;
   end;
 end;
 
-procedure onClick(Sender: TObject);
-begin
-  if Sender = btnProdutos then
-  begin
-    with pnlSubmenuProdutos do
-    begin
-      pnlSubmenuUsuarios.Visible := False;
-      pnlSubmenuClientes.Visible := False;
-      BringToFront;
-      Visible := not pnlSubmenuProdutos.Visible;
-    end;
-
-  end
-  else if Sender = btnClientes then
-  begin
-    with pnlSubmenuClientes do
-    begin
-      pnlSubmenuUsuarios.Visible := False;
-      pnlSubmenuProdutos.Visible := False;
-
-      BringToFront;
-      pnlSubmenuClientes.Visible := not Visible;
-    end;
-  end
-  else if Sender = btnUsuarios then
-  begin
-    with pnlSubmenuUsuarios do
-    begin
-
-      pnlSubmenuProdutos.Visible := False;
-      pnlSubmenuClientes.Visible := False;
-
-      BringToFront;
-      Visible := not Visible;
-    end;
-  end
-end;
-
-procedure VerificacaoParent;
+procedure TControladorTelaPrincipal.VerificacaoParent;
 begin
   try
     if Assigned(FCadastroProduto) then
@@ -238,7 +359,6 @@ begin
   end;
 
   end;
-
 end;
 
 end.

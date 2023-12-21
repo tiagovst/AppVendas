@@ -9,7 +9,7 @@ uses
   FireDAC.Stan.Param,
   System.SysUtils,
   Data.DB,
-  Conexao;
+  ConexaoIniciar;
 
 type
   TVendaDAO = class(TInterfacedObject, IVendaDAO)
@@ -42,7 +42,7 @@ begin
 
   with SQLQuery do
   begin
-    Connection := dmConexao.FDConnection;
+    Connection := TConexaoIniciar.varConexao.FDConnection;
 
     SQL.Text := 'SELECT * FROM VENDA;';
     Open();
@@ -57,7 +57,7 @@ begin
   with SQLQuery, Venda do
   begin
     try
-      Connection := dmConexao.FDConnection;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
       SQL.Text := 'SELECT * FROM VENDA WHERE (ID = :ID)';
       Params.ParamByName('ID').AsInteger := ID;
       Open();
@@ -81,7 +81,7 @@ begin
   with SQLQuery do
   begin
     try
-      Connection := dmConexao.FDConnection;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
       SQL.Text := 'DELETE FROM VENDA WHERE (ID = :ID)';
       Params.ParamByName('ID').AsInteger := ID;
       ExecSQL;
@@ -102,7 +102,7 @@ begin
   with SQLQuery do
   begin
     try
-      Connection := dmConexao.FDConnection;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
       SQL.Text := 'SELECT COALESCE(max(id), 0) + 1 AS NEXT_ID FROM VENDA';
       Open();
       Result := FieldByName('NEXT_ID').AsInteger;
@@ -118,7 +118,7 @@ begin
   with SQLQuery, Venda do
   begin
     try
-      Connection := dmConexao.FDConnection;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
       SQL.Text := 'insert into venda (id, total_produtos, total_preco, vendedor, data_venda, desconto) ' +
       'values (:id, :total_produtos, :total_preco, :vendedor, :data_venda, :desconto)';
 
@@ -149,7 +149,7 @@ begin
   with SQLQuery do
   begin
     try
-      Connection := dmConexao.FDConnection;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
       SQL.Text := 'SELECT * FROM VENDA';
       Open();
       First;
@@ -187,7 +187,7 @@ begin
   with SQLQuery do
   begin
     try
-      Connection := dmConexao.FDConnection;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
       SQL.Text := 'SELECT * FROM VENDA WHERE VENDEDOR LIKE :ID';
       Params.ParamByName('ID').AsInteger := ID;
       Open();

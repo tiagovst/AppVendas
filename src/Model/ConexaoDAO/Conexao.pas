@@ -31,10 +31,6 @@ type
   TdmConexao = class(TForm)
     FDConnection: TFDConnection;
     DriverLink: TFDPhysFBDriverLink;
-  private
-    { Private declarations }
-  public
-    { Public declarations }
   end;
 
 var

@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Param,
   FireDAC.Stan.Factory,
   FireDAC.DApt,
-  Conexao,
+  ConexaoIniciar,
   ProdutoDAOInterface,
   Data.DB, Vcl.Dialogs,
   Produto;
@@ -43,7 +43,7 @@ begin
 
   with SQLQuery, Produto do
   begin
-    Connection := dmConexao.FDConnection;
+    Connection := TConexaoIniciar.varConexao.FDConnection;
 
     SQL.Text := 'update PRODUTOS set NOME = :NOME, CODIGO_BARRAS = :CODIGO_BARRAS, ' +
     'DESCRICAO = :DESCRICAO, REFERENCIA = :REFERENCIA, PRECO = :PRECO, ' +
@@ -86,7 +86,7 @@ begin
   with SQLQuery, NovoProduto do
   begin
     try
-      Connection := dmConexao.FDConnection;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
 
       SQL.Text := 'SELECT * FROM Produtos WHERE (ID = :ID)';
 
@@ -117,7 +117,7 @@ begin
 
   with SQLQuery do
   begin
-    Connection := dmConexao.FDConnection;
+    Connection := TConexaoIniciar.varConexao.FDConnection;
 
     SQL.Text := 'DELETE FROM PRODUTOS WHERE (ID = :ID);';
     Params.ParamByName('ID').AsInteger := ID;
@@ -142,7 +142,7 @@ begin
   with SQLQuery do
   begin
     try
-      Connection := dmConexao.FDConnection;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
       SQL.Text := 'SELECT COALESCE(MAX(ID), 0) + 1 AS NEXT_ID FROM PRODUTOS;';
       Open();
 
@@ -160,7 +160,7 @@ begin
 
   with SQLQuery, Produto do
   begin
-    Connection := dmConexao.FDConnection;
+    Connection := TConexaoIniciar.varConexao.FDConnection;
 
     SQL.Text := 'update or insert into produtos (id, nome, codigo_barras, descricao, ' +
     'referencia, preco, categoria, quantidade_estoque, fornecedor, data_validade) ' +
@@ -197,7 +197,7 @@ begin
 
   with SQLQuery do
   begin
-    Connection := dmConexao.FDConnection;
+    Connection := TConexaoIniciar.varConexao.FDConnection;
 
     SQL.Text := 'SELECT * FROM PRODUTOS;';
     Open();
@@ -213,7 +213,7 @@ begin
 
   with SQLQuery do
   begin
-    Connection := dmConexao.FDConnection;
+    Connection := TConexaoIniciar.varConexao.FDConnection;
     SQL.Text := 'SELECT * FROM PRODUTOS WHERE CATEGORIA LIKE :Categoria;';
     Params.ParamByName('Categoria').AsString := Categoria + '%';
 
@@ -230,7 +230,7 @@ begin
 
   with SQLQuery do
   begin
-    Connection := dmConexao.FDConnection;
+    Connection := TConexaoIniciar.varConexao.FDConnection;
 
     SQL.Text := 'SELECT * FROM PRODUTOS WHERE NOME LIKE :Nome;';
     Params.ParamByName('Nome').AsString := Nome + '%';
