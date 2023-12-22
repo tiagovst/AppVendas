@@ -6,6 +6,7 @@ uses
   Vcl.Dialogs,
   Vcl.ActnList,
   Vcl.Controls,
+  Vcl.Forms,
   System.SysUtils,
   ControladorTelaManejoClienteInterface,
   ManejoCliente.View,
@@ -29,8 +30,11 @@ type
     procedure AcaoBtnSalvarClick(Sender: TObject);
     procedure AcaoRbCPFClick(Sender: TObject);
     procedure AcaoRbCNPJClick(Sender: TObject);
+    procedure ConfigurarEventos;
   public
     constructor Create(Parent: TWinControl) overload;
+    constructor Create(Cliente: TCliente) overload;
+    constructor Create overload;
   end;
 
 
@@ -38,14 +42,8 @@ implementation
 
 { TControladorTelaManejoCliente }
 
-constructor TControladorTelaManejoCliente.Create(Parent: TWinControl);
+procedure TControladorTelaManejoCliente.ConfigurarEventos;
 begin
-  uControladorClienteDAO := TControladorClienteDAO.Create;
-
-  FTelaManejoCliente := TTelaManejoCliente.Create(nil);
-  FTelaManejoCliente.Parent := Parent;
-  FTelaManejoCliente.Align := AlClient;
-
   AcaoBtnSalvar := TAction.Create(nil);
   AcaoBtnSalvar.Caption := 'Salvar';
   AcaoBtnSalvar.OnExecute := AcaoBtnSalvarClick;
@@ -66,6 +64,48 @@ begin
   AcaoRbCNPJ.Caption := 'CNPJ';
   AcaoRbCNPJ.OnExecute := AcaoRbCNPJClick;
   FTelaManejoCliente.rbCNPJ.Action := AcaoRbCNPJ;
+end;
+
+constructor TControladorTelaManejoCliente.Create;
+begin
+  FTelaManejoCliente := TTelaManejoCliente.Create(nil);
+  uControladorClienteDAO := TControladorClienteDAO.Create;
+
+  ConfigurarEventos;
+
+  FTelaManejoCliente.BorderStyle := bsSingle;
+  FTelaManejoCliente.ShowModal;
+end;
+
+
+constructor TControladorTelaManejoCliente.Create(Cliente: TCliente);
+begin
+  uControladorClienteDAO := TControladorClienteDAO.Create;
+  FTelaManejoCliente := TTelaManejoCliente.Create(nil);
+  FTelaManejoCliente.txtNome.Text := Cliente.Nome;
+  FTelaManejoCliente.txtEndereco.Text := Cliente.Endereco;
+  FTelaManejoCliente.txtTelefone.Text := Cliente.Telefone;
+  FTelaManejoCliente.txtIdentificador.Text := Cliente.Identificador;
+  ConfigurarEventos;
+
+  if Cliente.Identificador.Length > 11 then
+  begin
+    FTelaManejoCliente.rbCNPJ.Checked := true;
+  end;
+
+  FTelaManejoCliente.BorderStyle := bsSingle;
+  FTelaManejoCliente.ShowModal;
+end;
+
+constructor TControladorTelaManejoCliente.Create(Parent: TWinControl);
+begin
+  uControladorClienteDAO := TControladorClienteDAO.Create;
+
+  FTelaManejoCliente := TTelaManejoCliente.Create(nil);
+  FTelaManejoCliente.Parent := Parent;
+  FTelaManejoCliente.Align := AlClient;
+
+  ConfigurarEventos;
 
   FTelaManejoCliente.Show;
 end;

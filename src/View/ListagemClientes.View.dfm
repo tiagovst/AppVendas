@@ -195,9 +195,9 @@ object TelaListagemClientes: TTelaListagemClientes
       TitleFont.Style = []
     end
     object GroupBox1: TGroupBox
-      Left = 558
+      Left = 472
       Top = 17
-      Width = 329
+      Width = 415
       Height = 88
       Anchors = [akTop, akRight]
       Caption = 'A'#231#245'es'
@@ -249,6 +249,15 @@ object TelaListagemClientes: TTelaListagemClientes
         Font.Style = []
         ParentFont = False
         TabOrder = 2
+      end
+      object Button1: TButton
+        Left = 320
+        Top = 40
+        Width = 75
+        Height = 25
+        Caption = 'Atualizar'
+        TabOrder = 3
+        OnClick = Button1Click
       end
     end
   end

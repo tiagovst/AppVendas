@@ -21,6 +21,8 @@ type
     btnEditar: TButton;
     btnNovo: TButton;
     DataSourceClientes: TDataSource;
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,5 +35,10 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TTelaListagemClientes.Button1Click(Sender: TObject);
+begin
+  DataSourceClientes.DataSet.Refresh;
+end;
 
 end.
