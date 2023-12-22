@@ -199,12 +199,26 @@ end;
 
 procedure TTelaPrincipal.FormShow(Sender: TObject);
 begin
-  uControladorCompra := TControladorCompra.Create; // Config --> Refatoração
+  uControladorCompra := TControladorCompra.Create;
   ControladorProduto := TControladorProduto.Create;
   ControladorProduto.AtualizarListaProdutos(DataSource);
 
   lblNomeDeUsuario.Caption := SessaoUsuario.TSessaoUsuario.nomeUsuario;
   lblCargoUsuario.Caption := SessaoUsuario.TSessaoUsuario.cargo;
+
+  if SessaoUsuario.TSessaoUsuario.cargo.Equals('Gestor de Estoque') then
+  begin
+    btnClientes.Enabled := False;
+    btnVendas.Enabled := False;
+    btnUsuarios.Enabled := False;
+    btnFinalizarCompra.Enabled := False;
+  end
+  else if SessaoUsuario.TSessaoUsuario.cargo.Equals('Vendedor') then
+  begin
+    btnCadastrarProduto.Enabled := False;
+    btnVendas.Enabled := False;
+    btnUsuarios.Enabled := False;
+  end;
 end;
 
 procedure TTelaPrincipal.gridProdutosDblClick(Sender: TObject);

@@ -11,7 +11,8 @@ uses
   ControladorUsuario,
   ControladorUsuarioInterface,
   Usuario,
-  Vcl.Controls;
+  Vcl.Controls,
+  Vcl.Forms;
 
 type
   TControladorTelaManejoUsuario = class(TInterfacedObject, IControladorTelaManejoUsuario)
@@ -34,7 +35,9 @@ type
     procedure PreecherUsuario;
     procedure ConfiguracaoEventos;
   public
-    constructor Create(Parent: TWinControl);
+    constructor Create(Parent: TWinControl) overload;
+    constructor Create(Usuario: TUsuario) overload;
+    constructor Create overload;
 
   end;
 
@@ -111,6 +114,51 @@ begin
     rbVendedor.Checked := True;
   end;
 
+end;
+
+constructor TControladorTelaManejoUsuario.Create;
+begin
+  uControladorUsuarioDAO := TControladorUsuario.Create;
+
+  FManejoUsuario := TTelaManejoUsuario.Create(nil);
+
+  FManejoUsuario.BorderStyle := bsSingle;
+  ConfiguracaoEventos;
+  MostrarTela;
+end;
+
+constructor TControladorTelaManejoUsuario.Create(Usuario: TUsuario);
+begin
+  uControladorUsuarioDAO := TControladorUsuario.Create;
+
+  FManejoUsuario := TTelaManejoUsuario.Create(nil);
+  FManejoUsuario.BorderStyle := bsSingle;
+
+  ConfiguracaoEventos;
+
+  with FManejoUsuario, Usuario do
+  begin
+    lblNome.Text := Nome;
+    lblEmail.Text := Email;
+    lblSenha.Text := Senha;
+    lblUsuario.Text := NomeUsuario;
+    lblTelefone.Text := Telefone;
+    lblCPF.Text := CPF;
+
+    if Cargo.Equals('Administrador') then
+    begin
+      rbAdm.Checked := True;
+    end
+    else if Cargo.Equals('Vendedor') then
+    begin
+      rbVendedor.Checked := True;
+    end
+    else if Cargo.Equals('Gestor de Estoque') then
+    begin
+      rbGestor.Checked := True;
+    end;
+  end;
+  MostrarTela;
 end;
 
 constructor TControladorTelaManejoUsuario.Create(Parent: TWinControl);

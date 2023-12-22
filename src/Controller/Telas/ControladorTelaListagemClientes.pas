@@ -15,7 +15,9 @@ uses
   ControladorTelaManejoCliente,
   ControladorTelaManejoClienteInterface,
   Cliente,
-  Data.DB;
+  Data.DB,
+  SessaoUsuario,
+  System.UITypes;
 
 type
   TControladorTelaListagemClientes = class(TInterfacedObject, IControladorTelaListagemClientes)
@@ -31,6 +33,7 @@ type
     procedure AcaoBtnExcluirClick(Sender : TObject);
     procedure AcaoBtnEditarClick(Sender : TObject);
     procedure AcaoBtnNovoClienteClick(Sender : TObject);
+    procedure ControlePermissao;
 
     function FormatarIdentificador(cpf: string): string;
 
@@ -50,6 +53,8 @@ begin
 
   uControladorClienteDAO.AtualizarListaClientes(FTelaListagemClientes.DataSourceClientes);
 
+  ControlePermissao;
+
   FTelaListagemClientes.Parent := Parent;
   FTelaListagemClientes.Align := alClient;
   FTelaListagemClientes.Show;
@@ -58,16 +63,15 @@ end;
 procedure TControladorTelaListagemClientes.AcaoBtnEditarClick(Sender : TObject);
 var
   Cliente: TCliente;
+  IdentificadorClienteSelecionado: String;
 begin
   Cliente := TCliente.Create;
-  with FTelaListagemClientes.DataSourceClientes.DataSet, Cliente do
-  begin
-    Nome := FieldByName('NOME').AsString;
-    Endereco := FieldByName('ENDERECO').AsString;
-    Telefone := FieldByName('TELEFONE').AsString;
-    Identificador := FormatarIdentificador(FieldByName('IDENTIFICADOR').AsString);
-  end;
+  IdentificadorClienteSelecionado := FTelaListagemClientes.DataSourceClientes.
+  DataSet.FieldByName('IDENTIFICADOR').AsString;
 
+  Cliente := uControladorClienteDAO.CarregarCliente(IdentificadorClienteSelecionado);
+
+  Cliente.Identificador := FormatarIdentificador(Cliente.Identificador);
   uControladorTelaManejoCliente := TControladorTelaManejoCliente.Create(Cliente);
 
   FreeAndNil(Cliente);
@@ -132,6 +136,14 @@ begin
   FTelaListagemClientes.btnNovo.Action := AcaoBtnNovoCliente;
   FTelaListagemClientes.btnEditar.Action := AcaoBtnEditar;
   FTelaListagemClientes.btnExcluir.Action := AcaoBtnExcluir;
+end;
+
+procedure TControladorTelaListagemClientes.ControlePermissao;
+begin
+  if SessaoUsuario.TSessaoUsuario.cargo.Equals('Vendedor') then
+  begin
+    FTelaListagemClientes.btnExcluir.Enabled := False;
+  end;
 end;
 
 end.

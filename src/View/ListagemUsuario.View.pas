@@ -23,8 +23,10 @@ type
     btnEditar: TButton;
     btnNovo: TButton;
     GroupBox1: TGroupBox;
+    btnAtualizar: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnVoltarClick(Sender: TObject);
+    procedure btnAtualizarClick(Sender: TObject);
   public
   end;
 
@@ -36,6 +38,11 @@ implementation
 {$R *.dfm}
 
 { TListagemUsuario }
+
+procedure TTelaListagemUsuario.btnAtualizarClick(Sender: TObject);
+begin
+  gridProdutos.DataSource.DataSet.Refresh;
+end;
 
 procedure TTelaListagemUsuario.btnVoltarClick(Sender: TObject);
 begin

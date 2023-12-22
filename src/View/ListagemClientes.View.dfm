@@ -187,6 +187,7 @@ object TelaListagemClientes: TTelaListagemClientes
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
+      ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText

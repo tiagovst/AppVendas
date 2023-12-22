@@ -23,7 +23,7 @@ type
 
     procedure PesquisarNomeUsuario(Usuario: TUsuario; NomeDeUsuario: String);
     procedure Pesquisar(DataSource: TDataSource);
-    procedure CarregarPessoa(Usuario: TUsuario; ID: Integer);
+    function CarregarPessoa(IDUsuario: Integer): TUsuario;
   end;
 
 var
@@ -66,30 +66,34 @@ begin
   end;
 end;
 
-procedure TUsuarioDAO.CarregarPessoa(Usuario: TUsuario; ID: Integer);
+function TUsuarioDAO.CarregarPessoa(IDUsuario: Integer): TUsuario;
+var
+  NovoUsuario : TUsuario;
 begin
   SQLQuery := TFDQuery.Create(nil);
+  NovoUsuario := TUsuario.Create;
 
-  with SQLQuery, Usuario do
+  with SQLQuery, NovoUsuario do
   begin
     try
       Connection := TConexaoIniciar.varConexao.FDConnection;
 
-      SQL.Text := 'select * from usuario where (id = :id);';
+      SQL.Text := 'SELECT * FROM USUARIO WHERE (ID = :ID)';
 
-      Params.ParamByName('ID').AsInteger := id;
+      Params.ParamByName('ID').AsInteger := IDUsuario;
       Open();
 
-      ID := FieldByName('id').AsInteger;
+      ID := FieldByName('ID').AsInteger;
       Nome := FieldByName('NOME').AsString;
       Email := FieldByName('EMAIL').AsString;
       Senha := FieldByName('SENHA').AsString;
-      Telefone := FieldByName('TELEFONE').AsString;
       Cargo := FieldByName('CARGO').AsString;
+      Telefone := FieldByName('TELEFONE').AsString;
       CPF := FieldByName('CPF').AsString;
       NomeUsuario := FieldByName('NOME_USUARIO').AsString;
 
     finally
+      Result := NovoUsuario;
       FreeAndNil(SQLQuery);
     end;
   end;
@@ -104,7 +108,7 @@ begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
     SQL.Text := 'delete from USUARIO where (ID = :ID)';
-    Params.ParamByName('ID').AsInteger := id;
+    Params.ParamByName('ID').AsInteger := ID;
 
     try
       ExecSQL();
@@ -112,7 +116,7 @@ begin
 
       except on E: Exception do
       begin
-        erro := 'Ocorreu um erro ao tentar excluir o elemento: ' + sLineBreak + E.Message;
+        erro := 'Ocorreu um erro ao tentar excluir o usuário: ' + sLineBreak + E.Message;
         Result := False;
       end;
     end;

@@ -11,7 +11,8 @@ uses
   Vcl.ActnList,
   ControladorTelaEstoqueInterface,
   Vcl.Controls,
-  Data.DB;
+  Data.DB,
+  SessaoUsuario;
 
 type
   TControladorTelaEstoque = class(TInterfacedObject, IControladorTelaEstoque)
@@ -77,6 +78,12 @@ begin
   AcaoExcluir.OnExecute := AcaoBtnExcluir;
   AcaoExcluir.Caption := 'Excluir';
   FTelaEstoque.btnExluir.Action := AcaoExcluir;
+
+  if SessaoUsuario.TSessaoUsuario.cargo.Equals('Vendedor') then
+  begin
+    FTelaEstoque.btnExluir.Enabled := False;
+    FTelaEstoque.btnCadastrar.Enabled := False;
+  end;
 
   CalcularQuantidadeProdutos;
   PreencherCbxCategorias;

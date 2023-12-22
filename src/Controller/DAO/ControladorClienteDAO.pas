@@ -18,7 +18,7 @@ type
     function Inserir(Cliente: TCliente; out erro: String): Boolean;
     function Alterar(Cliente: TCliente; out erro: String): Boolean;
     function Excluir(ID: String; out erro: String): Boolean;
-    function CarregarCliente(IDCliente: Integer): TCliente;
+    function CarregarCliente(IDCliente: String): TCliente;
 
     procedure PesquisarNome(Nome: String);
     procedure AtualizarListaClientes(DataSource: TDataSource);
@@ -48,7 +48,7 @@ begin
   ClienteDAO.AtualizarListaClientes(DataSource);
 end;
 
-function TControladorClienteDAO.CarregarCliente(IDCliente: Integer): TCliente;
+function TControladorClienteDAO.CarregarCliente(IDCliente: String): TCliente;
 begin
   Result := ClienteDAO.CarregarCliente(IDCliente);
 end;

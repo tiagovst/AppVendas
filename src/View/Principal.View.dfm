@@ -193,7 +193,7 @@ object TelaPrincipal: TTelaPrincipal
       end
       object btnUsuarios: TSpeedButton
         Left = 0
-        Top = 111
+        Top = 148
         Width = 185
         Height = 37
         Align = alTop
@@ -202,7 +202,7 @@ object TelaPrincipal: TTelaPrincipal
         StyleName = 'Windows'
         OnClick = onClick
         ExplicitLeft = -4
-        ExplicitTop = 108
+        ExplicitTop = 154
       end
       object btnInicio: TSpeedButton
         Left = 0
@@ -218,7 +218,7 @@ object TelaPrincipal: TTelaPrincipal
       end
       object btnVendas: TSpeedButton
         Left = 0
-        Top = 148
+        Top = 111
         Width = 185
         Height = 37
         Align = alTop
@@ -399,7 +399,7 @@ object TelaPrincipal: TTelaPrincipal
     end
     object pnlSubmenuUsuarios: TPanel
       Left = 0
-      Top = 207
+      Top = 244
       Width = 183
       Height = 77
       BevelKind = bkFlat
@@ -419,7 +419,7 @@ object TelaPrincipal: TTelaPrincipal
         Flat = True
         StyleName = 'Windows'
         OnClick = btnCadastrarUsuarioClick
-        ExplicitTop = 8
+        ExplicitTop = 38
       end
       object btnVerUsuario: TSpeedButton
         Left = 0
@@ -431,7 +431,8 @@ object TelaPrincipal: TTelaPrincipal
         Flat = True
         StyleName = 'Windows'
         OnClick = btnVerUsuarioClick
-        ExplicitTop = 8
+        ExplicitLeft = 4
+        ExplicitTop = 7
       end
     end
   end

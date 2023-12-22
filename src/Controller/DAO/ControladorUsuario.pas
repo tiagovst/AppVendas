@@ -22,7 +22,7 @@ type
 
     procedure PesquisarNomeUsuario(Usuario: TUsuario; NomeDeUsuario: String);
     procedure Pesquisar(DataSource: TDataSource);
-    procedure CarregarPessoa(Usuario: TUsuario; ID: Integer);
+    function CarregarPessoa(IDUsuario: Integer): TUsuario;
 
   public
     constructor Create;
@@ -43,9 +43,9 @@ begin
   Result := IUsuario.Alterar(Usuario, erro);
 end;
 
-procedure TControladorUsuario.CarregarPessoa(Usuario: TUsuario; ID: Integer);
+function TControladorUsuario.CarregarPessoa(IDUsuario: Integer): TUsuario;
 begin
-  IUsuario.CarregarPessoa(Usuario, ID);
+  Result := IUsuario.CarregarPessoa(IDUsuario);
 end;
 
 function TControladorUsuario.Excluir(ID: Integer; out erro: String): Boolean;

@@ -22,7 +22,7 @@ type
     function Inserir(Cliente: TCliente; out erro: String): Boolean;
     function Alterar(Cliente: TCliente; out erro: String): Boolean;
     function Excluir(ID: String; out erro: String): Boolean;
-    function CarregarCliente(IDCliente: Integer): TCliente;
+    function CarregarCliente(IDCliente: String): TCliente;
 
     procedure PesquisarNome(Nome: String);
     procedure AtualizarListaClientes(DataSource: TDataSource);
@@ -78,7 +78,7 @@ begin
   DataSource.DataSet := SQLQuery;
 end;
 
-function TClienteDAO.CarregarCliente(IDCliente: Integer): TCliente;
+function TClienteDAO.CarregarCliente(IDCliente: String): TCliente;
 var
   NovoCliente : TCliente;
 begin
@@ -92,7 +92,7 @@ begin
 
       SQL.Text := 'select * from CLIENTE where (identificador = :identificador)';
 
-      Params.ParamByName('identificador').AsInteger := IDCliente;
+      Params.ParamByName('identificador').AsString := IDCliente;
       Open();
 
       Identificador := FieldByName('identificador').AsString;
