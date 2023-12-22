@@ -12,7 +12,8 @@ uses
   ControladorTelaEstoqueInterface,
   Vcl.Controls,
   Data.DB,
-  SessaoUsuario;
+  SessaoUsuario,
+  System.UITypes;
 
 type
   TControladorTelaEstoque = class(TInterfacedObject, IControladorTelaEstoque)
@@ -39,20 +40,26 @@ procedure TControladorTelaEstoque.AcaoBtnExcluir(Sender: TObject);
 var
   erro: String;
   idProduto : integer;
+  ConfirmacaoDialogo: Integer;
 begin
   uControladorProduto := TControladorProduto.Create;
 
-  idProduto := FTelaEstoque.DBGridProdutos.DataSource.DataSet.FieldByName('ID').AsInteger;
-  if uControladorProduto.Excluir(idProduto, erro) then
-  begin
-    ShowMessage('Produto excluído com sucesso!');
-    FTelaEstoque.DBGridProdutos.DataSource.DataSet.Refresh;
-  end
-  else
-  begin
-    ShowMessage('Ocorreu um erro ao tentar excluir o produto selecionado!' + sLineBreak + erro);
-  end;
+  ConfirmacaoDialogo := MessageDlg('Deseja realmente excluir o produto selecionado?',
+  TMsgDlgType.mtConfirmation, mbYesNo, 0);
 
+  if ConfirmacaoDialogo = mrYes then
+  begin
+    idProduto := FTelaEstoque.DBGridProdutos.DataSource.DataSet.FieldByName('ID').AsInteger;
+    if uControladorProduto.Excluir(idProduto, erro) then
+    begin
+      ShowMessage('Produto excluído com sucesso!');
+      FTelaEstoque.DBGridProdutos.DataSource.DataSet.Refresh;
+    end
+    else
+    begin
+      ShowMessage('Ocorreu um erro ao tentar excluir o produto selecionado!' + sLineBreak + erro);
+    end;
+  end;
 end;
 
 procedure TControladorTelaEstoque.CalcularQuantidadeProdutos;
@@ -73,6 +80,7 @@ constructor TControladorTelaEstoque.Create(const datasource: TDataSource);
 begin
   FTelaEstoque := TTelaEstoque.Create(nil);
   FTelaEstoque.DBGridProdutos.DataSource := datasource;
+  FTelaEstoque.DBGridProdutos.DataSource.DataSet.Refresh;
 
   AcaoExcluir := TAction.Create(nil);
   AcaoExcluir.OnExecute := AcaoBtnExcluir;

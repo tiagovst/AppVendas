@@ -96,24 +96,23 @@ begin
   if StrToInt(txtQuantidadeEstoque.Text) > 0 then
   begin
     ProdutoCache.QuantidadeEstoque := StrToInt(txtQuantidadeEstoque.Text);
+
+    ProdutoCache.Fornecedor := txtFornecedor.Text;
+    ProdutoCache.DataValidade := StrToDate(txtValidade.Text);
+
+    if Controlador.Inserir(ProdutoCache, erro) then
+    begin
+      ShowMessage('Produto inserido com sucesso');
+    end
+    else
+    begin
+      ShowMessage(erro);
+    end;
   end
   else
   begin
     ShowMessage('Informe uma quantidade válida do produto!');
   end;
-
-  ProdutoCache.Fornecedor := txtFornecedor.Text;
-  ProdutoCache.DataValidade := StrToDate(txtValidade.Text);
-
-  if Controlador.Inserir(ProdutoCache, erro) then
-  begin
-    ShowMessage('Produto inserido com sucesso');
-  end
-  else
-  begin
-    ShowMessage(erro);
-  end;
-
 end;
 
 procedure TTelaCadastroProduto.FormCreate(Sender: TObject);
