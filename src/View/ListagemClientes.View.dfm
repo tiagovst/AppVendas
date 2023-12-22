@@ -1,9 +1,10 @@
 object TelaListagemClientes: TTelaListagemClientes
   Left = 0
   Top = 0
+  BorderStyle = bsNone
   Caption = 'Gerenciamento de clientes'
-  ClientHeight = 626
-  ClientWidth = 931
+  ClientHeight = 664
+  ClientWidth = 943
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,13 +15,12 @@ object TelaListagemClientes: TTelaListagemClientes
   object pnlTop: TPanel
     Left = 0
     Top = 0
-    Width = 931
+    Width = 943
     Height = 96
     Align = alTop
     Color = 16579321
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 925
     object Label2: TLabel
       Left = 93
       Top = 40
@@ -146,8 +146,8 @@ object TelaListagemClientes: TTelaListagemClientes
   object client: TPanel
     Left = 0
     Top = 96
-    Width = 931
-    Height = 530
+    Width = 943
+    Height = 568
     Align = alClient
     Color = 16579321
     Font.Charset = DEFAULT_CHARSET
@@ -158,11 +158,9 @@ object TelaListagemClientes: TTelaListagemClientes
     ParentBackground = False
     ParentFont = False
     TabOrder = 1
-    ExplicitWidth = 925
-    ExplicitHeight = 521
     DesignSize = (
-      931
-      530)
+      943
+      568)
     object Label1: TLabel
       Left = 40
       Top = 91
@@ -176,12 +174,13 @@ object TelaListagemClientes: TTelaListagemClientes
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object gridProdutos: TDBGrid
+    object gridClientes: TDBGrid
       Left = 40
       Top = 120
-      Width = 841
-      Height = 402
+      Width = 847
+      Height = 440
       Anchors = [akLeft, akTop, akRight, akBottom]
+      DataSource = DataSourceClientes
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -196,7 +195,7 @@ object TelaListagemClientes: TTelaListagemClientes
       TitleFont.Style = []
     end
     object GroupBox1: TGroupBox
-      Left = 552
+      Left = 558
       Top = 17
       Width = 329
       Height = 88
@@ -209,7 +208,6 @@ object TelaListagemClientes: TTelaListagemClientes
       Font.Style = []
       ParentFont = False
       TabOrder = 1
-      ExplicitLeft = 546
       object btnExcluir: TButton
         Left = 26
         Top = 40
@@ -253,5 +251,9 @@ object TelaListagemClientes: TTelaListagemClientes
         TabOrder = 2
       end
     end
+  end
+  object DataSourceClientes: TDataSource
+    Left = 792
+    Top = 232
   end
 end

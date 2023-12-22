@@ -15,11 +15,12 @@ type
     Image: TImage;
     client: TPanel;
     Label1: TLabel;
-    gridProdutos: TDBGrid;
+    gridClientes: TDBGrid;
     GroupBox1: TGroupBox;
     btnExcluir: TButton;
     btnEditar: TButton;
     btnNovo: TButton;
+    DataSourceClientes: TDataSource;
   private
     { Private declarations }
   public

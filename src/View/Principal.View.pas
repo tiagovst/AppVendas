@@ -29,6 +29,8 @@ uses
   ControladorTelaListagemUsuario,
   ControladorTelaVendas,
   ControladorTelaVendasInterface,
+  ControladorTelaListagemClientes,
+  ControladorTelaListagemClientesInterface,
   Usuario,
   ControladorUsuarioInterface,
   Vcl.Imaging.pngimage,
@@ -76,6 +78,7 @@ type
     procedure btnEstoqueClick(Sender: TObject);
     procedure btnInicioClick(Sender: TObject);
     procedure btnVendasClick(Sender: TObject);
+    procedure btnVerClientesClick(Sender: TObject);
   private
     ControladorProduto: IControladorProduto;
     uControladorCompra: IControladorCompra;
@@ -84,6 +87,7 @@ type
     uControladorTelaListagemUsuario: IControladorTelaListagemUsuario;
     uControladorTelaEstoque : IControladorTelaEstoque;
     uControladorTelaVendas : IControladorTelaVendas;
+    uControladorTelaListagemClientes : IControladorTelaListagemClientes;
     Top: Boolean;
 
     procedure ManejoTop;
@@ -130,6 +134,15 @@ begin
   ManejoTop;
 
   uControladorTelaVendas := TControladorTelaVendas.Create(TelaPrincipal.pnlConteudo);
+end;
+
+procedure TTelaPrincipal.btnVerClientesClick(Sender: TObject);
+begin
+  VerificacaoParent;
+  Top := True;
+  ManejoTop;
+
+  uControladorTelaListagemClientes := TControladorTelaListagemClientes.Create(pnlConteudo);
 end;
 
 procedure TTelaPrincipal.btnVerUsuarioClick(Sender: TObject);
@@ -277,6 +290,9 @@ begin
 
     if Assigned(uControladorTelaVendas) then
       uControladorTelaVendas.FecharTela;
+
+    if Assigned(uControladorTelaListagemClientes) then
+      uControladorTelaListagemClientes.FecharTela;
 
     Top := False;
     ManejoTop;

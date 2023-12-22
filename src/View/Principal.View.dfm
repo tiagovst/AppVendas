@@ -201,7 +201,6 @@ object TelaPrincipal: TTelaPrincipal
         Flat = True
         StyleName = 'Windows'
         OnClick = onClick
-        OnMouseEnter = onClick
         ExplicitLeft = -4
         ExplicitTop = 108
       end
@@ -378,6 +377,7 @@ object TelaPrincipal: TTelaPrincipal
         Caption = 'Ver meus clientes'
         Flat = True
         StyleName = 'Windows'
+        OnClick = btnVerClientesClick
         ExplicitLeft = 2
         ExplicitTop = 9
         ExplicitWidth = 181
@@ -448,7 +448,7 @@ object TelaPrincipal: TTelaPrincipal
     end
   end
   object DataSource: TDataSource
-    Left = 936
-    Top = 256
+    Left = 864
+    Top = 152
   end
 end

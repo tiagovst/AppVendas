@@ -17,7 +17,7 @@ type
 
     function Inserir(Cliente: TCliente; out erro: String): Boolean;
     function Alterar(Cliente: TCliente; out erro: String): Boolean;
-    function Excluir(ID: Integer; out erro: String): Boolean;
+    function Excluir(ID: String; out erro: String): Boolean;
     function CarregarCliente(IDCliente: Integer): TCliente;
 
     procedure PesquisarNome(Nome: String);
@@ -53,7 +53,7 @@ begin
   Result := ClienteDAO.CarregarCliente(IDCliente);
 end;
 
-function TControladorClienteDAO.Excluir(ID: Integer; out erro: String): Boolean;
+function TControladorClienteDAO.Excluir(ID: String; out erro: String): Boolean;
 begin
   Result := ClienteDAO.Excluir(ID, erro);
 end;

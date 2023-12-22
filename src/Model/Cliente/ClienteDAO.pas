@@ -21,7 +21,7 @@ type
 
     function Inserir(Cliente: TCliente; out erro: String): Boolean;
     function Alterar(Cliente: TCliente; out erro: String): Boolean;
-    function Excluir(ID: Integer; out erro: String): Boolean;
+    function Excluir(ID: String; out erro: String): Boolean;
     function CarregarCliente(IDCliente: Integer): TCliente;
 
     procedure PesquisarNome(Nome: String);
@@ -107,7 +107,7 @@ begin
   end;
 end;
 
-function TClienteDAO.Excluir(ID: Integer; out erro: String): Boolean;
+function TClienteDAO.Excluir(ID: String; out erro: String): Boolean;
 begin
   SQLQuery := TFDQuery.Create(nil);
 
@@ -116,7 +116,7 @@ begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
     SQL.Text := 'delete from cliente where (identificador = :identificador)';
-    Params.ParamByName('identificador').AsInteger := ID;
+    Params.ParamByName('identificador').AsString := ID;
 
     try
       ExecSQL();
