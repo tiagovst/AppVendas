@@ -25,7 +25,7 @@ type
     function CarregarProduto(IDProduto: Integer): TProduto;
 
     procedure PesquisarNome(Nome: String; DataSource: TDataSource);
-    procedure PesquisarCategoria(Categoria: String);
+    procedure PesquisarCategoria(Categoria: String; DataSource: TDataSource);
     procedure AtualizarListaProdutos(DataSource: TDataSource);
 
   end;
@@ -207,7 +207,7 @@ begin
 
 end;
 
-procedure TProdutoDAO.PesquisarCategoria(Categoria: String);
+procedure TProdutoDAO.PesquisarCategoria(Categoria: String; DataSource: TDataSource);
 begin
   SQLQuery := TFDQuery.Create(nil);
 
@@ -218,10 +218,9 @@ begin
     Params.ParamByName('Categoria').AsString := Categoria + '%';
 
     Open();
-    First;
   end;
 
-  FreeAndNil(SQLQuery);
+  DataSource.DataSet := SQLQuery;
 end;
 
 procedure TProdutoDAO.PesquisarNome(Nome: String; DataSource: TDataSource);

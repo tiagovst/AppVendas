@@ -21,7 +21,7 @@ type
     function Excluir(ID: Integer; out erro: String): Boolean;
     function CarregarProduto(IDProduto: Integer): TProduto;
 
-    procedure PesquisarCategoria(Categoria: String);
+    procedure PesquisarCategoria(Categoria: String; DataSource: TDataSource);
     procedure PesquisarNome(Nome: String; DataSource: TDataSource);
     procedure AtualizarListaProdutos(DataSource: TDataSource);
 
@@ -71,9 +71,9 @@ begin
   IProduto.AtualizarListaProdutos(DataSource);
 end;
 
-procedure TControladorProduto.PesquisarCategoria(Categoria: String);
+procedure TControladorProduto.PesquisarCategoria(Categoria: String; DataSource: TDataSource);
 begin
-  IProduto.PesquisarCategoria(Categoria);
+  IProduto.PesquisarCategoria(Categoria, DataSource);
 end;
 
 procedure TControladorProduto.PesquisarNome(Nome: String; DataSource: TDataSource);

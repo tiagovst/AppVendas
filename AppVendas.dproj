@@ -103,6 +103,9 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <Icon_MainIcon>src\View\Imagens\dimensions.ico</Icon_MainIcon>
+        <UWP_DelphiLogo44>src\View\Imagens\dimensions.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>src\View\Imagens\dimensionsG.png</UWP_DelphiLogo150>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
@@ -201,10 +204,8 @@
         <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaEstoqueInterface.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaListagemClientesInterface.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaListagemUsuarioInterface.pas"/>
-        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaLoginInterface.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaManejoClienteInterface.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaManejoUsuarioInterface.pas"/>
-        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaPrincipalInterface.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaVendasInterface.pas"/>
         <DCCReference Include="src\View\ListagemClientes.View.pas">
             <Form>TelaListagemClientes</Form>
@@ -243,6 +244,20 @@
                 <DeployFile LocalName="Win32\Debug\AppVendas.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>AppVendas.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="src\View\Imagens\dimensions.png" Configuration="Debug" Class="UWP_DelphiLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets\</RemoteDir>
+                        <RemoteName>Logo44x44.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="src\View\Imagens\dimensionsG.png" Configuration="Debug" Class="UWP_DelphiLogo150">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets\</RemoteDir>
+                        <RemoteName>Logo150x150.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

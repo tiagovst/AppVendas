@@ -13,6 +13,7 @@ uses
   Vcl.Controls,
   Data.DB,
   SessaoUsuario,
+  System.Generics.Collections,
   System.UITypes;
 
 type
@@ -21,15 +22,15 @@ type
       FTelaEstoque : TTelaEstoque;
       uControladorProduto : IControladorProduto;
       AcaoExcluir : TAction;
+      procedure CalcularQuantidadeProdutos;
+      procedure PreencherCbxCategorias;
+      procedure MostrarTela(parent : TWinControl);
+      procedure FecharTela;
+      procedure AcaoComboBoxOnChange(Sender : TObject);
 
       procedure AcaoBtnExcluir(Sender: TObject);
     public
       constructor Create(const datasource : TDataSource) overload;
-      procedure MostrarTela(parent : TWinControl);
-      procedure FecharTela;
-
-      procedure CalcularQuantidadeProdutos;
-      procedure PreencherCbxCategorias;
     end;
 
 implementation
@@ -42,8 +43,6 @@ var
   idProduto : integer;
   ConfirmacaoDialogo: Integer;
 begin
-  uControladorProduto := TControladorProduto.Create;
-
   ConfirmacaoDialogo := MessageDlg('Deseja realmente excluir o produto selecionado?',
   TMsgDlgType.mtConfirmation, mbYesNo, 0);
 
@@ -60,6 +59,14 @@ begin
       ShowMessage('Ocorreu um erro ao tentar excluir o produto selecionado!' + sLineBreak + erro);
     end;
   end;
+end;
+
+procedure TControladorTelaEstoque.AcaoComboBoxOnChange(Sender: TObject);
+begin
+  uControladorProduto.PesquisarCategoria(FTelaEstoque.ComboBoxCategoria.Text,
+    FTelaEstoque.DBGridProdutos.DataSource);
+
+  FTelaEstoque.DBGridProdutos.DataSource.DataSet.Refresh;
 end;
 
 procedure TControladorTelaEstoque.CalcularQuantidadeProdutos;
@@ -79,6 +86,7 @@ end;
 constructor TControladorTelaEstoque.Create(const datasource: TDataSource);
 begin
   FTelaEstoque := TTelaEstoque.Create(nil);
+  uControladorProduto := TControladorProduto.Create;
   FTelaEstoque.DBGridProdutos.DataSource := datasource;
   FTelaEstoque.DBGridProdutos.DataSource.DataSet.Refresh;
 
@@ -95,6 +103,10 @@ begin
 
   CalcularQuantidadeProdutos;
   PreencherCbxCategorias;
+
+  FTelaEstoque.ComboBoxCategoria.OnChange := AcaoComboBoxOnChange;
+
+  FTelaEstoque.ComboBoxCategoria.ItemIndex := 0;
 end;
 
 procedure TControladorTelaEstoque.FecharTela;
@@ -111,8 +123,25 @@ begin
 end;
 
 procedure TControladorTelaEstoque.PreencherCbxCategorias;
+var
+  ListaCategorias : TList<String>;
+  categoria: String;
 begin
-  //pegar categorias dos produtos no banco e preencher o String Itens
+  ListaCategorias := TList<String>.Create;
+
+  with FTelaEstoque.DBGridProdutos.DataSource.DataSet do
+  begin
+    while not Eof do
+    begin
+      categoria := FieldByName('CATEGORIA').AsString;
+      if not ListaCategorias.Contains(categoria) then
+      begin
+        ListaCategorias.Add(categoria);
+        FTelaEstoque.ComboBoxCategoria.Items.Add(categoria);
+      end;
+      Next;
+    end;
+  end;
 end;
 
 end.

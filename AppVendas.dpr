@@ -58,10 +58,8 @@ uses
   ControladorTelaEstoqueInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaEstoqueInterface.pas',
   ControladorTelaListagemClientesInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaListagemClientesInterface.pas',
   ControladorTelaListagemUsuarioInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaListagemUsuarioInterface.pas',
-  ControladorTelaLoginInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaLoginInterface.pas',
   ControladorTelaManejoClienteInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaManejoClienteInterface.pas',
   ControladorTelaManejoUsuarioInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaManejoUsuarioInterface.pas',
-  ControladorTelaPrincipalInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaPrincipalInterface.pas',
   ControladorTelaVendasInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaVendasInterface.pas',
   ListagemClientes.View in 'src\View\ListagemClientes.View.pas' {TelaListagemClientes},
   ManejoCliente.View in 'src\View\ManejoCliente.View.pas' {TelaManejoCliente};

@@ -13,7 +13,9 @@ object dmConexao: TdmConexao
   TextHeight = 15
   object FDConnection: TFDConnection
     Params.Strings = (
-      'Database=C:\Users\tiago\SalesApp\DataBase\RAZER.FDB'
+      
+        'Database=C:\Users\Gabriel\Documents\Repo\SalesApp\DataBase\RAZER' +
+        '.FDB'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'Protocol=TCPIP'
