@@ -22,7 +22,7 @@ type
     function CarregarProduto(IDProduto: Integer): TProduto;
 
     procedure PesquisarCategoria(Categoria: String);
-    procedure PesquisarNome(Nome: String);
+    procedure PesquisarNome(Nome: String; DataSource: TDataSource);
     procedure AtualizarListaProdutos(DataSource: TDataSource);
 
 
@@ -76,9 +76,9 @@ begin
   IProduto.PesquisarCategoria(Categoria);
 end;
 
-procedure TControladorProduto.PesquisarNome(Nome: String);
+procedure TControladorProduto.PesquisarNome(Nome: String; DataSource: TDataSource);
 begin
-  IProduto.PesquisarNome(Nome);
+  IProduto.PesquisarNome(Nome, DataSource);
 end;
 
 end.

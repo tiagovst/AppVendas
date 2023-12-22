@@ -81,8 +81,10 @@ type
     procedure btnVendasClick(Sender: TObject);
     procedure btnVerClientesClick(Sender: TObject);
     procedure btnCadastrarClienteClick(Sender: TObject);
+    procedure SearchBoxInvokeSearch(Sender: TObject);
+    procedure SearchBoxChange(Sender: TObject);
   private
-    ControladorProduto: IControladorProduto;
+    uControladorProduto: IControladorProduto;
     uControladorCompra: IControladorCompra;
     FCadastroProduto : TTelaCadastroProduto;
     uControladorTelaManejoUsuario: IControladorTelaManejoUsuario;
@@ -193,15 +195,15 @@ end;
 
 procedure TTelaPrincipal.btnInicioClick(Sender: TObject);
 begin
-  ControladorProduto.AtualizarListaProdutos(DataSource);
+  uControladorProduto.AtualizarListaProdutos(DataSource);
   VerificacaoParent;
 end;
 
 procedure TTelaPrincipal.FormShow(Sender: TObject);
 begin
   uControladorCompra := TControladorCompra.Create;
-  ControladorProduto := TControladorProduto.Create;
-  ControladorProduto.AtualizarListaProdutos(DataSource);
+  uControladorProduto := TControladorProduto.Create;
+  uControladorProduto.AtualizarListaProdutos(DataSource);
 
   lblNomeDeUsuario.Caption := SessaoUsuario.TSessaoUsuario.nomeUsuario;
   lblCargoUsuario.Caption := SessaoUsuario.TSessaoUsuario.cargo;
@@ -299,6 +301,24 @@ begin
       Visible := not Visible;
     end;
   end
+end;
+
+procedure TTelaPrincipal.SearchBoxChange(Sender: TObject);
+var
+  TextoPesquisa: String;
+begin
+  TextoPesquisa := SearchBox.Text;
+
+  if TextoPesquisa.IsEmpty then
+  begin
+    uControladorProduto.AtualizarListaProdutos(DataSource);
+  end;
+
+end;
+
+procedure TTelaPrincipal.SearchBoxInvokeSearch(Sender: TObject);
+begin
+  uControladorProduto.PesquisarNome(SearchBox.Text, DataSource);
 end;
 
 procedure TTelaPrincipal.VerificacaoParent;

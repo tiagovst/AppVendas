@@ -24,7 +24,7 @@ type
     function Excluir(ID: Integer; out erro: String): Boolean;
     function CarregarProduto(IDProduto: Integer): TProduto;
 
-    procedure PesquisarNome(Nome: String);
+    procedure PesquisarNome(Nome: String; DataSource: TDataSource);
     procedure PesquisarCategoria(Categoria: String);
     procedure AtualizarListaProdutos(DataSource: TDataSource);
 
@@ -224,7 +224,7 @@ begin
   FreeAndNil(SQLQuery);
 end;
 
-procedure TProdutoDAO.PesquisarNome(Nome: String);
+procedure TProdutoDAO.PesquisarNome(Nome: String; DataSource: TDataSource);
 begin
   SQLQuery := TFDQuery.Create(nil);
 
@@ -239,7 +239,7 @@ begin
     First;
   end;
 
-  FreeAndNil(SQLQuery);
+  DataSource.Dataset := SQLQuery;
 end;
 
 end.

@@ -306,6 +306,8 @@ object TelaPrincipal: TTelaPrincipal
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 0
         TextHint = 'Pesquisar produto'
+        OnChange = SearchBoxChange
+        OnInvokeSearch = SearchBoxInvokeSearch
         ExplicitWidth = 165
       end
     end

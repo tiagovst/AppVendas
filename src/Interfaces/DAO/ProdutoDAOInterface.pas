@@ -17,7 +17,7 @@ type
     function CarregarProduto(IDProduto: Integer): TProduto;
 
     procedure PesquisarCategoria(Categoria: String);
-    procedure PesquisarNome(Nome: String);
+    procedure PesquisarNome(Nome: String; DataSource: TDataSource);
     procedure AtualizarListaProdutos(DataSource: TDataSource);
   end;
 
