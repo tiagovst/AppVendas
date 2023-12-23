@@ -36,7 +36,7 @@ uses
   Usuario,
   ControladorUsuarioInterface,
   Vcl.Imaging.pngimage,
-  SessaoUsuario;
+  SessaoUsuario, System.ImageList, Vcl.ImgList;
 
 type
   TTelaPrincipal = class(TForm)
@@ -69,6 +69,8 @@ type
     btnVendas: TSpeedButton;
     lblNomeDeUsuario: TLabel;
     lblCargoUsuario: TLabel;
+    ImageList: TImageList;
+    btnLogout: TSpeedButton;
     procedure onClick(Sender : TObject);
     procedure btnCadastrarProdutoClick(Sender: TObject);
     procedure btnVerUsuarioClick(Sender: TObject);

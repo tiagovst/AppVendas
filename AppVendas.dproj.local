@@ -104,11 +104,11 @@
     <Transaction>2023/12/21 19:50:23.000.955,=C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\Telas\ControladorTelaCompraProdutoInterface.pas</Transaction>
     <Transaction>2023/12/21 19:50:23.000.849,=C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\Telas\ControladorTelaCheckoutInterface.pas</Transaction>
     <Transaction>2023/12/21 19:50:24.000.284,=C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\Telas\ControladorTelaLoginInterface.pas</Transaction>
-    <Transaction>2023/12/21 19:50:24.000.104,=C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\Telas\ControladorTelaListagemClientesInterface.pas</Transaction>
+    <Transaction>2023/12/21 19:50:24.000.202,=C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\Telas\ControladorTelaListagemUsuarioInterface.pas</Transaction>
     <Transaction>2023/12/21 19:50:24.000.463,=C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\Telas\ControladorTelaManejoUsuarioInterface.pas</Transaction>
     <Transaction>2023/12/21 19:50:24.000.547,=C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\Telas\ControladorTelaPrincipalInterface.pas</Transaction>
     <Transaction>2023/12/21 19:50:24.000.024,=C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\Telas\ControladorTelaEstoqueInterface.pas</Transaction>
-    <Transaction>2023/12/21 19:50:24.000.202,=C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\Telas\ControladorTelaListagemUsuarioInterface.pas</Transaction>
+    <Transaction>2023/12/21 19:50:24.000.104,=C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\Telas\ControladorTelaListagemClientesInterface.pas</Transaction>
     <Transaction>2023/12/21 19:50:24.000.634,=C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\Telas\ControladorTelaVendasInterface.pas</Transaction>
     <Transaction>2023/12/21 19:50:24.000.354,=C:\Users\Gabriel\Documents\Repo\SalesApp\src\Interfaces\Controlador\Telas\ControladorTelaManejoClienteInterface.pas</Transaction>
   </Transactions>
@@ -141,10 +141,8 @@
     <File Path="src\Interfaces\Controlador\Telas\ControladorTelaEstoqueInterface.pas"/>
     <File Path="src\Interfaces\Controlador\Telas\ControladorTelaListagemClientesInterface.pas"/>
     <File Path="src\Interfaces\Controlador\Telas\ControladorTelaListagemUsuarioInterface.pas"/>
-    <File Path="src\Interfaces\Controlador\Telas\ControladorTelaLoginInterface.pas"/>
     <File Path="src\Interfaces\Controlador\Telas\ControladorTelaManejoClienteInterface.pas"/>
     <File Path="src\Interfaces\Controlador\Telas\ControladorTelaManejoUsuarioInterface.pas"/>
-    <File Path="src\Interfaces\Controlador\Telas\ControladorTelaPrincipalInterface.pas"/>
     <File Path="src\Interfaces\Controlador\Telas\ControladorTelaVendasInterface.pas"/>
     <File Path="src\Interfaces\Controlador\ControladorProdutoInterface.pas"/>
     <File Path="src\Interfaces\Controlador\ControladorUsuarioInterface.pas"/>
