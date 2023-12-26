@@ -36,7 +36,8 @@ uses
   Usuario,
   ControladorUsuarioInterface,
   Vcl.Imaging.pngimage,
-  SessaoUsuario, System.ImageList, Vcl.ImgList;
+  SessaoUsuario, System.ImageList, Vcl.ImgList,
+  Login.View;
 
 type
   TTelaPrincipal = class(TForm)
@@ -85,6 +86,7 @@ type
     procedure btnCadastrarClienteClick(Sender: TObject);
     procedure SearchBoxInvokeSearch(Sender: TObject);
     procedure SearchBoxChange(Sender: TObject);
+    procedure btnLogoutClick(Sender: TObject);
   private
     uControladorProduto: IControladorProduto;
     uControladorCompra: IControladorCompra;
@@ -199,6 +201,29 @@ procedure TTelaPrincipal.btnInicioClick(Sender: TObject);
 begin
   uControladorProduto.AtualizarListaProdutos(DataSource);
   VerificacaoParent;
+end;
+
+procedure TTelaPrincipal.btnLogoutClick(Sender: TObject);
+var
+  FTelaLogin: TTelaLogin;
+begin
+  try
+    Hide;
+    FTelaLogin := TTelaLogin.Create(nil);
+    FTelaLogin.ShowModal;
+
+    if FTelaLogin.LoginSucesso then
+    begin
+      Show;
+    end
+    else
+    begin
+      Close;
+    end;
+
+  finally
+    //
+  end;
 end;
 
 procedure TTelaPrincipal.FormShow(Sender: TObject);
