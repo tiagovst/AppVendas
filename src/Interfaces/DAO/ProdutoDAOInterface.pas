@@ -16,6 +16,8 @@ type
     function Excluir(ID: Integer; out erro: String): Boolean;
     function CarregarProduto(IDProduto: Integer): TProduto;
 
+    procedure PesquisarPorFiltro(Filtro : String; DataSource: TDataSource);
+    procedure CarregarProdutosResumidos(DataSource : TDataSource);
     procedure PesquisarCategoria(Categoria: String; DataSource: TDataSource);
     procedure PesquisarNome(Nome: String; DataSource: TDataSource);
     procedure AtualizarListaProdutos(DataSource: TDataSource);

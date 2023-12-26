@@ -23,6 +23,8 @@ type
 
     procedure PesquisarCategoria(Categoria: String; DataSource: TDataSource);
     procedure PesquisarNome(Nome: String; DataSource: TDataSource);
+    procedure PesquisarPorFiltro(Filtro : String; DataSource: TDataSource);
+    procedure CarregarProdutosResumidos(DataSource : TDataSource);
     procedure AtualizarListaProdutos(DataSource: TDataSource);
 
 
@@ -47,6 +49,12 @@ end;
 function TControladorProduto.CarregarProduto(IDProduto: Integer): TProduto;
 begin
   Result := IProduto.CarregarProduto(IDProduto);
+end;
+
+procedure TControladorProduto.CarregarProdutosResumidos(
+  DataSource: TDataSource);
+begin
+  IProduto.CarregarProdutosResumidos(DataSource);
 end;
 
 function TControladorProduto.Excluir(ID: Integer; out erro: String): Boolean;
@@ -79,6 +87,12 @@ end;
 procedure TControladorProduto.PesquisarNome(Nome: String; DataSource: TDataSource);
 begin
   IProduto.PesquisarNome(Nome, DataSource);
+end;
+
+procedure TControladorProduto.PesquisarPorFiltro(Filtro: String;
+  DataSource: TDataSource);
+begin
+  IProduto.PesquisarPorFiltro(Filtro, DataSource);
 end;
 
 end.

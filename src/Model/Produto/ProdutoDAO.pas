@@ -26,6 +26,8 @@ type
 
     procedure PesquisarNome(Nome: String; DataSource: TDataSource);
     procedure PesquisarCategoria(Categoria: String; DataSource: TDataSource);
+    procedure PesquisarPorFiltro(Filtro : String; DataSource: TDataSource);
+    procedure CarregarProdutosResumidos(DataSource : TDataSource);
     procedure AtualizarListaProdutos(DataSource: TDataSource);
 
   end;
@@ -109,6 +111,22 @@ begin
       FreeAndNil(SQLQuery);
     end;
   end;
+end;
+
+procedure TProdutoDAO.CarregarProdutosResumidos(DataSource: TDataSource);
+begin
+  SQLQuery := TFDQuery.Create(nil);
+
+  with SQLQuery do
+  begin
+    Connection := TConexaoIniciar.varConexao.FDConnection;
+
+    SQL.Text := 'select ID, NOME, DESCRICAO, PRECO, DATA_VALIDADE from PRODUTOS';
+
+    Open();
+  end;
+
+  DataSource.DataSet := SQLQuery;
 end;
 
 function TProdutoDAO.Excluir(ID: Integer; out erro: String): Boolean;
@@ -239,6 +257,33 @@ begin
   end;
 
   DataSource.Dataset := SQLQuery;
+end;
+
+procedure TProdutoDAO.PesquisarPorFiltro(Filtro: String;
+  DataSource: TDataSource);
+begin
+  if Filtro.Equals('Fora de estoque') then
+  begin
+    SQLQuery := TFDQuery.Create(nil);
+    with SQLQuery do
+    begin
+      Connection := TConexaoIniciar.varConexao.FDConnection;
+      SQL.Text := 'SELECT * FROM PRODUTOS WHERE QUANTIDADE_ESTOQUE = 0';
+      Open();
+    end;
+    DataSource.DataSet := SQLQuery;
+  end
+  else if Filtro.Equals('Baixo estoque') then
+  begin
+    SQLQuery := TFDQuery.Create(nil);
+    with SQLQuery do
+    begin
+      Connection := TConexaoIniciar.varConexao.FDConnection;
+      SQL.Text := 'SELECT * FROM PRODUTOS WHERE QUANTIDADE_ESTOQUE > 0 AND QUANTIDADE_ESTOQUE <= 10';
+      Open();
+    end;
+    DataSource.DataSet := SQLQuery;
+  end;
 end;
 
 end.

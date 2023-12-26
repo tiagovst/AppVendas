@@ -186,7 +186,7 @@ begin
 
   pnlSubmenuProdutos.Visible := False;
 
-  uControladorTelaEstoque := TControladorTelaEstoque.Create(DataSource);
+  uControladorTelaEstoque := TControladorTelaEstoque.Create;
   uControladorTelaEstoque.MostrarTela(pnlConteudo);
 end;
 
@@ -230,7 +230,8 @@ procedure TTelaPrincipal.FormShow(Sender: TObject);
 begin
   uControladorCompra := TControladorCompra.Create;
   uControladorProduto := TControladorProduto.Create;
-  uControladorProduto.AtualizarListaProdutos(DataSource);
+  uControladorProduto.CarregarProdutosResumidos(DataSource);
+  //redimensionar o tamanho das colunas
 
   lblNomeDeUsuario.Caption := SessaoUsuario.TSessaoUsuario.nomeUsuario;
   lblCargoUsuario.Caption := SessaoUsuario.TSessaoUsuario.cargo;
@@ -256,11 +257,11 @@ var
   uControladorTelaCompraProduto: IControladorTelaCompraProduto;
 begin
   ProdutoSelecionado := TProduto.Create;
-
   ProdutoSelecionado := uControladorProduto.CarregarProduto(
   gridProdutos.DataSource.DataSet.FieldByName('ID').AsInteger);
 
-  uControladorTelaCompraProduto := TControladorTelaCompraProduto.Create(uControladorCompra, ProdutoSelecionado);
+  uControladorTelaCompraProduto :=
+    TControladorTelaCompraProduto.Create(uControladorCompra, ProdutoSelecionado);
 end;
 
 procedure TTelaPrincipal.ManejoTop;

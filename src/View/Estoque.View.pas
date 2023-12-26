@@ -35,14 +35,8 @@ type
     btnCadastrar: TButton;
     btnExluir: TButton;
     btnAtualizar: TButton;
-    procedure DBGridProdutosDblClick(Sender: TObject);
-    procedure btnCadastrarClick(Sender: TObject);
-    procedure btnAtualizarClick(Sender: TObject);
+    DataSourceProdutos: TDataSource;
     private
-      ProdutoSelecionado : TProduto;
-      uControladorProduto : IControladorProduto;
-      uControladorTelaCadastroProduto : IControladorTelaCadastroProduto;
-      procedure PreencherProduto;
   end;
 
 var
@@ -51,36 +45,5 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TTelaEstoque.btnAtualizarClick(Sender: TObject);
-begin
-  DBGridProdutos.DataSource.DataSet.Refresh;
-end;
-
-procedure TTelaEstoque.btnCadastrarClick(Sender: TObject);
-begin
-  uControladorTelaCadastroProduto := TControladorTelaCadastroProduto.Create;
-end;
-
-procedure TTelaEstoque.DBGridProdutosDblClick(Sender: TObject);
-begin
-  PreencherProduto;
-  uControladorTelaCadastroProduto := TControladorTelaCadastroProduto.CreateEditarProduto(ProdutoSelecionado);
-end;
-
-procedure TTelaEstoque.PreencherProduto;
-var
-  LinhaSelecionada : Integer;
-begin
-  LinhaSelecionada := DBGridProdutos.DataSource.DataSet.RecNo;
-  uControladorProduto := TControladorProduto.Create;
-
-  if DBGridProdutos.DataSource.DataSet.Locate('ID', LinhaSelecionada, []) then
-  begin
-    ProdutoSelecionado := uControladorProduto.CarregarProduto(
-    DBGridProdutos.DataSource.DataSet.FieldByName('ID').AsInteger
-    );
-  end;
-end;
 
 end.

@@ -155,6 +155,7 @@ object TelaEstoque: TTelaEstoque
       Height = 345
       Hint = 'Clique duas vezes num produto para edit'#225'-lo'
       Anchors = [akLeft, akTop, akRight, akBottom]
+      DataSource = DataSourceProdutos
       ParentShowHint = False
       ReadOnly = True
       ShowHint = True
@@ -164,7 +165,6 @@ object TelaEstoque: TTelaEstoque
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
-      OnDblClick = DBGridProdutosDblClick
     end
     object GroupBox1: TGroupBox
       Left = 193
@@ -250,7 +250,6 @@ object TelaEstoque: TTelaEstoque
         Font.Style = []
         ParentFont = False
         TabOrder = 0
-        Text = 'Fora de estoque'
         Items.Strings = (
           'Fora de estoque'
           'Baixo estoque')
@@ -284,7 +283,6 @@ object TelaEstoque: TTelaEstoque
       Height = 25
       Caption = 'Cadastrar produto'
       TabOrder = 4
-      OnClick = btnCadastrarClick
     end
     object btnExluir: TButton
       Left = 816
@@ -301,7 +299,10 @@ object TelaEstoque: TTelaEstoque
       Height = 25
       Caption = 'Atualizar'
       TabOrder = 6
-      OnClick = btnAtualizarClick
     end
+  end
+  object DataSourceProdutos: TDataSource
+    Left = 1040
+    Top = 264
   end
 end
