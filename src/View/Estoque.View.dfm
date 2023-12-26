@@ -267,8 +267,6 @@ object TelaEstoque: TTelaEstoque
         Font.Style = []
         ParentFont = False
         TabOrder = 1
-        Items.Strings = (
-          '')
       end
     end
     object SearchBoxNomeProduto: TSearchBox

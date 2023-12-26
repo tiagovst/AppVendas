@@ -227,30 +227,13 @@ end;
 
 procedure TTelaPrincipal.gridProdutosDblClick(Sender: TObject);
 var
-  LinhaSelecionada : Integer;
   ProdutoSelecionado : TProduto;
   uControladorTelaCompraProduto: IControladorTelaCompraProduto;
 begin
-  // Obtém a linha clicada
-  LinhaSelecionada := gridProdutos.DataSource.DataSet.RecNo;
   ProdutoSelecionado := TProduto.Create;
-  // Usa a linha para obter dados específicos
-  if gridProdutos.DataSource.DataSet.Locate('ID', LinhaSelecionada, []) then
-  begin
-    with ProdutoSelecionado, gridProdutos.DataSource.DataSet do
-      begin
-      ID := FieldByName('ID').AsInteger;
-      Nome := FieldByName('Nome').AsString;
-      CodigoBarras := FieldByName('Codigo_barras').AsString;
-      Descricao := FieldByName('Descricao').AsString;
-      Referencia := FieldByName('Referencia').AsString;
-      Preco := FieldByName('Preco').AsFloat;
-      Categoria := FieldByName('Categoria').AsString;
-      QuantidadeEstoque := FieldByName('Quantidade_estoque').AsInteger;
-      Fornecedor := FieldByName('Fornecedor').AsString;
-      DataValidade := FieldByName('Data_validade').AsDateTime;
-    end;
-  end;
+
+  ProdutoSelecionado := uControladorProduto.CarregarProduto(
+  gridProdutos.DataSource.DataSet.FieldByName('ID').AsInteger);
 
   uControladorTelaCompraProduto := TControladorTelaCompraProduto.Create(uControladorCompra, ProdutoSelecionado);
 end;

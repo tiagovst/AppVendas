@@ -37,6 +37,30 @@ implementation
 
 { TControladorTelaEstoque }
 
+constructor TControladorTelaEstoque.Create(const datasource: TDataSource);
+begin
+  FTelaEstoque := TTelaEstoque.Create(nil);
+  uControladorProduto := TControladorProduto.Create;
+  FTelaEstoque.DBGridProdutos.DataSource := datasource;
+  FTelaEstoque.DBGridProdutos.DataSource.DataSet.Refresh;
+
+  AcaoExcluir := TAction.Create(nil);
+  AcaoExcluir.OnExecute := AcaoBtnExcluir;
+  AcaoExcluir.Caption := 'Excluir';
+  FTelaEstoque.btnExluir.Action := AcaoExcluir;
+
+  if SessaoUsuario.TSessaoUsuario.cargo.Equals('Vendedor') then
+  begin
+    FTelaEstoque.btnExluir.Enabled := False;
+    FTelaEstoque.btnCadastrar.Enabled := False;
+  end;
+
+  CalcularQuantidadeProdutos;
+  PreencherCbxCategorias;
+
+  FTelaEstoque.ComboBoxCategoria.OnChange := AcaoComboBoxOnChange;
+end;
+
 procedure TControladorTelaEstoque.AcaoBtnExcluir(Sender: TObject);
 var
   erro: String;
@@ -81,32 +105,6 @@ begin
       FTelaEstoque.lblTotalEstoque.Caption := IntToStr(QuantidadeProdutosTotal);
     end;
   end;
-end;
-
-constructor TControladorTelaEstoque.Create(const datasource: TDataSource);
-begin
-  FTelaEstoque := TTelaEstoque.Create(nil);
-  uControladorProduto := TControladorProduto.Create;
-  FTelaEstoque.DBGridProdutos.DataSource := datasource;
-  FTelaEstoque.DBGridProdutos.DataSource.DataSet.Refresh;
-
-  AcaoExcluir := TAction.Create(nil);
-  AcaoExcluir.OnExecute := AcaoBtnExcluir;
-  AcaoExcluir.Caption := 'Excluir';
-  FTelaEstoque.btnExluir.Action := AcaoExcluir;
-
-  if SessaoUsuario.TSessaoUsuario.cargo.Equals('Vendedor') then
-  begin
-    FTelaEstoque.btnExluir.Enabled := False;
-    FTelaEstoque.btnCadastrar.Enabled := False;
-  end;
-
-  CalcularQuantidadeProdutos;
-  PreencherCbxCategorias;
-
-  FTelaEstoque.ComboBoxCategoria.OnChange := AcaoComboBoxOnChange;
-
-  FTelaEstoque.ComboBoxCategoria.ItemIndex := 0;
 end;
 
 procedure TControladorTelaEstoque.FecharTela;
