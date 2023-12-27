@@ -50,9 +50,9 @@ begin
     SQL.Text := 'update PRODUTOS set NOME = :NOME, CODIGO_BARRAS = :CODIGO_BARRAS, ' +
     'DESCRICAO = :DESCRICAO, REFERENCIA = :REFERENCIA, PRECO = :PRECO, ' +
     'CATEGORIA = :CATEGORIA, QUANTIDADE_ESTOQUE = :QUANTIDADE_ESTOQUE, ' +
-    'FORNECEDOR = :FORNECEDOR, DATA_VALIDADE = :DATA_VALIDADE where (ID = :ID)';
+    'FORNECEDOR = :FORNECEDOR, DATA_VALIDADE = :DATA_VALIDADE where (ID_PRODUTO = :ID_PRODUTO)';
 
-    Params.ParamByName('ID').AsInteger := ID;
+    Params.ParamByName('ID_PRODUTO').AsInteger := ID;
     Params.ParamByName('NOME').AsString := Nome;
     Params.ParamByName('CODIGO_BARRAS').AsString := CodigoBarras;
     Params.ParamByName('DESCRICAO').AsString := Descricao;
@@ -90,12 +90,12 @@ begin
     try
       Connection := TConexaoIniciar.varConexao.FDConnection;
 
-      SQL.Text := 'SELECT * FROM Produtos WHERE (ID = :ID)';
+      SQL.Text := 'SELECT * FROM Produtos WHERE (ID_PRODUTO = :ID_PRODUTO)';
 
-      Params.ParamByName('ID').AsInteger := IDProduto;
+      Params.ParamByName('ID_PRODUTO').AsInteger := IDProduto;
       Open();
 
-      ID := FieldByName('ID').AsInteger;
+      ID := FieldByName('ID_PRODUTO').AsInteger;
       Nome := FieldByName('NOME').AsString;
       CodigoBarras := FieldByName('CODIGO_BARRAS').AsString;
       Descricao := FieldByName('DESCRICAO').AsString;
@@ -121,7 +121,7 @@ begin
   begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
-    SQL.Text := 'select ID, NOME, DESCRICAO, PRECO, DATA_VALIDADE from PRODUTOS';
+    SQL.Text := 'select ID_PRODUTO, NOME, DESCRICAO, PRECO, DATA_VALIDADE from PRODUTOS';
 
     Open();
   end;
@@ -137,8 +137,8 @@ begin
   begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
-    SQL.Text := 'DELETE FROM PRODUTOS WHERE (ID = :ID);';
-    Params.ParamByName('ID').AsInteger := ID;
+    SQL.Text := 'DELETE FROM PRODUTOS WHERE (ID_PRODUTO = :ID_PRODUTO);';
+    Params.ParamByName('ID_PRODUTO').AsInteger := ID;
 
     try
       ExecSQL();
@@ -161,7 +161,7 @@ begin
   begin
     try
       Connection := TConexaoIniciar.varConexao.FDConnection;
-      SQL.Text := 'SELECT COALESCE(MAX(ID), 0) + 1 AS NEXT_ID FROM PRODUTOS;';
+      SQL.Text := 'SELECT COALESCE(MAX(ID_PRODUTO), 0) + 1 AS NEXT_ID FROM PRODUTOS;';
       Open();
 
       Result := FieldByName('NEXT_ID').AsInteger;
@@ -180,12 +180,12 @@ begin
   begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
-    SQL.Text := 'update or insert into produtos (id, nome, codigo_barras, descricao, ' +
+    SQL.Text := 'update or insert into produtos (ID_PRODUTO, nome, codigo_barras, descricao, ' +
     'referencia, preco, categoria, quantidade_estoque, fornecedor, data_validade) ' +
-    'values (:id, :nome, :codigo_barras, :descricao, :referencia, :preco, :categoria, ' +
-    ':quantidade_estoque, :fornecedor, :data_validade) matching (id);';
+    'values (:ID_PRODUTO, :nome, :codigo_barras, :descricao, :referencia, :preco, :categoria, ' +
+    ':quantidade_estoque, :fornecedor, :data_validade) matching (ID_PRODUTO);';
 
-    Params.ParamByName('ID').AsInteger := ID;
+    Params.ParamByName('ID_PRODUTO').AsInteger := ID;
     Params.ParamByName('NOME').AsString := Nome;
     Params.ParamByName('CODIGO_BARRAS').AsString := CodigoBarras;
     Params.ParamByName('DESCRICAO').AsString := Descricao;

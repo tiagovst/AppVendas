@@ -15,7 +15,9 @@ type
     FIDVenda: Integer;
     FSubtotal: Double;
   public
-    constructor Create(const VendaID: Integer; Desconto: Integer; IdProduto: Integer; Quantidade: Integer; Preco: Double; Subtotal: Double);
+    //constructor Create;
+    constructor Create(const VendaID: Integer; Desconto: Integer;
+    IdProduto: Integer; Quantidade: Integer; Preco: Double; Subtotal: Double) overload;
 
     property IdProduto: Integer read FIdProduto write FIdProduto;
     property Quantidade: Integer read FQuantidade write FQuantidade;
@@ -39,5 +41,10 @@ begin
   FIdVenda := VendaID;
   FSubtotal := Subtotal;
 end;
+
+{constructor TItemVenda.Create;
+begin
+  TItemVenda.Create;
+end;}
 
 end.

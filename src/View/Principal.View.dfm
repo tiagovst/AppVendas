@@ -23,7 +23,7 @@ object TelaPrincipal: TTelaPrincipal
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 633
+    ExplicitHeight = 641
     object pnlLogo: TPanel
       Left = 1
       Top = 1
@@ -129,7 +129,7 @@ object TelaPrincipal: TTelaPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 591
+      ExplicitTop = 599
       object lblNomeDeUsuario: TLabel
         Left = 10
         Top = 3
@@ -346,8 +346,8 @@ object TelaPrincipal: TTelaPrincipal
     Color = 16579321
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 775
-    ExplicitHeight = 633
+    ExplicitWidth = 777
+    ExplicitHeight = 641
     DesignSize = (
       781
       642)
@@ -399,7 +399,7 @@ object TelaPrincipal: TTelaPrincipal
       Color = 16579321
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 775
+      ExplicitWidth = 777
       DesignSize = (
         781
         41)
@@ -413,7 +413,7 @@ object TelaPrincipal: TTelaPrincipal
         TextHint = 'Pesquisar produto'
         OnChange = SearchBoxChange
         OnInvokeSearch = SearchBoxInvokeSearch
-        ExplicitWidth = 163
+        ExplicitWidth = 165
       end
     end
     object btnFinalizarCompra: TButton
@@ -425,7 +425,7 @@ object TelaPrincipal: TTelaPrincipal
       Caption = 'Finalizar Compra'
       TabOrder = 1
       OnClick = btnFinalizarCompraClick
-      ExplicitLeft = 616
+      ExplicitLeft = 618
     end
     object pnlSubmenuProdutos: TPanel
       Left = 0

@@ -11,24 +11,67 @@ uses
   ActnList,
   Vcl.Dialogs,
   Vcl.Controls,
-  Data.DB;
+  Data.DB,
+  ItemVenda,
+  ControladorItemVenda,
+  ControladorItemVendaInterface,
+  System.Generics.Collections,
+  ControladorCompra,
+  ControladorCompraInterface,
+  ControladorProduto,
+  ControladorProdutoInterface,
+  ControladorTelaCheckout,
+  ControladorTelaCheckoutInterface;
 
 type
   TControladorTelaVendas = class(TInterfacedObject, IControladorTelaVendas)
   private
     FTelaVendas : TTelaVendas;
+    uControladorTelaCheckout: IControladorTelaCheckout;
     uControladorVendaDAO : IControladorVenda;
+
+    AcaoBtnComprarNovamente: TAction;
+
+    procedure FecharTela;
+    procedure AcaoBtnComprarNovamenteClick(Sender: TObject);
+    procedure CalcularTotamEmVendas;
+    procedure CalcularTotalItensVendidos;
 
   public
     constructor Create(Parent : TWinControl);
-    procedure FecharTela;
-    procedure CalcularTotamEmVendas;
-    procedure CalcularTotalItensVendidos;
   end;
 
 implementation
 
 { TControladorTelaVendas }
+
+procedure TControladorTelaVendas.AcaoBtnComprarNovamenteClick(Sender: TObject);
+var
+  item: TItemVenda;
+  IDVendaSelecionada: Integer;
+  uControladorItemVendaDAO: IControladorItemVenda;
+  uArrayItemVenda: TList<TItemVenda>;
+  uControladorCompra: IControladorCompra;
+  uControladorProduto: IControladorProduto;
+begin
+  uArrayItemVenda := TList<TItemVenda>.Create;
+  uControladorItemVendaDAO := TControladorItemVenda.Create;
+  uControladorCompra := TControladorCompra.Create;
+  uControladorProduto := TControladorProduto.Create;
+
+  IDVendaSelecionada := FTelaVendas.DBGridVendas.DataSource.DataSet.FieldByName('ID').AsInteger;
+
+  uArrayItemVenda := uControladorItemVendaDAO.CarregarItemVenda(IDVendaSelecionada);
+
+  for item in uArrayItemVenda do
+  begin
+    uControladorCompra.AdicionarProduto(uControladorProduto.
+    CarregarProduto(item.IdProduto), item.Quantidade, item.Subtotal);
+  end;
+
+  uControladorTelaCheckout := TControladorTelaCheckout.Create(uControladorCompra.ObterProdutos);
+
+end;
 
 procedure TControladorTelaVendas.CalcularTotalItensVendidos;
 var
@@ -94,6 +137,12 @@ begin
   FTelaVendas := TTelaVendas.Create(nil);
   FTelaVendas.Parent := Parent;
   FTelaVendas.Align := alClient;
+
+  AcaoBtnComprarNovamente := TAction.Create(nil);
+  AcaoBtnComprarNovamente.Caption := 'Comprar novamente';
+  AcaoBtnComprarNovamente.OnExecute := AcaoBtnComprarNovamenteClick;
+  FTelaVendas.btnComprarNovamente.Action := AcaoBtnComprarNovamente;
+
 
   uControladorVendaDAO := TControladorVenda.Create;
   uControladorVendaDAO.AtualizarListaVendas(FTelaVendas.DBGridVendas.DataSource);

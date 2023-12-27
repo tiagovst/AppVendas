@@ -90,7 +90,7 @@ begin
 
   if ConfirmacaoDialogo = mrYes then
   begin
-    idProduto := FTelaEstoque.DBGridProdutos.DataSource.DataSet.FieldByName('ID').AsInteger;
+    idProduto := FTelaEstoque.DBGridProdutos.DataSource.DataSet.FieldByName('ID_PRODUTO').AsInteger;
     if uControladorProduto.Excluir(idProduto, erro) then
     begin
       ShowMessage('Produto excluído com sucesso!');
@@ -126,7 +126,7 @@ begin
   if Assigned(FTelaEstoque.DBGridProdutos.DataSource.DataSet) then
   begin
     ProdutoSelecionado := uControladorProduto.CarregarProduto(
-      FTelaEstoque.DBGridProdutos.DataSource.DataSet.FieldByName('ID').AsInteger);
+      FTelaEstoque.DBGridProdutos.DataSource.DataSet.FieldByName('ID_PRODUTO').AsInteger);
   end;
 
   uControladorTelaCadastroProduto :=

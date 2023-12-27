@@ -3,7 +3,8 @@ unit ItemVendaDAOInterface;
 interface
 
 uses
-  ItemVenda;
+  ItemVenda,
+  System.Generics.Collections;
 
 type
   IItemVendaDAO = interface
@@ -11,9 +12,9 @@ type
 
     function Inserir(ItemVenda: TItemVenda; out erro: String): Boolean;
     function Excluir(ID: Integer; out erro: String): Boolean;
+    function CarregarItemVenda(IDVenda: Integer): TList<TItemVenda>;
 
     procedure Pesquisar();
-    procedure CarregarItemVenda(ItemVenda: TItemVenda; IDVenda: Integer);
   end;
 
 implementation

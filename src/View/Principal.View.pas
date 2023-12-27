@@ -258,7 +258,7 @@ var
 begin
   ProdutoSelecionado := TProduto.Create;
   ProdutoSelecionado := uControladorProduto.CarregarProduto(
-  gridProdutos.DataSource.DataSet.FieldByName('ID').AsInteger);
+  gridProdutos.DataSource.DataSet.FieldByName('ID_PRODUTO').AsInteger);
 
   uControladorTelaCompraProduto :=
     TControladorTelaCompraProduto.Create(uControladorCompra, ProdutoSelecionado);

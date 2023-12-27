@@ -8,7 +8,9 @@ uses
   FireDAC.Comp.Client,
   FireDAC.Stan.Param,
   System.SysUtils,
-  Conexao;
+  ConexaoIniciar,
+  System.Generics.Collections,
+  Vcl.Dialogs;
 
 type
   TItemVendaDAO = class(TInterfacedObject, IItemVendaDAO)
@@ -21,33 +23,49 @@ type
     function Excluir(ID: Integer; out erro: String): Boolean;
 
     procedure Pesquisar();
-    procedure CarregarItemVenda(ItemVenda: TItemVenda; IDVenda: Integer);
+
+    function CarregarItemVenda(IDVendaSelecionada: Integer): TList<TItemVenda>;
   end;
 
 implementation
 
 { TItemVendaDAO }
 
-procedure TItemVendaDAO.CarregarItemVenda(ItemVenda: TItemVenda; IDVenda: Integer);
+function TItemVendaDAO.CarregarItemVenda(IDVendaSelecionada: Integer): TList<TItemVenda>;
+var
+  uItemVenda: TItemVenda;
+  ArrayItemVenda: TList<TItemVenda>;
 begin
   SQLQuery := TFDQuery.Create(nil);
-  with SQLQuery, ItemVenda do
+  ArrayItemVenda := TList<TItemVenda>.Create;
+  uITemVenda := TItemVenda.Create;
+
+  with SQLQuery, uItemVenda do
   begin
     try
 
-      Connection := dmConexao.FDConnection;
-      SQL.Text := 'SELECT * FROM ITEM_VENDA WHERE (ID_VENDA = :ID)';
-      Params.ParamByName('ID_VENDA').AsInteger := IDVenda;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
+      SQL.Text := 'SELECT * FROM ITEM_VENDA WHERE (ID = :ID)';
+      Params.ParamByName('ID').AsInteger := IDVendaSelecionada;
       Open();
 
-      IdVenda := FieldByName('ID_VENDA').AsInteger;
-      IdProduto := FieldByName('ID_PRODUTO').AsInteger;
-      Preco := FieldByName('PRECO').AsFloat;
-      Quantidade := FieldByName('QUANTIDADE').AsInteger;
-      Desconto := FieldByName('DESCONTO').AsInteger;
-      Subtotal := FieldByName('SUBTOTAL').AsFloat;
+      while not Eof do
+      begin
+
+        IdVenda := FieldByName('ID').AsInteger;
+        IdProduto := FieldByName('ID_PRODUTO').AsInteger;
+        Preco := FieldByName('PRECO').AsFloat;
+        Quantidade := FieldByName('QUANTIDADE').AsInteger;
+        Desconto := FieldByName('DESCONTO').AsInteger;
+        Subtotal := FieldByName('SUBTOTAL').AsFloat;
+
+        ArrayItemVenda.Add(uItemVenda);
+        Next;
+      end;
 
     finally
+      Result := ArrayItemVenda;
+      FreeAndNil(uItemVenda);
       FreeAndNil(SQLQuery);
     end;
   end;
@@ -59,7 +77,7 @@ begin
   with SQLQuery do
   begin
     try
-      Connection := dmConexao.FDConnection;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
       SQL.Text := 'DELETE FROM ITEM_VENDA WHERE (ID = :ID)';
       Params.ParamByName('ID').AsInteger := ID;
       ExecSQL;
@@ -80,18 +98,21 @@ begin
   with SQLQuery, ItemVenda do
   begin
     try
-      Connection := dmConexao.FDConnection;
-      SQL.Text := 'insert into item_venda (id_produto, id_venda, quantidade, preco, desconto, subtotal) ' +
-      'values (:id_produto, :id_venda, :quantidade, :preco, :desconto, :subtotal)';
+      Connection := TConexaoIniciar.varConexao.FDConnection;
+      SQL.Text := 'insert into item_venda (id_produto, id, quantidade, preco, desconto, subtotal) ' +
+      'values (:id_produto, :id, :quantidade, :preco, :desconto, :subtotal)';
 
       Params.ParamByName('id_produto').AsInteger := IdProduto;
-      Params.ParamByName('id_venda').AsInteger := IdVenda;
+      Params.ParamByName('id').AsInteger := IdVenda;
       Params.ParamByName('quantidade').AsInteger := Quantidade;
       Params.ParamByName('preco').AsFloat := Preco;
       Params.ParamByName('subtotal').AsFloat := Subtotal;
       Params.ParamByName('desconto').AsInteger := Desconto;
 
+
       ExecSQL;
+
+      //ShowMessage('id Produto: ' + FieldByName('id_produto').AsString);
       Result := True;
 
     except on E: Exception do
@@ -111,7 +132,7 @@ begin
   with SQLQuery do
   begin
     try
-      Connection := dmConexao.FDConnection;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
       SQL.Text := 'SELECT * FROM ITEM_VENDA';
       Open();
       First;

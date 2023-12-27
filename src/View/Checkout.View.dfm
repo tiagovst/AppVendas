@@ -26,8 +26,8 @@ object TelaCheckout: TTelaCheckout
     Color = 16579321
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1089
-    ExplicitHeight = 405
+    ExplicitWidth = 1083
+    ExplicitHeight = 396
     DesignSize = (
       1087
       397)
@@ -47,38 +47,38 @@ object TelaCheckout: TTelaCheckout
     object ProdutosGrid: TStringGrid
       Left = 46
       Top = 112
-      Width = 985
+      Width = 981
       Height = 279
       Anchors = [akLeft, akTop, akRight, akBottom]
       Color = clBtnFace
       FixedCols = 0
       ScrollBars = ssVertical
       TabOrder = 0
-      ExplicitWidth = 993
-      ExplicitHeight = 287
+      ExplicitWidth = 977
+      ExplicitHeight = 278
     end
     object btnLimpar: TButton
-      Left = 956
+      Left = 952
       Top = 74
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Limpar'
       TabOrder = 1
-      ExplicitLeft = 964
+      ExplicitLeft = 948
     end
     object btnDeletar: TButton
-      Left = 872
+      Left = 868
       Top = 74
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Deletar'
       TabOrder = 2
-      ExplicitLeft = 880
+      ExplicitLeft = 864
     end
     object txtDesconto: TLabeledEdit
-      Left = 708
+      Left = 704
       Top = 75
       Width = 153
       Height = 23
@@ -86,9 +86,10 @@ object TelaCheckout: TTelaCheckout
       EditLabel.Width = 50
       EditLabel.Height = 15
       EditLabel.Caption = 'Desconto'
+      NumbersOnly = True
       TabOrder = 3
       Text = ''
-      ExplicitLeft = 720
+      ExplicitLeft = 700
     end
   end
   object pnlBottom: TPanel
@@ -106,8 +107,8 @@ object TelaCheckout: TTelaCheckout
     ParentBackground = False
     ParentFont = False
     TabOrder = 1
-    ExplicitTop = 501
-    ExplicitWidth = 1089
+    ExplicitTop = 492
+    ExplicitWidth = 1083
     DesignSize = (
       1087
       41)
@@ -126,7 +127,7 @@ object TelaCheckout: TTelaCheckout
       Caption = '00.0'
     end
     object btnFinalizar: TButton
-      Left = 994
+      Left = 990
       Top = 9
       Width = 75
       Height = 25
@@ -139,10 +140,10 @@ object TelaCheckout: TTelaCheckout
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitLeft = 1002
+      ExplicitLeft = 986
     end
     object btnCancelar: TButton
-      Left = 911
+      Left = 907
       Top = 9
       Width = 75
       Height = 25
@@ -156,7 +157,7 @@ object TelaCheckout: TTelaCheckout
       ParentFont = False
       TabOrder = 1
       OnClick = btnCancelarClick
-      ExplicitLeft = 919
+      ExplicitLeft = 903
     end
   end
   object pnlTop: TPanel
@@ -168,7 +169,7 @@ object TelaCheckout: TTelaCheckout
     Color = 16579321
     ParentBackground = False
     TabOrder = 2
-    ExplicitWidth = 1089
+    ExplicitWidth = 1083
     object Label2: TLabel
       Left = 93
       Top = 40

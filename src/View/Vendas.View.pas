@@ -26,8 +26,9 @@ type
     lblQuantidadeItensVendidos: TLabel;
     DBGridVendas: TDBGrid;
     Button1: TButton;
-    Button2: TButton;
+    btnComprarNovamente: TButton;
     DataSourceVendas: TDataSource;
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,5 +41,10 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TTelaVendas.Button1Click(Sender: TObject);
+begin
+  close;
+end;
 
 end.

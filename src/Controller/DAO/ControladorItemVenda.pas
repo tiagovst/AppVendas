@@ -8,7 +8,8 @@ uses
   ItemVendaDAOInterface,
   System.SysUtils,
   vcl.Dialogs,
-  ControladorItemVendaInterface;
+  ControladorItemVendaInterface,
+  System.Generics.Collections;
 
 type
   TControladorItemVenda = class(TInterfacedObject, IControladorItemVenda)
@@ -17,21 +18,19 @@ type
 
     function Inserir(ItemVenda: TItemVenda; out erro: String): Boolean;
     function Excluir(ID: Integer; out erro: String): Boolean;
-
+    function CarregarItemVenda(IDVenda: Integer): TList<TItemVenda>;
 
     constructor Create;
     procedure Pesquisar();
-    procedure CarregarItemVenda(ItemVenda: TItemVenda; IDVenda: Integer);
   end;
 
 implementation
 
 { TControladorItemVenda }
 
-procedure TControladorItemVenda.CarregarItemVenda(ItemVenda: TItemVenda;
-  IDVenda: Integer);
+function TControladorItemVenda.CarregarItemVenda(IDVenda: Integer): TList<TItemVenda>;
 begin
-  IItemVenda.CarregarItemVenda(ItemVenda, IDVenda);
+  Result := IItemVenda.CarregarItemVenda(IDVenda);
 end;
 
 constructor TControladorItemVenda.Create;

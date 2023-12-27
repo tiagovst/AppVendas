@@ -103,9 +103,9 @@ begin
   begin
     try
       Connection := TConexaoIniciar.varConexao.FDConnection;
-      SQL.Text := 'SELECT COALESCE(max(id), 0) + 1 AS NEXT_ID FROM VENDA';
+      SQL.Text := 'SELECT COALESCE(max(id), 0) + 1 AS seq FROM VENDA';
       Open();
-      Result := FieldByName('NEXT_ID').AsInteger;
+      Result := FieldByName('seq').AsInteger;
     finally
       FreeAndNil(SQLQuery);
     end;

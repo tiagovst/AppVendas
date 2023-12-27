@@ -23,7 +23,7 @@ TControladorTelaCheckout = class(TInterfacedObject, IControladorTelaCheckout)
   private
     FTelaCheckout : TTelaCheckout;
     Action: TAction;
-    Desconto: String;
+    Desconto: Integer;
     PrecoTotal : Double;
     ArrayProdutos : TArray<TProdutoQuantidade>;
 
@@ -63,23 +63,35 @@ end;
 
 procedure TControladorTelaCheckout.CalcularSubtotal;
 var
+  ValorTxtDesconto: String;
   i : Integer;
 begin
   PrecoTotal := 0.0;
-  Desconto := FTelaCheckout.txtDesconto.Text;
+
+  ValorTxtDesconto := FTelaCheckout.txtDesconto.Text;
 
   for i := 1 to (FTelaCheckout.ProdutosGrid.Cols[3].Count - 1) do
   begin
     PrecoTotal := PrecoTotal + StrToFloat(FTelaCheckout.ProdutosGrid.Cols[4].Strings[i]);
   end;
 
-  if not Desconto.IsEmpty then
+  if (not ValorTxtDesconto.IsEmpty) and (TryStrToInt(ValorTxtDesconto, Desconto)) then
   begin
-    PrecoTotal := PrecoTotal - (PrecoTotal * (StrToFloat(Desconto) / 100));
+    Desconto := StrToInt(ValorTxtDesconto);
+
+    if (Desconto > 0) and (Desconto < 100) then
+    begin
+      PrecoTotal := PrecoTotal - (PrecoTotal * (StrToFloat(ValorTxtDesconto) / 100));
+    end
+    else
+    begin
+      ShowMessage('O valor do desconto informado é inválido');
+    end;
+
   end
   else
   begin
-    Desconto := '0';
+    Desconto := 0;
   end;
 
 end;
@@ -162,11 +174,14 @@ end;
 
 procedure TControladorTelaCheckout.RealizarVenda;
 var
+  QuantidadeProdutos: Integer;
   i : Integer;
+  IDVendaBackUp: Integer;
   erro: String;
 
   RegistroVenda : TVenda;
   uItemVenda: TItemVenda;
+
   uControladorVenda : IControladorVenda;
   uControladorItemVenda : IControladorItemVenda;
 
@@ -178,45 +193,70 @@ begin
   uControladorItemVenda := TControladorItemVenda.Create;
   uControladorProduto := TControladorProduto.Create;
   produto := TProduto.Create;
+  QuantidadeProdutos := 0;
 
   RegistroVenda.ID := uControladorVenda.gerarID;
+  IDVendaBackUp := RegistroVenda.ID;
+
   RegistroVenda.dataVenda := uControladorVenda.DataAtual;
-  RegistroVenda.totalProdutos := FTelaCheckout.ProdutosGrid.RowCount - 1;
   RegistroVenda.vendedor := SessaoUsuario.TSessaoUsuario.id;
-  RegistroVenda.Desconto := StrToInt(Desconto);
+  RegistroVenda.Desconto := Desconto;
+
+  for i := 1 to (FTelaCheckout.ProdutosGrid.Cols[0].Count - 1) do
+  begin
+    QuantidadeProdutos := QuantidadeProdutos + StrToInt(FTelaCheckout.ProdutosGrid.Cols[2].Strings[i]);
+  end;
+  RegistroVenda.totalProdutos := QuantidadeProdutos;
+
 
   CalcularSubtotal;
   RegistroVenda.totalPreco := StrToFloat(FormatFloat('#0.00', PrecoTotal));
 
-  for i := 1 to (FTelaCheckout.ProdutosGrid.Cols[0].Count - 1) do
-    begin
-      produto := uControladorProduto.CarregarProduto(StrToInt(FTelaCheckout.ProdutosGrid.Cols[0].Strings[i]));
-      produto.QuantidadeEstoque := produto.QuantidadeEstoque - StrToInt(FTelaCheckout.ProdutosGrid.Cols[2].Strings[i]);
-      uControladorProduto.Alterar(produto, erro);
-
-      with FTelaCheckout do
-      begin
-        uItemVenda := TItemVenda.Create(
-        RegistroVenda.ID,
-        RegistroVenda.Desconto,
-        StrToInt(ProdutosGrid.Cols[0].Strings[i]),
-        StrToInt(ProdutosGrid.Cols[2].Strings[i]),
-        StrToFloat(ProdutosGrid.Cols[3].Strings[i]),
-        StrToFloat(ProdutosGrid.Cols[4].Strings[i])
-        );
-      end;
-
-      uControladorItemVenda.Inserir(uItemVenda, erro);
-    end;
-
   if uControladorVenda.Inserir(RegistroVenda, erro) then
   begin
-    ShowMessage('Venda Cadastrda com Sucesso!');
+    ShowMessage('Venda Cadastrada com Sucesso!');
   end
   else
   begin
     ShowMessage('Erro ao registrar a venda');
   end;
+
+  for i := 1 to (FTelaCheckout.ProdutosGrid.Cols[0].Count - 1) do
+    begin
+      produto := uControladorProduto.CarregarProduto(StrToInt(FTelaCheckout.ProdutosGrid.Cols[0].Strings[i]));
+      produto.QuantidadeEstoque := produto.QuantidadeEstoque - StrToInt(FTelaCheckout.ProdutosGrid.Cols[2].Strings[i]);
+      uControladorProduto.Alterar(produto, erro); // Atualiza o estoque
+
+      with FTelaCheckout do
+      begin
+        uItemVenda := TItemVenda.Create;
+
+        with uItemVenda do
+        begin
+          IdVenda := IDVendaBackUp;
+          Desconto := self.Desconto;
+          IdProduto := StrToInt(ProdutosGrid.Cols[0].Strings[i]);
+          Quantidade := StrToInt(ProdutosGrid.Cols[2].Strings[i]);
+          Preco := StrToFloat(ProdutosGrid.Cols[3].Strings[i]);
+
+          if Desconto <> 0 then
+          begin
+            Subtotal := StrToFloat(ProdutosGrid.Cols[4].Strings[i]) - StrToFloat(ProdutosGrid.Cols[4].Strings[i])
+             * (Desconto / 100);
+            ShowMessage(Subtotal.ToString);
+          end
+          else
+          begin
+            Subtotal := StrToFloat(ProdutosGrid.Cols[4].Strings[i]);
+          end;
+          end;
+
+      end;
+
+      uControladorItemVenda.Inserir(uItemVenda, erro);
+      FecharTela;
+
+    end;
 
 end;
 

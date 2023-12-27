@@ -22,8 +22,6 @@ object TelaVendas: TTelaVendas
     Color = 16579321
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 961
-    ExplicitHeight = 553
     DesignSize = (
       979
       600)
@@ -37,7 +35,6 @@ object TelaVendas: TTelaVendas
       Color = 16579321
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 961
       object Panel1: TPanel
         Left = 41
         Top = 16
@@ -1859,8 +1856,9 @@ object TelaVendas: TTelaVendas
         Margins.Bottom = 4
         Caption = 'Realizar nova compra'
         TabOrder = 2
+        OnClick = Button1Click
       end
-      object Button2: TButton
+      object btnComprarNovamente: TButton
         Left = 537
         Top = 69
         Width = 153
@@ -1901,7 +1899,6 @@ object TelaVendas: TTelaVendas
     Color = 16579321
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 961
     object Label1: TLabel
       Left = 93
       Top = 40
