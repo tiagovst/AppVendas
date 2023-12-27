@@ -23,6 +23,7 @@ type
     function Alterar(Cliente: TCliente; out erro: String): Boolean;
     function Excluir(ID: String; out erro: String): Boolean;
     function CarregarCliente(IDCliente: String): TCliente;
+    function VerificarIdentificadorCliente(Identificador: String): Boolean;
 
     procedure PesquisarNome(Nome: String);
     procedure AtualizarListaClientes(DataSource: TDataSource);
@@ -156,6 +157,27 @@ begin
         erro := 'Ocorreu um erro ao tentar persistir' + sLineBreak + E.Message;
         Result := False;
       end;
+    end;
+  end;
+end;
+
+function TClienteDAO.VerificarIdentificadorCliente(Identificador: String): Boolean;
+begin
+  SQLQuery := TFDQuery.Create(nil);
+
+  with SQLQuery do
+  begin
+    Connection := TConexaoIniciar.varConexao.FDConnection;
+
+    SQL.Text := 'SELECT IDENTIFICADOR FROM CLIENTE WHERE IDENTIFICADOR = :IDENTIFICADOR;';
+    Params.ParamByName('IDENTIFICADOR').AsString := Identificador;
+
+    try
+      Open();
+      Result := not Fields[0].IsNull;
+
+    finally
+
     end;
   end;
 end;

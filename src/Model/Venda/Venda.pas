@@ -14,6 +14,7 @@ type
     FTotalPreco: Double;
     FVendedor: Integer; // ID do vendedor
     FDesconto: Integer;
+    FIDCliente: String;
 
   public
 
@@ -23,6 +24,7 @@ type
     property totalProdutos: Integer read FTotalProdutos write FTotalProdutos;
     property totalPreco: Double read FTotalPreco write FTotalPreco;
     property vendedor: Integer read FVendedor write FVendedor;
+    property IDCliente: String read FIDCliente write FIDCliente;
   end;
 
 implementation

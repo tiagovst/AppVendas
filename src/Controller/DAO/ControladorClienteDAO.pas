@@ -19,6 +19,7 @@ type
     function Alterar(Cliente: TCliente; out erro: String): Boolean;
     function Excluir(ID: String; out erro: String): Boolean;
     function CarregarCliente(IDCliente: String): TCliente;
+    function VerificarIdentificadorCliente(Identificador: String): Boolean;
 
     procedure PesquisarNome(Nome: String);
     procedure AtualizarListaClientes(DataSource: TDataSource);
@@ -67,6 +68,12 @@ end;
 procedure TControladorClienteDAO.PesquisarNome(Nome: String);
 begin
   ClienteDAO.PesquisarNome(Nome);
+end;
+
+function TControladorClienteDAO.VerificarIdentificadorCliente(
+  Identificador: String): Boolean;
+begin
+  Result := ClienteDAO.VerificarIdentificadorCliente(Identificador);
 end;
 
 end.

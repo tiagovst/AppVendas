@@ -43,6 +43,7 @@ type
     Label4: TLabel;
     lblSubtotal: TLabel;
     txtDesconto: TLabeledEdit;
+    txtIdentificadorCliente: TLabeledEdit;
     procedure btnCancelarClick(Sender: TObject);
    end;
 
@@ -59,4 +60,5 @@ procedure TTelaCheckout.btnCancelarClick(Sender: TObject);
 begin
   Close;
 end;
+
 end.

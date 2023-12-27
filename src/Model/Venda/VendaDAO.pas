@@ -119,8 +119,8 @@ begin
   begin
     try
       Connection := TConexaoIniciar.varConexao.FDConnection;
-      SQL.Text := 'insert into venda (id, total_produtos, total_preco, vendedor, data_venda, desconto) ' +
-      'values (:id, :total_produtos, :total_preco, :vendedor, :data_venda, :desconto)';
+      SQL.Text := 'insert into venda (id, total_produtos, total_preco, vendedor, data_venda, desconto, id_cliente) ' +
+      'values (:id, :total_produtos, :total_preco, :vendedor, :data_venda, :desconto, :id_cliente)';
 
       Params.ParamByName('ID').AsInteger := ID;
       Params.ParamByName('TOTAL_PRODUTOS').AsInteger := totalProdutos;
@@ -128,6 +128,7 @@ begin
       Params.ParamByName('VENDEDOR').AsInteger := vendedor;
       Params.ParamByName('DATA_VENDA').AsDate := dataVenda;
       Params.ParamByName('desconto').AsInteger := Desconto;
+      Params.ParamByName('ID_CLIENTE').AsString := IDCliente;
       
       ExecSQL;
       Result := True;

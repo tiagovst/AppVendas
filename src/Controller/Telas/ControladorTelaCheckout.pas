@@ -13,9 +13,14 @@ uses
   ControladorItemVendaInterface,
   ControladorProdutoInterface,
   ControladorProduto,
+  ControladorClienteDAO,
+  ControladorClienteDAOInterface,
+  ControladorTelaManejoCliente,
+  ControladorTelaManejoClienteInterface,
   Produto,
   ControladorTelaCheckoutInterface,
   Vcl.ActnList,
+  System.UITypes,
   SessaoUsuario;
 
 type
@@ -26,6 +31,8 @@ TControladorTelaCheckout = class(TInterfacedObject, IControladorTelaCheckout)
     Desconto: Integer;
     PrecoTotal : Double;
     ArrayProdutos : TArray<TProdutoQuantidade>;
+    uControladorTelaCadastroCliente : IControladorTelaManejoCliente;
+    uControladorVenda : IControladorVenda;
 
     procedure MostrarTela;
     procedure FecharTela;
@@ -35,6 +42,9 @@ TControladorTelaCheckout = class(TInterfacedObject, IControladorTelaCheckout)
     procedure AcaoOnChangeDesconto(Sender: TObject);
     procedure CalcularSubtotal;
     procedure FormatarLabelSubtotal;
+    procedure RegistrarItemVenda(IDVendaBackUp: Integer);
+    procedure RegistrarVenda(RegistroVenda: TVenda; Erro: String);
+    function VerificarCadastroCliente(IdentificadorCliente: String): Boolean;
 
   public
     constructor Create(const Produtos: TArray<TProdutoQuantidade>) overload;
@@ -99,6 +109,7 @@ end;
 constructor TControladorTelaCheckout.Create(const Produtos: TArray<TProdutoQuantidade>);
 begin
   FTelaCheckout := TTelaCheckout.Create(nil);
+  uControladorVenda := TControladorVenda.Create;
   PreencherStringGrid(Produtos);
 
   ArrayProdutos := Produtos;
@@ -177,30 +188,31 @@ var
   QuantidadeProdutos: Integer;
   i : Integer;
   IDVendaBackUp: Integer;
-  erro: String;
-
   RegistroVenda : TVenda;
-  uItemVenda: TItemVenda;
-
-  uControladorVenda : IControladorVenda;
-  uControladorItemVenda : IControladorItemVenda;
-
-  uControladorProduto : IControladorProduto;
-  produto : TProduto;
+  cliente : String;
+  decisaoCadastrarCliente : Integer;
+  Erro : String;
 begin
   RegistroVenda := TVenda.Create;
-  uControladorVenda := TControladorVenda.Create;
-  uControladorItemVenda := TControladorItemVenda.Create;
-  uControladorProduto := TControladorProduto.Create;
-  produto := TProduto.Create;
   QuantidadeProdutos := 0;
+  cliente := FTelaCheckout.txtIdentificadorCliente.Text;
 
-  RegistroVenda.ID := uControladorVenda.gerarID;
-  IDVendaBackUp := RegistroVenda.ID;
+  with RegistroVenda do
+  begin
+    ID := uControladorVenda.gerarID;
+    dataVenda := uControladorVenda.DataAtual;
+    vendedor := SessaoUsuario.TSessaoUsuario.id;
+    Desconto := self.Desconto;
 
-  RegistroVenda.dataVenda := uControladorVenda.DataAtual;
-  RegistroVenda.vendedor := SessaoUsuario.TSessaoUsuario.id;
-  RegistroVenda.Desconto := Desconto;
+    if not cliente.IsEmpty then
+    begin
+      IDCliente := cliente;
+    end
+    else
+    begin
+      ShowMessage('O campo "Cliente" deve estar preenchido!');
+    end;
+  end;
 
   for i := 1 to (FTelaCheckout.ProdutosGrid.Cols[0].Count - 1) do
   begin
@@ -208,18 +220,46 @@ begin
   end;
   RegistroVenda.totalProdutos := QuantidadeProdutos;
 
-
   CalcularSubtotal;
   RegistroVenda.totalPreco := StrToFloat(FormatFloat('#0.00', PrecoTotal));
 
-  if uControladorVenda.Inserir(RegistroVenda, erro) then
+  IDVendaBackUp := RegistroVenda.ID;
+
+  if VerificarCadastroCliente(RegistroVenda.IDCliente) then
   begin
-    ShowMessage('Venda Cadastrada com Sucesso!');
+    RegistrarVenda(RegistroVenda, Erro);
+    RegistrarItemVenda(IDVendaBackUp);
   end
   else
   begin
-    ShowMessage('Erro ao registrar a venda');
+    decisaoCadastrarCliente := MessageDlg('Parece que o cliente inserido não está cadastrado' +
+    sLineBreak + 'Deseja cadastrá-lo agora?', mtConfirmation, mbYesNo, 0);
+
+    if decisaoCadastrarCliente = mrYes then
+    begin
+      uControladorTelaCadastroCliente := TControladorTelaManejoCliente.Create;
+    end
+    else
+    begin
+      RegistrarVenda(RegistroVenda, Erro);
+      RegistrarItemVenda(IDVendaBackUp);
+    end;
+
   end;
+
+end;
+
+procedure TControladorTelaCheckout.RegistrarItemVenda(IDVendaBackUp: Integer);
+var
+  produto : TProduto;
+  uControladorItemVenda : IControladorItemVenda;
+  uControladorProduto : IControladorProduto;
+  erro : String;
+  uItemVenda : TItemVenda;
+  i: Integer;
+begin
+  uControladorItemVenda := TControladorItemVenda.Create;
+  uControladorProduto := TControladorProduto.Create;
 
   for i := 1 to (FTelaCheckout.ProdutosGrid.Cols[0].Count - 1) do
     begin
@@ -243,13 +283,12 @@ begin
           begin
             Subtotal := StrToFloat(ProdutosGrid.Cols[4].Strings[i]) - StrToFloat(ProdutosGrid.Cols[4].Strings[i])
              * (Desconto / 100);
-            ShowMessage(Subtotal.ToString);
           end
           else
           begin
             Subtotal := StrToFloat(ProdutosGrid.Cols[4].Strings[i]);
           end;
-          end;
+        end;
 
       end;
 
@@ -257,6 +296,27 @@ begin
       FecharTela;
 
     end;
+end;
+
+procedure TControladorTelaCheckout.RegistrarVenda(RegistroVenda: TVenda; Erro: String);
+begin
+  if uControladorVenda.Inserir(RegistroVenda, Erro) then
+    begin
+      ShowMessage('Venda Cadastrada com Sucesso!');
+    end
+    else
+    begin
+      ShowMessage('Erro ao registrar a venda');
+    end;
+end;
+
+function TControladorTelaCheckout.VerificarCadastroCliente(IdentificadorCliente: String): Boolean;
+var
+  uControladorClienteDAO : IControladorClienteDAO;
+begin
+  uControladorClienteDAO := TControladorClienteDAO.Create;
+
+  Result := uControladorClienteDAO.VerificarIdentificadorCliente(IdentificadorCliente);
 
 end;
 
