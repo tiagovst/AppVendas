@@ -214,6 +214,26 @@ begin
 
     if FTelaLogin.LoginSucesso then
     begin
+      if SessaoUsuario.TSessaoUsuario.cargo.Equals('Gestor de Estoque') then
+      begin
+        btnClientes.Enabled := False;
+        btnVendas.Enabled := False;
+        btnUsuarios.Enabled := False;
+        btnFinalizarCompra.Enabled := False;
+      end
+      else if SessaoUsuario.TSessaoUsuario.cargo.Equals('Vendedor') then
+      begin
+        btnCadastrarProduto.Enabled := False;
+        btnVendas.Enabled := False;
+        btnUsuarios.Enabled := False;
+      end
+      else
+      begin
+        btnClientes.Enabled := True;
+        btnVendas.Enabled := True;
+        btnUsuarios.Enabled := True;
+        btnFinalizarCompra.Enabled := True;
+      end;                                 // Função
       btnInicio.Click;
       Show;
     end
