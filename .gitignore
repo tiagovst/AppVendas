@@ -72,5 +72,4 @@ __recovery/
 *.stat
 
 modules/
-Win32/
 src/Model/ConexaoDAO/Conexao.dfm

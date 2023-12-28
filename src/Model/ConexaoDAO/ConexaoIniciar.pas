@@ -3,7 +3,9 @@ unit ConexaoIniciar;
 interface
 
 uses
-  Conexao;
+  Conexao,
+  System.SysUtils,
+  Forms;
 
 type
   TConexaoIniciar = class
@@ -19,6 +21,8 @@ implementation
 class procedure TConexaoIniciar.CriarConexao;
 begin
   varConexao := TdmConexao.Create(nil);
+  varConexao.FDConnection.Params.Values['Database'] := ExtractFilePath(
+  Application.ExeName) + '\DataBase\RAZER.FDB';
 end;
 
 end.
