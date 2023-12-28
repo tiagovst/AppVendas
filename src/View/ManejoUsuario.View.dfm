@@ -11,7 +11,7 @@ object TelaManejoUsuario: TTelaManejoUsuario
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  Position = poDesktopCenter
+  Position = poScreenCenter
   TextHeight = 15
   object pnlCenter: TPanel
     Left = 0

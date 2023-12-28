@@ -10,7 +10,7 @@ object TelaLogin: TTelaLogin
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
-  Position = poDesktopCenter
+  Position = poScreenCenter
   TextHeight = 15
   object Panel3: TPanel
     Left = 0
@@ -23,8 +23,8 @@ object TelaLogin: TTelaLogin
     ParentBiDiMode = False
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 559
-    ExplicitHeight = 633
+    ExplicitWidth = 564
+    ExplicitHeight = 641
   end
   object Panel1: TPanel
     Left = 85

@@ -43,7 +43,7 @@ begin
   produtoSelecionado := produto;
   FTelaCadastroProduto := TTelaCadastroProduto.Create(nil);
   FTelaCadastroProduto.BorderStyle := bsDialog;
-  FTelaCadastroProduto.Position := poDesktopCenter;
+  //FTelaCadastroProduto.Position := poDesktopCenter;
   FTelaCadastroProduto.Label1.Caption := 'Manejo de produto';
   FTelaCadastroProduto.txtID.Visible := True;
   PreencherTelaEditarProduto;
@@ -60,7 +60,7 @@ constructor TControladorTelaCadastroProduto.Create;
 begin
   FTelaCadastroProduto := TTelaCadastroProduto.Create(nil);
   FTelaCadastroProduto.BorderStyle := bsDialog;
-  FTelaCadastroProduto.Position := poDesktopCenter;
+  //FTelaCadastroProduto.Position := poDesktopCenter;
 
   ActionBtnSalvar := TAction.Create(nil);
   ActionBtnSalvar.OnExecute := AcaoSalvar;

@@ -214,6 +214,7 @@ begin
 
     if FTelaLogin.LoginSucesso then
     begin
+      btnInicio.Click;
       Show;
     end
     else

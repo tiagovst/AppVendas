@@ -28,9 +28,13 @@ TControladorTelaCheckout = class(TInterfacedObject, IControladorTelaCheckout)
   private
     FTelaCheckout : TTelaCheckout;
     Action: TAction;
+
+    RegistroVenda : TVenda;
     Desconto: Integer;
     PrecoTotal : Double;
     ArrayProdutos : TArray<TProdutoQuantidade>;
+    IDVendaBackUp: Integer;
+
     uControladorTelaCadastroCliente : IControladorTelaManejoCliente;
     uControladorVenda : IControladorVenda;
 
@@ -40,11 +44,13 @@ TControladorTelaCheckout = class(TInterfacedObject, IControladorTelaCheckout)
     procedure RealizarVenda;
     procedure AcaoFinalizar(Sender: TObject);
     procedure AcaoOnChangeDesconto(Sender: TObject);
-    procedure CalcularSubtotal;
     procedure FormatarLabelSubtotal;
     procedure RegistrarItemVenda(IDVendaBackUp: Integer);
     procedure RegistrarVenda(RegistroVenda: TVenda; Erro: String);
+
     function VerificarCadastroCliente(IdentificadorCliente: String): Boolean;
+    function PreencherVenda(out Erro: String): Boolean;
+    function CalcularSubtotal: Boolean;
 
   public
     constructor Create(const Produtos: TArray<TProdutoQuantidade>) overload;
@@ -71,7 +77,7 @@ begin
   FormatarLabelSubtotal;
 end;
 
-procedure TControladorTelaCheckout.CalcularSubtotal;
+function TControladorTelaCheckout.CalcularSubtotal: Boolean;
 var
   ValorTxtDesconto: String;
   i : Integer;
@@ -95,7 +101,8 @@ begin
     end
     else
     begin
-      ShowMessage('O valor do desconto informado é inválido');
+      Result := False;
+      Exit;
     end;
 
   end
@@ -104,6 +111,7 @@ begin
     Desconto := 0;
   end;
 
+  Result := True;
 end;
 
 constructor TControladorTelaCheckout.Create(const Produtos: TArray<TProdutoQuantidade>);
@@ -183,15 +191,12 @@ begin
   end;
 end;
 
-procedure TControladorTelaCheckout.RealizarVenda;
+function TControladorTelaCheckout.PreencherVenda(out Erro: String): Boolean;
 var
-  QuantidadeProdutos: Integer;
   i : Integer;
-  IDVendaBackUp: Integer;
-  RegistroVenda : TVenda;
+
+  QuantidadeProdutos: Integer;
   cliente : String;
-  decisaoCadastrarCliente : Integer;
-  Erro : String;
 begin
   RegistroVenda := TVenda.Create;
   QuantidadeProdutos := 0;
@@ -204,13 +209,15 @@ begin
     vendedor := SessaoUsuario.TSessaoUsuario.id;
     Desconto := self.Desconto;
 
-    if not cliente.IsEmpty then
+    if (not cliente.IsEmpty) and (cliente.Length >= 11) and (cliente.Length <= 18) then
     begin
       IDCliente := cliente;
     end
     else
     begin
-      ShowMessage('O campo "Cliente" deve estar preenchido!');
+      Erro := 'O campo "Cliente" deve estar preenchido!';
+      Result := false;
+      Exit;
     end;
   end;
 
@@ -220,31 +227,55 @@ begin
   end;
   RegistroVenda.totalProdutos := QuantidadeProdutos;
 
-  CalcularSubtotal;
-  RegistroVenda.totalPreco := StrToFloat(FormatFloat('#0.00', PrecoTotal));
-
-  IDVendaBackUp := RegistroVenda.ID;
-
-  if VerificarCadastroCliente(RegistroVenda.IDCliente) then
+  If CalcularSubtotal then
   begin
-    RegistrarVenda(RegistroVenda, Erro);
-    RegistrarItemVenda(IDVendaBackUp);
+    RegistroVenda.totalPreco := StrToFloat(FormatFloat('#0.00', PrecoTotal));
+
   end
   else
   begin
-    decisaoCadastrarCliente := MessageDlg('Parece que o cliente inserido não está cadastrado' +
-    sLineBreak + 'Deseja cadastrá-lo agora?', mtConfirmation, mbYesNo, 0);
+    Erro := 'O valor do desconto informado é inválido';
+    Result := False;
+    Exit;
+  end;
 
-    if decisaoCadastrarCliente = mrYes then
-    begin
-      uControladorTelaCadastroCliente := TControladorTelaManejoCliente.Create;
-    end
-    else
+  IDVendaBackUp := RegistroVenda.ID;
+
+  Result := true;
+end;
+
+procedure TControladorTelaCheckout.RealizarVenda;
+var
+  decisaoCadastrarCliente : Integer;
+  Erro : String;
+begin
+  if PreencherVenda(Erro) then
+  begin
+    if VerificarCadastroCliente(RegistroVenda.IDCliente) then
     begin
       RegistrarVenda(RegistroVenda, Erro);
       RegistrarItemVenda(IDVendaBackUp);
-    end;
+    end
+    else
+    begin
+      decisaoCadastrarCliente := MessageDlg('Parece que o cliente inserido não está cadastrado' +
+      sLineBreak + 'Deseja cadastrá-lo agora?', mtConfirmation, mbYesNo, 0);
 
+      if decisaoCadastrarCliente = mrYes then
+      begin
+        uControladorTelaCadastroCliente := TControladorTelaManejoCliente.Create;
+      end
+      else if decisaoCadastrarCliente = mrNo then
+      begin
+        RegistrarVenda(RegistroVenda, Erro);
+        RegistrarItemVenda(IDVendaBackUp);
+      end;
+
+    end;
+  end
+  else
+  begin
+    ShowMessage(Erro);
   end;
 
 end;

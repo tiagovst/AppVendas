@@ -11,6 +11,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poScreenCenter
   OnCreate = FormCreate
   TextHeight = 15
   object Panel1: TPanel
