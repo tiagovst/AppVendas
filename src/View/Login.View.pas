@@ -22,6 +22,7 @@ type
     txtUsuario: TEdit;
     txtSenha: TEdit;
     procedure btnEntrarClick(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     bLoginSucesso: Boolean;
     NomeDeUsuario, Senha: String;
@@ -71,5 +72,14 @@ begin
 
 
 end;
+
+procedure TTelaLogin.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    btnEntrar.Click;
+  end;
+end;
+
 
 end.
