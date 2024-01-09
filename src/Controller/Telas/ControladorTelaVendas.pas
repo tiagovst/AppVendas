@@ -30,10 +30,11 @@ type
     uControladorTelaCheckout: IControladorTelaCheckout;
     uControladorVendaDAO : IControladorVenda;
 
-    AcaoBtnComprarNovamente: TAction;
+    AcaoBtnComprarNovamente, AcaoBtnImprimirRelatorio: TAction;
 
     procedure FecharTela;
     procedure AcaoBtnComprarNovamenteClick(Sender: TObject);
+    procedure AcaoBtnImprimirRelatorioClick(Sender: TObject);
     procedure CalcularTotamEmVendas;
     procedure CalcularTotalItensVendidos;
 
@@ -71,6 +72,11 @@ begin
 
   uControladorTelaCheckout := TControladorTelaCheckout.Create(uControladorCompra.ObterProdutos);
 
+end;
+
+procedure TControladorTelaVendas.AcaoBtnImprimirRelatorioClick(Sender: TObject);
+begin
+  FTelaVendas.frxReport.ShowReport();
 end;
 
 procedure TControladorTelaVendas.CalcularTotalItensVendidos;
@@ -143,9 +149,15 @@ begin
   AcaoBtnComprarNovamente.OnExecute := AcaoBtnComprarNovamenteClick;
   FTelaVendas.btnComprarNovamente.Action := AcaoBtnComprarNovamente;
 
+  AcaoBtnImprimirRelatorio := TAction.Create(nil);
+  AcaoBtnImprimirRelatorio.Caption := 'Imprimir relatório';
+  AcaoBtnImprimirRelatorio.OnExecute := AcaoBtnImprimirRelatorioClick;
+  FTelaVendas.btnImprimir.Action := AcaoBtnImprimirRelatorio;
 
   uControladorVendaDAO := TControladorVenda.Create;
   uControladorVendaDAO.AtualizarListaVendas(FTelaVendas.DBGridVendas.DataSource);
+
+  FTelaVendas.frxDBDataset.DataSet := FTelaVendas.DBGridVendas.DataSource.DataSet;
 
   CalcularTotamEmVendas;
   CalcularTotalItensVendidos;
