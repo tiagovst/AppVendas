@@ -61,6 +61,7 @@ begin
   if uControladorUsuarioDAO.Inserir(uUsuario, erro) then
   begin
     ShowMessage('Usuário cadastrado com sucesso!');
+    FecharTela;
   end
   else
   begin
@@ -80,6 +81,7 @@ begin
   if uControladorUsuarioDAO.Alterar(uUsuario, erro) then
   begin
     ShowMessage('Usuário alterado com sucesso!');
+    FecharTela;
   end
   else
   begin

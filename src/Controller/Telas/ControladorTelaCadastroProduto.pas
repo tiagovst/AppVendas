@@ -114,6 +114,7 @@ begin
   if uControladorProduto.Inserir(NovoProduto, erro) then
   begin
     ShowMessage('Produto inserido com sucesso');
+    FecharTela;
   end
   else
   begin

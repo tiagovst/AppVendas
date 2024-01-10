@@ -140,6 +140,7 @@ begin
   if uControladorClienteDAO.Inserir(uCliente, erro) then
   begin
     ShowMessage('Cliente cadastrado com sucesso!');
+    FecharTela;
   end
   else
   begin

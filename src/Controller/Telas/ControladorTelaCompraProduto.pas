@@ -43,6 +43,7 @@ begin
       StrToFloat(FTelaAdicionarProduto.lblSubtotal.Caption)) then
       begin
         ShowMessage('Produto adicionado ao Checkout!');
+        FTelaAdicionarProduto.Close;
       end
       else
       begin

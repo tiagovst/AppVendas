@@ -53,6 +53,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
+    procedure LimparCampos;
     end;
 
 var
@@ -103,6 +104,7 @@ begin
     if Controlador.Inserir(ProdutoCache, erro) then
     begin
       ShowMessage('Produto inserido com sucesso');
+      LimparCampos;
     end
     else
     begin
@@ -118,6 +120,19 @@ end;
 procedure TTelaCadastroProduto.FormCreate(Sender: TObject);
 begin
   txtDescricaoProduto.Text := '';
+end;
+
+procedure TTelaCadastroProduto.LimparCampos;
+begin
+  cbxCategoria.Text := '';
+  txtNomeProduto.Text := '';
+  txtDescricaoProduto.Text := '';
+  txtReferencia.Text := '';
+  txtPreco.Text := '';
+  txtQuantidadeEstoque.Text := '';
+  txtFornecedor.Text := '';
+  txtValidade.Text := '';
+  txtCodigoBarras.Text := '';
 end;
 
 end.
