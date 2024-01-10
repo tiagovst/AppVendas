@@ -1911,8 +1911,6 @@ object TelaVendas: TTelaVendas
     Color = 16579321
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = 16
-    ExplicitTop = -6
     object Label1: TLabel
       Left = 93
       Top = 40
@@ -2040,7 +2038,7 @@ object TelaVendas: TTelaVendas
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 45300.672814687500000000
-    ReportOptions.LastChange = 45300.714395173600000000
+    ReportOptions.LastChange = 45300.740431793980000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -2539,6 +2537,8 @@ object TelaVendas: TTelaVendas
     end
   end
   object frxDBDataset: TfrxDBDataset
+    Left = 648.000000000000000000
+    Top = 32.000000000000000000
     UserName = 'vendas'
     CloseDataSource = False
     DataSet = FDQuery1

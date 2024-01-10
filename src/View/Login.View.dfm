@@ -11,6 +11,7 @@ object TelaLogin: TTelaLogin
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
+  OnKeyPress = FormKeyPress
   TextHeight = 15
   object Panel3: TPanel
     Left = 0
@@ -679,6 +680,7 @@ object TelaLogin: TTelaLogin
       PasswordChar = '*'
       TabOrder = 1
       TextHint = 'Senha'
+      OnKeyPress = FormKeyPress
     end
   end
 end
