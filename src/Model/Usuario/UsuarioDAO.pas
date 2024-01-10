@@ -150,8 +150,8 @@ begin
   begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
-    SQL.Text := 'insert into USUARIO (ID, NOME, EMAIL, SENHA, TELEFONE, CPF, CARGO, NOME_USUARIO) ' +
-    'values (:ID, :NOME, :EMAIL, :SENHA, :TELEFONE, :CPF, :CARGO, :NOME_USUARIO)';
+    SQL.Text := 'insert into usuario (id, nome, email, senha, telefone, cpf, cargo, nome_usuario) ' +
+    'values (:id, :nome, :email, :senha, :telefone, :cpf, :cargo, :nome_usuario)';
 
     Params.ParamByName('ID').AsInteger := ID;
     Params.ParamByName('NOME').AsString := Nome;

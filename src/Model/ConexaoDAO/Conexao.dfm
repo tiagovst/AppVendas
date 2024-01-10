@@ -19,11 +19,7 @@ object dmConexao: TdmConexao
       'Server=Localhost'
       'Port=3050'
       'CharacterSet=WIN1252'
-      
-        'Database=D:\Tiago\Programming\Delphi\SalesApp\Win32\Debug\DataBa' +
-        'se\RAZER.FDB'
       'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Left = 104
     Top = 72

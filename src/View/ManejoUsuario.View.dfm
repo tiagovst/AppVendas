@@ -240,6 +240,32 @@ object TelaManejoUsuario: TTelaManejoUsuario
         ParentFont = False
         TabOrder = 8
       end
+      object txtID: TLabeledEdit
+        Left = 392
+        Top = 240
+        Width = 97
+        Height = 25
+        EditLabel.Width = 12
+        EditLabel.Height = 17
+        EditLabel.BiDiMode = bdLeftToRight
+        EditLabel.Caption = 'ID'
+        EditLabel.Font.Charset = DEFAULT_CHARSET
+        EditLabel.Font.Color = clWindowText
+        EditLabel.Font.Height = -13
+        EditLabel.Font.Name = 'Segoe UI'
+        EditLabel.Font.Style = []
+        EditLabel.ParentBiDiMode = False
+        EditLabel.ParentFont = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 9
+        Text = ''
+        Visible = False
+      end
     end
   end
   object pnlBottom: TPanel

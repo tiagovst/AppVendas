@@ -28,6 +28,7 @@ type
     Label1: TLabel;
     Label3: TLabel;
     Image: TImage;
+    txtID: TLabeledEdit;
     procedure btnCancelarClick(Sender: TObject);
   private
     { Private declarations }

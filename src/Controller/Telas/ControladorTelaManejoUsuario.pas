@@ -21,11 +21,13 @@ type
     uUsuario: TUsuario;
     uControladorUsuarioDAO: IControladorUsuario;
     CargoSelecionado: String;
+    criacaoEdicao: Integer;
 
     AcaoBtnCancelar, AcaoBtnSalvar, AcaoRbAdm, AcaoRbGestor, AcaoRbVendedor: TAction;
 
     procedure AcaoBtnCancelarClick(Sender: TObject);
     procedure AcaoBtnSalvarClick(Sender: TObject);
+    procedure AcaoBtnSalvarEdicaoClick(Sender: TObject);
     procedure AcaoRbAdmClick(Sender: TObject);
     procedure AcaoRbGestorClick(Sender: TObject);
     procedure AcaoRbVendedorClick(Sender: TObject);
@@ -68,6 +70,25 @@ begin
 
 end;
 
+procedure TControladorTelaManejoUsuario.AcaoBtnSalvarEdicaoClick(
+  Sender: TObject);
+var
+  erro: String;
+begin
+  PreecherUsuario;
+
+  if uControladorUsuarioDAO.Alterar(uUsuario, erro) then
+  begin
+    ShowMessage('Usuário alterado com sucesso!');
+  end
+  else
+  begin
+    ShowMessage('Não foi possível alterar o usuário.' + sLineBreak +
+    'Verifique todos os campos e tente novamente!');
+  end;
+
+end;
+
 procedure TControladorTelaManejoUsuario.AcaoRbAdmClick(Sender: TObject);
 begin
   CargoSelecionado := AcaoRbAdm.Caption;
@@ -94,7 +115,14 @@ begin
 
     AcaoBtnSalvar := TAction.Create(nil);
     AcaoBtnSalvar.Caption := 'Salvar';
-    AcaoBtnSalvar.OnExecute := AcaoBtnSalvarClick;
+    if criacaoEdicao = 1 then
+    begin
+      AcaoBtnSalvar.OnExecute := AcaoBtnSalvarEdicaoClick;
+    end
+    else
+    begin
+      AcaoBtnSalvar.OnExecute := AcaoBtnSalvarClick;
+    end;
     BtnSalvar.Action := AcaoBtnSalvar;
 
     AcaoRbAdm := TAction.Create(nil);
@@ -130,6 +158,7 @@ end;
 constructor TControladorTelaManejoUsuario.Create(Usuario: TUsuario);
 begin
   uControladorUsuarioDAO := TControladorUsuario.Create;
+  criacaoEdicao := 1;
 
   FManejoUsuario := TTelaManejoUsuario.Create(nil);
   FManejoUsuario.BorderStyle := bsSingle;
@@ -144,6 +173,7 @@ begin
     lblUsuario.Text := NomeUsuario;
     lblTelefone.Text := Telefone;
     lblCPF.Text := CPF;
+    txtID.Text := ID.ToString;
 
     if Cargo.Equals('Administrador') then
     begin
@@ -189,7 +219,6 @@ begin
   uUsuario := TUsuario.Create;
   with FManejoUsuario, uUsuario do
   begin
-    ID := uControladorUsuarioDAO.gerarID;
     Nome := lblNome.Text;
     CPF := lblCPF.Text;
     Email := lblEmail.Text;
@@ -197,6 +226,16 @@ begin
     Cargo := CargoSelecionado;
     Telefone := lblTelefone.Text;
     NomeUsuario := lblUsuario.Text;
+
+    if criacaoEdicao = 1 then
+    begin
+      ID := StrToInt(txtID.Text);
+    end
+    else
+    begin
+      ID := uControladorUsuarioDAO.gerarID;
+    end;
+
   end;
 end;
 
