@@ -154,7 +154,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
         Font.Style = []
         ParentBiDiMode = False
         ParentFont = False
-        TabOrder = 1
+        TabOrder = 2
         object Label5: TLabel
           Left = 14
           Top = 32
@@ -226,7 +226,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
         Font.Style = []
         ParentBiDiMode = False
         ParentFont = False
-        TabOrder = 2
+        TabOrder = 1
         object Label7: TLabel
           Left = 14
           Top = 32

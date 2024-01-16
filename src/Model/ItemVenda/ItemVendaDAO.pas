@@ -21,6 +21,7 @@ type
     //funcoes de persistencia
     function Inserir(ItemVenda: TItemVenda; out erro: String): Boolean;
     function Excluir(ID: Integer; out erro: String): Boolean;
+    function GerarID: Integer;
 
     procedure Pesquisar();
 
@@ -45,14 +46,15 @@ begin
     try
 
       Connection := TConexaoIniciar.varConexao.FDConnection;
-      SQL.Text := 'SELECT * FROM ITEM_VENDA WHERE (ID = :ID)';
-      Params.ParamByName('ID').AsInteger := IDVendaSelecionada;
+      SQL.Text := 'SELECT * FROM ITEM_VENDA WHERE (ID_VENDA = :ID_VENDA)';
+      Params.ParamByName('ID_VENDA').AsInteger := IDVendaSelecionada;
       Open();
 
       while not Eof do
       begin
 
-        IdVenda := FieldByName('ID').AsInteger;
+        Id := FieldByName('ID').AsInteger;
+        IdVenda := FieldByName('ID_VENDA').AsInteger;
         IdProduto := FieldByName('ID_PRODUTO').AsInteger;
         Preco := FieldByName('PRECO').AsFloat;
         Quantidade := FieldByName('QUANTIDADE').AsInteger;
@@ -92,6 +94,22 @@ begin
   end;
 end;
 
+function TItemVendaDAO.GerarID: Integer;
+begin
+  SQLQuery := TFDQuery.Create(nil);
+  with SQLQuery do
+  begin
+    try
+      Connection := TConexaoIniciar.varConexao.FDConnection;
+      SQL.Text := 'SELECT COALESCE(max(id), 0) + 1 AS seq FROM ITEM_VENDA';
+      Open();
+      Result := FieldByName('seq').AsInteger;
+    finally
+      FreeAndNil(SQLQuery);
+    end;
+  end;
+end;
+
 function TItemVendaDAO.Inserir(ItemVenda: TItemVenda; out erro: String): Boolean;
 begin
   SQLQuery := TFDQuery.Create(nil);
@@ -99,15 +117,16 @@ begin
   begin
     try
       Connection := TConexaoIniciar.varConexao.FDConnection;
-      SQL.Text := 'insert into item_venda (id_produto, id, quantidade, preco, desconto, subtotal) ' +
-      'values (:id_produto, :id, :quantidade, :preco, :desconto, :subtotal)';
+      SQL.Text := 'insert into item_venda (ID, id_produto, ID_VENDA, quantidade, preco, desconto, subtotal) ' +
+      'values (:id, :id_produto, :ID_VENDA, :quantidade, :preco, :desconto, :subtotal)';
 
+      Params.ParamByName('ID').AsInteger := ID;
       Params.ParamByName('id_produto').AsInteger := IdProduto;
-      Params.ParamByName('id').AsInteger := IdVenda;
-      Params.ParamByName('quantidade').AsInteger := Quantidade;
+      Params.ParamByName('ID_VENDA').AsInteger := IdVenda;
+      Params.ParamByName('quantidade').AsFloat := Quantidade;
       Params.ParamByName('preco').AsFloat := Preco;
       Params.ParamByName('subtotal').AsFloat := Subtotal;
-      Params.ParamByName('desconto').AsInteger := Desconto;
+      Params.ParamByName('desconto').AsFloat := Desconto;
 
 
       ExecSQL;

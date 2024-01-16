@@ -63,11 +63,11 @@ begin
       Open();
 
       ID := FieldByName('ID').AsInteger;
-      totalProdutos := FieldByName('TOTAL_PRODUTOS').AsInteger;
+      totalProdutos := FieldByName('TOTAL_PRODUTOS').AsFloat;
       totalPreco := FieldByName('TOTAL_PRECO').AsInteger;
       vendedor := FieldByName('VENDEDOR').AsInteger;
       dataVenda := FieldByName('DATA_VENDA').AsInteger;
-      Desconto := FieldByName('Desconto').AsInteger;
+      Desconto := FieldByName('Desconto').AsFloat;
 
     finally
       FreeAndNil(SQLQuery);
@@ -123,11 +123,11 @@ begin
       'values (:id, :total_produtos, :total_preco, :vendedor, :data_venda, :desconto, :id_cliente)';
 
       Params.ParamByName('ID').AsInteger := ID;
-      Params.ParamByName('TOTAL_PRODUTOS').AsInteger := totalProdutos;
+      Params.ParamByName('TOTAL_PRODUTOS').AsFloat := totalProdutos;
       Params.ParamByName('TOTAL_PRECO').AsFloat := totalPreco;
       Params.ParamByName('VENDEDOR').AsInteger := vendedor;
       Params.ParamByName('DATA_VENDA').AsDate := dataVenda;
-      Params.ParamByName('desconto').AsInteger := Desconto;
+      Params.ParamByName('desconto').AsFloat := Desconto;
       Params.ParamByName('ID_CLIENTE').AsString := IDCliente;
       
       ExecSQL;

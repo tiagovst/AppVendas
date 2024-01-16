@@ -17,7 +17,7 @@ TControladorCompra = class(TInterfacedObject, IControladorCompra)
   public
     procedure ExibirProdutos;
 
-    function AdicionarProduto(Produto: TProduto; Quantidade: integer; PrecoSubtotal: Double): Boolean;
+    function AdicionarProduto(Produto: TProduto; Quantidade: Double; PrecoSubtotal: Double): Boolean;
     function ObterProdutos: TArray<TProdutoQuantidade>;
   end;
 
@@ -25,7 +25,7 @@ implementation
 
 { TControladorCompra }
 
-function TControladorCompra.AdicionarProduto(Produto: TProduto; Quantidade: integer; PrecoSubtotal: Double): Boolean;
+function TControladorCompra.AdicionarProduto(Produto: TProduto; Quantidade: Double; PrecoSubtotal: Double): Boolean;
 var
   ProdutoQuantidade: TProdutoQuantidade;
 begin
@@ -52,7 +52,7 @@ begin
   for i := 0 to High(PilhaProdutos) do
   begin
     ShowMessage('Produto: ' + PilhaProdutos[i].Produto.Nome +
-                ', Quantidade: ' + IntToStr(PilhaProdutos[i].Quantidade) +
+                ', Quantidade: ' + FloatToStr(PilhaProdutos[i].Quantidade) +
                 ', Preço Subtotal: R$' + FloatToStr(PilhaProdutos[i].PrecoSubtotal) +
                 ', Preço Unitário: R$' + FloatToStr(PilhaProdutos[i].Produto.Preco));
   end;

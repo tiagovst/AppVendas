@@ -2,8 +2,8 @@ object dmConexao: TdmConexao
   Left = 0
   Top = 0
   Caption = 'dmConexao'
-  ClientHeight = 224
-  ClientWidth = 271
+  ClientHeight = 223
+  ClientWidth = 267
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,7 +19,11 @@ object dmConexao: TdmConexao
       'Server=Localhost'
       'Port=3050'
       'CharacterSet=WIN1252'
+      
+        'Database=D:\Tiago\Programming\Delphi\_ESTAGIO\SalesApp\Win32\Deb' +
+        'ug\DataBase\RAZER.FDB'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Left = 104
     Top = 72

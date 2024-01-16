@@ -1,7 +1,7 @@
 object TelaPrincipal: TTelaPrincipal
   Left = 0
   Top = 0
-  Caption = 'App Vendas'
+  Caption = 'Action1'
   ClientHeight = 670
   ClientWidth = 995
   Color = clBtnFace
@@ -10,6 +10,7 @@ object TelaPrincipal: TTelaPrincipal
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Visible = True
   WindowState = wsMaximized
   OnShow = FormShow
   TextHeight = 15

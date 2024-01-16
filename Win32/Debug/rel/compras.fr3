@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="2024.1.2" DataSetName="compras" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="167935" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="45303.7223741898" ReportOptions.Description.Text="" ReportOptions.LastChange="45303.7480189815" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;&#13;&#10;end.">
+  <Variables>
+    <item Name=" Minhas Variaveis"/>
+    <item Name="ID"/>
+  </Variables>
+  <TfrxDataPage Name="Data" HGuides.Text="" VGuides.Text="" Height="1000" Left="0" Top="0" Width="1000"/>
+  <TfrxReportPage Name="Page1" HGuides.Text="" VGuides.Text="" PaperWidth="215.9" PaperHeight="279.4" PaperSize="1" LeftMargin="10" RightMargin="10" TopMargin="10" BottomMargin="10" ColumnWidth="0" ColumnPositions.Text="" Frame.Typ="0" MirrorMode="0" OnBeforePrint="Page1OnBeforePrint">
+    <TfrxReportTitle Name="ReportTitle1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="60.47248" Left="0" Top="18.89765" Width="740.409927">
+      <TfrxMemoView Name="Memo1" AllowVectorExport="True" Left="347.71677484" Top="18.89764824" Width="49.13386021" Height="18.89765167" ContentScaleOptions.Constraints.MaxIterationValue="0" ContentScaleOptions.Constraints.MinIterationValue="0" Font.Charset="1" Font.Color="0" Font.Height="-19" Font.Name="Arial" Font.Style="0" Frame.Typ="0" ParentFont="False" Text="Test"/>
+    </TfrxReportTitle>
+    <TfrxReportSummary Name="ReportSummary1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Frame.Typ="0" Height="86.92919" Left="0" Top="139.84261" Width="740.409927">
+      <TfrxMemoView Name="ID" IndexTag="1" AllowVectorExport="True" Left="26.45671" Top="34.01577" Width="79.37013" Height="18.89765" ContentScaleOptions.Constraints.MaxIterationValue="0" ContentScaleOptions.Constraints.MinIterationValue="0" Frame.Typ="0" Text="[ID]"/>
+    </TfrxReportSummary>
+  </TfrxReportPage>
+</TfrxReport>

@@ -62,7 +62,11 @@ uses
   ControladorTelaManejoUsuarioInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaManejoUsuarioInterface.pas',
   ControladorTelaVendasInterface in 'src\Interfaces\Controlador\Telas\ControladorTelaVendasInterface.pas',
   ListagemClientes.View in 'src\View\ListagemClientes.View.pas' {TelaListagemClientes},
-  ManejoCliente.View in 'src\View\ManejoCliente.View.pas' {TelaManejoCliente};
+  ManejoCliente.View in 'src\View\ManejoCliente.View.pas' {TelaManejoCliente},
+  CompraDAO in 'src\Model\Compra\CompraDAO.pas',
+  CompraDAOInterface in 'src\Interfaces\DAO\CompraDAOInterface.pas',
+  ControladorCompraDAO in 'src\Controller\DAO\ControladorCompraDAO.pas',
+  ControladorCompraDAOInterface in 'src\Interfaces\Controlador\ControladorCompraDAOInterface.pas';
 
 {$R *.res}
 

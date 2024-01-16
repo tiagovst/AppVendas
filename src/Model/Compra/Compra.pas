@@ -10,7 +10,7 @@ type
   TProdutoQuantidade = class
   public
     Produto: TProduto;
-    Quantidade: Integer;
+    Quantidade: Double;
     PrecoSubtotal: Double;
   end;
 

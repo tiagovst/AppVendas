@@ -255,6 +255,7 @@ begin
   uControladorProduto.CarregarProdutosResumidos(DataSource);
   //redimensionar o tamanho das colunas
 
+
   lblNomeDeUsuario.Caption := SessaoUsuario.TSessaoUsuario.nomeUsuario;
   lblCargoUsuario.Caption := SessaoUsuario.TSessaoUsuario.cargo;
 

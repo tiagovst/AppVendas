@@ -35,6 +35,7 @@ object TelaVendas: TTelaVendas
       Color = 16579321
       ParentBackground = False
       TabOrder = 0
+      ExplicitTop = 6
       object Panel1: TPanel
         Left = 41
         Top = 16
@@ -2573,6 +2574,7 @@ object TelaVendas: TTelaVendas
       end>
   end
   object FDQuery1: TFDQuery
+    Active = True
     Connection = dmConexao.FDConnection
     SQL.Strings = (
       'select * from venda')

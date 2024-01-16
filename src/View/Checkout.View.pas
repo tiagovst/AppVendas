@@ -50,6 +50,7 @@ type
     txtDesconto: TLabeledEdit;
     txtIdentificadorCliente: TLabeledEdit;
     procedure btnCancelarClick(Sender: TObject);
+    procedure txtDescontoKeyPress(Sender: TObject; var Key: Char);
    end;
 
 var
@@ -65,4 +66,12 @@ procedure TTelaCheckout.btnCancelarClick(Sender: TObject);
 begin
   Close;
 end;
+procedure TTelaCheckout.txtDescontoKeyPress(Sender: TObject; var Key: Char);
+begin
+  if not (key in ['0'..'9', '.', #8]) then
+  begin
+    Key := #0;
+  end;
+end;
+
 end.

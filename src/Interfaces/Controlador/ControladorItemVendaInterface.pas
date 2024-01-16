@@ -13,6 +13,7 @@ type
   function Inserir(ItemVenda: TItemVenda; out erro: String): Boolean;
   function Excluir(ID: Integer; out erro: String): Boolean;
   function CarregarItemVenda(IDVenda: Integer): TList<TItemVenda>;
+  function GerarID: Integer;
 
   procedure Pesquisar();
   end;

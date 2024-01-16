@@ -19,6 +19,7 @@ type
     function Inserir(ItemVenda: TItemVenda; out erro: String): Boolean;
     function Excluir(ID: Integer; out erro: String): Boolean;
     function CarregarItemVenda(IDVenda: Integer): TList<TItemVenda>;
+    function GerarID: Integer;
 
     constructor Create;
     procedure Pesquisar();
@@ -41,6 +42,11 @@ end;
 function TControladorItemVenda.Excluir(ID: Integer; out erro: String): Boolean;
 begin
   Result := IItemVenda.Excluir(ID, erro);
+end;
+
+function TControladorItemVenda.GerarID: Integer;
+begin
+  Result := IItemVenda.GerarID;
 end;
 
 function TControladorItemVenda.Inserir(ItemVenda: TItemVenda;

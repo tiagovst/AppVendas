@@ -30,7 +30,7 @@ TControladorTelaCheckout = class(TInterfacedObject, IControladorTelaCheckout)
     Action: TAction;
 
     RegistroVenda : TVenda;
-    Desconto: Integer;
+    Desconto: Double;
     PrecoTotal : Double;
     ArrayProdutos : TArray<TProdutoQuantidade>;
     IDVendaBackUp: Integer;
@@ -92,11 +92,11 @@ begin
     PrecoTotal := PrecoTotal + StrToFloat(FTelaCheckout.ProdutosGrid.Cols[4].Strings[i]);
   end;
 
-  if (not ValorTxtDesconto.IsEmpty) and (TryStrToInt(ValorTxtDesconto, Desconto)) then
+  if (not ValorTxtDesconto.IsEmpty) and (TryStrToFloat(ValorTxtDesconto, Desconto)) then
   begin
-    Desconto := StrToInt(ValorTxtDesconto);
+    Desconto := StrToFloat(ValorTxtDesconto);
 
-    if (Desconto > 0) and (Desconto < 100) then
+    if (Desconto > 0.0) and (Desconto < 100.0) then
     begin
       PrecoTotal := PrecoTotal - (PrecoTotal * (StrToFloat(ValorTxtDesconto) / 100));
     end
@@ -109,7 +109,7 @@ begin
   end
   else
   begin
-    Desconto := 0;
+    Desconto := 0.0;
   end;
 
   Result := True;
@@ -157,7 +157,7 @@ var
   StringGrid :TStringGrid;
 
   erro: String;
-  quantidade: Integer;
+  quantidade: Double;
   precoSub: Double;
 begin
   StringGrid := FTelaCheckout.ProdutosGrid;
@@ -180,7 +180,7 @@ begin
     Inc(ColIndex);
     StringGrid.Cells[ColIndex, RowIndex + 1] := Produtos[RowIndex].Produto.Nome;
     Inc(ColIndex);
-    StringGrid.Cells[ColIndex, RowIndex + 1] := IntToStr(Produtos[RowIndex].Quantidade);
+    StringGrid.Cells[ColIndex, RowIndex + 1] := FloatToStr(Produtos[RowIndex].Quantidade);
 
     quantidade := Produtos[RowIndex].Quantidade;
     Inc(ColIndex);
@@ -212,11 +212,11 @@ function TControladorTelaCheckout.PreencherVenda(out Erro: String): Boolean;
 var
   i : Integer;
 
-  QuantidadeProdutos: Integer;
+  QuantidadeProdutos: Double;
   cliente : String;
 begin
   RegistroVenda := TVenda.Create;
-  QuantidadeProdutos := 0;
+  QuantidadeProdutos := 0.0;
   cliente := FTelaCheckout.txtIdentificadorCliente.Text;
 
   with RegistroVenda do
@@ -240,7 +240,7 @@ begin
 
   for i := 1 to (FTelaCheckout.ProdutosGrid.Cols[0].Count - 1) do
   begin
-    QuantidadeProdutos := QuantidadeProdutos + StrToInt(FTelaCheckout.ProdutosGrid.Cols[2].Strings[i]);
+    QuantidadeProdutos := QuantidadeProdutos + StrToFloat(FTelaCheckout.ProdutosGrid.Cols[2].Strings[i]);
   end;
   RegistroVenda.totalProdutos := QuantidadeProdutos;
 
@@ -321,10 +321,11 @@ begin
 
         with uItemVenda do
         begin
+          ID := uControladorItemVenda.GerarId;
           IdVenda := IDVendaBackUp;
           Desconto := self.Desconto;
           IdProduto := StrToInt(ProdutosGrid.Cols[0].Strings[i]);
-          Quantidade := StrToInt(ProdutosGrid.Cols[2].Strings[i]);
+          Quantidade := StrToFloat(ProdutosGrid.Cols[2].Strings[i]);
           Preco := StrToFloat(ProdutosGrid.Cols[3].Strings[i]);
 
           if Desconto <> 0 then
