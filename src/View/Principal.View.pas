@@ -133,6 +133,7 @@ begin
   FCadastroProduto := TTelaCadastroProduto.Create(nil);
   FCadastroProduto.Parent := TelaPrincipal.pnlConteudo;
   FCadastroProduto.Align := AlClient;
+  FCadastroProduto.btnCancelar.Visible := False;
   FCadastroProduto.Show;
 end;
 
@@ -362,32 +363,25 @@ begin
     end;
 
     if Assigned(uControladorTelaEstoque) then
-      uControladorTelaEstoque.FecharTela;
-
-    if Assigned(uControladorTelaListagemUsuario) then
-      uControladorTelaListagemUsuario.FecharTela;
-
-    if Assigned(uControladorTelaManejoUsuario) then
-        uControladorTelaManejoUsuario.FecharTela;
-
-    if Assigned(uControladorTelaVendas) then
-      uControladorTelaVendas.FecharTela;
-
-    if Assigned(uControladorTelaListagemClientes) then
-      uControladorTelaListagemClientes.FecharTela;
-
-    if Assigned(uControladorTelaManejoCliente) then
+      uControladorTelaEstoque.FecharTela
+    else if Assigned(uControladorTelaListagemUsuario) then
+      uControladorTelaListagemUsuario.FecharTela
+    else if Assigned(uControladorTelaManejoUsuario) then
+        uControladorTelaManejoUsuario.FecharTela
+    else if Assigned(uControladorTelaVendas) then
+      uControladorTelaVendas.FecharTela
+    else if Assigned(uControladorTelaListagemClientes) then
+      uControladorTelaListagemClientes.FecharTela
+    else if Assigned(uControladorTelaManejoCliente) then
       uControladorTelaManejoCliente.FecharTela;
 
     Top := False;
     ManejoTop;
   except on E: Exception do
-  begin
-    ShowMessage(E.Message);
+    begin
+      ShowMessage(E.Message);
+    end;
   end;
-
-  end;
-
 end;
 
 end.

@@ -2,8 +2,8 @@ object TelaPrincipal: TTelaPrincipal
   Left = 0
   Top = 0
   Caption = 'App Vendas'
-  ClientHeight = 642
-  ClientWidth = 966
+  ClientHeight = 670
+  ClientWidth = 995
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -17,13 +17,13 @@ object TelaPrincipal: TTelaPrincipal
     Left = 0
     Top = 0
     Width = 185
-    Height = 642
+    Height = 670
     Align = alLeft
     BevelOuter = bvSpace
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitHeight = 641
+    ExplicitHeight = 669
     object pnlLogo: TPanel
       Left = 1
       Top = 1
@@ -120,7 +120,7 @@ object TelaPrincipal: TTelaPrincipal
     end
     object pnlUsuarioLogado: TPanel
       Left = 1
-      Top = 600
+      Top = 628
       Width = 183
       Height = 41
       Align = alBottom
@@ -129,7 +129,7 @@ object TelaPrincipal: TTelaPrincipal
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 599
+      ExplicitTop = 627
       object lblNomeDeUsuario: TLabel
         Left = 10
         Top = 3
@@ -339,18 +339,18 @@ object TelaPrincipal: TTelaPrincipal
   object pnlConteudo: TPanel
     Left = 185
     Top = 0
-    Width = 781
-    Height = 642
+    Width = 810
+    Height = 670
     Align = alClient
     BevelOuter = bvNone
     Color = 16579321
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 777
-    ExplicitHeight = 641
+    ExplicitWidth = 806
+    ExplicitHeight = 669
     DesignSize = (
-      781
-      642)
+      810
+      670)
     object LabelProdutos: TLabel
       Left = 40
       Top = 100
@@ -367,8 +367,8 @@ object TelaPrincipal: TTelaPrincipal
     object gridProdutos: TDBGrid
       Left = 40
       Top = 134
-      Width = 697
-      Height = 506
+      Width = 726
+      Height = 534
       Hint = 'Clique duas vezes para selecionar o produto'
       Anchors = [akLeft, akTop, akRight, akBottom]
       DataSource = DataSource
@@ -393,31 +393,31 @@ object TelaPrincipal: TTelaPrincipal
     object pnlPesquisa: TPanel
       Left = 0
       Top = 0
-      Width = 781
+      Width = 810
       Height = 41
       Align = alTop
       Color = 16579321
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 777
+      ExplicitWidth = 806
       DesignSize = (
-        781
+        810
         41)
       object SearchBox: TSearchBox
         Left = 312
         Top = 10
-        Width = 169
+        Width = 198
         Height = 23
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 0
         TextHint = 'Pesquisar produto'
         OnChange = SearchBoxChange
         OnInvokeSearch = SearchBoxInvokeSearch
-        ExplicitWidth = 165
+        ExplicitWidth = 194
       end
     end
     object btnFinalizarCompra: TButton
-      Left = 622
+      Left = 651
       Top = 103
       Width = 115
       Height = 25
@@ -425,7 +425,7 @@ object TelaPrincipal: TTelaPrincipal
       Caption = 'Finalizar Compra'
       TabOrder = 1
       OnClick = btnFinalizarCompraClick
-      ExplicitLeft = 618
+      ExplicitLeft = 647
     end
     object pnlSubmenuProdutos: TPanel
       Left = 0

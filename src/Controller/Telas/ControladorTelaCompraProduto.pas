@@ -33,6 +33,9 @@ implementation
 { TControladorTelaCompraProduto }
 
 procedure TControladorTelaCompraProduto.AcaoBtnAdicionar(Sender: TObject);
+var
+  erro: String;
+  Inserir: Boolean;
 begin
   try
     if (uProduto.QuantidadeEstoque >= StrToInt(FTelaAdicionarProduto.txtQuantidadeCompra.Text))

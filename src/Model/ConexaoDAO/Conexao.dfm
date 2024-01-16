@@ -2,8 +2,8 @@ object dmConexao: TdmConexao
   Left = 0
   Top = 0
   Caption = 'dmConexao'
-  ClientHeight = 227
-  ClientWidth = 283
+  ClientHeight = 224
+  ClientWidth = 271
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

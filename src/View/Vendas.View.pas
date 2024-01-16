@@ -46,7 +46,6 @@ type
     btnImprimir: TButton;
     procedure Button1Click(Sender: TObject);
   private
-    { Private declarations }
   public
     { Public declarations }
   end;
@@ -60,7 +59,7 @@ implementation
 
 procedure TTelaVendas.Button1Click(Sender: TObject);
 begin
-  close;
+  Close;
 end;
 
 end.

@@ -21,7 +21,7 @@ uses
   ControladorTelaCheckoutInterface,
   Vcl.ActnList,
   System.UITypes,
-  SessaoUsuario;
+  SessaoUsuario, ControladorCompraDAO, ControladorCompraDAOInterface;
 
 type
 TControladorTelaCheckout = class(TInterfacedObject, IControladorTelaCheckout)
@@ -34,6 +34,7 @@ TControladorTelaCheckout = class(TInterfacedObject, IControladorTelaCheckout)
     PrecoTotal : Double;
     ArrayProdutos : TArray<TProdutoQuantidade>;
     IDVendaBackUp: Integer;
+    uControladorCompraDAO: IControladorCompraDAO;
 
     uControladorTelaCadastroCliente : IControladorTelaManejoCliente;
     uControladorVenda : IControladorVenda;
@@ -116,6 +117,7 @@ end;
 
 constructor TControladorTelaCheckout.Create(const Produtos: TArray<TProdutoQuantidade>);
 begin
+  uControladorCompraDAO := TControladorCompraDAO.Create;
   FTelaCheckout := TTelaCheckout.Create(nil);
   uControladorVenda := TControladorVenda.Create;
   PreencherStringGrid(Produtos);
@@ -129,6 +131,7 @@ begin
   FormatarLabelSubtotal;
   FTelaCheckout.txtDesconto.OnChange := AcaoOnChangeDesconto;
   FTelaCheckout.btnFinalizar.Action := Action;
+
   MostrarTela;
 end;
 
@@ -152,6 +155,10 @@ procedure TControladorTelaCheckout.PreencherStringGrid(Produtos: TArray<TProduto
 var
   RowIndex, ColIndex: Integer;
   StringGrid :TStringGrid;
+
+  erro: String;
+  quantidade: Integer;
+  precoSub: Double;
 begin
   StringGrid := FTelaCheckout.ProdutosGrid;
 
@@ -174,10 +181,20 @@ begin
     StringGrid.Cells[ColIndex, RowIndex + 1] := Produtos[RowIndex].Produto.Nome;
     Inc(ColIndex);
     StringGrid.Cells[ColIndex, RowIndex + 1] := IntToStr(Produtos[RowIndex].Quantidade);
+
+    quantidade := Produtos[RowIndex].Quantidade;
     Inc(ColIndex);
+
     StringGrid.Cells[ColIndex, RowIndex + 1] := FloatToStr(Produtos[RowIndex].Produto.Preco);
     Inc(ColIndex);
+
     StringGrid.Cells[ColIndex, RowIndex + 1] := FloatToStr(Produtos[RowIndex].PrecoSubtotal);
+
+//    precoSub := Produtos[RowIndex].PrecoSubtotal;
+//    if not uControladorCompraDAO.Inserir(Produtos[RowIndex].Produto, quantidade, precoSub, erro) then
+//    begin
+//      ShowMessage(erro);
+//    end;
   end;
 
   with StringGrid do

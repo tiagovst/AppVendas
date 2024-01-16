@@ -203,6 +203,7 @@ begin
 
   ConfiguracaoEventos;
 
+  FManejoUsuario.btnCancelar.Visible := False;
   MostrarTela;
 end;
 

@@ -102,11 +102,12 @@ begin
   uControladorClienteDAO := TControladorClienteDAO.Create;
 
   FTelaManejoCliente := TTelaManejoCliente.Create(nil);
+
   FTelaManejoCliente.Parent := Parent;
   FTelaManejoCliente.Align := AlClient;
 
   ConfigurarEventos;
-
+  FTelaManejoCliente.btnCancelar.Visible := False;
   FTelaManejoCliente.Show;
 end;
 

@@ -2573,7 +2573,6 @@ object TelaVendas: TTelaVendas
       end>
   end
   object FDQuery1: TFDQuery
-    Active = True
     Connection = dmConexao.FDConnection
     SQL.Strings = (
       'select * from venda')
