@@ -68,7 +68,7 @@ begin
 end;
 procedure TTelaCheckout.txtDescontoKeyPress(Sender: TObject; var Key: Char);
 begin
-  if not (key in ['0'..'9', '.', #8]) then
+  if not CharInSet(Key, ['0'..'9', '.', #8]) then
   begin
     Key := #0;
   end;

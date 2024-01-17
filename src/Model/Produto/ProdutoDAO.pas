@@ -59,7 +59,7 @@ begin
     Params.ParamByName('REFERENCIA').AsString := Referencia;
     Params.ParamByName('PRECO').AsFloat := Preco;
     Params.ParamByName('CATEGORIA').AsString := Categoria;
-    Params.ParamByName('QUANTIDADE_ESTOQUE').AsInteger := QuantidadeEstoque;
+    Params.ParamByName('QUANTIDADE_ESTOQUE').AsFloat := QuantidadeEstoque;
     Params.ParamByName('FORNECEDOR').AsString := Fornecedor;
     Params.ParamByName('DATA_VALIDADE').AsDateTime := DataValidade;
 
@@ -102,7 +102,7 @@ begin
       Referencia := FieldByName('REFERENCIA').AsString;
       Preco := FieldByName('PRECO').AsFloat;
       Categoria := FieldByName('CATEGORIA').AsString;
-      QuantidadeEstoque := FieldByName('QUANTIDADE_ESTOQUE').AsInteger;
+      QuantidadeEstoque := FieldByName('QUANTIDADE_ESTOQUE').AsFloat;
       Fornecedor := FieldByName('FORNECEDOR').AsString;
       DataValidade := FieldByName('DATA_VALIDADE').AsDateTime;
 
@@ -192,7 +192,7 @@ begin
     Params.ParamByName('REFERENCIA').AsString := Referencia;
     Params.ParamByName('PRECO').AsFloat := Preco;
     Params.ParamByName('CATEGORIA').AsString := Categoria;
-    Params.ParamByName('QUANTIDADE_ESTOQUE').AsInteger := QuantidadeEstoque;
+    Params.ParamByName('QUANTIDADE_ESTOQUE').AsFloat := QuantidadeEstoque;
     Params.ParamByName('FORNECEDOR').AsString := Fornecedor;
     Params.ParamByName('DATA_VALIDADE').AsDateTime := DataValidade;
 
@@ -268,7 +268,7 @@ begin
     with SQLQuery do
     begin
       Connection := TConexaoIniciar.varConexao.FDConnection;
-      SQL.Text := 'SELECT * FROM PRODUTOS WHERE QUANTIDADE_ESTOQUE = 0';
+      SQL.Text := 'SELECT * FROM PRODUTOS WHERE QUANTIDADE_ESTOQUE = 0.0';
       Open();
     end;
     DataSource.DataSet := SQLQuery;
@@ -279,7 +279,7 @@ begin
     with SQLQuery do
     begin
       Connection := TConexaoIniciar.varConexao.FDConnection;
-      SQL.Text := 'SELECT * FROM PRODUTOS WHERE QUANTIDADE_ESTOQUE > 0 AND QUANTIDADE_ESTOQUE <= 10';
+      SQL.Text := 'SELECT * FROM PRODUTOS WHERE QUANTIDADE_ESTOQUE > 0.0 AND QUANTIDADE_ESTOQUE <= 10';
       Open();
     end;
     DataSource.DataSet := SQLQuery;

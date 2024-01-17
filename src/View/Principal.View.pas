@@ -195,7 +195,7 @@ procedure TTelaPrincipal.btnFinalizarCompraClick(Sender: TObject);
 var
   uControladorCheckout : TControladorTelaCheckout;
 begin
-  uControladorCheckout := TControladorTelaCheckout.Create(uControladorCompra.ObterProdutos);
+  uControladorCheckout := TControladorTelaCheckout.Create(uControladorCompra);
 end;
 
 procedure TTelaPrincipal.btnInicioClick(Sender: TObject);

@@ -54,6 +54,7 @@ type
     procedure btnSalvarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure LimparCampos;
+    procedure txtQuantidadeEstoqueKeyPress(Sender: TObject; var Key: Char);
     end;
 
 var
@@ -94,9 +95,9 @@ begin
   ProdutoCache.Preco := StrToFloat(txtPreco.Text);
   ProdutoCache.Categoria := cbxCategoria.Text;
 
-  if StrToInt(txtQuantidadeEstoque.Text) > 0 then
+  if StrToFloat(txtQuantidadeEstoque.Text) > 0 then
   begin
-    ProdutoCache.QuantidadeEstoque := StrToInt(txtQuantidadeEstoque.Text);
+    ProdutoCache.QuantidadeEstoque := StrToFloat(txtQuantidadeEstoque.Text);
 
     ProdutoCache.Fornecedor := txtFornecedor.Text;
     ProdutoCache.DataValidade := StrToDate(txtValidade.Text);
@@ -133,6 +134,15 @@ begin
   txtFornecedor.Text := '';
   txtValidade.Text := '';
   txtCodigoBarras.Text := '';
+end;
+
+procedure TTelaCadastroProduto.txtQuantidadeEstoqueKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if not CharInSet(Key, ['0'..'9', '.', #8]) then
+  begin
+    key := #0;
+  end;
 end;
 
 end.

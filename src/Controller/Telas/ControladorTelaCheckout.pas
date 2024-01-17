@@ -18,6 +18,8 @@ uses
   ControladorTelaManejoCliente,
   ControladorTelaManejoClienteInterface,
   Produto,
+  ControladorCompra,
+  ControladorCompraInterface,
   ControladorTelaCheckoutInterface,
   Vcl.ActnList,
   System.UITypes,
@@ -27,7 +29,8 @@ type
 TControladorTelaCheckout = class(TInterfacedObject, IControladorTelaCheckout)
   private
     FTelaCheckout : TTelaCheckout;
-    Action: TAction;
+    ActionBtnFinalizar, ActionBtnLimpar: TAction;
+    uControladorCompra: IControladorCompra;
 
     RegistroVenda : TVenda;
     Desconto: Double;
@@ -44,17 +47,20 @@ TControladorTelaCheckout = class(TInterfacedObject, IControladorTelaCheckout)
     procedure PreencherStringGrid(Produtos: TArray<TProdutoQuantidade>);
     procedure RealizarVenda;
     procedure AcaoFinalizar(Sender: TObject);
+    procedure AcaoLimpar(Sender: TObject);
     procedure AcaoOnChangeDesconto(Sender: TObject);
     procedure FormatarLabelSubtotal;
     procedure RegistrarItemVenda(IDVendaBackUp: Integer);
     procedure RegistrarVenda(RegistroVenda: TVenda; Erro: String);
+    procedure LimparStringGrid;
 
     function VerificarCadastroCliente(IdentificadorCliente: String): Boolean;
     function PreencherVenda(out Erro: String): Boolean;
     function CalcularSubtotal: Boolean;
 
   public
-    constructor Create(const Produtos: TArray<TProdutoQuantidade>) overload;
+//    constructor Create(const Produtos: TArray<TProdutoQuantidade>) overload;
+    constructor Create(const ControladorCompra: IControladorCompra);
 end;
 
 implementation
@@ -71,6 +77,11 @@ begin
   begin
     RealizarVenda;
   end;
+end;
+
+procedure TControladorTelaCheckout.AcaoLimpar(Sender: TObject);
+begin
+  LimparStringGrid;
 end;
 
 procedure TControladorTelaCheckout.AcaoOnChangeDesconto(Sender: TObject);
@@ -115,22 +126,28 @@ begin
   Result := True;
 end;
 
-constructor TControladorTelaCheckout.Create(const Produtos: TArray<TProdutoQuantidade>);
+constructor TControladorTelaCheckout.Create(const ControladorCompra: IControladorCompra);
 begin
+  uControladorCompra := ControladorCompra;
   uControladorCompraDAO := TControladorCompraDAO.Create;
   FTelaCheckout := TTelaCheckout.Create(nil);
   uControladorVenda := TControladorVenda.Create;
-  PreencherStringGrid(Produtos);
+  PreencherStringGrid(uControladorCompra.ObterProdutos);
 
-  ArrayProdutos := Produtos;
+  ArrayProdutos := uControladorCompra.ObterProdutos;
 
-  Action := TAction.Create(nil);
-  Action.OnExecute := AcaoFinalizar;
-  Action.Caption := 'Finalizar';
+  ActionBtnFinalizar := TAction.Create(nil);
+  ActionBtnFinalizar.OnExecute := AcaoFinalizar;
+  ActionBtnFinalizar.Caption := 'Finalizar';
+
+  ActionBtnLimpar := TAction.Create(nil);
+  ActionBtnLimpar.OnExecute := AcaoLimpar;
+  ActionBtnLimpar.Caption := 'Limpar';
 
   FormatarLabelSubtotal;
   FTelaCheckout.txtDesconto.OnChange := AcaoOnChangeDesconto;
-  FTelaCheckout.btnFinalizar.Action := Action;
+  FTelaCheckout.btnFinalizar.Action := ActionBtnFinalizar;
+  FTelaCheckout.btnLimpar.Action := ActionBtnLimpar;
 
   MostrarTela;
 end;
@@ -144,6 +161,24 @@ procedure TControladorTelaCheckout.FormatarLabelSubtotal;
 begin
   CalcularSubtotal;
   FTelaCheckout.lblSubtotal.Caption := FormatFloat('#0.00', PrecoTotal);
+end;
+
+procedure TControladorTelaCheckout.LimparStringGrid;
+var
+  RowIndex, ColIndex: Integer;
+  StringGrid :TStringGrid;
+begin
+  StringGrid := FTelaCheckout.ProdutosGrid;
+
+  for RowIndex := 1 to StringGrid.RowCount -1 do
+  begin
+    for ColIndex := 0 to 4 do
+      StringGrid.Rows[RowIndex].Clear;
+  end;
+
+  uControladorCompra.LimparProdutos;
+  FTelaCheckout.btnFinalizar.Enabled := False;
+
 end;
 
 procedure TControladorTelaCheckout.MostrarTela;
@@ -190,11 +225,12 @@ begin
 
     StringGrid.Cells[ColIndex, RowIndex + 1] := FloatToStr(Produtos[RowIndex].PrecoSubtotal);
 
-//    precoSub := Produtos[RowIndex].PrecoSubtotal;
-//    if not uControladorCompraDAO.Inserir(Produtos[RowIndex].Produto, quantidade, precoSub, erro) then
-//    begin
-//      ShowMessage(erro);
-//    end;
+    precoSub := Produtos[RowIndex].PrecoSubtotal;
+    if not uControladorCompraDAO.Inserir(Produtos[RowIndex].Produto, quantidade, precoSub, erro) then
+    begin
+      ShowMessage(erro);
+    end;
+    FTelaCheckout.btnFinalizar.Enabled := True;
   end;
 
   with StringGrid do
@@ -312,7 +348,7 @@ begin
   for i := 1 to (FTelaCheckout.ProdutosGrid.Cols[0].Count - 1) do
     begin
       produto := uControladorProduto.CarregarProduto(StrToInt(FTelaCheckout.ProdutosGrid.Cols[0].Strings[i]));
-      produto.QuantidadeEstoque := produto.QuantidadeEstoque - StrToInt(FTelaCheckout.ProdutosGrid.Cols[2].Strings[i]);
+      produto.QuantidadeEstoque := produto.QuantidadeEstoque - StrToFloat(FTelaCheckout.ProdutosGrid.Cols[2].Strings[i]);
       uControladorProduto.Alterar(produto, erro); // Atualiza o estoque
 
       with FTelaCheckout do
@@ -342,6 +378,7 @@ begin
       end;
 
       uControladorItemVenda.Inserir(uItemVenda, erro);
+      LimparStringGrid;
       FecharTela;
 
     end;

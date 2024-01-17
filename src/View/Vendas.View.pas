@@ -37,13 +37,13 @@ type
     frxDBDataset: TfrxDBDataset;
     FDQuery1: TFDQuery;
     FDQuery1ID: TIntegerField;
-    FDQuery1TOTAL_PRODUTOS: TIntegerField;
     FDQuery1TOTAL_PRECO: TSingleField;
     FDQuery1VENDEDOR: TIntegerField;
     FDQuery1DATA_VENDA: TDateField;
-    FDQuery1DESCONTO: TIntegerField;
     FDQuery1ID_CLIENTE: TStringField;
     btnImprimir: TButton;
+    FDQuery1TOTAL_PRODUTOS: TFloatField;
+    FDQuery1DESCONTO: TSingleField;
     procedure Button1Click(Sender: TObject);
   private
   public

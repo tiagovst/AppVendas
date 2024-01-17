@@ -88,7 +88,7 @@ begin
     txtNomeProduto.Text := Nome;
     txtID.Text := IntToStr(ID);
     txtDescricaoProduto.Text := Descricao;
-    txtQuantidadeEstoque.Text := IntToStr(QuantidadeEstoque);
+    txtQuantidadeEstoque.Text := FloatToStr(QuantidadeEstoque);
     txtPreco.Text := FloatToStr(Preco);
     txtReferencia.Text := Referencia;
     txtFornecedor.Text := Fornecedor;
@@ -148,9 +148,9 @@ begin
     Preco := StrToFloat(txtPreco.Text);
     Categoria := cbxCategoria.Text;
 
-    if StrToInt(txtQuantidadeEstoque.Text) > 0 then
+    if (StrToFloat(txtQuantidadeEstoque.Text) > 0) then
     begin
-      QuantidadeEstoque := StrToInt(txtQuantidadeEstoque.Text);
+      QuantidadeEstoque := StrToFloat(txtQuantidadeEstoque.Text);
     end
     else
     begin

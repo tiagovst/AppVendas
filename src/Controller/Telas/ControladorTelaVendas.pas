@@ -70,7 +70,7 @@ begin
     CarregarProduto(item.IdProduto), item.Quantidade, item.Subtotal);
   end;
 
-  uControladorTelaCheckout := TControladorTelaCheckout.Create(uControladorCompra.ObterProdutos);
+  uControladorTelaCheckout := TControladorTelaCheckout.Create(uControladorCompra);
 
 end;
 
@@ -81,9 +81,9 @@ end;
 
 procedure TControladorTelaVendas.CalcularTotalItensVendidos;
 var
-  TotalItensVendidos : Integer;
+  TotalItensVendidos : Double;
 begin
-  TotalItensVendidos := 0;
+  TotalItensVendidos := 0.0;
 
   if Assigned(FTelaVendas.DBGridVendas.DataSource) and
     Assigned(FTelaVendas.DBGridVendas.DataSource.DataSet) then
@@ -96,11 +96,11 @@ begin
 
           while not Eof do
           begin
-            TotalItensVendidos := TotalItensVendidos + FieldByName('TOTAL_PRODUTOS').AsInteger;
+            TotalItensVendidos := TotalItensVendidos + FieldByName('TOTAL_PRODUTOS').AsFloat;
             Next;
           end;
 
-          FTelaVendas.lblQuantidadeItensVendidos.Caption := IntToStr(TotalItensVendidos);
+          FTelaVendas.lblQuantidadeItensVendidos.Caption := FloatToStr(TotalItensVendidos);
         finally
           EnableControls;
         end;

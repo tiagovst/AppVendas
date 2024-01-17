@@ -17,7 +17,7 @@ type
 
   public
     SQLQuery: TFDQuery;
-    function Inserir(Produto: TProduto; Quantidade: Integer; PrecoSubtotal: Double;
+    function Inserir(Produto: TProduto; Quantidade: Double; PrecoSubtotal: Double;
     out erro: String): Boolean;
     function DeletarTudo(out erro: String): Boolean;
   end;
@@ -71,7 +71,7 @@ begin
   end;
 end;
 
-function TCompraDAO.Inserir(Produto: TProduto; Quantidade: Integer; PrecoSubtotal: Double;
+function TCompraDAO.Inserir(Produto: TProduto; Quantidade: Double; PrecoSubtotal: Double;
   out erro: String): Boolean;
 var
   SQLQuery: TFDQuery;
@@ -88,7 +88,7 @@ begin
 
       Params.ParamByName('ID_COMPRA').AsInteger := gerarID;
       Params.ParamByName('NOME').AsString := Produto.Nome;
-      Params.ParamByName('QUANTIDADE').AsInteger := Quantidade;
+      Params.ParamByName('QUANTIDADE').AsFloat := Quantidade;
       Params.ParamByName('ID_PRODUTO').AsInteger := Produto.ID;
       Params.ParamByName('PRECO_UNITARIO').AsFloat := Produto.Preco;
       Params.ParamByName('PRECO_SUBTOTAL').AsFloat := PrecoSubtotal;

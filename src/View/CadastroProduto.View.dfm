@@ -280,9 +280,9 @@ object TelaCadastroProduto: TTelaCadastroProduto
           Font.Height = -13
           Font.Name = 'Segoe UI'
           Font.Style = []
-          NumbersOnly = True
           ParentFont = False
           TabOrder = 1
+          OnKeyPress = txtQuantidadeEstoqueKeyPress
         end
       end
       object GroupBox4: TGroupBox

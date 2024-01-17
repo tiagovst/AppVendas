@@ -35,7 +35,6 @@ object TelaVendas: TTelaVendas
       Color = 16579321
       ParentBackground = False
       TabOrder = 0
-      ExplicitTop = 6
       object Panel1: TPanel
         Left = 41
         Top = 16
@@ -2574,7 +2573,6 @@ object TelaVendas: TTelaVendas
       end>
   end
   object FDQuery1: TFDQuery
-    Active = True
     Connection = dmConexao.FDConnection
     SQL.Strings = (
       'select * from venda')
@@ -2584,11 +2582,6 @@ object TelaVendas: TTelaVendas
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object FDQuery1TOTAL_PRODUTOS: TIntegerField
-      FieldName = 'TOTAL_PRODUTOS'
-      Origin = 'TOTAL_PRODUTOS'
       Required = True
     end
     object FDQuery1TOTAL_PRECO: TSingleField
@@ -2606,16 +2599,21 @@ object TelaVendas: TTelaVendas
       Origin = 'DATA_VENDA'
       Required = True
     end
-    object FDQuery1DESCONTO: TIntegerField
-      FieldName = 'DESCONTO'
-      Origin = 'DESCONTO'
-      Required = True
-    end
     object FDQuery1ID_CLIENTE: TStringField
       FieldName = 'ID_CLIENTE'
       Origin = 'ID_CLIENTE'
       Required = True
       Size = 18
+    end
+    object FDQuery1TOTAL_PRODUTOS: TFloatField
+      FieldName = 'TOTAL_PRODUTOS'
+      Origin = 'TOTAL_PRODUTOS'
+      Required = True
+    end
+    object FDQuery1DESCONTO: TSingleField
+      FieldName = 'DESCONTO'
+      Origin = 'DESCONTO'
+      Required = True
     end
   end
 end

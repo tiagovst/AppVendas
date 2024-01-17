@@ -16,6 +16,7 @@ TControladorCompra = class(TInterfacedObject, IControladorCompra)
     PilhaProdutos: array of TProdutoQuantidade;
   public
     procedure ExibirProdutos;
+    procedure LimparProdutos;
 
     function AdicionarProduto(Produto: TProduto; Quantidade: Double; PrecoSubtotal: Double): Boolean;
     function ObterProdutos: TArray<TProdutoQuantidade>;
@@ -56,6 +57,11 @@ begin
                 ', Preço Subtotal: R$' + FloatToStr(PilhaProdutos[i].PrecoSubtotal) +
                 ', Preço Unitário: R$' + FloatToStr(PilhaProdutos[i].Produto.Preco));
   end;
+end;
+
+procedure TControladorCompra.LimparProdutos;
+begin
+  PilhaProdutos := [];
 end;
 
 function TControladorCompra.ObterProdutos: TArray<TProdutoQuantidade>;
