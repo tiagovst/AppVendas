@@ -186,7 +186,7 @@ begin
     if Active then
       Close;
 
-    SQL.Text := 'SELECT * FROM USUARIO';
+    SQL.Text := 'select id, nome, email, telefone, cpf, cargo, nome_usuario from usuario';
     Open();
   end;
 

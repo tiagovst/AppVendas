@@ -24,8 +24,8 @@ object TelaLogin: TTelaLogin
     ParentBiDiMode = False
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 564
-    ExplicitHeight = 641
+    ExplicitWidth = 562
+    ExplicitHeight = 633
   end
   object Panel1: TPanel
     Left = 85

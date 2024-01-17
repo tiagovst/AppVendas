@@ -12,7 +12,8 @@ uses
   ControladorUsuarioInterface,
   Usuario,
   Vcl.Controls,
-  Vcl.Forms;
+  Vcl.Forms,
+  Unixpass;
 
 type
   TControladorTelaManejoUsuario = class(TInterfacedObject, IControladorTelaManejoUsuario)
@@ -218,14 +219,18 @@ begin
 end;
 
 procedure TControladorTelaManejoUsuario.PreecherUsuario;
+var
+  senhaCriptografada: String;
 begin
   uUsuario := TUsuario.Create;
+  senhaCriptografada := CreateInterbasePassword(FManejoUsuario.lblSenha.Text);
+
   with FManejoUsuario, uUsuario do
   begin
     Nome := lblNome.Text;
     CPF := lblCPF.Text;
     Email := lblEmail.Text;
-    Senha := lblSenha.Text;
+    Senha := senhaCriptografada;
     Cargo := CargoSelecionado;
     Telefone := lblTelefone.Text;
     NomeUsuario := lblUsuario.Text;

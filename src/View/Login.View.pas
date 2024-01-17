@@ -10,7 +10,8 @@ uses
   SessaoUsuario,
   Usuario,
   ControladorUsuario,
-  ControladorUsuarioInterface;
+  ControladorUsuarioInterface,
+  Unixpass;
 
 type
   TTelaLogin = class(TForm)
@@ -47,7 +48,7 @@ begin
   uControladorUsuarioDAO := TControladorUsuario.Create;
 
   NomeDeUsuario := txtUsuario.Text;
-  Senha := txtSenha.Text;
+  Senha := CreateInterbasePassword(txtSenha.Text);
 
   try
     uControladorUsuarioDAO.PesquisarNomeUsuario(uUsuario, NomeDeUsuario);
