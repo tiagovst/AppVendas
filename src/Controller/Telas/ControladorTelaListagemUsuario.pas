@@ -77,6 +77,8 @@ begin
       ShowMessage('Ocorreu um erro ao tentar excluir o usuário selecionado' + erro);
     end;
   end;
+
+  FListagemUsuario.dsUsuario.DataSet.Refresh;
 end;
 
 procedure TControladorTelaListagemUsuario.AcaoBtnNovoUsuarioClick(
