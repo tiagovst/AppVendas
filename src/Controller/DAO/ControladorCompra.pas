@@ -29,6 +29,7 @@ implementation
 function TControladorCompra.AdicionarProduto(Produto: TProduto; Quantidade: Double; PrecoSubtotal: Double): Boolean;
 var
   ProdutoQuantidade: TProdutoQuantidade;
+  i: Integer;
 begin
   ProdutoQuantidade := TProdutoQuantidade.Create;
   try
@@ -38,7 +39,28 @@ begin
     ProdutoQuantidade.Quantidade := Quantidade;
     ProdutoQuantidade.PrecoSubtotal := PrecoSubtotal;
 
-    PilhaProdutos[High(PilhaProdutos)] := ProdutoQuantidade;
+    if Length(PilhaProdutos) > 1 then
+    begin
+      for i := 0 to High(PilhaProdutos) - 1 do
+      begin
+        if PilhaProdutos[i].Produto.ID = ProdutoQuantidade.Produto.ID then
+        begin
+          PilhaProdutos[i].Quantidade := PilhaProdutos[i].Quantidade + ProdutoQuantidade.Quantidade;
+          PilhaProdutos[i].PrecoSubtotal := PilhaProdutos[i].PrecoSubtotal + ProdutoQuantidade.PrecoSubtotal;
+          SetLength(PilhaProdutos, Length(PilhaProdutos) - 1);
+          break;
+        end
+        else
+        begin
+          PilhaProdutos[High(PilhaProdutos)] := ProdutoQuantidade;
+        end;
+      end;
+    end
+    else
+    begin
+      PilhaProdutos[High(PilhaProdutos)] := ProdutoQuantidade;
+    end;
+
     Result := True;
   except on E: Exception do
     Result := False;
