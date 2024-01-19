@@ -49,6 +49,17 @@ type
     lblSubtotal: TLabel;
     txtDesconto: TLabeledEdit;
     txtIdentificadorCliente: TLabeledEdit;
+    frxReport1: TfrxReport;
+    frxDBDataset1: TfrxDBDataset;
+    FDQuery1: TFDQuery;
+    FDQuery1ID_COMPRA: TIntegerField;
+    FDQuery1NOME: TStringField;
+    FDQuery1QUANTIDADE: TIntegerField;
+    FDQuery1PRECO_UNITARIO: TFloatField;
+    FDQuery1PRECO_SUBTOTAL: TFloatField;
+    FDQuery1IDENTIFICADOR_CLIENTE: TStringField;
+    FDQuery1DESCONTO: TSingleField;
+    FDQuery1SUBTOTAL_DESCONTADO: TFloatField;
     procedure btnCancelarClick(Sender: TObject);
     procedure txtDescontoKeyPress(Sender: TObject; var Key: Char);
    end;

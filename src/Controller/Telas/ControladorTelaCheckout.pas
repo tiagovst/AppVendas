@@ -32,6 +32,9 @@ TControladorTelaCheckout = class(TInterfacedObject, IControladorTelaCheckout)
     ActionBtnFinalizar, ActionBtnLimpar: TAction;
     uControladorCompra: IControladorCompra;
 
+    QuantidadeProduto: Double;
+    PrecoSubtotalProduto: Double;
+
     RegistroVenda : TVenda;
     Desconto: Double;
     PrecoTotal : Double;
@@ -53,6 +56,8 @@ TControladorTelaCheckout = class(TInterfacedObject, IControladorTelaCheckout)
     procedure RegistrarItemVenda(IDVendaBackUp: Integer);
     procedure RegistrarVenda(RegistroVenda: TVenda; Erro: String);
     procedure LimparStringGrid;
+    procedure ImpressaoRelatorios;
+    procedure DadosRelatorio;
 
     function VerificarCadastroCliente(IdentificadorCliente: String): Boolean;
     function PreencherVenda(out Erro: String): Boolean;
@@ -152,6 +157,27 @@ begin
   MostrarTela;
 end;
 
+procedure TControladorTelaCheckout.DadosRelatorio;
+var
+  erro: String;
+  Row, Col: Integer;
+begin
+
+  for Row := 0 to High(ArrayProdutos) do
+  begin
+    QuantidadeProduto := ArrayProdutos[Row].Quantidade;
+    PrecoSubtotalProduto := ArrayProdutos[Row].PrecoSubtotal;
+
+    if not uControladorCompraDAO.Inserir(ArrayProdutos[Row].Produto, QuantidadeProduto,
+    PrecoSubtotalProduto, FTelaCheckout.txtIdentificadorCliente.Text, Desconto,
+    StrToFloat(FTelaCheckout.lblSubtotal.Caption), erro) then
+    begin
+      ShowMessage(erro);
+    end;
+  end;
+
+end;
+
 procedure TControladorTelaCheckout.FecharTela;
 begin
   FTelaCheckout.Close;
@@ -161,6 +187,23 @@ procedure TControladorTelaCheckout.FormatarLabelSubtotal;
 begin
   CalcularSubtotal;
   FTelaCheckout.lblSubtotal.Caption := FormatFloat('#0.00', PrecoTotal);
+end;
+
+procedure TControladorTelaCheckout.ImpressaoRelatorios;
+var
+  Erro: String;
+  decisaoRelatorio: Integer;
+begin
+  decisaoRelatorio := MessageDlg('Deseja imprimir a nota fiscal?',
+  mtConfirmation, mbYesNo, 0);
+  if decisaoRelatorio = mrYes then
+  begin
+    FTelaCheckout.frxReport1.ShowReport();
+  end
+  else
+  begin
+    uControladorCompraDAO.DeletarTudo(Erro);
+  end;
 end;
 
 procedure TControladorTelaCheckout.LimparStringGrid;
@@ -190,10 +233,6 @@ procedure TControladorTelaCheckout.PreencherStringGrid(Produtos: TArray<TProduto
 var
   RowIndex, ColIndex: Integer;
   StringGrid :TStringGrid;
-
-  erro: String;
-  quantidade: Double;
-  precoSub: Double;
 begin
   StringGrid := FTelaCheckout.ProdutosGrid;
 
@@ -216,8 +255,6 @@ begin
     StringGrid.Cells[ColIndex, RowIndex + 1] := Produtos[RowIndex].Produto.Nome;
     Inc(ColIndex);
     StringGrid.Cells[ColIndex, RowIndex + 1] := FloatToStr(Produtos[RowIndex].Quantidade);
-
-    quantidade := Produtos[RowIndex].Quantidade;
     Inc(ColIndex);
 
     StringGrid.Cells[ColIndex, RowIndex + 1] := FloatToStr(Produtos[RowIndex].Produto.Preco);
@@ -225,11 +262,6 @@ begin
 
     StringGrid.Cells[ColIndex, RowIndex + 1] := FloatToStr(Produtos[RowIndex].PrecoSubtotal);
 
-    precoSub := Produtos[RowIndex].PrecoSubtotal;
-    if not uControladorCompraDAO.Inserir(Produtos[RowIndex].Produto, quantidade, precoSub, erro) then
-    begin
-      ShowMessage(erro);
-    end;
     FTelaCheckout.btnFinalizar.Enabled := True;
   end;
 
@@ -378,10 +410,13 @@ begin
       end;
 
       uControladorItemVenda.Inserir(uItemVenda, erro);
-      LimparStringGrid;
-      FecharTela;
-
     end;
+
+  DadosRelatorio;
+  ImpressaoRelatorios;
+  LimparStringGrid;
+  uControladorCompraDAO.DeletarTudo(erro);
+  FecharTela;
 end;
 
 procedure TControladorTelaCheckout.RegistrarVenda(RegistroVenda: TVenda; Erro: String);

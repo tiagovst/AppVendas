@@ -4,8 +4,8 @@ object TelaCheckout: TTelaCheckout
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Checkout'
-  ClientHeight = 534
-  ClientWidth = 1087
+  ClientHeight = 524
+  ClientWidth = 1031
   Color = clBtnFace
   DockSite = True
   Font.Charset = DEFAULT_CHARSET
@@ -20,18 +20,18 @@ object TelaCheckout: TTelaCheckout
   object pnlConteudo: TPanel
     Left = 0
     Top = 96
-    Width = 1087
-    Height = 397
+    Width = 1031
+    Height = 387
     Align = alClient
     Caption = 'frxUserDataSet1'
     Color = 16579321
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1083
-    ExplicitHeight = 396
+    ExplicitWidth = 1027
+    ExplicitHeight = 386
     DesignSize = (
-      1087
-      397)
+      1031
+      387)
     object Label1: TLabel
       Left = 46
       Top = 76
@@ -48,38 +48,38 @@ object TelaCheckout: TTelaCheckout
     object ProdutosGrid: TStringGrid
       Left = 46
       Top = 112
-      Width = 945
-      Height = 279
+      Width = 927
+      Height = 269
       Anchors = [akLeft, akTop, akRight, akBottom]
       Color = clBtnFace
       FixedCols = 0
       ScrollBars = ssVertical
-      TabOrder = 0
-      ExplicitWidth = 941
-      ExplicitHeight = 278
+      TabOrder = 4
+      ExplicitWidth = 923
+      ExplicitHeight = 268
     end
     object btnLimpar: TButton
-      Left = 916
+      Left = 898
       Top = 74
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Limpar'
-      TabOrder = 1
-      ExplicitLeft = 912
+      TabOrder = 3
+      ExplicitLeft = 894
     end
     object btnDeletar: TButton
-      Left = 832
+      Left = 814
       Top = 74
       Width = 75
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Deletar'
       TabOrder = 2
-      ExplicitLeft = 828
+      ExplicitLeft = 810
     end
     object txtDesconto: TLabeledEdit
-      Left = 668
+      Left = 650
       Top = 75
       Width = 153
       Height = 23
@@ -87,13 +87,13 @@ object TelaCheckout: TTelaCheckout
       EditLabel.Width = 50
       EditLabel.Height = 15
       EditLabel.Caption = 'Desconto'
-      TabOrder = 3
+      TabOrder = 1
       Text = ''
       OnKeyPress = txtDescontoKeyPress
-      ExplicitLeft = 664
+      ExplicitLeft = 646
     end
     object txtIdentificadorCliente: TLabeledEdit
-      Left = 503
+      Left = 485
       Top = 75
       Width = 153
       Height = 23
@@ -101,15 +101,15 @@ object TelaCheckout: TTelaCheckout
       EditLabel.Width = 37
       EditLabel.Height = 15
       EditLabel.Caption = 'Cliente'
-      TabOrder = 4
+      TabOrder = 0
       Text = ''
-      ExplicitLeft = 499
+      ExplicitLeft = 481
     end
   end
   object pnlBottom: TPanel
     Left = 0
-    Top = 493
-    Width = 1087
+    Top = 483
+    Width = 1031
     Height = 41
     Align = alBottom
     Color = 16579321
@@ -121,10 +121,10 @@ object TelaCheckout: TTelaCheckout
     ParentBackground = False
     ParentFont = False
     TabOrder = 1
-    ExplicitTop = 492
-    ExplicitWidth = 1083
+    ExplicitTop = 482
+    ExplicitWidth = 1027
     DesignSize = (
-      1087
+      1031
       41)
     object Label4: TLabel
       Left = 46
@@ -141,7 +141,7 @@ object TelaCheckout: TTelaCheckout
       Caption = '00.0'
     end
     object btnFinalizar: TButton
-      Left = 954
+      Left = 899
       Top = 9
       Width = 75
       Height = 25
@@ -154,10 +154,10 @@ object TelaCheckout: TTelaCheckout
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitLeft = 950
+      ExplicitLeft = 895
     end
     object btnCancelar: TButton
-      Left = 871
+      Left = 816
       Top = 9
       Width = 75
       Height = 25
@@ -171,19 +171,19 @@ object TelaCheckout: TTelaCheckout
       ParentFont = False
       TabOrder = 1
       OnClick = btnCancelarClick
-      ExplicitLeft = 867
+      ExplicitLeft = 812
     end
   end
   object pnlTop: TPanel
     Left = 0
     Top = 0
-    Width = 1087
+    Width = 1031
     Height = 96
     Align = alTop
     Color = 16579321
     ParentBackground = False
     TabOrder = 2
-    ExplicitWidth = 1083
+    ExplicitWidth = 1027
     object Label2: TLabel
       Left = 93
       Top = 40
@@ -275,6 +275,490 @@ object TelaCheckout: TTelaCheckout
         6174653A74696D657374616D7000323032332D31322D30315432313A31353A32
         322B30303A303062F2E10F0000001974455874536F667477617265007777772E
         696E6B73636170652E6F72679BEE3C1A0000000049454E44AE426082}
+    end
+  end
+  object frxReport1: TfrxReport
+    Version = '2024.1.2'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick, pbCopy, pbSelection]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 45308.707626539400000000
+    ReportOptions.LastChange = 45310.741682094910000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 408
+    Top = 32
+    Datasets = <
+      item
+        DataSet = frxDBDataset1
+        DataSetName = 'compras'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 215.900000000000000000
+      PaperHeight = 279.400000000000000000
+      PaperSize = 1
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
+      object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 117.165430000000000000
+        Top = 18.897650000000000000
+        Width = 740.409927000000000000
+        object Memo1: TfrxMemoView
+          AllowVectorExport = True
+          Left = 238.110395620000000000
+          Top = 30.236238240000000000
+          Width = 257.008040730000000000
+          Height = 52.913421670000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'APP VENDAS'
+            'RUA, N'#218'MERO - BAIRRO, CIDADE-UF'
+            'CNPJ')
+          ParentFont = False
+        end
+      end
+      object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 143.622140000000000000
+        Top = 158.740260000000000000
+        Width = 740.409927000000000000
+        object Memo2: TfrxMemoView
+          AllowVectorExport = True
+          Left = 37.795300000000000000
+          Top = 15.118120000000000000
+          Width = 94.488258360000000000
+          Height = 18.897644040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DisplayFormat.FormatStr = 'dd mmm yyyy'
+          DisplayFormat.Kind = fkDateTime
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Date]')
+          ParentFont = False
+        end
+        object Memo3: TfrxMemoView
+          AllowVectorExport = True
+          Left = 279.685222240000000000
+          Top = 15.118120000000000000
+          Width = 177.637910730000000000
+          Height = 18.897644040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[compras."IDENTIFICADOR_CLIENTE"]')
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          AllowVectorExport = True
+          Left = 600.945243920000000000
+          Top = 15.118120000000000000
+          Width = 94.488281250000000000
+          Height = 18.897644040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Time]')
+          ParentFont = False
+        end
+        object Memo5: TfrxMemoView
+          AllowVectorExport = True
+          Left = 298.582872240000000000
+          Top = 52.913423340000000000
+          Width = 136.063080730000000000
+          Height = 18.897644040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'EXTRATO N'#186' 00000')
+          ParentFont = False
+        end
+        object Memo6: TfrxMemoView
+          AllowVectorExport = True
+          Left = 260.787572240000000000
+          Top = 75.590599920000000000
+          Width = 204.094620730000000000
+          Height = 18.897644040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'CUPOM FISCAL ELETR'#212'NICO')
+          ParentFont = False
+        end
+      end
+      object MasterDataCompra: TfrxMasterData
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 18.897650000000000000
+        Top = 362.834880000000000000
+        Width = 740.409927000000000000
+        DataSet = frxDBDataset1
+        DataSetName = 'compras'
+        RowCount = 0
+        object comprasID_COMPRA: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 37.795300000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'ID_COMPRA'
+          DataSet = frxDBDataset1
+          DataSetName = 'compras'
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[compras."ID_COMPRA"]')
+        end
+        object comprasNOME: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 143.622140000000000000
+          Width = 359.055350000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataField = 'NOME'
+          DataSet = frxDBDataset1
+          DataSetName = 'compras'
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[compras."NOME"]')
+        end
+        object comprasQUANTIDADE: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 510.236550000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataSet = frxDBDataset1
+          DataSetName = 'compras'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[compras."QUANTIDADE"] UN')
+          ParentFont = False
+        end
+        object comprasPRECO_UNITARIO: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 616.063390000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DataSet = frxDBDataset1
+          DataSetName = 'compras'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'R$[compras."PRECO_UNITARIO"]')
+          ParentFont = False
+        end
+      end
+      object Footer1: TfrxFooter
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 105.826840000000000000
+        Top = 404.409710000000000000
+        Width = 740.409927000000000000
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 37.795300430000000000
+          Top = 30.236245060000000000
+          Width = 94.488250730000000000
+          Height = 18.897644040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'SUBTOTAL')
+          ParentFont = False
+        end
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 37.795300430000000000
+          Top = 56.692951640000000000
+          Width = 94.488250730000000000
+          Height = 18.897644040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'DESCONTO')
+          ParentFont = False
+        end
+        object Memo9: TfrxMemoView
+          AllowVectorExport = True
+          Left = 37.795300000000000000
+          Top = 79.370117190000000000
+          Width = 94.488246920000000000
+          Height = 18.897644040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'TOTAL')
+          ParentFont = False
+        end
+        object Memo10: TfrxMemoView
+          AllowVectorExport = True
+          Left = 600.945279060000000000
+          Top = 30.236240000000000000
+          Width = 94.488220210000000000
+          Height = 18.897644040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'R$[SUM(<compras."PRECO_SUBTOTAL">,MasterDataCompra)]')
+          ParentFont = False
+        end
+        object Memo11: TfrxMemoView
+          AllowVectorExport = True
+          Left = 600.945279060000000000
+          Top = 56.692966080000000000
+          Width = 94.488220210000000000
+          Height = 18.897644040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[compras."DESCONTO"]%')
+          ParentFont = False
+        end
+        object Memo12: TfrxMemoView
+          AllowVectorExport = True
+          Left = 600.945279060000000000
+          Top = 83.149661640000000000
+          Width = 94.488220210000000000
+          Height = 18.897644040000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'R$[compras."SUBTOTAL_DESCONTADO"]')
+          ParentFont = False
+          Formats = <
+            item
+            end
+            item
+            end
+            item
+            end>
+        end
+      end
+    end
+  end
+  object frxDBDataset1: TfrxDBDataset
+    Left = 504.000000000000000000
+    Top = 32.000000000000000000
+    UserName = 'compras'
+    CloseDataSource = False
+    DataSet = FDQuery1
+    BCDToCurrency = False
+    DataSetOptions = []
+    Left = 504
+    Top = 32
+    FieldDefs = <
+      item
+        FieldName = 'ID_COMPRA'
+      end
+      item
+        FieldName = 'NOME'
+        FieldType = fftString
+        Size = 100
+      end
+      item
+        FieldName = 'QUANTIDADE'
+      end
+      item
+        FieldName = 'PRECO_UNITARIO'
+      end
+      item
+        FieldName = 'PRECO_SUBTOTAL'
+      end
+      item
+        FieldName = 'IDENTIFICADOR_CLIENTE'
+        FieldType = fftString
+        Size = 18
+      end
+      item
+        FieldName = 'DESCONTO'
+      end
+      item
+        FieldName = 'SUBTOTAL_DESCONTADO'
+      end>
+  end
+  object FDQuery1: TFDQuery
+    Connection = dmConexao.FDConnection
+    SQL.Strings = (
+      'select * from Compras')
+    Left = 616
+    Top = 32
+    object FDQuery1ID_COMPRA: TIntegerField
+      FieldName = 'ID_COMPRA'
+      Origin = 'ID_COMPRA'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object FDQuery1NOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 100
+    end
+    object FDQuery1QUANTIDADE: TIntegerField
+      FieldName = 'QUANTIDADE'
+      Origin = 'QUANTIDADE'
+      Required = True
+    end
+    object FDQuery1PRECO_UNITARIO: TFloatField
+      FieldName = 'PRECO_UNITARIO'
+      Origin = 'PRECO_UNITARIO'
+      Required = True
+    end
+    object FDQuery1PRECO_SUBTOTAL: TFloatField
+      FieldName = 'PRECO_SUBTOTAL'
+      Origin = 'PRECO_SUBTOTAL'
+      Required = True
+    end
+    object FDQuery1IDENTIFICADOR_CLIENTE: TStringField
+      FieldName = 'IDENTIFICADOR_CLIENTE'
+      Origin = 'IDENTIFICADOR_CLIENTE'
+      Required = True
+      Size = 18
+    end
+    object FDQuery1DESCONTO: TSingleField
+      FieldName = 'DESCONTO'
+      Origin = 'DESCONTO'
+      Required = True
+    end
+    object FDQuery1SUBTOTAL_DESCONTADO: TFloatField
+      FieldName = 'SUBTOTAL_DESCONTADO'
+      Origin = 'SUBTOTAL_DESCONTADO'
+      Required = True
     end
   end
 end

@@ -36,14 +36,14 @@ type
     frxReport: TfrxReport;
     frxDBDataset: TfrxDBDataset;
     FDQuery1: TFDQuery;
+    btnImprimir: TButton;
     FDQuery1ID: TIntegerField;
-    FDQuery1TOTAL_PRECO: TSingleField;
+    FDQuery1TOTAL_PRODUTOS: TFloatField;
+    FDQuery1TOTAL_PRECO: TFloatField;
     FDQuery1VENDEDOR: TIntegerField;
     FDQuery1DATA_VENDA: TDateField;
-    FDQuery1ID_CLIENTE: TStringField;
-    btnImprimir: TButton;
-    FDQuery1TOTAL_PRODUTOS: TFloatField;
     FDQuery1DESCONTO: TSingleField;
+    FDQuery1ID_CLIENTE: TStringField;
     procedure Button1Click(Sender: TObject);
   private
   public

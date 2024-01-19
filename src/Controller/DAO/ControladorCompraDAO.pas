@@ -13,7 +13,7 @@ type
     Constructor Create;
 
     function Inserir(Produto: TProduto; Quantidade: Double; PrecoSubtotal: Double;
-    out erro: String): Boolean;
+    IdentificadorCliente: String; Desconto: Double; SubtotalDescontado: Double; out erro: String): Boolean;
     function DeletarTudo(out erro: String): Boolean;
   end;
 
@@ -32,9 +32,10 @@ begin
 end;
 
 function TControladorCompraDAO.Inserir(Produto: TProduto; Quantidade: Double;
-  PrecoSubtotal: Double; out erro: String): Boolean;
+  PrecoSubtotal: Double; IdentificadorCliente: String; Desconto: Double; SubtotalDescontado: Double; out erro: String): Boolean;
 begin
-  Result := uCompraDAO.Inserir(Produto, Quantidade, PrecoSubtotal, erro);
+  Result := uCompraDAO.Inserir(Produto, Quantidade, PrecoSubtotal, IdentificadorCliente,
+  Desconto, SubtotalDescontado, erro);
 end;
 
 end.

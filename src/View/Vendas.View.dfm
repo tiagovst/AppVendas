@@ -2038,7 +2038,7 @@ object TelaVendas: TTelaVendas
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 45300.672814687500000000
-    ReportOptions.LastChange = 45300.740431793980000000
+    ReportOptions.LastChange = 45308.724975023100000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -2517,7 +2517,7 @@ object TelaVendas: TTelaVendas
           AllowVectorExport = True
           Left = 117.165430000000000000
           Top = 22.677180000000000000
-          Width = 79.370130000000000000
+          Width = 158.740260000000000000
           Height = 18.897650000000000000
           ContentScaleOptions.Constraints.MaxIterationValue = 0
           ContentScaleOptions.Constraints.MinIterationValue = 0
@@ -2573,6 +2573,7 @@ object TelaVendas: TTelaVendas
       end>
   end
   object FDQuery1: TFDQuery
+    Active = True
     Connection = dmConexao.FDConnection
     SQL.Strings = (
       'select * from venda')
@@ -2584,7 +2585,12 @@ object TelaVendas: TTelaVendas
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object FDQuery1TOTAL_PRECO: TSingleField
+    object FDQuery1TOTAL_PRODUTOS: TFloatField
+      FieldName = 'TOTAL_PRODUTOS'
+      Origin = 'TOTAL_PRODUTOS'
+      Required = True
+    end
+    object FDQuery1TOTAL_PRECO: TFloatField
       FieldName = 'TOTAL_PRECO'
       Origin = 'TOTAL_PRECO'
       Required = True
@@ -2599,21 +2605,16 @@ object TelaVendas: TTelaVendas
       Origin = 'DATA_VENDA'
       Required = True
     end
+    object FDQuery1DESCONTO: TSingleField
+      FieldName = 'DESCONTO'
+      Origin = 'DESCONTO'
+      Required = True
+    end
     object FDQuery1ID_CLIENTE: TStringField
       FieldName = 'ID_CLIENTE'
       Origin = 'ID_CLIENTE'
       Required = True
       Size = 18
-    end
-    object FDQuery1TOTAL_PRODUTOS: TFloatField
-      FieldName = 'TOTAL_PRODUTOS'
-      Origin = 'TOTAL_PRODUTOS'
-      Required = True
-    end
-    object FDQuery1DESCONTO: TSingleField
-      FieldName = 'DESCONTO'
-      Origin = 'DESCONTO'
-      Required = True
     end
   end
 end

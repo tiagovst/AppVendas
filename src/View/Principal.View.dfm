@@ -1,7 +1,7 @@
 object TelaPrincipal: TTelaPrincipal
   Left = 0
   Top = 0
-  Caption = 'Action1'
+  Caption = 'AppVendas'
   ClientHeight = 670
   ClientWidth = 995
   Color = clBtnFace

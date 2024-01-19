@@ -10,7 +10,7 @@ type
     ['{0D08A5B9-9B73-458E-9E24-A88FA813C5C3}']
 
     function Inserir(Produto: TProduto; Quantidade: Double; PrecoSubtotal: Double;
-    out erro: String): Boolean;
+    IdentificadorCliente: String; Desconto: Double; SubtotalDescontado: Double; out erro: String): Boolean;
     function DeletarTudo(out erro: String): Boolean;
   end;
 

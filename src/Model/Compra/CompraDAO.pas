@@ -18,7 +18,7 @@ type
   public
     SQLQuery: TFDQuery;
     function Inserir(Produto: TProduto; Quantidade: Double; PrecoSubtotal: Double;
-    out erro: String): Boolean;
+    IdentificadorCliente: String; Desconto: Double; SubtotalDescontado: Double; out erro: String): Boolean;
     function DeletarTudo(out erro: String): Boolean;
   end;
 
@@ -60,7 +60,7 @@ begin
   begin
     try
       Connection := TConexaoIniciar.varConexao.FDConnection;
-      SQL.Text := 'SELECT COALESCE(MAX(ID), 0) + 1 AS NEXT_ID FROM COMPRAS;';
+      SQL.Text := 'SELECT COALESCE(MAX(ID_COMPRA), 0) + 1 AS NEXT_ID FROM COMPRAS;';
       Open();
 
       Result := FieldByName('NEXT_ID').AsInteger;
@@ -72,7 +72,7 @@ begin
 end;
 
 function TCompraDAO.Inserir(Produto: TProduto; Quantidade: Double; PrecoSubtotal: Double;
-  out erro: String): Boolean;
+  IdentificadorCliente: String; Desconto: Double; SubtotalDescontado: Double; out erro: String): Boolean;
 var
   SQLQuery: TFDQuery;
 begin
@@ -83,15 +83,18 @@ begin
   with SQLQuery do
   begin
     try
-      SQL.Text := 'insert into COMPRAS (ID_COMPRA, NOME, QUANTIDADE, PRECO_UNITARIO, PRECO_SUBTOTAL) ' +
-      'values (:ID_COMPRA, :NOME, :QUANTIDADE, :PRECO_UNITARIO, :PRECO_SUBTOTAL)';
+      SQL.Text := 'insert into COMPRAS (ID_COMPRA, NOME, QUANTIDADE, PRECO_UNITARIO, PRECO_SUBTOTAL, ' +
+      'IDENTIFICADOR_CLIENTE, DESCONTO, SUBTOTAL_DESCONTADO) values (:ID_COMPRA, :NOME, :QUANTIDADE, ' +
+      ':PRECO_UNITARIO, :PRECO_SUBTOTAL, :IDENTIFICADOR_CLIENTE, :DESCONTO, :SUBTOTAL_DESCONTADO)';
 
       Params.ParamByName('ID_COMPRA').AsInteger := gerarID;
       Params.ParamByName('NOME').AsString := Produto.Nome;
       Params.ParamByName('QUANTIDADE').AsFloat := Quantidade;
-      Params.ParamByName('ID_PRODUTO').AsInteger := Produto.ID;
       Params.ParamByName('PRECO_UNITARIO').AsFloat := Produto.Preco;
       Params.ParamByName('PRECO_SUBTOTAL').AsFloat := PrecoSubtotal;
+      Params.ParamByName('IDENTIFICADOR_CLIENTE').AsString := IdentificadorCliente;
+      Params.ParamByName('DESCONTO').AsFloat := Desconto;
+      Params.ParamByName('SUBTOTAL_DESCONTADO').AsFloat := SubtotalDescontado;
 
       ExecSQL;
       Result := True;
