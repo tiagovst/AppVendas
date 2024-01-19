@@ -101,6 +101,7 @@ type
 
     procedure ManejoTop;
     procedure VerificacaoParent;
+    procedure VerificacaoSessao;
   public
   end;
 
@@ -215,26 +216,7 @@ begin
 
     if FTelaLogin.LoginSucesso then
     begin
-      if SessaoUsuario.TSessaoUsuario.cargo.Equals('Gestor de Estoque') then
-      begin
-        btnClientes.Enabled := False;
-        btnVendas.Enabled := False;
-        btnUsuarios.Enabled := False;
-        btnFinalizarCompra.Enabled := False;
-      end
-      else if SessaoUsuario.TSessaoUsuario.cargo.Equals('Vendedor') then
-      begin
-        btnCadastrarProduto.Enabled := False;
-        btnVendas.Enabled := False;
-        btnUsuarios.Enabled := False;
-      end
-      else
-      begin
-        btnClientes.Enabled := True;
-        btnVendas.Enabled := True;
-        btnUsuarios.Enabled := True;
-        btnFinalizarCompra.Enabled := True;
-      end;                                 // Função
+      VerificacaoSessao;
       btnInicio.Click;
       Show;
     end
@@ -255,23 +237,10 @@ begin
   uControladorProduto.CarregarProdutosResumidos(DataSource);
   //redimensionar o tamanho das colunas
 
-
   lblNomeDeUsuario.Caption := SessaoUsuario.TSessaoUsuario.nomeUsuario;
   lblCargoUsuario.Caption := SessaoUsuario.TSessaoUsuario.cargo;
 
-  if SessaoUsuario.TSessaoUsuario.cargo.Equals('Gestor de Estoque') then
-  begin
-    btnClientes.Enabled := False;
-    btnVendas.Enabled := False;
-    btnUsuarios.Enabled := False;
-    btnFinalizarCompra.Enabled := False;
-  end
-  else if SessaoUsuario.TSessaoUsuario.cargo.Equals('Vendedor') then
-  begin
-    btnCadastrarProduto.Enabled := False;
-    btnVendas.Enabled := False;
-    btnUsuarios.Enabled := False;
-  end;
+  VerificacaoSessao;
 end;
 
 procedure TTelaPrincipal.gridProdutosDblClick(Sender: TObject);
@@ -364,17 +333,30 @@ begin
     end;
 
     if Assigned(uControladorTelaEstoque) then
-      uControladorTelaEstoque.FecharTela
-    else if Assigned(uControladorTelaListagemUsuario) then
-      uControladorTelaListagemUsuario.FecharTela
-    else if Assigned(uControladorTelaManejoUsuario) then
-        uControladorTelaManejoUsuario.FecharTela
-    else if Assigned(uControladorTelaVendas) then
-      uControladorTelaVendas.FecharTela
-    else if Assigned(uControladorTelaListagemClientes) then
-      uControladorTelaListagemClientes.FecharTela
-    else if Assigned(uControladorTelaManejoCliente) then
+    begin
+      uControladorTelaEstoque.FecharTela;
+    end;
+    if Assigned(uControladorTelaListagemUsuario) then
+    begin
+      uControladorTelaListagemUsuario.FecharTela;
+    end;
+    if Assigned(uControladorTelaManejoUsuario) then
+    begin
+      uControladorTelaManejoUsuario.FecharTela;
+    end;
+    if Assigned(uControladorTelaVendas) then
+    begin
+      uControladorTelaVendas.FecharTela;
+    end;
+    if Assigned(uControladorTelaListagemClientes) then
+    begin
+      uControladorTelaListagemClientes.FecharTela;
+    end;
+    if Assigned(uControladorTelaManejoCliente) then
+    begin
       uControladorTelaManejoCliente.FecharTela;
+    end;
+
 
     Top := False;
     ManejoTop;
@@ -382,6 +364,32 @@ begin
     begin
       ShowMessage(E.Message);
     end;
+  end;
+end;
+
+procedure TTelaPrincipal.VerificacaoSessao;
+begin
+  if SessaoUsuario.TSessaoUsuario.cargo.Equals('Gestor de Estoque') then
+  begin
+    btnClientes.Enabled := False;
+    btnCadastrarProduto.Enabled := True;
+    btnVendas.Enabled := False;
+    btnUsuarios.Enabled := False;
+    btnFinalizarCompra.Enabled := False;
+  end
+  else if SessaoUsuario.TSessaoUsuario.cargo.Equals('Vendedor') then
+  begin
+    btnClientes.Enabled := True;
+    btnCadastrarProduto.Enabled := False;
+    btnVendas.Enabled := False;
+    btnUsuarios.Enabled := False;
+  end
+  else
+  begin
+    btnClientes.Enabled := True;
+    btnVendas.Enabled := True;
+    btnUsuarios.Enabled := True;
+    btnFinalizarCompra.Enabled := True;
   end;
 end;
 
