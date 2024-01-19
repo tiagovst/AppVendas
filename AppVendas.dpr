@@ -66,7 +66,8 @@ uses
   CompraDAO in 'src\Model\Compra\CompraDAO.pas',
   CompraDAOInterface in 'src\Interfaces\DAO\CompraDAOInterface.pas',
   ControladorCompraDAO in 'src\Controller\DAO\ControladorCompraDAO.pas',
-  ControladorCompraDAOInterface in 'src\Interfaces\Controlador\ControladorCompraDAOInterface.pas';
+  ControladorCompraDAOInterface in 'src\Interfaces\Controlador\ControladorCompraDAOInterface.pas',
+  Unixpass in 'src\Model\Utils\Unixpass.pas';
 
 {$R *.res}
 

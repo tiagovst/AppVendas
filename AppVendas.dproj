@@ -188,6 +188,7 @@
         <DCCReference Include="src\Interfaces\DAO\CompraDAOInterface.pas"/>
         <DCCReference Include="src\Controller\DAO\ControladorCompraDAO.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorCompraDAOInterface.pas"/>
+        <DCCReference Include="src\Model\Utils\Unixpass.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
