@@ -50,11 +50,13 @@ type
     Label1: TLabel;
     Label2: TLabel;
     Image: TImage;
+    CheckBox1: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure LimparCampos;
     procedure txtQuantidadeEstoqueKeyPress(Sender: TObject; var Key: Char);
+    procedure CheckBox1Click(Sender: TObject);
     end;
 
 var
@@ -100,7 +102,11 @@ begin
     ProdutoCache.QuantidadeEstoque := StrToFloat(txtQuantidadeEstoque.Text);
 
     ProdutoCache.Fornecedor := txtFornecedor.Text;
-    ProdutoCache.DataValidade := StrToDate(txtValidade.Text);
+
+    if not CheckBox1.Checked then
+      ProdutoCache.DataValidade := StrToDate(txtValidade.Text);
+
+    ShowMessage(DateToStr(ProdutoCache.DataValidade));
 
     if Controlador.Inserir(ProdutoCache, erro) then
     begin
@@ -115,6 +121,19 @@ begin
   else
   begin
     ShowMessage('Informe uma quantidade válida do produto!');
+  end;
+end;
+
+procedure TTelaCadastroProduto.CheckBox1Click(Sender: TObject);
+begin
+  if CheckBox1.Checked then
+  begin
+    txtValidade.Enabled := False;
+    txtValidade.EditMask := '';
+  end
+  else
+  begin
+    txtValidade.Enabled := True;
   end;
 end;
 

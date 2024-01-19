@@ -3,7 +3,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
   Top = 0
   BorderStyle = bsNone
   Caption = 'Cadastro de Produto'
-  ClientHeight = 631
+  ClientHeight = 673
   ClientWidth = 870
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,18 +18,20 @@ object TelaCadastroProduto: TTelaCadastroProduto
     Left = 0
     Top = 96
     Width = 870
-    Height = 535
+    Height = 577
     Align = alClient
     TabOrder = 0
+    ExplicitHeight = 535
     object Panel2: TPanel
       Left = 1
-      Top = 494
+      Top = 536
       Width = 868
       Height = 40
       Align = alBottom
       Color = 16579321
       ParentBackground = False
       TabOrder = 0
+      ExplicitTop = 494
       DesignSize = (
         868
         40)
@@ -58,17 +60,18 @@ object TelaCadastroProduto: TTelaCadastroProduto
       Left = 1
       Top = 1
       Width = 868
-      Height = 493
+      Height = 535
       Align = alClient
       Color = 16579321
       ParentBackground = False
       TabOrder = 1
+      ExplicitHeight = 493
       object GroupBox1: TGroupBox
         AlignWithMargins = True
         Left = 41
         Top = 35
         Width = 239
-        Height = 289
+        Height = 334
         BiDiMode = bdLeftToRight
         Caption = 'Descri'#231#227'o'
         Font.Charset = DEFAULT_CHARSET
@@ -126,7 +129,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
           Left = 10
           Top = 127
           Width = 215
-          Height = 146
+          Height = 186
           Hint = 'Descri'#231#227'o'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -144,7 +147,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
         Left = 328
         Top = 159
         Width = 239
-        Height = 165
+        Height = 210
         BiDiMode = bdLeftToRight
         Caption = 'Categoria'
         Font.Charset = DEFAULT_CHARSET
@@ -157,7 +160,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
         TabOrder = 2
         object Label5: TLabel
           Left = 14
-          Top = 32
+          Top = 48
           Width = 61
           Height = 17
           Caption = 'Refer'#234'ncia'
@@ -172,9 +175,9 @@ object TelaCadastroProduto: TTelaCadastroProduto
         end
         object Label6: TLabel
           Left = 14
-          Top = 104
+          Top = 118
           Width = 57
-          Height = 17
+          Height = 19
           Caption = 'Categoria'
           Color = clMenuHighlight
           Font.Charset = DEFAULT_CHARSET
@@ -187,7 +190,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
         end
         object txtReferencia: TEdit
           Left = 14
-          Top = 55
+          Top = 71
           Width = 215
           Height = 25
           Font.Charset = DEFAULT_CHARSET
@@ -200,7 +203,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
         end
         object cbxCategoria: TComboBox
           Left = 14
-          Top = 127
+          Top = 140
           Width = 211
           Height = 25
           Font.Charset = DEFAULT_CHARSET
@@ -289,7 +292,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
         Left = 584
         Top = 159
         Width = 225
-        Height = 165
+        Height = 210
         BiDiMode = bdLeftToRight
         Caption = 'Informa'#231#245'es'
         Font.Charset = DEFAULT_CHARSET
@@ -330,7 +333,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
         end
         object txtValidade: TLabeledEdit
           Left = 14
-          Top = 127
+          Top = 164
           Width = 194
           Height = 25
           EditLabel.Width = 100
@@ -357,10 +360,25 @@ object TelaCadastroProduto: TTelaCadastroProduto
           TabOrder = 1
           Text = '  /  /    '
         end
+        object CheckBox1: TCheckBox
+          Left = 16
+          Top = 106
+          Width = 193
+          Height = 17
+          Caption = 'Produto sem validade'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+          OnClick = CheckBox1Click
+        end
       end
       object GroupBox5: TGroupBox
         Left = 41
-        Top = 344
+        Top = 400
         Width = 768
         Height = 105
         Caption = 'Dados'
@@ -418,6 +436,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
           ImeName = 'Portuguese (Brazilian ABNT)'
           NumbersOnly = True
           ParentFont = False
+          ReadOnly = True
           TabOrder = 1
           Text = ''
           Visible = False

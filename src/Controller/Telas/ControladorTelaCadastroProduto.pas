@@ -91,9 +91,19 @@ begin
     txtQuantidadeEstoque.Text := FloatToStr(QuantidadeEstoque);
     txtPreco.Text := FloatToStr(Preco);
     txtReferencia.Text := Referencia;
+    cbxCategoria.Text := Categoria;
     txtFornecedor.Text := Fornecedor;
-    txtValidade.Text := DateToStr(DataValidade);
     txtCodigoBarras.Text := CodigoBarras;
+
+    if DataValidade = StrToDate('12/30/1899') then
+    begin
+      txtValidade.Text := '';
+      CheckBox1.Checked := True;
+    end
+    else
+    begin
+      txtValidade.Text := DateToStr(DataValidade);
+    end;
   end;
 end;
 
@@ -158,7 +168,8 @@ begin
     end;
 
     Fornecedor := txtFornecedor.Text;
-    DataValidade := StrToDate(txtValidade.Text);
+    if not FTelaCadastroProduto.CheckBox1.Checked then
+      DataValidade := StrToDate(txtValidade.Text);
   end;
 
 end;

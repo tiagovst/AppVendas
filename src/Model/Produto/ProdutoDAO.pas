@@ -47,21 +47,41 @@ begin
   begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
-    SQL.Text := 'update PRODUTOS set NOME = :NOME, CODIGO_BARRAS = :CODIGO_BARRAS, ' +
-    'DESCRICAO = :DESCRICAO, REFERENCIA = :REFERENCIA, PRECO = :PRECO, ' +
-    'CATEGORIA = :CATEGORIA, QUANTIDADE_ESTOQUE = :QUANTIDADE_ESTOQUE, ' +
-    'FORNECEDOR = :FORNECEDOR, DATA_VALIDADE = :DATA_VALIDADE where (ID_PRODUTO = :ID_PRODUTO)';
+    if DataValidade = StrToDate('12/30/1899') then
+    begin
+      SQL.Text := 'update PRODUTOS set NOME = :NOME, CODIGO_BARRAS = :CODIGO_BARRAS, ' +
+      'DESCRICAO = :DESCRICAO, REFERENCIA = :REFERENCIA, PRECO = :PRECO, ' +
+      'CATEGORIA = :CATEGORIA, QUANTIDADE_ESTOQUE = :QUANTIDADE_ESTOQUE, ' +
+      'FORNECEDOR = :FORNECEDOR where (ID_PRODUTO = :ID_PRODUTO)';
 
-    Params.ParamByName('ID_PRODUTO').AsInteger := ID;
-    Params.ParamByName('NOME').AsString := Nome;
-    Params.ParamByName('CODIGO_BARRAS').AsString := CodigoBarras;
-    Params.ParamByName('DESCRICAO').AsString := Descricao;
-    Params.ParamByName('REFERENCIA').AsString := Referencia;
-    Params.ParamByName('PRECO').AsFloat := Preco;
-    Params.ParamByName('CATEGORIA').AsString := Categoria;
-    Params.ParamByName('QUANTIDADE_ESTOQUE').AsFloat := QuantidadeEstoque;
-    Params.ParamByName('FORNECEDOR').AsString := Fornecedor;
-    Params.ParamByName('DATA_VALIDADE').AsDateTime := DataValidade;
+      Params.ParamByName('ID_PRODUTO').AsInteger := ID;
+      Params.ParamByName('NOME').AsString := Nome;
+      Params.ParamByName('CODIGO_BARRAS').AsString := CodigoBarras;
+      Params.ParamByName('DESCRICAO').AsString := Descricao;
+      Params.ParamByName('REFERENCIA').AsString := Referencia;
+      Params.ParamByName('PRECO').AsFloat := Preco;
+      Params.ParamByName('CATEGORIA').AsString := Categoria;
+      Params.ParamByName('QUANTIDADE_ESTOQUE').AsFloat := QuantidadeEstoque;
+      Params.ParamByName('FORNECEDOR').AsString := Fornecedor;
+    end
+    else
+    begin
+      SQL.Text := 'update PRODUTOS set NOME = :NOME, CODIGO_BARRAS = :CODIGO_BARRAS, ' +
+      'DESCRICAO = :DESCRICAO, REFERENCIA = :REFERENCIA, PRECO = :PRECO, ' +
+      'CATEGORIA = :CATEGORIA, QUANTIDADE_ESTOQUE = :QUANTIDADE_ESTOQUE, ' +
+      'FORNECEDOR = :FORNECEDOR, DATA_VALIDADE = :DATA_VALIDADE where (ID_PRODUTO = :ID_PRODUTO)';
+
+      Params.ParamByName('ID_PRODUTO').AsInteger := ID;
+      Params.ParamByName('NOME').AsString := Nome;
+      Params.ParamByName('CODIGO_BARRAS').AsString := CodigoBarras;
+      Params.ParamByName('DESCRICAO').AsString := Descricao;
+      Params.ParamByName('REFERENCIA').AsString := Referencia;
+      Params.ParamByName('PRECO').AsFloat := Preco;
+      Params.ParamByName('CATEGORIA').AsString := Categoria;
+      Params.ParamByName('QUANTIDADE_ESTOQUE').AsFloat := QuantidadeEstoque;
+      Params.ParamByName('FORNECEDOR').AsString := Fornecedor;
+      Params.ParamByName('DATA_VALIDADE').AsDateTime := DataValidade;
+    end;
 
     try
       ExecSQL();
@@ -180,21 +200,41 @@ begin
   begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
-    SQL.Text := 'update or insert into produtos (ID_PRODUTO, nome, codigo_barras, descricao, ' +
-    'referencia, preco, categoria, quantidade_estoque, fornecedor, data_validade) ' +
-    'values (:ID_PRODUTO, :nome, :codigo_barras, :descricao, :referencia, :preco, :categoria, ' +
-    ':quantidade_estoque, :fornecedor, :data_validade) matching (ID_PRODUTO);';
+    if DataValidade = StrToDate('12/30/1899') then
+    begin
+      SQL.Text := 'update or insert into produtos (ID_PRODUTO, nome, codigo_barras, descricao, ' +
+      'referencia, preco, categoria, quantidade_estoque, fornecedor) ' +
+      'values (:ID_PRODUTO, :nome, :codigo_barras, :descricao, :referencia, :preco, :categoria, ' +
+      ':quantidade_estoque, :fornecedor) matching (ID_PRODUTO);';
 
-    Params.ParamByName('ID_PRODUTO').AsInteger := ID;
-    Params.ParamByName('NOME').AsString := Nome;
-    Params.ParamByName('CODIGO_BARRAS').AsString := CodigoBarras;
-    Params.ParamByName('DESCRICAO').AsString := Descricao;
-    Params.ParamByName('REFERENCIA').AsString := Referencia;
-    Params.ParamByName('PRECO').AsFloat := Preco;
-    Params.ParamByName('CATEGORIA').AsString := Categoria;
-    Params.ParamByName('QUANTIDADE_ESTOQUE').AsFloat := QuantidadeEstoque;
-    Params.ParamByName('FORNECEDOR').AsString := Fornecedor;
-    Params.ParamByName('DATA_VALIDADE').AsDateTime := DataValidade;
+      Params.ParamByName('ID_PRODUTO').AsInteger := ID;
+      Params.ParamByName('NOME').AsString := Nome;
+      Params.ParamByName('CODIGO_BARRAS').AsString := CodigoBarras;
+      Params.ParamByName('DESCRICAO').AsString := Descricao;
+      Params.ParamByName('REFERENCIA').AsString := Referencia;
+      Params.ParamByName('PRECO').AsFloat := Preco;
+      Params.ParamByName('CATEGORIA').AsString := Categoria;
+      Params.ParamByName('QUANTIDADE_ESTOQUE').AsFloat := QuantidadeEstoque;
+      Params.ParamByName('FORNECEDOR').AsString := Fornecedor;
+    end
+    else
+    begin
+      SQL.Text := 'update or insert into produtos (ID_PRODUTO, nome, codigo_barras, descricao, ' +
+      'referencia, preco, categoria, quantidade_estoque, fornecedor, data_validade) ' +
+      'values (:ID_PRODUTO, :nome, :codigo_barras, :descricao, :referencia, :preco, :categoria, ' +
+      ':quantidade_estoque, :fornecedor, :data_validade) matching (ID_PRODUTO);';
+
+      Params.ParamByName('ID_PRODUTO').AsInteger := ID;
+      Params.ParamByName('NOME').AsString := Nome;
+      Params.ParamByName('CODIGO_BARRAS').AsString := CodigoBarras;
+      Params.ParamByName('DESCRICAO').AsString := Descricao;
+      Params.ParamByName('REFERENCIA').AsString := Referencia;
+      Params.ParamByName('PRECO').AsFloat := Preco;
+      Params.ParamByName('CATEGORIA').AsString := Categoria;
+      Params.ParamByName('QUANTIDADE_ESTOQUE').AsFloat := QuantidadeEstoque;
+      Params.ParamByName('FORNECEDOR').AsString := Fornecedor;
+      Params.ParamByName('DATA_VALIDADE').AsDateTime := DataValidade;
+    end;
 
     try
       ExecSQL;
