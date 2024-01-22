@@ -21,7 +21,6 @@ object TelaCadastroProduto: TTelaCadastroProduto
     Height = 577
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 535
     object Panel2: TPanel
       Left = 1
       Top = 536
@@ -31,7 +30,6 @@ object TelaCadastroProduto: TTelaCadastroProduto
       Color = 16579321
       ParentBackground = False
       TabOrder = 0
-      ExplicitTop = 494
       DesignSize = (
         868
         40)
@@ -65,7 +63,6 @@ object TelaCadastroProduto: TTelaCadastroProduto
       Color = 16579321
       ParentBackground = False
       TabOrder = 1
-      ExplicitHeight = 493
       object GroupBox1: TGroupBox
         AlignWithMargins = True
         Left = 41
@@ -177,7 +174,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
           Left = 14
           Top = 118
           Width = 57
-          Height = 19
+          Height = 17
           Caption = 'Categoria'
           Color = clMenuHighlight
           Font.Charset = DEFAULT_CHARSET

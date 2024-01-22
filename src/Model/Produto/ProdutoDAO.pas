@@ -47,7 +47,7 @@ begin
   begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
-    if DataValidade = StrToDate('12/30/1899') then
+    if (DataValidade = StrToDate('30/12/1899')) then
     begin
       SQL.Text := 'update PRODUTOS set NOME = :NOME, CODIGO_BARRAS = :CODIGO_BARRAS, ' +
       'DESCRICAO = :DESCRICAO, REFERENCIA = :REFERENCIA, PRECO = :PRECO, ' +
@@ -200,7 +200,7 @@ begin
   begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
-    if DataValidade = StrToDate('12/30/1899') then
+    if (DataValidade = StrToDate('30/12/1899')) then
     begin
       SQL.Text := 'update or insert into produtos (ID_PRODUTO, nome, codigo_barras, descricao, ' +
       'referencia, preco, categoria, quantidade_estoque, fornecedor) ' +

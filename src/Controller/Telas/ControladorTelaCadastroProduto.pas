@@ -95,7 +95,7 @@ begin
     txtFornecedor.Text := Fornecedor;
     txtCodigoBarras.Text := CodigoBarras;
 
-    if DataValidade = StrToDate('12/30/1899') then
+    if (DataValidade = StrToDate('30/12/1899')) then
     begin
       txtValidade.Text := '';
       CheckBox1.Checked := True;

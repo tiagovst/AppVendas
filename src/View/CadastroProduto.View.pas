@@ -106,8 +106,6 @@ begin
     if not CheckBox1.Checked then
       ProdutoCache.DataValidade := StrToDate(txtValidade.Text);
 
-    ShowMessage(DateToStr(ProdutoCache.DataValidade));
-
     if Controlador.Inserir(ProdutoCache, erro) then
     begin
       ShowMessage('Produto inserido com sucesso');
@@ -133,6 +131,7 @@ begin
   end
   else
   begin
+    txtValidade.EditMask := '!99/99/0000;1;_';
     txtValidade.Enabled := True;
   end;
 end;
