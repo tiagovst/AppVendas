@@ -46,7 +46,17 @@ begin
   //FTelaCadastroProduto.Position := poDesktopCenter;
   FTelaCadastroProduto.Label1.Caption := 'Manejo de produto';
   FTelaCadastroProduto.txtID.Visible := True;
+  FTelaCadastroProduto.CheckBoxStatus.Enabled := True;
   PreencherTelaEditarProduto;
+
+  if produtoSelecionado.Ativo = -1 then
+  begin
+    FTelaCadastroProduto.CheckBoxStatus.Checked := True;
+  end
+  else
+  begin
+    FTelaCadastroProduto.CheckBoxStatus.Checked := False;
+  end;
 
   ActionBtnSalvar := TAction.Create(nil);
   ActionBtnSalvar.OnExecute := AcaoSalvar;
@@ -101,6 +111,7 @@ begin
     txtCodigoBarras.Text := CodigoBarras;
 
     DataString := FormatDateTime(formatoData.ShortDateFormat, EncodeDate(1899, 12, 30));
+    ShowMessage(DataString);
 
     if DataString.Equals(txtValidade.Text) then
     begin
@@ -156,6 +167,15 @@ begin
     else
     begin
       ID := uControladorProduto.gerarID;
+    end;
+
+    if CheckBoxStatus.Checked then
+    begin
+      Ativo := -1;
+    end
+    else
+    begin
+      Ativo := 0;
     end;
 
     Nome := txtNomeProduto.Text;

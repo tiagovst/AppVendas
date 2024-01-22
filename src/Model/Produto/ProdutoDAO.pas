@@ -119,7 +119,7 @@ begin
     try
       Connection := TConexaoIniciar.varConexao.FDConnection;
 
-      SQL.Text := 'SELECT * FROM Produtos WHERE (ID_PRODUTO = :ID_PRODUTO and ATIVO = -1)';
+      SQL.Text := 'SELECT * FROM Produtos WHERE ID_PRODUTO = :ID_PRODUTO';
 
       Params.ParamByName('ID_PRODUTO').AsInteger := IDProduto;
       Open();

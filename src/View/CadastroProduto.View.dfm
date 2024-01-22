@@ -63,6 +63,8 @@ object TelaCadastroProduto: TTelaCadastroProduto
       Color = 16579321
       ParentBackground = False
       TabOrder = 1
+      ExplicitLeft = 0
+      ExplicitTop = 3
       object GroupBox1: TGroupBox
         AlignWithMargins = True
         Left = 41
@@ -215,7 +217,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
       object GroupBox3: TGroupBox
         Left = 328
         Top = 35
-        Width = 481
+        Width = 329
         Height = 105
         BiDiMode = bdLeftToRight
         Caption = 'Pre'#231'o e Quantidade'
@@ -243,7 +245,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
           ParentFont = False
         end
         object Label8: TLabel
-          Left = 200
+          Left = 176
           Top = 32
           Width = 141
           Height = 17
@@ -271,7 +273,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
           TabOrder = 0
         end
         object txtQuantidadeEstoque: TEdit
-          Left = 200
+          Left = 176
           Top = 55
           Width = 113
           Height = 25
@@ -389,7 +391,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
         object txtCodigoBarras: TLabeledEdit
           Left = 10
           Top = 56
-          Width = 502
+          Width = 594
           Height = 25
           EditLabel.Width = 103
           EditLabel.Height = 17
@@ -412,7 +414,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
           Text = ''
         end
         object txtID: TLabeledEdit
-          Left = 557
+          Left = 654
           Top = 56
           Width = 71
           Height = 25
@@ -437,6 +439,37 @@ object TelaCadastroProduto: TTelaCadastroProduto
           TabOrder = 1
           Text = ''
           Visible = False
+        end
+      end
+      object GroupBox6: TGroupBox
+        Left = 674
+        Top = 35
+        Width = 135
+        Height = 105
+        Caption = 'Status'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -17
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 5
+        object CheckBoxStatus: TCheckBox
+          Left = 38
+          Top = 49
+          Width = 97
+          Height = 17
+          Caption = 'Ativo'
+          Checked = True
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          State = cbChecked
+          TabOrder = 0
         end
       end
     end

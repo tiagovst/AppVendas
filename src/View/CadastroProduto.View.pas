@@ -51,6 +51,8 @@ type
     Label2: TLabel;
     Image: TImage;
     CheckBox1: TCheckBox;
+    CheckBoxStatus: TCheckBox;
+    GroupBox6: TGroupBox;
     procedure FormCreate(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
@@ -90,6 +92,16 @@ begin
   begin
     ProdutoCache.ID := StrToInt(txtID.Text);
   end;
+
+  if CheckBoxStatus.Checked then
+  begin
+    ProdutoCache.Ativo := -1;
+  end
+  else
+  begin
+    ProdutoCache.Ativo := 0;
+  end;
+
   ProdutoCache.Nome := txtNomeProduto.Text;
   ProdutoCache.CodigoBarras := txtCodigoBarras.Text;
   ProdutoCache.Descricao := txtDescricaoProduto.Text;
