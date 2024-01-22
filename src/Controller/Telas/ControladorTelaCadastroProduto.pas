@@ -94,7 +94,7 @@ end;
 procedure TControladorTelaCadastroProduto.PreencherTelaEditarProduto;
 var
   formatoData: TFormatSettings;
-  DataString: String;
+  DataStringFormato, DataFormatada: String;
 begin
   formatoData := TFormatSettings.Create;
 
@@ -110,10 +110,10 @@ begin
     txtFornecedor.Text := Fornecedor;
     txtCodigoBarras.Text := CodigoBarras;
 
-    DataString := FormatDateTime(formatoData.ShortDateFormat, EncodeDate(1899, 12, 30));
-    ShowMessage(DataString);
+    DataStringFormato := FormatDateTime(formatoData.ShortDateFormat, EncodeDate(1899, 12, 30));
+    DataFormatada := FormatDateTime(formatoData.ShortDateFormat, produtoSelecionado.DataValidade);
 
-    if DataString.Equals(txtValidade.Text) then
+    if DataStringFormato.Equals(DataFormatada) then
     begin
       txtValidade.Text := '';
       CheckBox1.Checked := True;
