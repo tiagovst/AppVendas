@@ -145,7 +145,7 @@ begin
   FTelaVendas.Align := alClient;
 
   AcaoBtnComprarNovamente := TAction.Create(nil);
-  AcaoBtnComprarNovamente.Caption := 'Comprar novamente';
+  AcaoBtnComprarNovamente.Caption := 'Vender novamente';
   AcaoBtnComprarNovamente.OnExecute := AcaoBtnComprarNovamenteClick;
   FTelaVendas.btnComprarNovamente.Action := AcaoBtnComprarNovamente;
 

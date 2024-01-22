@@ -110,7 +110,7 @@ begin
     try
       Connection := TConexaoIniciar.varConexao.FDConnection;
 
-      SQL.Text := 'SELECT * FROM Produtos WHERE (ID_PRODUTO = :ID_PRODUTO)';
+      SQL.Text := 'SELECT * FROM Produtos WHERE (ID_PRODUTO = :ID_PRODUTO and ATIVO = -1)';
 
       Params.ParamByName('ID_PRODUTO').AsInteger := IDProduto;
       Open();
@@ -125,6 +125,7 @@ begin
       QuantidadeEstoque := FieldByName('QUANTIDADE_ESTOQUE').AsFloat;
       Fornecedor := FieldByName('FORNECEDOR').AsString;
       DataValidade := FieldByName('DATA_VALIDADE').AsDateTime;
+      Ativo := FieldByName('ATIVO').AsBoolean;
 
     finally
       Result := NovoProduto;
@@ -141,7 +142,7 @@ begin
   begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
-    SQL.Text := 'select ID_PRODUTO, NOME, DESCRICAO, PRECO, DATA_VALIDADE from PRODUTOS';
+    SQL.Text := 'select ID_PRODUTO, NOME, DESCRICAO, PRECO, DATA_VALIDADE from PRODUTOS WHERE (ATIVO = -1)';
 
     Open();
   end;
@@ -203,9 +204,9 @@ begin
     if (DataValidade = StrToDate('30/12/1899')) then
     begin
       SQL.Text := 'update or insert into produtos (ID_PRODUTO, nome, codigo_barras, descricao, ' +
-      'referencia, preco, categoria, quantidade_estoque, fornecedor) ' +
+      'referencia, preco, categoria, quantidade_estoque, fornecedor, ativo) ' +
       'values (:ID_PRODUTO, :nome, :codigo_barras, :descricao, :referencia, :preco, :categoria, ' +
-      ':quantidade_estoque, :fornecedor) matching (ID_PRODUTO);';
+      ':quantidade_estoque, :fornecedor, -1) matching (ID_PRODUTO);';
 
       Params.ParamByName('ID_PRODUTO').AsInteger := ID;
       Params.ParamByName('NOME').AsString := Nome;
@@ -220,9 +221,9 @@ begin
     else
     begin
       SQL.Text := 'update or insert into produtos (ID_PRODUTO, nome, codigo_barras, descricao, ' +
-      'referencia, preco, categoria, quantidade_estoque, fornecedor, data_validade) ' +
+      'referencia, preco, categoria, quantidade_estoque, fornecedor, data_validade, ativo) ' +
       'values (:ID_PRODUTO, :nome, :codigo_barras, :descricao, :referencia, :preco, :categoria, ' +
-      ':quantidade_estoque, :fornecedor, :data_validade) matching (ID_PRODUTO);';
+      ':quantidade_estoque, :fornecedor, :data_validade, -1) matching (ID_PRODUTO);';
 
       Params.ParamByName('ID_PRODUTO').AsInteger := ID;
       Params.ParamByName('NOME').AsString := Nome;
