@@ -22,8 +22,8 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
     Color = 16579321
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 513
-    ExplicitWidth = 897
+    ExplicitTop = 505
+    ExplicitWidth = 895
     object btnAdicionarCompra: TButton
       Left = 820
       Top = 8
@@ -42,8 +42,8 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
     Color = 16579321
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 897
-    ExplicitHeight = 417
+    ExplicitWidth = 895
+    ExplicitHeight = 409
     object gboxInformacoes: TGroupBox
       AlignWithMargins = True
       Left = 41
@@ -239,11 +239,11 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
         Font.Height = -13
         Font.Name = 'Segoe UI'
         Font.Style = []
-        NumbersOnly = True
         ParentFont = False
         TabOrder = 0
         Text = ''
         OnChange = txtQuantidadeCompraChange
+        OnKeyPress = txtQuantidadeCompraKeyPress
       end
     end
   end
@@ -256,7 +256,7 @@ object TelaAdicionarProduto: TTelaAdicionarProduto
     Color = 16579321
     ParentBackground = False
     TabOrder = 2
-    ExplicitWidth = 897
+    ExplicitWidth = 895
     object Label1: TLabel
       Left = 93
       Top = 40

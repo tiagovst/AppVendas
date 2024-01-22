@@ -1854,7 +1854,7 @@ object TelaVendas: TTelaVendas
         Margins.Top = 4
         Margins.Right = 4
         Margins.Bottom = 4
-        Caption = 'Realizar nova compra'
+        Caption = 'Iniciar nova venda'
         TabOrder = 2
         OnClick = Button1Click
       end
@@ -1867,7 +1867,7 @@ object TelaVendas: TTelaVendas
         Margins.Top = 4
         Margins.Right = 4
         Margins.Bottom = 4
-        Caption = 'Comprar novamente'
+        Caption = 'Repetir venda'
         TabOrder = 3
       end
       object btnImprimir: TButton
@@ -2573,7 +2573,6 @@ object TelaVendas: TTelaVendas
       end>
   end
   object FDQuery1: TFDQuery
-    Active = True
     Connection = dmConexao.FDConnection
     SQL.Strings = (
       'select * from venda')

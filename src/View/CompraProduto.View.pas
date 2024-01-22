@@ -30,6 +30,7 @@ type
     Label7: TLabel;
     Image: TImage;
     procedure txtQuantidadeCompraChange(Sender: TObject);
+    procedure txtQuantidadeCompraKeyPress(Sender: TObject; var Key: Char);
   end;
 
 var
@@ -43,13 +44,13 @@ implementation
 
 procedure TTelaAdicionarProduto.txtQuantidadeCompraChange(Sender: TObject);
 var
-  Quantidade : Integer;
+  Quantidade : Double;
   PrecoProduto : Double;
   Resultado : Double;
 begin
-  if TryStrToInt(txtQuantidadeCompra.Text, Quantidade) then
+  if TryStrToFloat(txtQuantidadeCompra.Text, Quantidade) then
   begin
-    Quantidade  := StrToInt(txtQuantidadeCompra.Text);
+    Quantidade  := StrToFloat(txtQuantidadeCompra.Text);
     PrecoProduto := StrToFloat(txtPreco.Text);
     Resultado := Quantidade * PrecoProduto;
 
@@ -58,6 +59,16 @@ begin
   else
   begin
     lblSubtotal.Caption := '00,00';
+  end;
+
+end;
+
+procedure TTelaAdicionarProduto.txtQuantidadeCompraKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if not CharInSet(Key, ['0'..'9', '.', #8]) then
+  begin
+    Key := #0;
   end;
 end;
 
