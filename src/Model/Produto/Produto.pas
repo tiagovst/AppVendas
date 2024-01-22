@@ -18,7 +18,7 @@ type
     FQuantidadeEstoque: Double;
     FFornecedor: String;
     FDataValidade: TDate;
-    FAtivo: Boolean;
+    FAtivo: Integer;
 
   public
 
@@ -32,7 +32,7 @@ type
     property QuantidadeEstoque: Double read FQuantidadeEstoque write FQuantidadeEstoque;
     property Fornecedor: String read FFornecedor write FFornecedor;
     property DataValidade: TDate read FDataValidade write FDataValidade;
-    property Ativo: Boolean read FAtivo write FAtivo;
+    property Ativo: Integer read FAtivo write FAtivo;
 
   end;
 

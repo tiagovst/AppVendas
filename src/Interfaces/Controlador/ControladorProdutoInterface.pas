@@ -21,6 +21,7 @@ type
     procedure PesquisarPorFiltro(Filtro : String; DataSource: TDataSource);
     procedure CarregarProdutosResumidos(DataSource : TDataSource);
     procedure AtualizarListaProdutos(DataSource: TDataSource);
+    procedure PesquisarPorNomePrincipal(Nome: String; DataSource: TDataSource);
   end;
 
 implementation

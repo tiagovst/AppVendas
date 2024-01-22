@@ -201,7 +201,7 @@ end;
 
 procedure TTelaPrincipal.btnInicioClick(Sender: TObject);
 begin
-  uControladorProduto.AtualizarListaProdutos(DataSource);
+  uControladorProduto.CarregarProdutosResumidos(DataSource);
   VerificacaoParent;
 end;
 
@@ -314,14 +314,14 @@ begin
 
   if TextoPesquisa.IsEmpty then
   begin
-    uControladorProduto.AtualizarListaProdutos(DataSource);
+    uControladorProduto.CarregarProdutosResumidos(DataSource);
   end;
 
 end;
 
 procedure TTelaPrincipal.SearchBoxInvokeSearch(Sender: TObject);
 begin
-  uControladorProduto.PesquisarNome(SearchBox.Text, DataSource);
+  uControladorProduto.PesquisarPorNomePrincipal(SearchBox.Text, DataSource);
 end;
 
 procedure TTelaPrincipal.VerificacaoParent;

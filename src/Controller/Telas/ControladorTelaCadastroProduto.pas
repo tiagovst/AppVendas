@@ -82,7 +82,12 @@ end;
 
 
 procedure TControladorTelaCadastroProduto.PreencherTelaEditarProduto;
+var
+  formatoData: TFormatSettings;
+  DataString: String;
 begin
+  formatoData := TFormatSettings.Create;
+
   with FTelaCadastroProduto, produtoSelecionado do
   begin
     txtNomeProduto.Text := Nome;
@@ -95,14 +100,16 @@ begin
     txtFornecedor.Text := Fornecedor;
     txtCodigoBarras.Text := CodigoBarras;
 
-    if (DataValidade = StrToDate('30/12/1899')) then
+    DataString := FormatDateTime(formatoData.ShortDateFormat, EncodeDate(1899, 12, 30));
+
+    if DataString.Equals(txtValidade.Text) then
     begin
       txtValidade.Text := '';
       CheckBox1.Checked := True;
     end
     else
     begin
-      txtValidade.Text := DateToStr(DataValidade);
+      txtValidade.Text := FormatDateTime('dd/mm/yyyy', DataValidade);
     end;
   end;
 end;

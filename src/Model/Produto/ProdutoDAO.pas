@@ -16,6 +16,8 @@ uses
 type
   TProdutoDAO = class(TInterfacedObject, IProdutoDAO)
     SQLQuery: TFDQuery;
+    DataString: String;
+    formatoData: TFormatSettings;
 
   public
     function gerarID: Integer;
@@ -29,6 +31,7 @@ type
     procedure PesquisarPorFiltro(Filtro : String; DataSource: TDataSource);
     procedure CarregarProdutosResumidos(DataSource : TDataSource);
     procedure AtualizarListaProdutos(DataSource: TDataSource);
+    procedure PesquisarPorNomePrincipal(Nome: String; DataSource: TDataSource);
 
   end;
 
@@ -43,16 +46,19 @@ function TProdutoDAO.Alterar(Produto: TProduto; out erro: String): Boolean;
 begin
   SQLQuery := TFDQuery.Create(nil);
 
+  formatoData := TFormatSettings.Create;
+  DataString := FormatDateTime(formatoData.ShortDateFormat, EncodeDate(1899, 12, 30));
+
   with SQLQuery, Produto do
   begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
-    if (DataValidade = StrToDate('30/12/1899')) then
+    if DataString.Equals(DateToStr(DataValidade)) then
     begin
       SQL.Text := 'update PRODUTOS set NOME = :NOME, CODIGO_BARRAS = :CODIGO_BARRAS, ' +
       'DESCRICAO = :DESCRICAO, REFERENCIA = :REFERENCIA, PRECO = :PRECO, ' +
       'CATEGORIA = :CATEGORIA, QUANTIDADE_ESTOQUE = :QUANTIDADE_ESTOQUE, ' +
-      'FORNECEDOR = :FORNECEDOR where (ID_PRODUTO = :ID_PRODUTO)';
+      'FORNECEDOR = :FORNECEDOR Ativo = :Ativo where (ID_PRODUTO = :ID_PRODUTO)';
 
       Params.ParamByName('ID_PRODUTO').AsInteger := ID;
       Params.ParamByName('NOME').AsString := Nome;
@@ -63,13 +69,15 @@ begin
       Params.ParamByName('CATEGORIA').AsString := Categoria;
       Params.ParamByName('QUANTIDADE_ESTOQUE').AsFloat := QuantidadeEstoque;
       Params.ParamByName('FORNECEDOR').AsString := Fornecedor;
+      Params.ParamByName('ATIVO').AsInteger := Ativo;
     end
     else
     begin
       SQL.Text := 'update PRODUTOS set NOME = :NOME, CODIGO_BARRAS = :CODIGO_BARRAS, ' +
       'DESCRICAO = :DESCRICAO, REFERENCIA = :REFERENCIA, PRECO = :PRECO, ' +
       'CATEGORIA = :CATEGORIA, QUANTIDADE_ESTOQUE = :QUANTIDADE_ESTOQUE, ' +
-      'FORNECEDOR = :FORNECEDOR, DATA_VALIDADE = :DATA_VALIDADE where (ID_PRODUTO = :ID_PRODUTO)';
+      'FORNECEDOR = :FORNECEDOR, DATA_VALIDADE = :DATA_VALIDADE Ativo = :Ativo ' +
+      'where (ID_PRODUTO = :ID_PRODUTO)';
 
       Params.ParamByName('ID_PRODUTO').AsInteger := ID;
       Params.ParamByName('NOME').AsString := Nome;
@@ -81,6 +89,7 @@ begin
       Params.ParamByName('QUANTIDADE_ESTOQUE').AsFloat := QuantidadeEstoque;
       Params.ParamByName('FORNECEDOR').AsString := Fornecedor;
       Params.ParamByName('DATA_VALIDADE').AsDateTime := DataValidade;
+      Params.ParamByName('ATIVO').AsInteger := Ativo;
     end;
 
     try
@@ -125,7 +134,7 @@ begin
       QuantidadeEstoque := FieldByName('QUANTIDADE_ESTOQUE').AsFloat;
       Fornecedor := FieldByName('FORNECEDOR').AsString;
       DataValidade := FieldByName('DATA_VALIDADE').AsDateTime;
-      Ativo := FieldByName('ATIVO').AsBoolean;
+      Ativo := FieldByName('ATIVO').AsInteger;
 
     finally
       Result := NovoProduto;
@@ -142,7 +151,8 @@ begin
   begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
-    SQL.Text := 'select ID_PRODUTO, NOME, DESCRICAO, PRECO, DATA_VALIDADE from PRODUTOS WHERE (ATIVO = -1)';
+    SQL.Text := 'select ID_PRODUTO, NOME, DESCRICAO, PRECO, DATA_VALIDADE from ' +
+    'PRODUTOS WHERE (ATIVO = -1 and QUANTIDADE_ESTOQUE > 0)';
 
     Open();
   end;
@@ -197,16 +207,19 @@ function TProdutoDAO.Inserir(Produto: TProduto; out erro: String): Boolean;
 begin
   SQLQuery := TFDQuery.Create(nil);
 
+  formatoData := TFormatSettings.Create;
+  DataString := FormatDateTime(formatoData.ShortDateFormat, EncodeDate(1899, 12, 30));
+
   with SQLQuery, Produto do
   begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
-    if (DataValidade = StrToDate('30/12/1899')) then
+    if DataString.Equals(DateToStr(DataValidade)) then
     begin
       SQL.Text := 'update or insert into produtos (ID_PRODUTO, nome, codigo_barras, descricao, ' +
       'referencia, preco, categoria, quantidade_estoque, fornecedor, ativo) ' +
       'values (:ID_PRODUTO, :nome, :codigo_barras, :descricao, :referencia, :preco, :categoria, ' +
-      ':quantidade_estoque, :fornecedor, -1) matching (ID_PRODUTO);';
+      ':quantidade_estoque, :fornecedor, :ativo) matching (ID_PRODUTO);';
 
       Params.ParamByName('ID_PRODUTO').AsInteger := ID;
       Params.ParamByName('NOME').AsString := Nome;
@@ -217,13 +230,14 @@ begin
       Params.ParamByName('CATEGORIA').AsString := Categoria;
       Params.ParamByName('QUANTIDADE_ESTOQUE').AsFloat := QuantidadeEstoque;
       Params.ParamByName('FORNECEDOR').AsString := Fornecedor;
+      Params.ParamByName('ATIVO').AsInteger := Ativo;
     end
     else
     begin
       SQL.Text := 'update or insert into produtos (ID_PRODUTO, nome, codigo_barras, descricao, ' +
       'referencia, preco, categoria, quantidade_estoque, fornecedor, data_validade, ativo) ' +
       'values (:ID_PRODUTO, :nome, :codigo_barras, :descricao, :referencia, :preco, :categoria, ' +
-      ':quantidade_estoque, :fornecedor, :data_validade, -1) matching (ID_PRODUTO);';
+      ':quantidade_estoque, :fornecedor, :data_validade, :ativo) matching (ID_PRODUTO);';
 
       Params.ParamByName('ID_PRODUTO').AsInteger := ID;
       Params.ParamByName('NOME').AsString := Nome;
@@ -235,6 +249,7 @@ begin
       Params.ParamByName('QUANTIDADE_ESTOQUE').AsFloat := QuantidadeEstoque;
       Params.ParamByName('FORNECEDOR').AsString := Fornecedor;
       Params.ParamByName('DATA_VALIDADE').AsDateTime := DataValidade;
+      Params.ParamByName('ATIVO').AsInteger := Ativo;
     end;
 
     try
@@ -250,6 +265,7 @@ begin
   end;
 end;
 
+// Utilizado na tela de estoque
 procedure TProdutoDAO.AtualizarListaProdutos(DataSource: TDataSource);
 begin
   SQLQuery := TFDQuery.Create(nil);
@@ -273,8 +289,8 @@ begin
   with SQLQuery do
   begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
-    SQL.Text := 'SELECT * FROM PRODUTOS WHERE CATEGORIA LIKE :Categoria;';
-    Params.ParamByName('Categoria').AsString := Categoria + '%';
+    SQL.Text := 'SELECT * FROM PRODUTOS WHERE CATEGORIA = :Categoria;';
+    Params.ParamByName('Categoria').AsString := Categoria;
 
     Open();
   end;
@@ -325,6 +341,26 @@ begin
     end;
     DataSource.DataSet := SQLQuery;
   end;
+end;
+
+procedure TProdutoDAO.PesquisarPorNomePrincipal(Nome: String;
+  DataSource: TDataSource);
+begin
+  SQLQuery := TFDQuery.Create(nil);
+
+  with SQLQuery do
+  begin
+    Connection := TConexaoIniciar.varConexao.FDConnection;
+
+    SQL.Text := 'SELECT * FROM PRODUTOS WHERE (NOME LIKE :Nome and Ativo = -1 ' +
+    'and QUANTIDADE_ESTOQUE > 0);';
+    Params.ParamByName('Nome').AsString := Nome + '%';
+
+    Open();
+    First;
+  end;
+
+  DataSource.Dataset := SQLQuery;
 end;
 
 end.

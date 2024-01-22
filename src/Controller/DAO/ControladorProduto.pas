@@ -26,6 +26,7 @@ type
     procedure PesquisarPorFiltro(Filtro : String; DataSource: TDataSource);
     procedure CarregarProdutosResumidos(DataSource : TDataSource);
     procedure AtualizarListaProdutos(DataSource: TDataSource);
+    procedure PesquisarPorNomePrincipal(Nome: String; DataSource: TDataSource);
 
 
   public
@@ -93,6 +94,12 @@ procedure TControladorProduto.PesquisarPorFiltro(Filtro: String;
   DataSource: TDataSource);
 begin
   IProduto.PesquisarPorFiltro(Filtro, DataSource);
+end;
+
+procedure TControladorProduto.PesquisarPorNomePrincipal(Nome: String;
+  DataSource: TDataSource);
+begin
+  IProduto.PesquisarPorNomePrincipal(Nome, DataSource);
 end;
 
 end.
