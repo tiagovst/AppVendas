@@ -48,6 +48,8 @@ begin
   FTelaCadastroProduto.txtID.Visible := True;
   FTelaCadastroProduto.CheckBoxStatus.Enabled := True;
   PreencherTelaEditarProduto;
+  
+  FTelaCadastroProduto.CheckBox1.Enabled := False;
 
   if produtoSelecionado.Ativo = -1 then
   begin
@@ -184,6 +186,7 @@ begin
     Referencia := txtReferencia.Text;
     Preco := StrToFloat(txtPreco.Text);
     Categoria := cbxCategoria.Text;
+    Fornecedor := txtFornecedor.Text;
 
     if (StrToFloat(txtQuantidadeEstoque.Text) > 0) then
     begin
@@ -194,9 +197,9 @@ begin
       ShowMessage('Informe uma quantidade válida do produto!');
     end;
 
-    Fornecedor := txtFornecedor.Text;
     if not FTelaCadastroProduto.CheckBox1.Checked then
       DataValidade := StrToDate(txtValidade.Text);
+
   end;
 
 end;

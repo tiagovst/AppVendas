@@ -140,6 +140,7 @@ begin
   begin
     txtValidade.Enabled := False;
     txtValidade.EditMask := '';
+    txtValidade.Text := '';
   end
   else
   begin

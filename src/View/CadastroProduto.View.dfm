@@ -63,8 +63,6 @@ object TelaCadastroProduto: TTelaCadastroProduto
       Color = 16579321
       ParentBackground = False
       TabOrder = 1
-      ExplicitLeft = 0
-      ExplicitTop = 3
       object GroupBox1: TGroupBox
         AlignWithMargins = True
         Left = 41

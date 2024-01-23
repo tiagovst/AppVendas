@@ -58,7 +58,7 @@ begin
       SQL.Text := 'update PRODUTOS set NOME = :NOME, CODIGO_BARRAS = :CODIGO_BARRAS, ' +
       'DESCRICAO = :DESCRICAO, REFERENCIA = :REFERENCIA, PRECO = :PRECO, ' +
       'CATEGORIA = :CATEGORIA, QUANTIDADE_ESTOQUE = :QUANTIDADE_ESTOQUE, ' +
-      'FORNECEDOR = :FORNECEDOR Ativo = :Ativo where (ID_PRODUTO = :ID_PRODUTO)';
+      'FORNECEDOR = :FORNECEDOR, Ativo = :Ativo where (ID_PRODUTO = :ID_PRODUTO)';
 
       Params.ParamByName('ID_PRODUTO').AsInteger := ID;
       Params.ParamByName('NOME').AsString := Nome;
@@ -76,7 +76,7 @@ begin
       SQL.Text := 'update PRODUTOS set NOME = :NOME, CODIGO_BARRAS = :CODIGO_BARRAS, ' +
       'DESCRICAO = :DESCRICAO, REFERENCIA = :REFERENCIA, PRECO = :PRECO, ' +
       'CATEGORIA = :CATEGORIA, QUANTIDADE_ESTOQUE = :QUANTIDADE_ESTOQUE, ' +
-      'FORNECEDOR = :FORNECEDOR, DATA_VALIDADE = :DATA_VALIDADE Ativo = :Ativo ' +
+      'FORNECEDOR = :FORNECEDOR, DATA_VALIDADE = :DATA_VALIDADE, Ativo = :Ativo ' +
       'where (ID_PRODUTO = :ID_PRODUTO)';
 
       Params.ParamByName('ID_PRODUTO').AsInteger := ID;

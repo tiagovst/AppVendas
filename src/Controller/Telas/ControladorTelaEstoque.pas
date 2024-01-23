@@ -84,12 +84,14 @@ var
   erro: String;
   idProduto : integer;
   ConfirmacaoDialogo: Integer;
+  ProdutoSelecionado: TProduto;
 begin
   ConfirmacaoDialogo := MessageDlg('Deseja realmente excluir o produto selecionado?',
   TMsgDlgType.mtConfirmation, mbYesNo, 0);
 
   if ConfirmacaoDialogo = mrYes then
   begin
+
     idProduto := FTelaEstoque.DBGridProdutos.DataSource.DataSet.FieldByName('ID_PRODUTO').AsInteger;
     if uControladorProduto.Excluir(idProduto, erro) then
     begin
@@ -98,7 +100,12 @@ begin
     end
     else
     begin
-      ShowMessage('Ocorreu um erro ao tentar excluir o produto selecionado!' + sLineBreak + erro);
+      ProdutoSelecionado := uControladorProduto.CarregarProduto(idProduto);
+      ProdutoSelecionado.Ativo := 0;
+      uControladorProduto.Alterar(ProdutoSelecionado, erro);
+      ShowMessage('O produto selecionado possui vendas registradas!' + sLineBreak +
+        'O status do produto foi setado para inativo');
+      FTelaEstoque.DBGridProdutos.DataSource.DataSet.Refresh;
     end;
   end;
 end;
