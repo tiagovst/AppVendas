@@ -9,7 +9,8 @@ uses
   FireDAC.Stan.Param,
   System.SysUtils,
   Data.DB,
-  ConexaoIniciar;
+  ConexaoIniciar,
+  SessaoUsuario;
 
 type
   TVendaDAO = class(TInterfacedObject, IVendaDAO)
@@ -26,7 +27,7 @@ type
       procedure Pesquisar();
       procedure PesquisarVendedor(ID : Integer);
       procedure CarregarVenda(Venda: TVenda; ID: Integer);
-      procedure AtualizarListaVendas(DataSource : TDataSource);
+      procedure AtualizarListaVendas(DataSource : TDataSource; TipoUsuario: String);
   end;
 
 var
@@ -36,7 +37,7 @@ implementation
 
 { TVendaDAO }
 
-procedure TVendaDAO.AtualizarListaVendas(DataSource: TDataSource);
+procedure TVendaDAO.AtualizarListaVendas(DataSource: TDataSource; TipoUsuario: String);
 begin
   SQLQuery := TFDQuery.Create(nil);
 
@@ -44,7 +45,15 @@ begin
   begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
-    SQL.Text := 'SELECT * FROM VENDA;';
+    if TipoUsuario.Equals('adm') then
+    begin
+      SQL.Text := 'SELECT * FROM VENDA;';
+    end
+    else
+    begin
+      SQL.Text := 'SELECT * FROM VENDA where VENDEDOR = :Vendedor';
+      Params.ParamByName('VENDEDOR').AsInteger := TSessaoUsuario.id;
+    end;
     Open();
   end;
 

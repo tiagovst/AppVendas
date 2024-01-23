@@ -21,7 +21,8 @@ uses
   ControladorProduto,
   ControladorProdutoInterface,
   ControladorTelaCheckout,
-  ControladorTelaCheckoutInterface;
+  ControladorTelaCheckoutInterface,
+  SessaoUsuario;
 
 type
   TControladorTelaVendas = class(TInterfacedObject, IControladorTelaVendas)
@@ -155,8 +156,17 @@ begin
   FTelaVendas.btnImprimir.Action := AcaoBtnImprimirRelatorio;
 
   uControladorVendaDAO := TControladorVenda.Create;
-  uControladorVendaDAO.AtualizarListaVendas(FTelaVendas.DBGridVendas.DataSource);
 
+  if TSessaoUsuario.cargo.Equals('Administrador') then
+  begin
+    uControladorVendaDAO.AtualizarListaVendas(FTelaVendas.DBGridVendas.DataSource,
+    'adm');
+  end
+  else
+  begin
+    uControladorVendaDAO.AtualizarListaVendas(FTelaVendas.DBGridVendas.DataSource,
+    'outro');
+  end;
   FTelaVendas.frxDBDataset.DataSet := FTelaVendas.DBGridVendas.DataSource.DataSet;
 
   CalcularTotamEmVendas;

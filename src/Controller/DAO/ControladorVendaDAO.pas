@@ -27,7 +27,7 @@ type
     procedure Pesquisar();
     procedure PesquisarVendedor(ID : Integer);
     procedure CarregarVenda(Venda: TVenda; ID: Integer);
-    procedure AtualizarListaVendas(DataSource : TDataSource);
+    procedure AtualizarListaVendas(DataSource : TDataSource; TipoUsuario: String);
 
   public
     constructor Create;
@@ -48,9 +48,9 @@ begin
   Result := Date;
 end;
 
-procedure TControladorVenda.AtualizarListaVendas(DataSource: TDataSource);
+procedure TControladorVenda.AtualizarListaVendas(DataSource: TDataSource; TipoUsuario: String);
 begin
-  IVenda.AtualizarListaVendas(DataSource);
+  IVenda.AtualizarListaVendas(DataSource, TipoUsuario);
 end;
 
 procedure TControladorVenda.CarregarVenda(Venda: TVenda; ID: Integer);
