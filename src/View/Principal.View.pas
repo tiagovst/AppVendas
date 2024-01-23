@@ -381,8 +381,9 @@ begin
   begin
     btnClientes.Enabled := True;
     btnCadastrarProduto.Enabled := False;
-    btnVendas.Enabled := False;
+    btnVendas.Enabled := True;
     btnUsuarios.Enabled := False;
+    btnFinalizarCompra.Enabled := True;
   end
   else
   begin

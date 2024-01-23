@@ -39,12 +39,10 @@ var
 begin
   SQLQuery := TFDQuery.Create(nil);
   ArrayItemVenda := TList<TItemVenda>.Create;
-  uITemVenda := TItemVenda.Create;
 
-  with SQLQuery, uItemVenda do
+  with SQLQuery do
   begin
     try
-
       Connection := TConexaoIniciar.varConexao.FDConnection;
       SQL.Text := 'SELECT * FROM ITEM_VENDA WHERE (ID_VENDA = :ID_VENDA)';
       Params.ParamByName('ID_VENDA').AsInteger := IDVendaSelecionada;
@@ -52,22 +50,25 @@ begin
 
       while not Eof do
       begin
+        uITemVenda := TItemVenda.Create;
+        with uItemVenda do
+        begin
 
-        Id := FieldByName('ID').AsInteger;
-        IdVenda := FieldByName('ID_VENDA').AsInteger;
-        IdProduto := FieldByName('ID_PRODUTO').AsInteger;
-        Preco := FieldByName('PRECO').AsFloat;
-        Quantidade := FieldByName('QUANTIDADE').AsInteger;
-        Desconto := FieldByName('DESCONTO').AsInteger;
-        Subtotal := FieldByName('SUBTOTAL').AsFloat;
+          Id := FieldByName('ID').AsInteger;
+          IdVenda := FieldByName('ID_VENDA').AsInteger;
+          IdProduto := FieldByName('ID_PRODUTO').AsInteger;
+          Preco := FieldByName('PRECO').AsFloat;
+          Quantidade := FieldByName('QUANTIDADE').AsInteger;
+          Desconto := FieldByName('DESCONTO').AsInteger;
+          Subtotal := FieldByName('SUBTOTAL').AsFloat;
 
-        ArrayItemVenda.Add(uItemVenda);
-        Next;
+          ArrayItemVenda.Add(uItemVenda);
+          Next;
+        end;
       end;
 
     finally
       Result := ArrayItemVenda;
-      FreeAndNil(uItemVenda);
       FreeAndNil(SQLQuery);
     end;
   end;

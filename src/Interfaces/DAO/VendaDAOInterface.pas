@@ -17,7 +17,7 @@ type
   procedure Pesquisar();
   procedure PesquisarVendedor(ID : Integer);
   procedure CarregarVenda(Venda: TVenda; ID: Integer);
-  procedure AtualizarListaVendas(DataSource : TDataSource);
+  procedure AtualizarListaVendas(DataSource : TDataSource; TipoUsuario: String);
 
   end;
 
