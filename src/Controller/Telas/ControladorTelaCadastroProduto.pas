@@ -156,6 +156,9 @@ end;
 procedure TControladorTelaCadastroProduto.PreencherProduto(ProdutoVazio: TProduto);
 var
   ProdutoId: String;
+  DataProduto : String;
+  ArrayDataProduto : TArray<System.string>;
+  FormatoData : TFormatSettings;
 begin
   ProdutoId := FTelaCadastroProduto.txtID.Text;
   uControladorProduto := TControladorProduto.Create;
@@ -197,8 +200,13 @@ begin
       ShowMessage('Informe uma quantidade válida do produto!');
     end;
 
+    DataProduto := txtValidade.Text;
+    ArrayDataProduto := DataProduto.Split(['/']);
+
+    DataProduto := FormatDateTime(formatoData.ShortDateFormat, EncodeDate(
+    ArrayDataProduto[2].ToInteger, ArrayDataProduto[1].ToInteger, ArrayDataProduto[0].ToInteger));
     if not FTelaCadastroProduto.CheckBox1.Checked then
-      DataValidade := StrToDate(txtValidade.Text);
+      DataValidade := StrToDate(DataProduto);
 
   end;
 

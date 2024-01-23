@@ -22,7 +22,8 @@ uses
   ControladorProdutoInterface,
   ControladorTelaCheckout,
   ControladorTelaCheckoutInterface,
-  SessaoUsuario;
+  SessaoUsuario,
+  Produto;
 
 type
   TControladorTelaVendas = class(TInterfacedObject, IControladorTelaVendas)
@@ -55,6 +56,7 @@ var
   uArrayItemVenda: TList<TItemVenda>;
   uControladorCompra: IControladorCompra;
   uControladorProduto: IControladorProduto;
+  uProduto: TProduto;
 begin
   uArrayItemVenda := TList<TItemVenda>.Create;
   uControladorItemVendaDAO := TControladorItemVenda.Create;
@@ -67,8 +69,18 @@ begin
 
   for item in uArrayItemVenda do
   begin
-    uControladorCompra.AdicionarProduto(uControladorProduto.
-    CarregarProduto(item.IdProduto), item.Quantidade, item.Subtotal);
+    uProduto := uControladorProduto.CarregarProduto(item.IdProduto);
+
+    if uProduto.Ativo = -1 then
+    begin
+      uControladorCompra.AdicionarProduto(uProduto, item.Quantidade, (item.Preco * item.Quantidade));
+    end
+    else
+    begin
+      ShowMessage('Produto ' + uProduto.Nome + ' não está mais disponível.' +
+      sLineBreak + 'Verifique o estoque para mais informações!');
+      Exit;
+    end;
   end;
 
   uControladorTelaCheckout := TControladorTelaCheckout.Create(uControladorCompra);

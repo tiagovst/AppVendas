@@ -22,13 +22,11 @@ type
     uUsuario: TUsuario;
     uControladorUsuarioDAO: IControladorUsuario;
     CargoSelecionado: String;
-    criacaoEdicao: Integer;
 
     AcaoBtnCancelar, AcaoBtnSalvar, AcaoRbAdm, AcaoRbGestor, AcaoRbVendedor: TAction;
 
     procedure AcaoBtnCancelarClick(Sender: TObject);
     procedure AcaoBtnSalvarClick(Sender: TObject);
-    procedure AcaoBtnSalvarEdicaoClick(Sender: TObject);
     procedure AcaoRbAdmClick(Sender: TObject);
     procedure AcaoRbGestorClick(Sender: TObject);
     procedure AcaoRbVendedorClick(Sender: TObject);
@@ -39,7 +37,6 @@ type
     procedure ConfiguracaoEventos;
   public
     constructor Create(Parent: TWinControl) overload;
-    constructor Create(Usuario: TUsuario) overload;
     constructor Create overload;
 
   end;
@@ -72,26 +69,6 @@ begin
 
 end;
 
-procedure TControladorTelaManejoUsuario.AcaoBtnSalvarEdicaoClick(
-  Sender: TObject);
-var
-  erro: String;
-begin
-  PreecherUsuario;
-
-  if uControladorUsuarioDAO.Alterar(uUsuario, erro) then
-  begin
-    ShowMessage('Usuário alterado com sucesso!');
-    FecharTela;
-  end
-  else
-  begin
-    ShowMessage('Não foi possível alterar o usuário.' + sLineBreak +
-    'Verifique todos os campos e tente novamente!');
-  end;
-
-end;
-
 procedure TControladorTelaManejoUsuario.AcaoRbAdmClick(Sender: TObject);
 begin
   CargoSelecionado := AcaoRbAdm.Caption;
@@ -118,14 +95,7 @@ begin
 
     AcaoBtnSalvar := TAction.Create(nil);
     AcaoBtnSalvar.Caption := 'Salvar';
-    if criacaoEdicao = 1 then
-    begin
-      AcaoBtnSalvar.OnExecute := AcaoBtnSalvarEdicaoClick;
-    end
-    else
-    begin
-      AcaoBtnSalvar.OnExecute := AcaoBtnSalvarClick;
-    end;
+    AcaoBtnSalvar.OnExecute := AcaoBtnSalvarClick;
     BtnSalvar.Action := AcaoBtnSalvar;
 
     AcaoRbAdm := TAction.Create(nil);
@@ -155,42 +125,6 @@ begin
 
   FManejoUsuario.BorderStyle := bsSingle;
   ConfiguracaoEventos;
-  MostrarTela;
-end;
-
-constructor TControladorTelaManejoUsuario.Create(Usuario: TUsuario);
-begin
-  uControladorUsuarioDAO := TControladorUsuario.Create;
-  criacaoEdicao := 1;
-
-  FManejoUsuario := TTelaManejoUsuario.Create(nil);
-  FManejoUsuario.BorderStyle := bsSingle;
-
-  ConfiguracaoEventos;
-
-  with FManejoUsuario, Usuario do
-  begin
-    lblNome.Text := Nome;
-    lblEmail.Text := Email;
-    lblSenha.Text := Senha;
-    lblUsuario.Text := NomeUsuario;
-    lblTelefone.Text := Telefone;
-    lblCPF.Text := CPF;
-    txtID.Text := ID.ToString;
-
-    if Cargo.Equals('Administrador') then
-    begin
-      rbAdm.Checked := True;
-    end
-    else if Cargo.Equals('Vendedor') then
-    begin
-      rbVendedor.Checked := True;
-    end
-    else if Cargo.Equals('Gestor de Estoque') then
-    begin
-      rbGestor.Checked := True;
-    end;
-  end;
   MostrarTela;
 end;
 
@@ -234,16 +168,7 @@ begin
     Cargo := CargoSelecionado;
     Telefone := lblTelefone.Text;
     NomeUsuario := lblUsuario.Text;
-
-    if criacaoEdicao = 1 then
-    begin
-      ID := StrToInt(txtID.Text);
-    end
-    else
-    begin
-      ID := uControladorUsuarioDAO.gerarID;
-    end;
-
+    ID := uControladorUsuarioDAO.gerarID;
   end;
 end;
 

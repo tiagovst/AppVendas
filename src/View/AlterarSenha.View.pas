@@ -17,6 +17,7 @@ type
     SpeedButton1: TSpeedButton;
     ImageList: TImageList;
     procedure SpeedButton1Click(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
   private
     //visivel: Boolean;
   end;
@@ -27,6 +28,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TTelaAlterarSenha.btnCancelarClick(Sender: TObject);
+begin
+  Close;
+end;
 
 procedure TTelaAlterarSenha.SpeedButton1Click(Sender: TObject);
 begin

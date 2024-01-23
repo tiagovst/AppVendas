@@ -1,9 +1,8 @@
-object TelaManejoUsuario: TTelaManejoUsuario
+object TelaEditarUsuario: TTelaEditarUsuario
   Left = 0
   Top = 0
-  BorderStyle = bsNone
-  Caption = 'Manejo de Usuarios'
-  ClientHeight = 558
+  Caption = 'Editar Usu'#225'rio'
+  ClientHeight = 554
   ClientWidth = 747
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,11 +16,13 @@ object TelaManejoUsuario: TTelaManejoUsuario
     Left = 0
     Top = 96
     Width = 747
-    Height = 421
+    Height = 417
     Align = alClient
     Color = 16579321
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = -68
+    ExplicitHeight = 421
     object GroupBox1: TGroupBox
       Left = 37
       Top = 25
@@ -50,6 +51,19 @@ object TelaManejoUsuario: TTelaManejoUsuario
         Width = 46
         Height = 23
         Caption = 'Cargo'
+      end
+      object Label4: TLabel
+        Left = 39
+        Top = 101
+        Width = 35
+        Height = 17
+        Caption = 'Senha'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
       end
       object lblNome: TLabeledEdit
         Left = 39
@@ -242,41 +256,33 @@ object TelaManejoUsuario: TTelaManejoUsuario
         Text = ''
         Visible = False
       end
-      object lblSenha: TLabeledEdit
+      object btnAlterarSenha: TButton
         Left = 39
         Top = 120
-        Width = 220
+        Width = 112
         Height = 25
-        EditLabel.Width = 35
-        EditLabel.Height = 17
-        EditLabel.Caption = 'Senha'
-        EditLabel.Font.Charset = DEFAULT_CHARSET
-        EditLabel.Font.Color = clMenuHighlight
-        EditLabel.Font.Height = -13
-        EditLabel.Font.Name = 'Segoe UI'
-        EditLabel.Font.Style = []
-        EditLabel.ParentFont = False
+        Caption = 'Alterar Senha'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        PasswordChar = '*'
         TabOrder = 9
-        Text = ''
       end
     end
   end
   object pnlBottom: TPanel
     Left = 0
-    Top = 517
+    Top = 513
     Width = 747
     Height = 41
     Align = alBottom
     Color = 16579321
     ParentBackground = False
     TabOrder = 1
+    ExplicitLeft = -68
+    ExplicitTop = 476
     DesignSize = (
       747
       41)
@@ -288,7 +294,6 @@ object TelaManejoUsuario: TTelaManejoUsuario
       Anchors = [akRight, akBottom]
       Caption = 'Cancelar'
       TabOrder = 0
-      OnClick = btnCancelarClick
     end
     object btnSalvar: TButton
       Left = 664
@@ -309,6 +314,7 @@ object TelaManejoUsuario: TTelaManejoUsuario
     Color = 16579321
     ParentBackground = False
     TabOrder = 2
+    ExplicitLeft = -68
     object Label1: TLabel
       Left = 93
       Top = 40

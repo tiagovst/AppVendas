@@ -1,18 +1,15 @@
-unit ManejoUsuario.View;
+unit EditarUsuario.View;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls,
-  Vcl.Imaging.pngimage;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
+  Vcl.StdCtrls, Vcl.Mask;
 
 type
-  TTelaManejoUsuario = class(TForm)
-    pnlBottom: TPanel;
+  TTelaEditarUsuario = class(TForm)
     pnlCenter: TPanel;
-    btnCancelar: TButton;
-    btnSalvar: TButton;
     GroupBox1: TGroupBox;
     Label2: TLabel;
     lblNome: TLabeledEdit;
@@ -23,13 +20,16 @@ type
     rbAdm: TRadioButton;
     rbVendedor: TRadioButton;
     rbGestor: TRadioButton;
+    txtID: TLabeledEdit;
+    pnlBottom: TPanel;
+    btnCancelar: TButton;
+    btnSalvar: TButton;
     pnlTop: TPanel;
     Label1: TLabel;
     Label3: TLabel;
     Image: TImage;
-    txtID: TLabeledEdit;
-    lblSenha: TLabeledEdit;
-    procedure btnCancelarClick(Sender: TObject);
+    Label4: TLabel;
+    btnAlterarSenha: TButton;
   private
     { Private declarations }
   public
@@ -37,15 +37,10 @@ type
   end;
 
 var
-  TelaManejoUsuario: TTelaManejoUsuario;
+  TelaEditarUsuario: TTelaEditarUsuario;
 
 implementation
 
 {$R *.dfm}
-
-procedure TTelaManejoUsuario.btnCancelarClick(Sender: TObject);
-begin
-  Close;
-end;
 
 end.

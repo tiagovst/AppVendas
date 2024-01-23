@@ -3,28 +3,25 @@ object TelaAlterarSenha: TTelaAlterarSenha
   Top = 0
   BorderStyle = bsDialog
   Caption = 'Alterar senha'
-  ClientHeight = 288
-  ClientWidth = 517
+  ClientHeight = 287
+  ClientWidth = 513
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poScreenCenter
   TextHeight = 15
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 517
-    Height = 288
+    Width = 513
+    Height = 287
     Align = alClient
     Color = 16579321
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 48
-    ExplicitTop = 72
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object Label1: TLabel
       Left = 184
       Top = 56
@@ -55,6 +52,7 @@ object TelaAlterarSenha: TTelaAlterarSenha
       Height = 25
       Caption = 'Cancelar'
       TabOrder = 0
+      OnClick = btnCancelarClick
     end
     object btnSalvar: TButton
       Left = 272

@@ -14,7 +14,9 @@ uses
   ControladorTelaManejoUsuario,
   ControladorTelaManejoUsuarioInterface,
   ControladorUsuario,
-  ControladorUsuarioInterface;
+  ControladorUsuarioInterface,
+  ControladorTelaEditarUsuarioInterface,
+  ControladorTelaEditarUsuario;
 
 type
   TControladorTelaListagemUsuario = class(TInterfacedObject, IControladorTelaListagemUsuario)
@@ -42,6 +44,7 @@ implementation
 
 procedure TControladorTelaListagemUsuario.AcaoBtnEditarClick(Sender: TObject);
 var
+  uControladorTelaEditarUsuario: IControladorTelaEditarUsuario;
   uUsuario: TUsuario;
   IDUsuarioSelecionado : Integer;
 begin
@@ -54,7 +57,7 @@ begin
     uUsuario := uControladorUsuarioDAO.CarregarPessoa(IDUsuarioSelecionado);
   end;
 
-  uControladorTelaManejoUsuario := TControladorTelaManejoUsuario.Create(uUsuario);
+  uControladorTelaEditarUsuario := TControladorTelaEditarUsuario.Create(uUsuario);
 end;
 
 procedure TControladorTelaListagemUsuario.AcaoBtnExcluirClick(Sender: TObject);

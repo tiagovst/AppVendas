@@ -245,9 +245,9 @@ object TelaPrincipal: TTelaPrincipal
     end
     object pnlBotoes: TPanel
       Left = 0
-      Top = 96
+      Top = 134
       Width = 185
-      Height = 193
+      Height = 185
       BevelOuter = bvNone
       TabOrder = 2
       object btnClientes: TSpeedButton
@@ -430,7 +430,7 @@ object TelaPrincipal: TTelaPrincipal
     end
     object pnlSubmenuProdutos: TPanel
       Left = 0
-      Top = 134
+      Top = 171
       Width = 183
       Height = 76
       BevelKind = bkFlat
@@ -467,7 +467,7 @@ object TelaPrincipal: TTelaPrincipal
     end
     object pnlSubmenuClientes: TPanel
       Left = 0
-      Top = 171
+      Top = 208
       Width = 183
       Height = 75
       BevelKind = bkFlat
@@ -507,7 +507,7 @@ object TelaPrincipal: TTelaPrincipal
     end
     object pnlSubmenuUsuarios: TPanel
       Left = 0
-      Top = 244
+      Top = 282
       Width = 183
       Height = 77
       BevelKind = bkFlat
