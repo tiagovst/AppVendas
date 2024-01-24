@@ -74,9 +74,9 @@ object TelaListagemUsuario: TTelaListagemUsuario
         TitleFont.Style = []
       end
       object GroupBox1: TGroupBox
-        Left = 464
+        Left = 552
         Top = 17
-        Width = 417
+        Width = 329
         Height = 88
         Anchors = [akTop, akRight]
         Caption = 'A'#231#245'es'
@@ -128,21 +128,6 @@ object TelaListagemUsuario: TTelaListagemUsuario
           Font.Style = []
           ParentFont = False
           TabOrder = 2
-        end
-        object btnAtualizar: TButton
-          Left = 318
-          Top = 40
-          Width = 75
-          Height = 25
-          Caption = 'Atualizar'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 3
-          OnClick = btnAtualizarClick
         end
       end
     end

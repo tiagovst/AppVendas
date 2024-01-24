@@ -278,7 +278,7 @@ object TelaEstoque: TTelaEstoque
     end
     object btnCadastrar: TButton
       Left = 952
-      Top = 104
+      Top = 80
       Width = 121
       Height = 25
       Caption = 'Cadastrar produto'
@@ -286,19 +286,11 @@ object TelaEstoque: TTelaEstoque
     end
     object btnExluir: TButton
       Left = 816
-      Top = 104
+      Top = 80
       Width = 121
       Height = 25
       Caption = 'Excluir'
       TabOrder = 5
-    end
-    object btnAtualizar: TButton
-      Left = 816
-      Top = 69
-      Width = 257
-      Height = 25
-      Caption = 'Atualizar'
-      TabOrder = 6
     end
   end
   object DataSourceProdutos: TDataSource

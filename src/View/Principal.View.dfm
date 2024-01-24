@@ -524,6 +524,7 @@ object TelaPrincipal: TTelaPrincipal
       Height = 41
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 5
+      ExplicitWidth = 805
       DesignSize = (
         809
         41)
@@ -537,6 +538,7 @@ object TelaPrincipal: TTelaPrincipal
         TextHint = 'Pesquisar produto'
         OnChange = SearchBoxChange
         OnInvokeSearch = SearchBoxInvokeSearch
+        ExplicitLeft = 151
       end
     end
   end

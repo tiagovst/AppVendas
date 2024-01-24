@@ -126,7 +126,7 @@ object TelaManejoUsuario: TTelaManejoUsuario
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        TabOrder = 2
+        TabOrder = 3
         Text = ''
       end
       object lblTelefone: TLabeledEdit
@@ -152,7 +152,7 @@ object TelaManejoUsuario: TTelaManejoUsuario
         MaxLength = 14
         NumbersOnly = True
         ParentFont = False
-        TabOrder = 3
+        TabOrder = 4
         Text = '(  )     -    '
       end
       object lblCPF: TLabeledEdit
@@ -178,7 +178,7 @@ object TelaManejoUsuario: TTelaManejoUsuario
         MaxLength = 14
         NumbersOnly = True
         ParentFont = False
-        TabOrder = 4
+        TabOrder = 5
         Text = '   .   .   -  '
       end
       object rbAdm: TRadioButton
@@ -194,7 +194,7 @@ object TelaManejoUsuario: TTelaManejoUsuario
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        TabOrder = 5
+        TabOrder = 6
         TabStop = True
       end
       object rbVendedor: TRadioButton
@@ -209,7 +209,7 @@ object TelaManejoUsuario: TTelaManejoUsuario
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        TabOrder = 6
+        TabOrder = 7
       end
       object rbGestor: TRadioButton
         Left = 295
@@ -223,7 +223,7 @@ object TelaManejoUsuario: TTelaManejoUsuario
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        TabOrder = 7
+        TabOrder = 8
       end
       object txtID: TLabeledEdit
         Left = 392
@@ -247,7 +247,7 @@ object TelaManejoUsuario: TTelaManejoUsuario
         Font.Name = 'Segoe UI'
         Font.Style = []
         ParentFont = False
-        TabOrder = 8
+        TabOrder = 9
         Text = ''
         Visible = False
       end
@@ -272,7 +272,7 @@ object TelaManejoUsuario: TTelaManejoUsuario
         Font.Style = []
         ParentFont = False
         PasswordChar = '*'
-        TabOrder = 9
+        TabOrder = 2
         Text = ''
       end
     end

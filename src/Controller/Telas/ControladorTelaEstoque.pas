@@ -25,7 +25,7 @@ type
       FTelaEstoque : TTelaEstoque;
       uControladorProduto : IControladorProduto;
       uControladorTelaCadastroProduto : IControladorTelaCadastroProduto;
-      AcaoExcluir, AcaoAtualizar, AcaoCadastrarProduto : TAction;
+      AcaoExcluir, AcaoCadastrarProduto : TAction;
       procedure CalcularQuantidadeProdutos;
       procedure PreencherCbxCategorias;
       procedure MostrarTela(parent : TWinControl);
@@ -37,7 +37,6 @@ type
       procedure AcaoComboBoxNivelOnChange(Sender : TObject);
       procedure AcaoSearchBoxNomeProdutoOnChange(Sender : TObject);
       procedure AcaoBtnExcluirClick(Sender: TObject);
-      procedure AcaoBtnAtualizarClick(Sender: TObject);
       procedure AcaoBtnCadastrarProdutoClick(Sender: TObject);
     public
       constructor Create;
@@ -66,17 +65,13 @@ begin
   PreencherCbxCategorias;
 end;
 
-procedure TControladorTelaEstoque.AcaoBtnAtualizarClick(Sender: TObject);
-begin
-  uControladorProduto.AtualizarListaProdutos(FTelaEstoque.DataSourceProdutos);
-  FTelaEstoque.ComboBoxCategoria.ItemIndex := -1;
-  FTelaEstoque.ComboBoxNivel.ItemIndex := -1;
-  FTelaEstoque.DataSourceProdutos.DataSet.Refresh;
-end;
-
 procedure TControladorTelaEstoque.AcaoBtnCadastrarProdutoClick(Sender: TObject);
 begin
-  uControladorTelaCadastroProduto := TControladorTelaCadastroProduto.Create;
+  try
+    uControladorTelaCadastroProduto := TControladorTelaCadastroProduto.Create;
+  finally
+    FTelaEstoque.DBGridProdutos.DataSource.DataSet.Refresh;
+  end;
 end;
 
 procedure TControladorTelaEstoque.AcaoBtnExcluirClick(Sender: TObject);
@@ -130,15 +125,19 @@ procedure TControladorTelaEstoque.AcaoDbGridProdutosOnDblClick(Sender: TObject);
 var
   ProdutoSelecionado : TProduto;
 begin
-  if Assigned(FTelaEstoque.DBGridProdutos.DataSource.DataSet) then
-  begin
-    ProdutoSelecionado := uControladorProduto.CarregarProduto(
-      FTelaEstoque.DBGridProdutos.DataSource.DataSet.FieldByName('ID_PRODUTO').AsInteger);
-  end;
+  try
+    if Assigned(FTelaEstoque.DBGridProdutos.DataSource.DataSet) then
+    begin
+      ProdutoSelecionado := uControladorProduto.CarregarProduto(
+        FTelaEstoque.DBGridProdutos.DataSource.DataSet.FieldByName('ID_PRODUTO').AsInteger);
+    end;
 
-  uControladorTelaCadastroProduto :=
-    TControladorTelaCadastroProduto.CreateEditarProduto(ProdutoSelecionado);
-  FreeAndNil(ProdutoSelecionado);
+    uControladorTelaCadastroProduto :=
+      TControladorTelaCadastroProduto.CreateEditarProduto(ProdutoSelecionado);
+  finally
+    FTelaEstoque.DBGridProdutos.DataSource.DataSet.Refresh;
+    FreeAndNil(ProdutoSelecionado);
+  end;
 end;
 
 procedure TControladorTelaEstoque.AcaoSearchBoxNomeProdutoOnChange(
@@ -167,21 +166,17 @@ end;
 procedure TControladorTelaEstoque.ConfiguracaoEventosBotoes;
 begin
   AcaoExcluir := TAction.Create(nil);
-  AcaoAtualizar := TAction.Create(nil);
   AcaoCadastrarProduto := TAction.Create(nil);
 
   AcaoExcluir.OnExecute := AcaoBtnExcluirClick;
-  AcaoAtualizar.OnExecute := AcaoBtnAtualizarClick;
   AcaoCadastrarProduto.OnExecute := AcaoBtnCadastrarProdutoClick;
 
   AcaoExcluir.Caption := 'Excluir';
-  AcaoAtualizar.Caption := 'Atualizar';
   AcaoCadastrarProduto.Caption := 'Cadastrar produto';
 
   with FTelaEstoque do
   begin
     btnExluir.Action := AcaoExcluir;
-    btnAtualizar.Action := AcaoAtualizar;
     btnCadastrar.Action := AcaoCadastrarProduto;
     ComboBoxNivel.OnChange := AcaoComboBoxNivelOnChange;
     ComboBoxCategoria.OnChange := AcaoComboBoxCategoriaOnChange;

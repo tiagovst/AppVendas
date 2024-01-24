@@ -125,7 +125,7 @@ begin
 
   FManejoUsuario.BorderStyle := bsSingle;
   ConfiguracaoEventos;
-  MostrarTela;
+  FManejoUsuario.ShowModal;
 end;
 
 constructor TControladorTelaManejoUsuario.Create(Parent: TWinControl);

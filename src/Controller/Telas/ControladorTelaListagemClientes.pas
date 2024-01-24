@@ -65,16 +65,21 @@ var
   Cliente: TCliente;
   IdentificadorClienteSelecionado: String;
 begin
-  Cliente := TCliente.Create;
-  IdentificadorClienteSelecionado := FTelaListagemClientes.DataSourceClientes.
-  DataSet.FieldByName('IDENTIFICADOR').AsString;
+  try
+    Cliente := TCliente.Create;
+    IdentificadorClienteSelecionado := FTelaListagemClientes.DataSourceClientes.
+    DataSet.FieldByName('IDENTIFICADOR').AsString;
 
-  Cliente := uControladorClienteDAO.CarregarCliente(IdentificadorClienteSelecionado);
+    Cliente := uControladorClienteDAO.CarregarCliente(IdentificadorClienteSelecionado);
 
-  Cliente.Identificador := FormatarIdentificador(Cliente.Identificador);
-  uControladorTelaManejoCliente := TControladorTelaManejoCliente.Create(Cliente);
+    Cliente.Identificador := FormatarIdentificador(Cliente.Identificador);
+    uControladorTelaManejoCliente := TControladorTelaManejoCliente.Create(Cliente);
 
-  FreeAndNil(Cliente);
+
+  finally
+    FTelaListagemClientes.gridClientes.DataSource.DataSet.Refresh;
+    FreeAndNil(Cliente);
+  end;
 end;
 
 procedure TControladorTelaListagemClientes.AcaoBtnExcluirClick(Sender : TObject);
@@ -104,7 +109,11 @@ end;
 
 procedure TControladorTelaListagemClientes.AcaoBtnNovoClienteClick(Sender : TObject);
 begin
-  uControladorTelaManejoCliente := TControladorTelaManejoCliente.Create;
+  try
+    uControladorTelaManejoCliente := TControladorTelaManejoCliente.Create;
+  finally
+    FTelaListagemClientes.gridClientes.DataSource.DataSet.Refresh;
+  end;
 end;
 
 procedure TControladorTelaListagemClientes.FecharTela;

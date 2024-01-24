@@ -50,14 +50,18 @@ var
 begin
   uUsuario := TUsuario.Create;
 
-  with FListagemUsuario do
-  begin
-    IDUsuarioSelecionado := FListagemUsuario.gridProdutos.DataSource.DataSet.FieldByName('ID').AsInteger;
+  try
+    with FListagemUsuario do
+    begin
+      IDUsuarioSelecionado := FListagemUsuario.gridProdutos.DataSource.DataSet.FieldByName('ID').AsInteger;
 
-    uUsuario := uControladorUsuarioDAO.CarregarPessoa(IDUsuarioSelecionado);
+      uUsuario := uControladorUsuarioDAO.CarregarPessoa(IDUsuarioSelecionado);
+    end;
+
+    uControladorTelaEditarUsuario := TControladorTelaEditarUsuario.Create(uUsuario);
+  finally
+    FListagemUsuario.gridProdutos.DataSource.DataSet.Refresh;
   end;
-
-  uControladorTelaEditarUsuario := TControladorTelaEditarUsuario.Create(uUsuario);
 end;
 
 procedure TControladorTelaListagemUsuario.AcaoBtnExcluirClick(Sender: TObject);
@@ -87,7 +91,12 @@ end;
 procedure TControladorTelaListagemUsuario.AcaoBtnNovoUsuarioClick(
   Sender: TObject);
 begin
-  uControladorTelaManejoUsuario := TControladorTelaManejoUsuario.Create;
+  try
+    uControladorTelaManejoUsuario := TControladorTelaManejoUsuario.Create;
+    FListagemUsuario.gridProdutos.DataSource.DataSet.Refresh;
+  finally
+    FListagemUsuario.dsUsuario.DataSet.Refresh;
+  end;
 end;
 
 procedure TControladorTelaListagemUsuario.ConfigurarEventosBotoes;

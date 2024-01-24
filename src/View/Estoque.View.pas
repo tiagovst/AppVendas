@@ -34,7 +34,6 @@ type
     Image: TImage;
     btnCadastrar: TButton;
     btnExluir: TButton;
-    btnAtualizar: TButton;
     DataSourceProdutos: TDataSource;
     private
   end;

@@ -12,7 +12,8 @@ uses
   Vcl.Dialogs,
   ControladorProdutoInterface,
   ControladorProduto,
-  Produto;
+  Produto,
+  SessaoUsuario;
 
 type
   TControladorTelaCadastroProduto = class(TInterfacedObject, IControladorTelaCadastroProduto)
@@ -44,7 +45,6 @@ begin
   produtoSelecionado := produto;
   FTelaCadastroProduto := TTelaCadastroProduto.Create(nil);
   FTelaCadastroProduto.BorderStyle := bsDialog;
-  //FTelaCadastroProduto.Position := poDesktopCenter;
   FTelaCadastroProduto.Label1.Caption := 'Manejo de produto';
   FTelaCadastroProduto.txtID.Visible := True;
   FTelaCadastroProduto.CheckBoxStatus.Enabled := True;
@@ -65,6 +65,16 @@ begin
   ActionBtnSalvar.OnExecute := AcaoSalvar;
   ActionBtnSalvar.Caption := 'Salvar';
   FTelaCadastroProduto.btnSalvar.Action := ActionBtnSalvar;
+
+
+  if TSessaoUsuario.cargo.Equals('Vendedor') then
+  begin
+    FTelaCadastroProduto.btnSalvar.Enabled := False;
+  end
+  else
+  begin
+    FTelaCadastroProduto.btnSalvar.Enabled := True;
+  end;
 
   MostrarTela;
 end;
@@ -167,19 +177,18 @@ var
   CamposNaTela: TArray<string>;
   item: String;
 begin
-  SetLength(CamposNaTela, 7);
+  SetLength(CamposNaTela, 6);
   ProdutoId := FTelaCadastroProduto.txtID.Text;
   uControladorProduto := TControladorProduto.Create;
 
   with FTelaCadastroProduto do
   begin
-    CamposNaTela[0] := txtID.Text;
-    CamposNaTela[1] := txtNomeProduto.Text;
-    CamposNaTela[2] := txtCodigoBarras.Text;
-    CamposNaTela[3] := txtDescricaoProduto.Text;
-    CamposNaTela[4] := txtReferencia.Text;
-    CamposNaTela[5] := txtPreco.Text;
-    CamposNaTela[6] := cbxCategoria.Text;
+    CamposNaTela[0] := txtNomeProduto.Text;
+    CamposNaTela[1] := txtCodigoBarras.Text;
+    CamposNaTela[2] := txtDescricaoProduto.Text;
+    CamposNaTela[3] := txtReferencia.Text;
+    CamposNaTela[4] := txtPreco.Text;
+    CamposNaTela[5] := cbxCategoria.Text;
   end;
 
   for item in CamposNaTela do
@@ -230,13 +239,15 @@ begin
     end;
 
     DataProduto := txtValidade.Text;
-    ArrayDataProduto := DataProduto.Split(['/']);
+    if not DataProduto.IsEmpty then
+    begin
+      ArrayDataProduto := DataProduto.Split(['/']);
 
-    DataProduto := FormatDateTime(formatoData.ShortDateFormat, EncodeDate(
-    ArrayDataProduto[2].ToInteger, ArrayDataProduto[1].ToInteger, ArrayDataProduto[0].ToInteger));
-    if not FTelaCadastroProduto.CheckBox1.Checked then
-      DataValidade := StrToDate(DataProduto);
-
+      DataProduto := FormatDateTime(formatoData.ShortDateFormat, EncodeDate(
+      ArrayDataProduto[2].ToInteger, ArrayDataProduto[1].ToInteger, ArrayDataProduto[0].ToInteger));
+      if not FTelaCadastroProduto.CheckBox1.Checked then
+        DataValidade := StrToDate(DataProduto);
+    end;
   end;
 
   Result := True;

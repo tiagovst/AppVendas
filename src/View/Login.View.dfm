@@ -21,11 +21,12 @@ object TelaLogin: TTelaLogin
     Align = alClient
     BevelOuter = bvNone
     BiDiMode = bdLeftToRight
+    Color = 16579321
     ParentBiDiMode = False
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 562
-    ExplicitHeight = 633
+    ExplicitWidth = 564
+    ExplicitHeight = 641
   end
   object Panel1: TPanel
     Left = 85
@@ -34,12 +35,12 @@ object TelaLogin: TTelaLogin
     Height = 438
     BevelOuter = bvNone
     BiDiMode = bdLeftToRight
-    Color = clWhite
+    Color = 16579321
     ParentBiDiMode = False
     ParentBackground = False
     TabOrder = 1
     object Label1: TLabel
-      Left = 154
+      Left = 148
       Top = 116
       Width = 111
       Height = 28
@@ -52,7 +53,7 @@ object TelaLogin: TTelaLogin
       ParentFont = False
     end
     object ImageLogo: TImage
-      Left = 167
+      Left = 161
       Top = 19
       Width = 81
       Height = 81

@@ -2038,7 +2038,7 @@ object TelaVendas: TTelaVendas
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 45300.672814687500000000
-    ReportOptions.LastChange = 45308.724975023100000000
+    ReportOptions.LastChange = 45315.645626122680000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -2067,80 +2067,6 @@ object TelaVendas: TTelaVendas
       BottomMargin = 10.000000000000000000
       Frame.Typ = []
       MirrorMode = []
-      object ReportTitle1: TfrxReportTitle
-        FillType = ftBrush
-        FillGap.Top = 0
-        FillGap.Left = 0
-        FillGap.Bottom = 0
-        FillGap.Right = 0
-        Frame.Typ = []
-        Height = 75.590600000000000000
-        Top = 18.897650000000000000
-        Width = 718.110700000000000000
-        object Memo1: TfrxMemoView
-          AllowVectorExport = True
-          Left = 268.346632200000000000
-          Top = 22.677178240000000000
-          Width = 207.874150730000000000
-          Height = 22.677181670000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -21
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Relat'#243'rio de Vendas')
-          ParentFont = False
-        end
-        object Page: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 665.197280000000000000
-          Top = 3.779530000000000000
-          Width = 49.133890000000000000
-          Height = 18.897650000000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Page]')
-          ParentFont = False
-        end
-        object Date: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 3.779530000000000000
-          Top = 3.779530000000000000
-          Width = 207.874150000000000000
-          Height = 18.897650000000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[Date]  -  [Time]')
-          ParentFont = False
-          Formats = <
-            item
-              FormatStr = 'dd mmm yyyy'
-              Kind = fkDateTime
-            end
-            item
-            end>
-        end
-      end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         FillGap.Top = 0
@@ -2149,7 +2075,7 @@ object TelaVendas: TTelaVendas
         FillGap.Right = 0
         Frame.Typ = []
         Height = 18.897650000000000000
-        Top = 196.535560000000000000
+        Top = 200.315090000000000000
         Width = 718.110700000000000000
         DataSet = frxDBDataset
         DataSetName = 'vendas'
@@ -2316,8 +2242,167 @@ object TelaVendas: TTelaVendas
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
+        Height = 79.370133510000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          AllowVectorExport = True
+          Left = 268.346632200000000000
+          Top = 30.236238240000000000
+          Width = 207.874150730000000000
+          Height = 22.677181670000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -21
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Relat'#243'rio de Vendas')
+          ParentFont = False
+        end
+        object Page: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 665.197280000000000000
+          Top = 11.338590000000000000
+          Width = 49.133890000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Page]')
+          ParentFont = False
+        end
+        object Date: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 11.338590000000000000
+          Width = 207.874150000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[Date]  -  [Time]')
+          ParentFont = False
+          Formats = <
+            item
+              FormatStr = 'dd mmm yyyy'
+              Kind = fkDateTime
+            end
+            item
+            end>
+        end
+      end
+      object Footer1: TfrxFooter
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 113.385900000000000000
+        Top = 241.889920000000000000
+        Width = 718.110700000000000000
+        object Memo9: TfrxMemoView
+          AllowVectorExport = True
+          Top = 3.779530000000000000
+          Width = 105.826857770000000000
+          Height = 18.897628780000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Itens Vendidos:')
+          ParentFont = False
+        end
+        object Memo10: TfrxMemoView
+          AllowVectorExport = True
+          Top = 22.677158780000000000
+          Width = 117.165447770000000000
+          Height = 18.897674560000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Total em Vendas:')
+          ParentFont = False
+        end
+        object SUM: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 105.826840000000000000
+          Top = 3.779530000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[SUM(<vendas."TOTAL_PRODUTOS">,MasterData1)]')
+          ParentFont = False
+        end
+        object Memo11: TfrxMemoView
+          IndexTag = 1
+          AllowVectorExport = True
+          Left = 117.165430000000000000
+          Top = 22.677180000000000000
+          Width = 158.740260000000000000
+          Height = 18.897650000000000000
+          ContentScaleOptions.Constraints.MaxIterationValue = 0
+          ContentScaleOptions.Constraints.MinIterationValue = 0
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'R$ [SUM(<vendas."TOTAL_PRECO">,MasterData1)]')
+          ParentFont = False
+        end
+      end
+      object Header1: TfrxHeader
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
         Height = 18.897653510000000000
-        Top = 117.165430000000000000
+        Top = 158.740260000000000000
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
           Align = baWidth
@@ -2446,91 +2531,6 @@ object TelaVendas: TTelaVendas
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           Memo.UTF8W = (
             'Cliente')
-          ParentFont = False
-        end
-      end
-      object Footer1: TfrxFooter
-        FillType = ftBrush
-        FillGap.Top = 0
-        FillGap.Left = 0
-        FillGap.Bottom = 0
-        FillGap.Right = 0
-        Frame.Typ = []
-        Height = 113.385900000000000000
-        Top = 238.110390000000000000
-        Width = 718.110700000000000000
-        object Memo9: TfrxMemoView
-          AllowVectorExport = True
-          Top = 3.779530000000000000
-          Width = 105.826857770000000000
-          Height = 18.897628780000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Itens Vendidos:')
-          ParentFont = False
-        end
-        object Memo10: TfrxMemoView
-          AllowVectorExport = True
-          Top = 22.677158780000000000
-          Width = 117.165447770000000000
-          Height = 18.897674560000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = [fsBold]
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'Total em Vendas:')
-          ParentFont = False
-        end
-        object SUM: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 105.826840000000000000
-          Top = 3.779530000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[SUM(<vendas."TOTAL_PRODUTOS">,MasterData1)]')
-          ParentFont = False
-        end
-        object Memo11: TfrxMemoView
-          IndexTag = 1
-          AllowVectorExport = True
-          Left = 117.165430000000000000
-          Top = 22.677180000000000000
-          Width = 158.740260000000000000
-          Height = 18.897650000000000000
-          ContentScaleOptions.Constraints.MaxIterationValue = 0
-          ContentScaleOptions.Constraints.MinIterationValue = 0
-          DisplayFormat.FormatStr = '%2.2n'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            'R$ [SUM(<vendas."TOTAL_PRECO">,MasterData1)]')
           ParentFont = False
         end
       end
