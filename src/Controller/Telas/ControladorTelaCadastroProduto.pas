@@ -27,7 +27,8 @@ type
     procedure MostrarTela;
     procedure FecharTela;
     procedure CadastrarNovoProduto;
-    procedure PreencherProduto(ProdutoVazio: TProduto);
+
+    function PreencherProduto(ProdutoVazio: TProduto): Boolean;
 
   public
     constructor CreateEditarProduto(const produto : TProduto) overload;
@@ -136,32 +137,60 @@ procedure TControladorTelaCadastroProduto.CadastrarNovoProduto;
 var
   NovoProduto : TProduto;
   erro: String;
+  CamposNaTela: TArray<string>;
+  item: String;
 begin
   NovoProduto := TProduto.Create;
-  PreencherProduto(NovoProduto);
-  uControladorProduto := TControladorProduto.Create;
+  if PreencherProduto(NovoProduto) then
+  begin
+    uControladorProduto := TControladorProduto.Create;
 
-  if uControladorProduto.Inserir(NovoProduto, erro) then
-  begin
-    ShowMessage('Produto inserido com sucesso');
-    FecharTela;
-  end
-  else
-  begin
-    ShowMessage('Ocorreu um erro ao cadastrar o produto. Verifique todos os campos e tente novamente');
+    if uControladorProduto.Inserir(NovoProduto, erro) then
+    begin
+      ShowMessage('Produto inserido com sucesso');
+      FecharTela;
+    end
+    else
+    begin
+      ShowMessage('Ocorreu um erro ao cadastrar o produto. Verifique todos os campos e tente novamente');
+    end;
   end;
 
 end;
 
-procedure TControladorTelaCadastroProduto.PreencherProduto(ProdutoVazio: TProduto);
+function TControladorTelaCadastroProduto.PreencherProduto(ProdutoVazio: TProduto): Boolean;
 var
   ProdutoId: String;
   DataProduto : String;
   ArrayDataProduto : TArray<System.string>;
   FormatoData : TFormatSettings;
+  CamposNaTela: TArray<string>;
+  item: String;
 begin
+  SetLength(CamposNaTela, 7);
   ProdutoId := FTelaCadastroProduto.txtID.Text;
   uControladorProduto := TControladorProduto.Create;
+
+  with FTelaCadastroProduto do
+  begin
+    CamposNaTela[0] := txtID.Text;
+    CamposNaTela[1] := txtNomeProduto.Text;
+    CamposNaTela[2] := txtCodigoBarras.Text;
+    CamposNaTela[3] := txtDescricaoProduto.Text;
+    CamposNaTela[4] := txtReferencia.Text;
+    CamposNaTela[5] := txtPreco.Text;
+    CamposNaTela[6] := cbxCategoria.Text;
+  end;
+
+  for item in CamposNaTela do
+  begin
+    if item.IsEmpty then
+    begin
+      ShowMessage('Por favor, preencha todos os campos!');
+      Result := False;
+      Exit;
+    end;
+  end;
 
   with ProdutoVazio, FTelaCadastroProduto do
   begin
@@ -209,6 +238,8 @@ begin
       DataValidade := StrToDate(DataProduto);
 
   end;
+
+  Result := True;
 
 end;
 

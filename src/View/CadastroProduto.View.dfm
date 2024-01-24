@@ -406,6 +406,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
           Font.Name = 'Segoe UI'
           Font.Style = []
           ImeName = 'Portuguese (Brazilian ABNT)'
+          MaxLength = 30
           NumbersOnly = True
           ParentFont = False
           TabOrder = 0

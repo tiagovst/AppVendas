@@ -383,39 +383,13 @@ object TelaPrincipal: TTelaPrincipal
       ParentShowHint = False
       ReadOnly = True
       ShowHint = True
-      TabOrder = 5
+      TabOrder = 4
       TitleFont.Charset = ANSI_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -17
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
       OnDblClick = gridProdutosDblClick
-    end
-    object pnlPesquisa: TPanel
-      Left = 0
-      Top = 0
-      Width = 810
-      Height = 41
-      Align = alTop
-      Color = 16579321
-      ParentBackground = False
-      TabOrder = 0
-      ExplicitWidth = 806
-      DesignSize = (
-        810
-        41)
-      object SearchBox: TSearchBox
-        Left = 312
-        Top = 10
-        Width = 198
-        Height = 23
-        Anchors = [akLeft, akTop, akRight]
-        TabOrder = 0
-        TextHint = 'Pesquisar produto'
-        OnChange = SearchBoxChange
-        OnInvokeSearch = SearchBoxInvokeSearch
-        ExplicitWidth = 194
-      end
     end
     object btnFinalizarCompra: TButton
       Left = 651
@@ -424,7 +398,7 @@ object TelaPrincipal: TTelaPrincipal
       Height = 25
       Anchors = [akTop, akRight]
       Caption = 'Finalizar Compra'
-      TabOrder = 1
+      TabOrder = 0
       OnClick = btnFinalizarCompraClick
       ExplicitLeft = 647
     end
@@ -437,7 +411,7 @@ object TelaPrincipal: TTelaPrincipal
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
-      TabOrder = 2
+      TabOrder = 1
       Visible = False
       object btnCadastrarProduto: TSpeedButton
         Left = 0
@@ -474,7 +448,7 @@ object TelaPrincipal: TTelaPrincipal
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
-      TabOrder = 3
+      TabOrder = 2
       Visible = False
       object btnVerClientes: TSpeedButton
         Left = 0
@@ -514,7 +488,7 @@ object TelaPrincipal: TTelaPrincipal
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
-      TabOrder = 4
+      TabOrder = 3
       Visible = False
       OnMouseLeave = onClick
       object btnCadastrarUsuario: TSpeedButton
@@ -541,6 +515,28 @@ object TelaPrincipal: TTelaPrincipal
         OnClick = btnVerUsuarioClick
         ExplicitLeft = 4
         ExplicitTop = 7
+      end
+    end
+    object GroupBox1: TGroupBox
+      Left = 0
+      Top = 0
+      Width = 809
+      Height = 41
+      Anchors = [akLeft, akTop, akRight]
+      TabOrder = 5
+      DesignSize = (
+        809
+        41)
+      object SearchBox: TSearchBox
+        Left = 153
+        Top = 9
+        Width = 500
+        Height = 23
+        Anchors = [akTop]
+        TabOrder = 0
+        TextHint = 'Pesquisar produto'
+        OnChange = SearchBoxChange
+        OnInvokeSearch = SearchBoxInvokeSearch
       end
     end
   end

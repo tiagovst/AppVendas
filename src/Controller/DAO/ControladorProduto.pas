@@ -13,7 +13,7 @@ uses
 type
   TControladorProduto = class(TInterfacedObject, IControladorProduto)
   private
-    IProduto: TProdutoDAO;
+    IProduto: IProdutoDAO;
 
     function gerarID: Integer;
     function Inserir(Produto: TProduto; out erro: String): Boolean;

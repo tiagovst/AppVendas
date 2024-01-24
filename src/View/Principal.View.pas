@@ -44,7 +44,6 @@ type
     pnlBarraLateral: TPanel;
     pnlLogo: TPanel;
     pnlConteudo: TPanel;
-    pnlPesquisa: TPanel;
     LabelProdutos: TLabel;
     SearchBox: TSearchBox;
     btnFinalizarCompra: TButton;
@@ -72,6 +71,7 @@ type
     lblCargoUsuario: TLabel;
     ImageList: TImageList;
     btnLogout: TSpeedButton;
+    GroupBox1: TGroupBox;
     procedure onClick(Sender : TObject);
     procedure btnCadastrarProdutoClick(Sender: TObject);
     procedure btnVerUsuarioClick(Sender: TObject);
@@ -97,9 +97,7 @@ type
     uControladorTelaVendas : IControladorTelaVendas;
     uControladorTelaListagemClientes : IControladorTelaListagemClientes;
     uControladorTelaManejoCliente : IControladorTelaManejoCliente;
-    Top: Boolean;
-
-    procedure ManejoTop;
+    
     procedure VerificacaoParent;
     procedure VerificacaoSessao;
   public
@@ -115,9 +113,6 @@ implementation
 procedure TTelaPrincipal.btnCadastrarClienteClick(Sender: TObject);
 begin
   VerificacaoParent;
-  Top := True;
-  ManejoTop;
-
   pnlSubmenuClientes.Visible := False;
 
   uControladorTelaManejoCliente := TControladorTelaManejoCliente.Create(pnlConteudo);
@@ -126,9 +121,6 @@ end;
 procedure TTelaPrincipal.btnCadastrarProdutoClick(Sender: TObject);
 begin
   VerificacaoParent;
-  Top := True;
-  ManejoTop;
-
   pnlSubmenuProdutos.Visible := False;
 
   FCadastroProduto := TTelaCadastroProduto.Create(nil);
@@ -141,9 +133,6 @@ end;
 procedure TTelaPrincipal.btnCadastrarUsuarioClick(Sender: TObject);
 begin
   VerificacaoParent;
-  Top := True;
-  ManejoTop;
-
   pnlSubmenuUsuarios.Visible := False;
 
   uControladorTelaManejoUsuario := TControladorTelaManejoUsuario.Create(TelaPrincipal.pnlConteudo);
@@ -152,18 +141,12 @@ end;
 procedure TTelaPrincipal.btnVendasClick(Sender: TObject);
 begin
   VerificacaoParent;
-  Top := True;
-  ManejoTop;
-
-  uControladorTelaVendas := TControladorTelaVendas.Create(TelaPrincipal.pnlConteudo);
+  uControladorTelaVendas := TControladorTelaVendas.Create(TelaPrincipal.pnlConteudo);  
 end;
 
 procedure TTelaPrincipal.btnVerClientesClick(Sender: TObject);
 begin
   VerificacaoParent;
-  Top := True;
-  ManejoTop;
-
   pnlSubmenuClientes.Visible := False;
 
   uControladorTelaListagemClientes := TControladorTelaListagemClientes.Create(pnlConteudo);
@@ -171,10 +154,7 @@ end;
 
 procedure TTelaPrincipal.btnVerUsuarioClick(Sender: TObject);
 begin
-  VerificacaoParent;
-  Top := True;
-  ManejoTop;
-
+  VerificacaoParent; 
   pnlSubmenuUsuarios.Visible := False;
 
   uControladorTelaListagemUsuario := TControladorTelaListagemUsuario.Create(TelaPrincipal.pnlConteudo);
@@ -182,10 +162,7 @@ end;
 
 procedure TTelaPrincipal.btnEstoqueClick(Sender: TObject);
 begin
-  VerificacaoParent;
-  Top := True;
-  ManejoTop;
-
+  VerificacaoParent; 
   pnlSubmenuProdutos.Visible := False;
 
   uControladorTelaEstoque := TControladorTelaEstoque.Create;
@@ -254,18 +231,6 @@ begin
 
   uControladorTelaCompraProduto :=
     TControladorTelaCompraProduto.Create(uControladorCompra, ProdutoSelecionado);
-end;
-
-procedure TTelaPrincipal.ManejoTop;
-begin
-  if Top then
-  begin
-    pnlPesquisa.Align := AlNone;
-  end
-  else
-  begin
-    pnlPesquisa.Align := AlTop;
-  end;
 end;
 
 procedure TTelaPrincipal.onClick(Sender: TObject);
@@ -356,10 +321,6 @@ begin
     begin
       uControladorTelaManejoCliente.FecharTela;
     end;
-
-
-    Top := False;
-    ManejoTop;
   except on E: Exception do
     begin
       ShowMessage(E.Message);

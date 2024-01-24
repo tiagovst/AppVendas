@@ -258,7 +258,7 @@ begin
 
       except on E: Exception do
       begin
-        erro := 'Ocorreu um erro ao tentar persistir' + sLineBreak + E.Message;
+        erro := 'Ocorreu um erro ao tentar persistir';
         Result := False;
       end;
     end;
