@@ -41,7 +41,7 @@ var
 begin
   senhaCriptografada := CreateInterbasePassword(FTelaAlterarSenha.txtNovaSenha.Text);
   uUsuario.Senha := senhaCriptografada;
-  if uControladorUsuario.Alterar(uUsuario, erro) then
+  if uControladorUsuario.AlterarSenha(uUsuario, erro) then
   begin
     ShowMessage('Senha modificada com sucesso!');
     FecharTela;

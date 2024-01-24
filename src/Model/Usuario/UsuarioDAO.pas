@@ -19,6 +19,7 @@ type
     function gerarID: Integer;
     function Inserir(Usuario: TUsuario; out erro: String): Boolean;
     function Alterar(Usuario: TUsuario; out erro: String): Boolean;
+    function AlterarSenha(Usuario: TUsuario; out erro: String): Boolean;
     function Excluir(ID: Integer; out erro: String): Boolean;
 
     procedure PesquisarNomeUsuario(Usuario: TUsuario; NomeDeUsuario: String);
@@ -41,17 +42,42 @@ begin
   begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
-    SQL.Text := 'update USUARIO set NOME = :NOME, EMAIL = :EMAIL, SENHA = :SENHA, ' +
+    SQL.Text := 'update USUARIO set NOME = :NOME, EMAIL = :EMAIL, ' +
     'TELEFONE = :TELEFONE, CPF = :CPF, CARGO = :CARGO, NOME_USUARIO = :NOME_USUARIO where (ID = :ID)';
 
     Params.ParamByName('ID').AsInteger := ID;
     Params.ParamByName('Nome').AsString := Nome;
     Params.ParamByName('email').AsString := Email;
-    Params.ParamByName('senha').AsString := Senha;
     Params.ParamByName('cpf').AsString := CPF;
     Params.ParamByName('telefone').AsString := Telefone;
     Params.ParamByName('nome_usuario').AsString := NomeUsuario;
     Params.ParamByName('cargo').AsString := Cargo;
+
+    try
+      ExecSQL();
+      Result := True;
+
+    except on E: Exception do
+      begin
+        erro := 'Ocorreu um erro ao tentar persistir: ' + sLineBreak + E.Message;
+        Result := False;
+      end;
+    end;
+  end;
+end;
+
+function TUsuarioDAO.AlterarSenha(Usuario: TUsuario; out erro: String): Boolean;
+begin
+  SQLQuery := TFDQuery.Create(nil);
+
+  with SQLQuery, Usuario do
+  begin
+    Connection := TConexaoIniciar.varConexao.FDConnection;
+
+    SQL.Text := 'update USUARIO set SENHA = :SENHA where (ID = :ID)';
+
+    Params.ParamByName('ID').AsInteger := ID;
+    Params.ParamByName('senha').AsString := Senha;
 
     try
       ExecSQL();

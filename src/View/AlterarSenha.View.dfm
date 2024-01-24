@@ -22,6 +22,8 @@ object TelaAlterarSenha: TTelaAlterarSenha
     Color = 16579321
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 507
+    ExplicitHeight = 278
     object Label1: TLabel
       Left = 184
       Top = 56
@@ -35,15 +37,14 @@ object TelaAlterarSenha: TTelaAlterarSenha
       Font.Style = []
       ParentFont = False
     end
-    object SpeedButton1: TSpeedButton
+    object btnMostrarSenha: TSpeedButton
       Left = 369
       Top = 120
       Width = 23
       Height = 25
       ImageIndex = 0
       Images = ImageList
-      PressedImageIndex = 1
-      OnClick = SpeedButton1Click
+      OnClick = btnMostrarSenhaClick
     end
     object btnCancelar: TButton
       Left = 152

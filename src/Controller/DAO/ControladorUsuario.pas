@@ -18,6 +18,7 @@ type
     function gerarID: Integer;
     function Inserir(Usuario: TUsuario; out erro: String): Boolean;
     function Alterar(Usuario: TUsuario; out erro: String): Boolean;
+    function AlterarSenha(Usuario: TUsuario; out erro: String): Boolean;
     function Excluir(ID: Integer; out erro: String): Boolean;
 
     procedure PesquisarNomeUsuario(Usuario: TUsuario; NomeDeUsuario: String);
@@ -41,6 +42,12 @@ function TControladorUsuario.Alterar(Usuario: TUsuario;
   out erro: String): Boolean;
 begin
   Result := IUsuario.Alterar(Usuario, erro);
+end;
+
+function TControladorUsuario.AlterarSenha(Usuario: TUsuario;
+  out erro: String): Boolean;
+begin
+  Result := IUsuario.AlterarSenha(Usuario, erro);
 end;
 
 function TControladorUsuario.CarregarPessoa(IDUsuario: Integer): TUsuario;

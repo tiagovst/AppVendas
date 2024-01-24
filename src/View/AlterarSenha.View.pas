@@ -14,12 +14,11 @@ type
     btnCancelar: TButton;
     btnSalvar: TButton;
     Panel1: TPanel;
-    SpeedButton1: TSpeedButton;
+    btnMostrarSenha: TSpeedButton;
     ImageList: TImageList;
-    procedure SpeedButton1Click(Sender: TObject);
+    procedure btnMostrarSenhaClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
   private
-    //visivel: Boolean;
   end;
 
 var
@@ -34,18 +33,18 @@ begin
   Close;
 end;
 
-procedure TTelaAlterarSenha.SpeedButton1Click(Sender: TObject);
+procedure TTelaAlterarSenha.btnMostrarSenhaClick(Sender: TObject);
 begin
-//  visivel := True;
-//  if visivel then
-//  begin
-//    txtNovaSenha.PasswordChar := '#';
-//  end
-//  else
-//  begin
-//    txtNovaSenha.PasswordChar := '*';
-//  end;
-
+  if txtNovaSenha.PasswordChar = '*' then
+  begin
+    txtNovaSenha.PasswordChar := #0;
+    btnMostrarSenha.ImageIndex := 1;
+  end
+  else
+  begin
+    txtNovaSenha.PasswordChar := '*';
+    btnMostrarSenha.ImageIndex := 0;
+  end;
 end;
 
 end.
