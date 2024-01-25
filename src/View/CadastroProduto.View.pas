@@ -15,13 +15,10 @@ uses
   Vcl.Mask,
   ControladorProdutoInterface,
   ControladorProduto,
-  Produto;
+  Produto, Vcl.Imaging.pngimage;
 
 type
   TTelaCadastroProduto = class(TForm)
-    btnVoltar: TButton;
-    Label1: TLabel;
-    Label2: TLabel;
     GroupBox1: TGroupBox;
     Label3: TLabel;
     txtNomeProduto: TEdit;
@@ -44,17 +41,25 @@ type
     btnCancelar: TButton;
     Panel1: TPanel;
     Panel2: TPanel;
-    Panel3: TPanel;
     Panel4: TPanel;
     txtValidade: TLabeledEdit;
+    GroupBox5: TGroupBox;
+    txtCodigoBarras: TLabeledEdit;
+    txtID: TLabeledEdit;
+    Panel3: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Image: TImage;
+    CheckBox1: TCheckBox;
+    CheckBoxStatus: TCheckBox;
+    GroupBox6: TGroupBox;
     procedure FormCreate(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
-    procedure btnVoltarClick(Sender: TObject);
-  private
-    { Private declarations }
-  public
-    { Public declarations }
-  end;
+    procedure btnCancelarClick(Sender: TObject);
+    procedure LimparCampos;
+    procedure txtQuantidadeEstoqueKeyPress(Sender: TObject; var Key: Char);
+    procedure CheckBox1Click(Sender: TObject);
+    end;
 
 var
   TelaCadastroProduto: TTelaCadastroProduto;
@@ -63,44 +68,131 @@ implementation
 
 {$R *.dfm}
 
+procedure TTelaCadastroProduto.btnCancelarClick(Sender: TObject);
+begin
+  Close;
+end;
+
 procedure TTelaCadastroProduto.btnSalvarClick(Sender: TObject);
 var
   Controlador: IControladorProduto;
   ProdutoCache : TProduto;
   erro: String;
+  id : String;
+  CamposNaTela: TArray<string>;
+  item: String;
 begin
+  SetLength(CamposNaTela, 6);
   ProdutoCache := TProduto.Create;
   Controlador := TControladorProduto.Create;
-  ProdutoCache.ID := Controlador.gerarID;
+
+  CamposNaTela[0] := txtNomeProduto.Text;
+  CamposNaTela[1] := txtCodigoBarras.Text;
+  CamposNaTela[2] := txtDescricaoProduto.Text;
+  CamposNaTela[3] := txtReferencia.Text;
+  CamposNaTela[4] := txtPreco.Text;
+  CamposNaTela[5] := cbxCategoria.Text;
+
+  for item in CamposNaTela do
+  begin
+    if item.IsEmpty then
+    begin
+      ShowMessage('Por favor, preencha todos os campos!');
+      Exit;
+    end;
+  end;
+
+  id := txtID.Text;
+  if id.IsEmpty then
+  begin
+    ProdutoCache.ID := Controlador.gerarID;
+  end
+  else
+  begin
+    ProdutoCache.ID := StrToInt(txtID.Text);
+  end;
+
+  if CheckBoxStatus.Checked then
+  begin
+    ProdutoCache.Ativo := -1;
+  end
+  else
+  begin
+    ProdutoCache.Ativo := 0;
+  end;
+
   ProdutoCache.Nome := txtNomeProduto.Text;
-  //ProdutoCache.CodigoBarras := Controlador
+  ProdutoCache.CodigoBarras := txtCodigoBarras.Text;
   ProdutoCache.Descricao := txtDescricaoProduto.Text;
   ProdutoCache.Referencia := txtReferencia.Text;
   ProdutoCache.Preco := StrToFloat(txtPreco.Text);
   ProdutoCache.Categoria := cbxCategoria.Text;
-  ProdutoCache.QuantidadeEstoque := StrToInt(txtQuantidadeEstoque.Text);
-  ProdutoCache.Fornecedor := txtFornecedor.Text;
-  ProdutoCache.DataValidade := StrToDate(txtValidade.Text);
 
-  if Controlador.Inserir(ProdutoCache, erro) then
+  if StrToFloat(txtQuantidadeEstoque.Text) > 0 then
   begin
-    ShowMessage('Produto inserido com sucesso');
+    ProdutoCache.QuantidadeEstoque := StrToFloat(txtQuantidadeEstoque.Text);
+
+    ProdutoCache.Fornecedor := txtFornecedor.Text;
+
+    if not CheckBox1.Checked then
+      ProdutoCache.DataValidade := StrToDate(txtValidade.Text);
+
+    if Controlador.Inserir(ProdutoCache, erro) then
+    begin
+      ShowMessage('Produto inserido com sucesso!');
+      LimparCampos;
+    end
+    else
+    begin
+      ShowMessage('Não foi possível cadastrar o produto.');
+    end;
   end
   else
   begin
-    ShowMessage(erro);
+    ShowMessage('Informe uma quantidade válida do produto!');
   end;
-
 end;
 
-procedure TTelaCadastroProduto.btnVoltarClick(Sender: TObject);
+procedure TTelaCadastroProduto.CheckBox1Click(Sender: TObject);
 begin
-  Close;
+  if CheckBox1.Checked then
+  begin
+    txtValidade.Enabled := False;
+    txtValidade.EditMask := '';
+    txtValidade.Text := '';
+  end
+  else
+  begin
+    txtValidade.EditMask := '!99/99/0000;1;_';
+    txtValidade.Enabled := True;
+  end;
 end;
 
 procedure TTelaCadastroProduto.FormCreate(Sender: TObject);
 begin
   txtDescricaoProduto.Text := '';
+end;
+
+procedure TTelaCadastroProduto.LimparCampos;
+begin
+  cbxCategoria.Text := '';
+  txtNomeProduto.Text := '';
+  txtDescricaoProduto.Text := '';
+  txtReferencia.Text := '';
+  txtPreco.Text := '';
+  txtQuantidadeEstoque.Text := '';
+  txtFornecedor.Text := '';
+  txtValidade.Text := '';
+  txtCodigoBarras.Text := '';
+end;
+
+procedure TTelaCadastroProduto.txtQuantidadeEstoqueKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  if not CharInSet(Key, ['0'..'9', '.', #8]) then
+  begin
+    key := #0;
+  end;
 end;
 
 end.

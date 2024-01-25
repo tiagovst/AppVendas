@@ -2,8 +2,8 @@ object dmConexao: TdmConexao
   Left = 0
   Top = 0
   Caption = 'dmConexao'
-  ClientHeight = 227
-  ClientWidth = 283
+  ClientHeight = 223
+  ClientWidth = 267
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,9 +13,6 @@ object dmConexao: TdmConexao
   TextHeight = 15
   object FDConnection: TFDConnection
     Params.Strings = (
-      
-        'Database=C:\Users\Gabriel\Documents\Repo\SalesApp\DataBase\RAZER' +
-        '.FDB'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'Protocol=TCPIP'

@@ -16,8 +16,20 @@ uses
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
   Venda,
-  ControladorVenda,
-  ControladorVendaInterface;
+  ControladorVendaDAO,
+  ItemVenda,
+  ControladorVendaDAOInterface,
+  ControladorItemVenda,
+  ControladorItemVendaInterface,
+  ControladorProdutoInterface,
+  ControladorProduto,
+  Produto,
+  ControladorTelaCheckoutInterface, Vcl.Imaging.pngimage, Vcl.Mask,
+  frxSmartMemo, frCoreClasses, frxClass, frxCross, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  Conexao, frxDBSet;
 
 type
   TTelaCheckout = class(TForm)
@@ -27,17 +39,30 @@ type
     btnFinalizar: TButton;
     btnCancelar: TButton;
     Label1: TLabel;
-    pnpTop: TPanel;
-    Label2: TLabel;
-    Label3: TLabel;
     btnLimpar: TButton;
     btnDeletar: TButton;
+    pnlTop: TPanel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Image: TImage;
+    Label4: TLabel;
+    lblSubtotal: TLabel;
+    txtDesconto: TLabeledEdit;
+    txtIdentificadorCliente: TLabeledEdit;
+    frxReport1: TfrxReport;
+    frxDBDataset1: TfrxDBDataset;
+    FDQuery1: TFDQuery;
+    FDQuery1ID_COMPRA: TIntegerField;
+    FDQuery1NOME: TStringField;
+    FDQuery1QUANTIDADE: TIntegerField;
+    FDQuery1PRECO_UNITARIO: TFloatField;
+    FDQuery1PRECO_SUBTOTAL: TFloatField;
+    FDQuery1IDENTIFICADOR_CLIENTE: TStringField;
+    FDQuery1DESCONTO: TSingleField;
+    FDQuery1SUBTOTAL_DESCONTADO: TFloatField;
     procedure btnCancelarClick(Sender: TObject);
-    procedure btnFinalizarClick(Sender: TObject);
-  private
-  public
-
-  end;
+    procedure txtDescontoKeyPress(Sender: TObject; var Key: Char);
+   end;
 
 var
   TelaCheckout: TTelaCheckout;
@@ -52,48 +77,12 @@ procedure TTelaCheckout.btnCancelarClick(Sender: TObject);
 begin
   Close;
 end;
-
-procedure TTelaCheckout.btnFinalizarClick(Sender: TObject);
-var
-  RegistroVenda : TVenda;
-  i : Integer;
-  PrecoTotal : Double;
-  uControladorVenda : IControladorVenda;
-  ProdutosID : String;
-  erro: String;
+procedure TTelaCheckout.txtDescontoKeyPress(Sender: TObject; var Key: Char);
 begin
-  RegistroVenda := TVenda.Create;
-  uControladorVenda := TControladorVenda.Create;
-  PrecoTotal := 0.0;
-
-  RegistroVenda.ID := uControladorVenda.gerarID;
-  RegistroVenda.dataVenda := uControladorVenda.DataAtual;
-  RegistroVenda.totalProdutos := ProdutosGrid.RowCount - 1;
-  RegistroVenda.vendedor := 1; // Mudar quando tiver sessão.
-
-  // Calculando o preço total iterando pela lista de produtos.
-  for i := 1 to (ProdutosGrid.Cols[3].Count - 1) do
+  if not CharInSet(Key, ['0'..'9', '.', #8]) then
   begin
-    PrecoTotal := PrecoTotal + StrToFloat(ProdutosGrid.Cols[4].Strings[i]);
+    Key := #0;
   end;
-  RegistroVenda.totalPreco := StrToFloat(FormatFloat('#0.00', PrecoTotal));
-
-  // Pegando ID's dos produtos.
-  for i := 1 to ProdutosGrid.Cols[0].Count - 1 do
-  begin
-    ProdutosID := ProdutosID + ' ' + ProdutosGrid.Cols[0].Strings[i];
-  end;
-  RegistroVenda.IDProdutos := ProdutosID;
-
-  if uControladorVenda.Inserir(RegistroVenda, erro) then
-  begin
-    ShowMessage('Venda Cadastrda com Sucesso!');
-  end
-  else
-  begin
-    ShowMessage('Erro ao registrar a venda' + sLineBreak + erro); //Retirar erro dps
-  end;
-
 end;
 
 end.

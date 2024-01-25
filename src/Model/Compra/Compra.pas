@@ -10,12 +10,8 @@ type
   TProdutoQuantidade = class
   public
     Produto: TProduto;
-    Quantidade: Integer;
+    Quantidade: Double;
     PrecoSubtotal: Double;
-
-    {property Produto: TProduto read FProduto write FProduto;
-    property Quantidade: Integer read FQuantidade write FQuantidade;
-    property PrecoSubtotal: Double read FPrecoSubtotal write FPrecoSubtotal; }
   end;
 
 implementation

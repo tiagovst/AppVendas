@@ -5,21 +5,24 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Data.DB, Vcl.Grids,
-  Vcl.DBGrids, Vcl.StdCtrls, Vcl.WinXCtrls, ControladorUsuarioInterface, ControladorUsuario;
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.WinXCtrls, ControladorUsuarioInterface, ControladorUsuario,
+  Vcl.Imaging.pngimage;
 
 type
   TTelaListagemUsuario = class(TForm)
     Panel: TPanel;
-    Top: TPanel;
     client: TPanel;
-    scPesquisa: TSearchBox;
     Label1: TLabel;
     gridProdutos: TDBGrid;
     dsUsuario: TDataSource;
-    gboxAcoes: TGroupBox;
-    Button2: TButton;
-    Button3: TButton;
-    btnVoltar: TButton;
+    pnlTop: TPanel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Image: TImage;
+    btnExcluir: TButton;
+    btnEditar: TButton;
+    btnNovo: TButton;
+    GroupBox1: TGroupBox;
     procedure FormShow(Sender: TObject);
     procedure btnVoltarClick(Sender: TObject);
   public

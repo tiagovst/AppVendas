@@ -8,7 +8,9 @@ uses
   FireDAC.Comp.Client,
   FireDAC.Stan.Param,
   System.SysUtils,
-  Conexao;
+  Data.DB,
+  ConexaoIniciar,
+  SessaoUsuario;
 
 type
   TVendaDAO = class(TInterfacedObject, IVendaDAO)
@@ -16,15 +18,16 @@ type
     SQLQuery : TFDQuery;
 
     private
-    //funcoes de persistencia
-    function gerarID: Integer;
-    function Inserir(Venda: TVenda; out erro: String): Boolean;
-    function Excluir(ID: Integer; out erro: String): Boolean;
+      //funcoes de persistencia
+      function gerarID: Integer;
+      function Inserir(Venda: TVenda; out erro: String): Boolean;
+      function Excluir(ID: Integer; out erro: String): Boolean;
     
-    procedure PesquisarData(Data : TDate);
-    procedure Pesquisar();
-    procedure PesquisarVendedor(ID : Integer);
-    procedure CarregarVenda(Venda: TVenda; ID: Integer);
+      procedure PesquisarData(Data : TDate);
+      procedure Pesquisar();
+      procedure PesquisarVendedor(ID : Integer);
+      procedure CarregarVenda(Venda: TVenda; ID: Integer);
+      procedure AtualizarListaVendas(DataSource : TDataSource; TipoUsuario: String);
   end;
 
 var
@@ -34,22 +37,47 @@ implementation
 
 { TVendaDAO }
 
+procedure TVendaDAO.AtualizarListaVendas(DataSource: TDataSource; TipoUsuario: String);
+begin
+  SQLQuery := TFDQuery.Create(nil);
+
+  with SQLQuery do
+  begin
+    Connection := TConexaoIniciar.varConexao.FDConnection;
+
+    if TipoUsuario.Equals('adm') then
+    begin
+      SQL.Text := 'SELECT * FROM VENDA;';
+    end
+    else
+    begin
+      SQL.Text := 'SELECT * FROM VENDA where VENDEDOR = :Vendedor';
+      Params.ParamByName('VENDEDOR').AsInteger := TSessaoUsuario.id;
+    end;
+    Open();
+  end;
+
+  DataSource.DataSet := SQLQuery;
+end;
+
 procedure TVendaDAO.CarregarVenda(Venda: TVenda; ID: Integer);
 begin
   SQLQuery := TFDQuery.Create(nil);
   with SQLQuery, Venda do
   begin
     try
-      Connection := dmConexao.FDConnection;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
       SQL.Text := 'SELECT * FROM VENDA WHERE (ID = :ID)';
       Params.ParamByName('ID').AsInteger := ID;
       Open();
 
       ID := FieldByName('ID').AsInteger;
-      dataVenda := FieldByName('DATA_VENDA').AsInteger;
-      totalProdutos := FieldByName('TOTAL_PRODUTOS').AsInteger;
+      totalProdutos := FieldByName('TOTAL_PRODUTOS').AsFloat;
       totalPreco := FieldByName('TOTAL_PRECO').AsInteger;
       vendedor := FieldByName('VENDEDOR').AsInteger;
+      dataVenda := FieldByName('DATA_VENDA').AsInteger;
+      Desconto := FieldByName('Desconto').AsFloat;
+
     finally
       FreeAndNil(SQLQuery);
     end;
@@ -62,7 +90,7 @@ begin
   with SQLQuery do
   begin
     try
-      Connection := dmConexao.FDConnection;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
       SQL.Text := 'DELETE FROM VENDA WHERE (ID = :ID)';
       Params.ParamByName('ID').AsInteger := ID;
       ExecSQL;
@@ -83,10 +111,10 @@ begin
   with SQLQuery do
   begin
     try
-      Connection := dmConexao.FDConnection;
-      SQL.Text := 'SELECT COALESCE(max(id), 0) + 1 AS NEXT_ID FROM VENDA';
+      Connection := TConexaoIniciar.varConexao.FDConnection;
+      SQL.Text := 'SELECT COALESCE(max(id), 0) + 1 AS seq FROM VENDA';
       Open();
-      Result := FieldByName('NEXT_ID').AsInteger;
+      Result := FieldByName('seq').AsInteger;
     finally
       FreeAndNil(SQLQuery);
     end;
@@ -99,16 +127,17 @@ begin
   with SQLQuery, Venda do
   begin
     try
-      Connection := dmConexao.FDConnection;
-      SQL.Text := 'insert into venda (id, data_venda, total_produtos, total_preco, vendedor, lista_produtos) ' +
-      'values (:id, :data_venda, :total_produtos, :total_preco, :vendedor, :lista_produtos)';
+      Connection := TConexaoIniciar.varConexao.FDConnection;
+      SQL.Text := 'insert into venda (id, total_produtos, total_preco, vendedor, data_venda, desconto, id_cliente) ' +
+      'values (:id, :total_produtos, :total_preco, :vendedor, :data_venda, :desconto, :id_cliente)';
 
       Params.ParamByName('ID').AsInteger := ID;
-      Params.ParamByName('DATA_VENDA').AsDate := dataVenda;
-      Params.ParamByName('VENDEDOR').AsInteger := vendedor;
-      Params.ParamByName('LISTA_PRODUTOS').AsString := IDProdutos;
-      Params.ParamByName('TOTAL_PRODUTOS').AsInteger := totalProdutos;
+      Params.ParamByName('TOTAL_PRODUTOS').AsFloat := totalProdutos;
       Params.ParamByName('TOTAL_PRECO').AsFloat := totalPreco;
+      Params.ParamByName('VENDEDOR').AsInteger := vendedor;
+      Params.ParamByName('DATA_VENDA').AsDate := dataVenda;
+      Params.ParamByName('desconto').AsFloat := Desconto;
+      Params.ParamByName('ID_CLIENTE').AsString := IDCliente;
       
       ExecSQL;
       Result := True;
@@ -130,7 +159,7 @@ begin
   with SQLQuery do
   begin
     try
-      Connection := dmConexao.FDConnection;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
       SQL.Text := 'SELECT * FROM VENDA';
       Open();
       First;
@@ -168,7 +197,7 @@ begin
   with SQLQuery do
   begin
     try
-      Connection := dmConexao.FDConnection;
+      Connection := TConexaoIniciar.varConexao.FDConnection;
       SQL.Text := 'SELECT * FROM VENDA WHERE VENDEDOR LIKE :ID';
       Params.ParamByName('ID').AsInteger := ID;
       Open();

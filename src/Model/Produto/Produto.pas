@@ -15,11 +15,13 @@ type
     FReferencia: String;
     FPreco: Double;
     FCategoria : String;
-    FQuantidadeEstoque: Integer;
+    FQuantidadeEstoque: Double;
     FFornecedor: String;
     FDataValidade: TDate;
+    FAtivo: Integer;
 
   public
+
     property ID: Integer read FID write FID;
     property Nome: String read FNome write FNome;
     property CodigoBarras: String read FCodigoBarras write FCodigoBarras;
@@ -27,12 +29,15 @@ type
     property Referencia: String read FReferencia write FReferencia;
     property Preco: Double read FPreco write FPreco;
     property Categoria: String read FCategoria write FCategoria;
-    property QuantidadeEstoque: Integer read FQuantidadeEstoque write FQuantidadeEstoque;
+    property QuantidadeEstoque: Double read FQuantidadeEstoque write FQuantidadeEstoque;
     property Fornecedor: String read FFornecedor write FFornecedor;
     property DataValidade: TDate read FDataValidade write FDataValidade;
+    property Ativo: Integer read FAtivo write FAtivo;
 
   end;
 
 implementation
+
+{ TProduto }
 
 end.

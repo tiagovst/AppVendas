@@ -13,11 +13,12 @@ type
     function gerarID: Integer;
     function Inserir(Usuario: TUsuario; out erro: String): Boolean;
     function Alterar(Usuario: TUsuario; out erro: String): Boolean;
+    function AlterarSenha(Usuario: TUsuario; out erro: String): Boolean;
     function Excluir(ID: Integer; out erro: String): Boolean;
 
-    procedure PesquisarNome(Nome: String);
+    procedure PesquisarNomeUsuario(Usuario: TUsuario; NomeDeUsuario: String);
     procedure Pesquisar(DataSource: TDataSource);
-    procedure CarregarPessoa(Usuario: TUsuario; ID: Integer);
+    function CarregarPessoa(IDUsuario: Integer): TUsuario;
   end;
 
 implementation

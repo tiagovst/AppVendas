@@ -18,11 +18,6 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
-        <Base_Win64>true</Base_Win64>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
         <Cfg_1>true</Cfg_1>
         <CfgParent>Base</CfgParent>
@@ -34,12 +29,6 @@
         <Cfg_1>true</Cfg_1>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win64)'!=''">
-        <Cfg_1_Win64>true</Cfg_1_Win64>
-        <CfgParent>Cfg_1</CfgParent>
-        <Cfg_1>true</Cfg_1>
-        <Base>true</Base>
-    </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
         <Cfg_2>true</Cfg_2>
         <CfgParent>Base</CfgParent>
@@ -47,12 +36,6 @@
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
         <Cfg_2_Win32>true</Cfg_2_Win32>
-        <CfgParent>Cfg_2</CfgParent>
-        <Cfg_2>true</Cfg_2>
-        <Base>true</Base>
-    </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win64)'!=''">
-        <Cfg_2_Win64>true</Cfg_2_Win64>
         <CfgParent>Cfg_2</CfgParent>
         <Cfg_2>true</Cfg_2>
         <Base>true</Base>
@@ -80,14 +63,6 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_Win64)'!=''">
-        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
-        <BT_BuildType>Debug</BT_BuildType>
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <VerInfo_Locale>1033</VerInfo_Locale>
-        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
-    </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
         <DCC_DebugDCUs>true</DCC_DebugDCUs>
@@ -103,9 +78,9 @@
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
-        <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <Icon_MainIcon>src\View\Imagens\ico\dimensionsG.ico</Icon_MainIcon>
+        <UWP_DelphiLogo44>src\View\Imagens\dimensionsG.png</UWP_DelphiLogo44>
+        <UWP_DelphiLogo150>src\View\Imagens\dimensionsG.png</UWP_DelphiLogo150>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -114,9 +89,6 @@
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
     </PropertyGroup>
     <ItemGroup>
@@ -128,56 +100,95 @@
         <DCCReference Include="src\Model\Produto\Produto.pas"/>
         <DCCReference Include="src\Model\ConexaoDAO\Conexao.pas">
             <Form>dmConexao</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\Model\Venda\VendaDAO.pas"/>
         <DCCReference Include="src\Model\Produto\ProdutoDAO.pas"/>
         <DCCReference Include="src\Model\Usuario\UsuarioDAO.pas">
             <Form>dmGenericDAO</Form>
-            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="src\Controller\ControladorUsuario.pas"/>
         <DCCReference Include="src\Interfaces\DAO\VendaDAOInterface.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorUsuarioInterface.pas"/>
         <DCCReference Include="src\Interfaces\DAO\UsuarioDAOInterface.pas"/>
         <DCCReference Include="src\Interfaces\DAO\ProdutoDAOInterface.pas"/>
-        <DCCReference Include="src\Controller\ControladorProduto.pas"/>
-        <DCCReference Include="src\Controller\ControladorVenda.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorProdutoInterface.pas"/>
-        <DCCReference Include="src\Interfaces\Controlador\ControladorVendaInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorVendaDAOInterface.pas"/>
         <DCCReference Include="src\View\CadastroProduto.View.pas">
             <Form>TelaCadastroProduto</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\Principal.View.pas">
             <Form>TelaPrincipal</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\ListagemUsuario.View.pas">
             <Form>TelaListagemUsuario</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\Estoque.View.pas">
             <Form>TelaEstoque</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\ManejoUsuario.View.pas">
             <Form>TelaManejoUsuario</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\View\CompraProduto.View.pas">
             <Form>TelaAdicionarProduto</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\Controller\ControladorCompra.pas"/>
         <DCCReference Include="src\Interfaces\Controlador\ControladorCompraInterface.pas"/>
         <DCCReference Include="src\Model\Compra\Compra.pas"/>
         <DCCReference Include="src\View\Checkout.View.pas">
             <Form>TelaCheckout</Form>
+        </DCCReference>
+        <DCCReference Include="src\Model\ItemVenda\ItemVenda.pas"/>
+        <DCCReference Include="src\Model\ItemVenda\ItemVendaDAO.pas"/>
+        <DCCReference Include="src\Interfaces\DAO\ItemVendaDAOInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorItemVendaInterface.pas"/>
+        <DCCReference Include="src\View\Vendas.View.pas">
+            <Form>TelaVendas</Form>
+        </DCCReference>
+        <DCCReference Include="src\View\Login.View.pas">
+            <Form>TelaLogin</Form>
+        </DCCReference>
+        <DCCReference Include="src\Model\ConexaoDAO\ConexaoIniciar.pas"/>
+        <DCCReference Include="src\Model\Usuario\SessaoUsuario.pas"/>
+        <DCCReference Include="src\Model\Cliente\Cliente.pas"/>
+        <DCCReference Include="src\Model\Cliente\ClienteDAO.pas"/>
+        <DCCReference Include="src\Interfaces\DAO\ClienteDAOInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorClienteDAOInterface.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaCadastroProduto.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaCheckout.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaCompraProduto.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaEstoque.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaListagemUsuario.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaManejoUsuario.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaVendas.pas"/>
+        <DCCReference Include="src\Controller\DAO\ControladorClienteDAO.pas"/>
+        <DCCReference Include="src\Controller\DAO\ControladorCompra.pas"/>
+        <DCCReference Include="src\Controller\DAO\ControladorItemVenda.pas"/>
+        <DCCReference Include="src\Controller\DAO\ControladorProduto.pas"/>
+        <DCCReference Include="src\Controller\DAO\ControladorUsuario.pas"/>
+        <DCCReference Include="src\Controller\DAO\ControladorVendaDAO.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaManejoCliente.pas"/>
+        <DCCReference Include="src\Controller\Telas\ControladorTelaListagemClientes.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaCadastroProdutoInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaCheckoutInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaCompraProdutoInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaEstoqueInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaListagemClientesInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaListagemUsuarioInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaManejoClienteInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaManejoUsuarioInterface.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\Telas\ControladorTelaVendasInterface.pas"/>
+        <DCCReference Include="src\View\ListagemClientes.View.pas">
+            <Form>TelaListagemClientes</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\Controller\ControladorCheckout.pas"/>
+        <DCCReference Include="src\View\ManejoCliente.View.pas">
+            <Form>TelaManejoCliente</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\Model\Compra\CompraDAO.pas"/>
+        <DCCReference Include="src\Interfaces\DAO\CompraDAOInterface.pas"/>
+        <DCCReference Include="src\Controller\DAO\ControladorCompraDAO.pas"/>
+        <DCCReference Include="src\Interfaces\Controlador\ControladorCompraDAOInterface.pas"/>
+        <DCCReference Include="src\Model\Utils\Unixpass.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -207,6 +218,13 @@
                 <DeployFile LocalName="Win32\Debug\AppVendas.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>AppVendas.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="src\View\Imagens\dimensionsG.png" Configuration="Debug" Class="UWP_DelphiLogo150">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets\</RemoteDir>
+                        <RemoteName>Logo150x150.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -1035,7 +1053,6 @@
             </Deployment>
             <Platforms>
                 <Platform value="Win32">True</Platform>
-                <Platform value="Win64">False</Platform>
             </Platforms>
             <ModelSupport>False</ModelSupport>
         </BorlandProject>
