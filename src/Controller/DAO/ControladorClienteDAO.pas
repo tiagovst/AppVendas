@@ -21,7 +21,7 @@ type
     function CarregarCliente(IDCliente: String): TCliente;
     function VerificarIdentificadorCliente(Identificador: String): Boolean;
 
-    procedure PesquisarNome(Nome: String);
+    procedure PesquisarNome(Nome: String; DataSource: TDataSource);
     procedure AtualizarListaClientes(DataSource: TDataSource);
 
   public
@@ -65,9 +65,9 @@ begin
   Result := ClienteDAO.Inserir(Cliente, erro);
 end;
 
-procedure TControladorClienteDAO.PesquisarNome(Nome: String);
+procedure TControladorClienteDAO.PesquisarNome(Nome: String; DataSource: TDataSource);
 begin
-  ClienteDAO.PesquisarNome(Nome);
+  ClienteDAO.PesquisarNome(Nome, DataSource);
 end;
 
 function TControladorClienteDAO.VerificarIdentificadorCliente(

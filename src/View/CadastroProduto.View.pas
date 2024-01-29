@@ -82,7 +82,7 @@ var
   CamposNaTela: TArray<string>;
   item: String;
 begin
-  SetLength(CamposNaTela, 6);
+  SetLength(CamposNaTela, 7);
   ProdutoCache := TProduto.Create;
   Controlador := TControladorProduto.Create;
 
@@ -92,6 +92,7 @@ begin
   CamposNaTela[3] := txtReferencia.Text;
   CamposNaTela[4] := txtPreco.Text;
   CamposNaTela[5] := cbxCategoria.Text;
+  CamposNaTela[6] := txtFornecedor.Text;
 
   for item in CamposNaTela do
   begin

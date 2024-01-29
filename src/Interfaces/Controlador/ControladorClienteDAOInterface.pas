@@ -16,7 +16,7 @@ type
   function CarregarCliente(IDCliente: String): TCliente;
   function VerificarIdentificadorCliente(Identificador: String): Boolean;
 
-  procedure PesquisarNome(Nome: String);
+  procedure PesquisarNome(Nome: String; DataSource: TDataSource);
   procedure AtualizarListaClientes(DataSource: TDataSource);
   end;
 

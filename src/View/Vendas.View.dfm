@@ -35,6 +35,68 @@ object TelaVendas: TTelaVendas
       Color = 16579321
       ParentBackground = False
       TabOrder = 0
+      object gbDate: TGroupBox
+        Left = 712
+        Top = 16
+        Width = 217
+        Height = 121
+        Caption = 'Busca por per'#237'odo'
+        DefaultHeaderFont = False
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        HeaderFont.Charset = DEFAULT_CHARSET
+        HeaderFont.Color = clWindowText
+        HeaderFont.Height = -13
+        HeaderFont.Name = 'Segoe UI'
+        HeaderFont.Style = []
+        ParentFont = False
+        TabOrder = 5
+        object Label5: TLabel
+          Left = 15
+          Top = 28
+          Width = 28
+          Height = 13
+          Caption = 'In'#237'cio'
+        end
+        object Label7: TLabel
+          Left = 15
+          Top = 58
+          Width = 41
+          Height = 14
+          Caption = 'T'#233'rmino'
+        end
+        object DTPInicio: TDateTimePicker
+          Left = 80
+          Top = 24
+          Width = 121
+          Height = 21
+          Date = 45320.000000000000000000
+          Time = 45320.000000000000000000
+          MinDate = 45292.000000000000000000
+          TabOrder = 0
+        end
+        object DTPTermino: TDateTimePicker
+          Left = 80
+          Top = 54
+          Width = 121
+          Height = 18
+          Date = 45320.000000000000000000
+          Time = 45320.000000000000000000
+          MinDate = 45292.000000000000000000
+          TabOrder = 1
+        end
+        object btnPesquisar: TButton
+          Left = 64
+          Top = 85
+          Width = 75
+          Height = 25
+          Caption = 'Pesquisar'
+          TabOrder = 2
+        end
+      end
       object Panel1: TPanel
         Left = 41
         Top = 16

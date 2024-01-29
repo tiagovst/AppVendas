@@ -77,6 +77,7 @@ procedure TTelaCheckout.btnCancelarClick(Sender: TObject);
 begin
   Close;
 end;
+
 procedure TTelaCheckout.txtDescontoKeyPress(Sender: TObject; var Key: Char);
 begin
   if not CharInSet(Key, ['0'..'9', '.', #8]) then

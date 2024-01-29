@@ -29,7 +29,7 @@ type
 TControladorTelaCheckout = class(TInterfacedObject, IControladorTelaCheckout)
   private
     FTelaCheckout : TTelaCheckout;
-    ActionBtnFinalizar, ActionBtnLimpar: TAction;
+    ActionBtnFinalizar, ActionBtnLimpar, AcaoBtnDeletar: TAction;
     uControladorCompra: IControladorCompra;
 
     QuantidadeProduto: Double;
@@ -51,6 +51,7 @@ TControladorTelaCheckout = class(TInterfacedObject, IControladorTelaCheckout)
     procedure RealizarVenda;
     procedure AcaoFinalizar(Sender: TObject);
     procedure AcaoLimpar(Sender: TObject);
+    procedure AcaoDeletarClick(Sender: TObject);
     procedure AcaoOnChangeDesconto(Sender: TObject);
     procedure FormatarLabelSubtotal;
     procedure RegistrarItemVenda(IDVendaBackUp: Integer);
@@ -72,9 +73,44 @@ implementation
 
 { TControladorTelaCheckout }
 
+procedure TControladorTelaCheckout.AcaoDeletarClick(Sender: TObject);
+var
+  NextRow, Column: Integer;
+  StringGrid :TStringGrid;
+  Id: Integer;
+begin
+  StringGrid := FTelaCheckout.ProdutosGrid;
+
+  if TryStrToInt(StringGrid.Cols[0].Strings[StringGrid.Row], ID) then
+  begin
+    uControladorCompra.RemoverProduto(StringGrid.Cols[0].Strings[StringGrid.Row].ToInteger);
+
+    StringGrid.Rows[StringGrid.Row].Clear;
+
+    for NextRow := StringGrid.Row + 1 to StringGrid.RowCount - 1 do
+    begin
+      for Column := 0 to StringGrid.ColCount - 1 do
+      begin
+        StringGrid.Cells[Column, NextRow - 1] := StringGrid.Cells[Column, NextRow];
+      end;
+    end;
+
+    uControladorCompra.ObterProdutos;
+    StringGrid.RowCount := StringGrid.RowCount - 1;
+
+    if StringGrid.RowCount = 1 then
+      FTelaCheckout.btnFinalizar.Enabled := False;
+  end
+  else
+  begin
+    ShowMessage('Não há produtos para deletar');
+  end;
+
+end;
+
 procedure TControladorTelaCheckout.AcaoFinalizar(Sender: TObject);
 begin
-  if High(ArrayProdutos) = -1 then
+  if (High(ArrayProdutos) = -1) or (FTelaCheckout.ProdutosGrid.RowCount = 0) then
   begin
     ShowMessage('Seu carrinho de compras está vazio');
   end
@@ -149,10 +185,15 @@ begin
   ActionBtnLimpar.OnExecute := AcaoLimpar;
   ActionBtnLimpar.Caption := 'Limpar';
 
+  AcaoBtnDeletar := TAction.Create(nil);
+  AcaoBtnDeletar.OnExecute := AcaoDeletarClick;
+  AcaoBtnDeletar.Caption := 'Deletar';
+
   FormatarLabelSubtotal;
   FTelaCheckout.txtDesconto.OnChange := AcaoOnChangeDesconto;
   FTelaCheckout.btnFinalizar.Action := ActionBtnFinalizar;
   FTelaCheckout.btnLimpar.Action := ActionBtnLimpar;
+  FTelaCheckout.btnDeletar.Action := AcaoBtnDeletar;
 
   MostrarTela;
 end;
@@ -218,6 +259,8 @@ begin
     for ColIndex := 0 to 4 do
       StringGrid.Rows[RowIndex].Clear;
   end;
+
+  StringGrid.RowCount := 0;
 
   uControladorCompra.LimparProdutos;
   FTelaCheckout.btnFinalizar.Enabled := False;

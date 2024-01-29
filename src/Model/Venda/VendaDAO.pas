@@ -9,6 +9,7 @@ uses
   FireDAC.Stan.Param,
   System.SysUtils,
   Data.DB,
+  Dialogs,
   ConexaoIniciar,
   SessaoUsuario;
 
@@ -23,7 +24,8 @@ type
       function Inserir(Venda: TVenda; out erro: String): Boolean;
       function Excluir(ID: Integer; out erro: String): Boolean;
     
-      procedure PesquisarData(Data : TDate);
+      procedure PesquisarData(DataInicio: TDate; DataTermino: TDate;
+      DataSource: TDataSource);
       procedure Pesquisar();
       procedure PesquisarVendedor(ID : Integer);
       procedure CarregarVenda(Venda: TVenda; ID: Integer);
@@ -169,27 +171,25 @@ begin
   end;
 end;
 
-procedure TVendaDAO.PesquisarData(Data: TDate);
+procedure TVendaDAO.PesquisarData(DataInicio: TDate; DataTermino: TDate; DataSource: TDataSource);
 begin
+  SQLQuery := TFDQuery.Create(nil);
+
+  try
+    with SQLQuery do
+    begin
+      Connection := TConexaoIniciar.varConexao.FDConnection;
+      SQL.Text := 'SELECT * FROM VENDA WHERE DATA_VENDA BETWEEN :dataInicio and ' +
+      ':dataTermino';
+      Params.ParamByName('dataInicio').AsDate := DataInicio;
+      Params.ParamByName('dataTermino').AsDate := DataTermino;
+      Open();
+    end;
+  finally
+    DataSource.DataSet := SQLQuery;
+  end;
 
 end;
-
-//procedure TVendaDAO.PesquisarData(Data: TDate);
-//begin
-//  SQLQuery := TFDQuery.Create(nil);
-//  with SQLQuery do
-//  begin
-//    try
-//      Connection := dmConexao.FDConnection;
-//      SQL.Text := 'SELECT * FROM VENDA WHERE DATA_VENDA LIKE :DATA_VENDA';
-//      Params.ParamByName('DATA_VENDA').AsDate := Data;
-//      Open();
-//      First;
-//    finally
-//      FreeAndNil(SQLQuery);
-//    end;
-//  end;
-//end;
 
 procedure TVendaDAO.PesquisarVendedor(ID: Integer);
 begin

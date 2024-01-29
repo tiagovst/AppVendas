@@ -252,6 +252,21 @@ object TelaListagemClientes: TTelaListagemClientes
         TabOrder = 2
       end
     end
+    object searchBoxCliente: TSearchBox
+      Left = 240
+      Top = 57
+      Width = 273
+      Height = 25
+      Anchors = [akTop, akRight]
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      TextHint = 'Pesquisar por cliente'
+    end
   end
   object DataSourceClientes: TDataSource
     Left = 792

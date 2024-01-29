@@ -29,14 +29,17 @@ type
   TControladorTelaVendas = class(TInterfacedObject, IControladorTelaVendas)
   private
     FTelaVendas : TTelaVendas;
+    DataInicio: TDate;
+    DataTermino: TDate;
     uControladorTelaCheckout: IControladorTelaCheckout;
     uControladorVendaDAO : IControladorVenda;
 
-    AcaoBtnComprarNovamente, AcaoBtnImprimirRelatorio: TAction;
+    AcaoBtnComprarNovamente, AcaoBtnImprimirRelatorio, AcaoBtnPesquisar: TAction;
 
     procedure FecharTela;
     procedure AcaoBtnComprarNovamenteClick(Sender: TObject);
     procedure AcaoBtnImprimirRelatorioClick(Sender: TObject);
+    procedure AcaoPesquisarPorPeriodo(Sender: TObject);
     procedure CalcularTotamEmVendas;
     procedure CalcularTotalItensVendidos;
 
@@ -90,6 +93,14 @@ end;
 procedure TControladorTelaVendas.AcaoBtnImprimirRelatorioClick(Sender: TObject);
 begin
   FTelaVendas.frxReport.ShowReport();
+end;
+
+procedure TControladorTelaVendas.AcaoPesquisarPorPeriodo(Sender: TObject);
+begin
+  DataInicio := FTelaVendas.DTPInicio.Date;
+  DataTermino := FTelaVendas.DTPTermino.Date;
+
+  uControladorVendaDAO.PesquisarData(DataInicio, DataTermino, FTelaVendas.DBGridVendas.DataSource);
 end;
 
 procedure TControladorTelaVendas.CalcularTotalItensVendidos;
@@ -157,16 +168,6 @@ begin
   FTelaVendas.Parent := Parent;
   FTelaVendas.Align := alClient;
 
-  AcaoBtnComprarNovamente := TAction.Create(nil);
-  AcaoBtnComprarNovamente.Caption := 'Vender novamente';
-  AcaoBtnComprarNovamente.OnExecute := AcaoBtnComprarNovamenteClick;
-  FTelaVendas.btnComprarNovamente.Action := AcaoBtnComprarNovamente;
-
-  AcaoBtnImprimirRelatorio := TAction.Create(nil);
-  AcaoBtnImprimirRelatorio.Caption := 'Imprimir relatório';
-  AcaoBtnImprimirRelatorio.OnExecute := AcaoBtnImprimirRelatorioClick;
-  FTelaVendas.btnImprimir.Action := AcaoBtnImprimirRelatorio;
-
   uControladorVendaDAO := TControladorVenda.Create;
 
   if TSessaoUsuario.cargo.Equals('Administrador') then
@@ -183,6 +184,22 @@ begin
 
   CalcularTotamEmVendas;
   CalcularTotalItensVendidos;
+
+  AcaoBtnComprarNovamente := TAction.Create(nil);
+  AcaoBtnComprarNovamente.Caption := 'Vender novamente';
+  AcaoBtnComprarNovamente.OnExecute := AcaoBtnComprarNovamenteClick;
+  FTelaVendas.btnComprarNovamente.Action := AcaoBtnComprarNovamente;
+
+  AcaoBtnImprimirRelatorio := TAction.Create(nil);
+  AcaoBtnImprimirRelatorio.Caption := 'Imprimir relatório';
+  AcaoBtnImprimirRelatorio.OnExecute := AcaoBtnImprimirRelatorioClick;
+  FTelaVendas.btnImprimir.Action := AcaoBtnImprimirRelatorio;
+
+  AcaoBtnPesquisar := TAction.Create(nil);
+  AcaoBtnPesquisar.Caption := 'Pesquisar';
+  AcaoBtnPesquisar.OnExecute := AcaoPesquisarPorPeriodo;
+  FTelaVendas.btnPesquisar.Action := AcaoBtnPesquisar;
+
   FTelaVendas.Show;
 end;
 

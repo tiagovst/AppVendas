@@ -13,7 +13,8 @@ type
   function Inserir(Venda: TVenda; out erro: String): Boolean;
   function Excluir(ID: Integer; out erro: String): Boolean;
 
-  procedure PesquisarData(Data : TDate);
+  procedure PesquisarData(DataInicio: TDate; DataTermino: TDate;
+  DataSource: TDataSource);
   procedure Pesquisar();
   procedure PesquisarVendedor(ID : Integer);
   procedure CarregarVenda(Venda: TVenda; ID: Integer);

@@ -33,6 +33,7 @@ type
     procedure AcaoBtnExcluirClick(Sender : TObject);
     procedure AcaoBtnEditarClick(Sender : TObject);
     procedure AcaoBtnNovoClienteClick(Sender : TObject);
+    procedure AcaoSearchBoxNome(Sender: TObject);
     procedure ControlePermissao;
 
     function FormatarIdentificador(cpf: string): string;
@@ -101,7 +102,8 @@ begin
     end
     else
     begin
-      ShowMessage('Ocorreu um erro ao tentar excluir o cliente selecionado!' + sLineBreak + erro);
+      ShowMessage('Não foi possível excluir o cliente selecionado.' +sLineBreak +
+      'O cliente possui compras registradas.');
     end;
   end;
 
@@ -114,6 +116,14 @@ begin
   finally
     FTelaListagemClientes.gridClientes.DataSource.DataSet.Refresh;
   end;
+end;
+
+procedure TControladorTelaListagemClientes.AcaoSearchBoxNome(Sender: TObject);
+var
+  nome: String;
+begin
+  nome := FTelaListagemClientes.searchBoxCliente.Text;
+  uControladorClienteDAO.PesquisarNome(nome, FTelaListagemClientes.DataSourceClientes);
 end;
 
 procedure TControladorTelaListagemClientes.FecharTela;
@@ -142,6 +152,7 @@ begin
   AcaoBtnEditar.Caption := 'Editar';
   AcaoBtnExcluir.Caption := 'Excluir';
 
+  FTelaListagemClientes.searchBoxCliente.OnChange := AcaoSearchBoxNome;
   FTelaListagemClientes.btnNovo.Action := AcaoBtnNovoCliente;
   FTelaListagemClientes.btnEditar.Action := AcaoBtnEditar;
   FTelaListagemClientes.btnExcluir.Action := AcaoBtnExcluir;

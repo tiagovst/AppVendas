@@ -269,6 +269,7 @@ object TelaCadastroProduto: TTelaCadastroProduto
           Font.Style = []
           ParentFont = False
           TabOrder = 0
+          OnKeyPress = txtQuantidadeEstoqueKeyPress
         end
         object txtQuantidadeEstoque: TEdit
           Left = 176

@@ -10,7 +10,7 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client,
-  Conexao;
+  Conexao, Vcl.WinXPickers, Vcl.ComCtrls;
 
 type
   TTelaVendas = class(TForm)
@@ -44,6 +44,12 @@ type
     FDQuery1DATA_VENDA: TDateField;
     FDQuery1DESCONTO: TSingleField;
     FDQuery1ID_CLIENTE: TStringField;
+    DTPInicio: TDateTimePicker;
+    DTPTermino: TDateTimePicker;
+    gbDate: TGroupBox;
+    Label5: TLabel;
+    Label7: TLabel;
+    btnPesquisar: TButton;
     procedure Button1Click(Sender: TObject);
   private
   public

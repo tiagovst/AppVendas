@@ -101,7 +101,7 @@ begin
     except on E: Exception do
       begin
         Result := False;
-        erro := 'deu ruim' + sLineBreak + E.Message;
+        erro := E.Message;
       end;
     end;
   end;

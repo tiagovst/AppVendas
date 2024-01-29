@@ -17,6 +17,7 @@ TControladorCompra = class(TInterfacedObject, IControladorCompra)
   public
     procedure ExibirProdutos;
     procedure LimparProdutos;
+    procedure RemoverProduto(ID : Integer);
 
     function AdicionarProduto(Produto: TProduto; Quantidade: Double; PrecoSubtotal: Double): Boolean;
     function ObterProdutos: TArray<TProdutoQuantidade>;
@@ -95,6 +96,28 @@ begin
     begin
       Result[i] := PilhaProdutos[i];
     end;
+end;
+
+procedure TControladorCompra.RemoverProduto(ID : Integer);
+var
+  i: Integer;
+begin
+  for i := 0 to Length(PilhaProdutos) - 1 do
+  begin
+    if ID = PilhaProdutos[i].Produto.ID then
+    begin
+      if Length(PilhaProdutos) >= i+2 then
+      begin
+        PilhaProdutos[i] := PilhaProdutos[i+1];
+      end
+      else
+      begin
+        PilhaProdutos[i].Free;
+      end;
+    end;
+  end;
+
+  SetLength(PilhaProdutos, Length(PilhaProdutos) - 1);
 end;
 
 end.

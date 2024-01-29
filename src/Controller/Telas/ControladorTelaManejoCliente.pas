@@ -21,13 +21,14 @@ type
     uCliente: TCliente;
     uControladorClienteDAO: IControladorClienteDAO;
 
-    AcaoBtnSalvar, AcaoBtnCancelar, AcaoRbCPF, AcaoRbCNPJ: TAction;
+    AcaoBtnSalvar, AcaoBtnCancelar, AcaoRbCPF, AcaoRbCNPJ, AcaoEditar: TAction;
 
     procedure PreencherCliente;
     procedure FecharTela;
 
     procedure AcaoBtnCancelarClick(Sender: TObject);
     procedure AcaoBtnSalvarClick(Sender: TObject);
+    procedure AcaoEditarClick(Sender: TObject);
     procedure AcaoRbCPFClick(Sender: TObject);
     procedure AcaoRbCNPJClick(Sender: TObject);
     procedure ConfigurarEventos;
@@ -44,11 +45,6 @@ implementation
 
 procedure TControladorTelaManejoCliente.ConfigurarEventos;
 begin
-  AcaoBtnSalvar := TAction.Create(nil);
-  AcaoBtnSalvar.Caption := 'Salvar';
-  AcaoBtnSalvar.OnExecute := AcaoBtnSalvarClick;
-  FTelaManejoCliente.btnSalvar.Action := AcaoBtnSalvar;
-
   AcaoBtnCancelar := TAction.Create(nil);
   AcaoBtnCancelar.Caption := 'Cancelar';
   AcaoBtnCancelar.OnExecute := AcaoBtnCancelarClick;
@@ -73,6 +69,11 @@ begin
 
   ConfigurarEventos;
 
+  AcaoBtnSalvar := TAction.Create(nil);
+  AcaoBtnSalvar.Caption := 'Salvar';
+  AcaoBtnSalvar.OnExecute := AcaoBtnSalvarClick;
+  FTelaManejoCliente.btnSalvar.Action := AcaoBtnSalvar;
+
   FTelaManejoCliente.BorderStyle := bsSingle;
   FTelaManejoCliente.ShowModal;
 end;
@@ -93,6 +94,11 @@ begin
     FTelaManejoCliente.rbCNPJ.Checked := true;
   end;
 
+  AcaoEditar := TAction.Create(nil);
+  AcaoEditar.Caption := 'Salvar';
+  AcaoEditar.OnExecute := AcaoEditarClick;
+  FTelaManejoCliente.btnSalvar.Action := AcaoEditar;
+
   FTelaManejoCliente.BorderStyle := bsSingle;
   FTelaManejoCliente.ShowModal;
 end;
@@ -107,6 +113,12 @@ begin
   FTelaManejoCliente.Align := AlClient;
 
   ConfigurarEventos;
+
+  AcaoBtnSalvar := TAction.Create(nil);
+  AcaoBtnSalvar.Caption := 'Salvar';
+  AcaoBtnSalvar.OnExecute := AcaoBtnSalvarClick;
+  FTelaManejoCliente.btnSalvar.Action := AcaoBtnSalvar;
+
   FTelaManejoCliente.btnCancelar.Visible := False;
   FTelaManejoCliente.Show;
 end;
@@ -145,11 +157,27 @@ begin
   end
   else
   begin
-    ShowMessage('Não foi possível cadastrar o cliente ' + erro);
+    ShowMessage('Não foi possível cadastrar o cliente.');
   end;
 
 end;
 
+procedure TControladorTelaManejoCliente.AcaoEditarClick(Sender: TObject);
+var
+  erro: String;
+begin
+  PreencherCliente;
+  if uControladorClienteDAO.Alterar(uCliente, erro) then
+  begin
+    ShowMessage('Cliente alterado com sucesso!');
+    FecharTela;
+  end
+  else
+  begin
+    ShowMessage('Não foi possível alterar o cliente.' + erro);
+  end;
+
+end;
 procedure TControladorTelaManejoCliente.AcaoRbCNPJClick(Sender: TObject);
 begin
   FTelaManejoCliente.txtIdentificador.EditMask := '00.000.000/0000-00';

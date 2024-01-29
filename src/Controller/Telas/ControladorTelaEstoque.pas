@@ -25,7 +25,7 @@ type
       FTelaEstoque : TTelaEstoque;
       uControladorProduto : IControladorProduto;
       uControladorTelaCadastroProduto : IControladorTelaCadastroProduto;
-      AcaoExcluir, AcaoCadastrarProduto : TAction;
+      AcaoExcluir, AcaoCadastrarProduto: TAction;
       procedure CalcularQuantidadeProdutos;
       procedure PreencherCbxCategorias;
       procedure MostrarTela(parent : TWinControl);
@@ -106,11 +106,22 @@ begin
 end;
 
 procedure TControladorTelaEstoque.AcaoComboBoxCategoriaOnChange(Sender: TObject);
+var
+  filtroCategoria: String;
 begin
-  uControladorProduto.PesquisarCategoria(FTelaEstoque.ComboBoxCategoria.Text,
-    FTelaEstoque.DBGridProdutos.DataSource);
+  filtroCategoria := FTelaEstoque.ComboBoxCategoria.Text;
 
-  FTelaEstoque.DBGridProdutos.DataSource.DataSet.Refresh;
+  if filtroCategoria.IsEmpty then
+  begin
+    uControladorProduto.AtualizarListaProdutos(FTelaEstoque.DataSourceProdutos);
+  end
+  else
+  begin
+  uControladorProduto.PesquisarCategoria(filtroCategoria,
+    FTelaEstoque.DBGridProdutos.DataSource);
+  end;
+
+  //FTelaEstoque.DBGridProdutos.DataSource.DataSet.Refresh;
 end;
 
 procedure TControladorTelaEstoque.AcaoComboBoxNivelOnChange(Sender: TObject);
@@ -118,7 +129,15 @@ var
   filtro : String;
 begin
   filtro := FTelaEstoque.ComboBoxNivel.Text;
-  uControladorProduto.PesquisarPorFiltro(filtro ,FTelaEstoque.DataSourceProdutos);
+  if filtro.IsEmpty then
+  begin
+    uControladorProduto.AtualizarListaProdutos(FTelaEstoque.DataSourceProdutos);
+  end
+  else
+  begin
+    uControladorProduto.PesquisarPorFiltro(filtro ,FTelaEstoque.DataSourceProdutos);
+  end;
+
 end;
 
 procedure TControladorTelaEstoque.AcaoDbGridProdutosOnDblClick(Sender: TObject);

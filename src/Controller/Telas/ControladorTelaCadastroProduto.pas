@@ -177,7 +177,7 @@ var
   CamposNaTela: TArray<string>;
   item: String;
 begin
-  SetLength(CamposNaTela, 6);
+  SetLength(CamposNaTela, 7);
   ProdutoId := FTelaCadastroProduto.txtID.Text;
   uControladorProduto := TControladorProduto.Create;
 
@@ -189,6 +189,7 @@ begin
     CamposNaTela[3] := txtReferencia.Text;
     CamposNaTela[4] := txtPreco.Text;
     CamposNaTela[5] := cbxCategoria.Text;
+    CamposNaTela[6] := txtFornecedor.Text;
   end;
 
   for item in CamposNaTela do

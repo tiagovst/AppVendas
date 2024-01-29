@@ -25,7 +25,7 @@ type
     function CarregarCliente(IDCliente: String): TCliente;
     function VerificarIdentificadorCliente(Identificador: String): Boolean;
 
-    procedure PesquisarNome(Nome: String);
+    procedure PesquisarNome(Nome: String; DataSource: TDataSource);
     procedure AtualizarListaClientes(DataSource: TDataSource);
   end;
 
@@ -55,7 +55,7 @@ begin
 
     except on E: Exception do
     begin
-      erro := 'Ocorreu um erro ao tentar alterar os dados' + sLineBreak + E.Message;
+      erro := 'Ocorreu um erro ao tentar alterar os dados';
       Result := False;
     end;
     end;
@@ -140,8 +140,8 @@ begin
   begin
     Connection := TConexaoIniciar.varConexao.FDConnection;
 
-    SQL.Text := 'update or insert into cliente (identificador, nome, endereco, telefone)' +
-    'values (:identificador, :nome, :endereco, :telefone) matching (identificador)';
+    SQL.Text := 'insert into cliente (identificador, nome, endereco, telefone)' +
+    'values (:identificador, :nome, :endereco, :telefone);';
 
     Params.ParamByName('identificador').AsString := Identificador;
     Params.ParamByName('nome').AsString := Nome;
@@ -154,7 +154,7 @@ begin
 
       except on E: Exception do
       begin
-        erro := 'Ocorreu um erro ao tentar persistir' + sLineBreak + E.Message;
+        erro := 'Ocorreu um erro ao tentar persistir';
         Result := False;
       end;
     end;
@@ -182,7 +182,7 @@ begin
   end;
 end;
 
-procedure TClienteDAO.PesquisarNome(Nome: String);
+procedure TClienteDAO.PesquisarNome(Nome: String; DataSource: TDataSource);
 begin
   SQLQuery := TFDQuery.Create(nil);
 
@@ -194,10 +194,9 @@ begin
     Params.ParamByName('Nome').AsString := Nome + '%';
 
     Open();
-    First;
   end;
 
-  FreeAndNil(SQLQuery);
+  DataSource.DataSet := SQLQuery;
 end;
 
 end.
